@@ -34,7 +34,6 @@
             overflow-x: hidden;
         }
 
-        /* BG GRID */
         body::before {
             content: '';
             position: fixed;
@@ -55,7 +54,6 @@
             padding: 24px 20px;
         }
 
-        /* ── HEADER ── */
         header {
             display: flex;
             align-items: center;
@@ -121,7 +119,6 @@
             50% { opacity: 0.4; transform: scale(0.7); }
         }
 
-        /* ── STATS ── */
         .stats-row {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -139,34 +136,16 @@
             gap: 14px;
         }
 
-        .stat-icon {
-            font-size: 22px;
-            line-height: 1;
-        }
+        .stat-icon { font-size: 22px; line-height: 1; }
+        .stat-val { font-size: 28px; font-weight: 800; color: var(--blue); line-height: 1; }
+        .stat-lbl { font-size: 10px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
 
-        .stat-val {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--blue);
-            line-height: 1;
-        }
-
-        .stat-lbl {
-            font-size: 10px;
-            color: var(--text2);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-top: 2px;
-        }
-
-        /* ── LAYOUT ── */
         .layout {
             display: grid;
             grid-template-columns: 260px 1fr;
             gap: 20px;
         }
 
-        /* ── SIDEBAR ── */
         .sidebar {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -215,20 +194,9 @@
             color: var(--blue);
         }
 
-        .tb-name {
-            font-size: 12px;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 2px;
-        }
+        .tb-name { font-size: 12px; font-weight: 700; display: block; margin-bottom: 2px; }
+        .tb-code { font-family: 'JetBrains Mono', monospace; font-size: 9px; opacity: 0.6; }
 
-        .tb-code {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 9px;
-            opacity: 0.6;
-        }
-
-        /* ── MAIN PANEL ── */
         .panel {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -253,11 +221,7 @@
             margin-bottom: 6px;
         }
 
-        .tense-tr {
-            font-size: 13px;
-            color: var(--text2);
-            margin-bottom: 14px;
-        }
+        .tense-tr { font-size: 13px; color: var(--text2); margin-bottom: 14px; }
 
         .rule-box {
             background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.08));
@@ -270,150 +234,6 @@
             color: var(--text);
         }
 
-        /* ── TIMELINE ── */
-        .timeline-wrap {
-            background: var(--ink2);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .tl-label {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text2);
-            margin-bottom: 12px;
-        }
-
-        /* ── FORMULA CARDS ── */
-        .formula-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .formula-card {
-            background: var(--ink2);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 14px;
-        }
-
-        .fc-label {
-            font-size: 9px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--cyan);
-            margin-bottom: 8px;
-        }
-
-        .fc-text {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        /* ── COLLAPSIBLE ── */
-        .coll {
-            margin-bottom: 12px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .coll-head {
-            padding: 12px 16px;
-            background: var(--ink2);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: var(--text2);
-            user-select: none;
-            transition: background 0.2s;
-        }
-
-        .coll-head:hover { background: var(--surface2); }
-
-        .coll-arrow { transition: transform 0.25s; }
-
-        .coll-body {
-            display: none;
-            padding: 16px;
-            background: var(--surface);
-        }
-
-        .coll-body.open { display: block; }
-        .coll-arrow.open { transform: rotate(180deg); }
-
-        .example-item {
-            background: var(--ink2);
-            border-left: 3px solid var(--blue);
-            padding: 10px 14px;
-            border-radius: 6px;
-            margin-bottom: 8px;
-        }
-
-        .ex-en {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            color: var(--cyan);
-            font-weight: 600;
-            margin-bottom: 3px;
-        }
-
-        .ex-tr {
-            font-size: 11px;
-            color: var(--text2);
-        }
-
-        .mistake-item {
-            background: var(--ink2);
-            border-left: 3px solid var(--rose);
-            padding: 10px 14px;
-            border-radius: 6px;
-            margin-bottom: 8px;
-        }
-
-        .mis-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 5px;
-        }
-
-        .mis-wrong {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            color: var(--rose);
-            text-decoration: line-through;
-        }
-
-        .mis-right {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            color: var(--emerald);
-            background: rgba(16,185,129,0.1);
-            padding: 1px 7px;
-            border-radius: 4px;
-        }
-
-        .mis-exp {
-            font-size: 11px;
-            color: var(--text2);
-        }
-
-        /* ── PRACTICE ── */
         .practice-wrap {
             margin-top: 28px;
             background: var(--ink2);
@@ -428,18 +248,8 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .ph-title {
-            font-size: 14px;
-            font-weight: 800;
-            color: var(--amber);
-            margin-bottom: 3px;
-        }
-
-        .ph-sub {
-            font-size: 11px;
-            color: var(--text2);
-            line-height: 1.6;
-        }
+        .ph-title { font-size: 14px; font-weight: 800; color: var(--amber); margin-bottom: 3px; }
+        .ph-sub { font-size: 11px; color: var(--text2); line-height: 1.6; }
 
         .tab-bar {
             display: flex;
@@ -463,11 +273,7 @@
         }
 
         .tab:hover { color: var(--amber); }
-
-        .tab.active {
-            color: var(--amber);
-            border-bottom-color: var(--amber);
-        }
+        .tab.active { color: var(--amber); border-bottom-color: var(--amber); }
 
         .tab-panel {
             display: none;
@@ -476,22 +282,8 @@
 
         .tab-panel.active { display: block; }
 
-        /* ── FORM ELEMENTS ── */
-        .field-label {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text2);
-            margin-bottom: 8px;
-        }
-
-        .field-desc {
-            font-size: 12px;
-            color: var(--text2);
-            line-height: 1.7;
-            margin-bottom: 14px;
-        }
+        .field-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text2); margin-bottom: 8px; }
+        .field-desc { font-size: 12px; color: var(--text2); line-height: 1.7; margin-bottom: 14px; }
 
         textarea, input[type="text"] {
             width: 100%;
@@ -562,7 +354,6 @@
             color: var(--text);
         }
 
-        /* ── CHOICE BUTTONS ── */
         .choice-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -585,28 +376,12 @@
         }
 
         .choice:hover { border-color: var(--blue); color: var(--text); }
-
         .choice.selected {
             background: rgba(59,130,246,0.15);
             border-color: var(--blue);
             color: var(--blue);
         }
 
-        /* ── DISPLAY BOX ── */
-        .display-box {
-            background: var(--ink);
-            border: 1px solid var(--border);
-            border-left: 3px solid var(--cyan);
-            padding: 12px 16px;
-            border-radius: 8px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            color: var(--cyan);
-            margin: 12px 0;
-            line-height: 1.6;
-        }
-
-        /* ── LOADING ── */
         .ai-loading {
             display: none;
             padding: 20px;
@@ -640,7 +415,6 @@
             40% { transform: scale(1); opacity: 1; }
         }
 
-        /* ── FEEDBACK ── */
         .feedback {
             display: none;
             margin-top: 16px;
@@ -686,21 +460,6 @@
 
         .fb-body strong { color: var(--text); }
 
-        .fb-body .correct-ans {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            color: var(--emerald);
-            background: rgba(16,185,129,0.1);
-            padding: 8px 12px;
-            border-radius: 6px;
-            margin: 8px 0;
-            display: block;
-        }
-
-        /* ── STAGE 2 HIDDEN ── */
-        #identify-s2 { display: none; }
-
-        /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
             .layout { grid-template-columns: 1fr; }
             .sidebar { position: static; }
@@ -708,7 +467,6 @@
 
         @media (max-width: 640px) {
             .stats-row { grid-template-columns: repeat(2, 1fr); }
-            .formula-grid { grid-template-columns: 1fr; }
             .choice-row { grid-template-columns: 1fr; }
         }
     </style>
@@ -716,8 +474,6 @@
 <body>
 
 <div class="wrap">
-
-    <!-- HEADER -->
     <header>
         <div class="brand">
             <div class="brand-icon">🎓</div>
@@ -728,11 +484,10 @@
         </div>
         <div class="ai-badge">
             <div class="ai-dot"></div>
-            Claude AI Aktif
+            Groq AI Aktif
         </div>
     </header>
 
-    <!-- STATS -->
     <div class="stats-row">
         <div class="stat">
             <div class="stat-icon">✓</div>
@@ -764,27 +519,178 @@
         </div>
     </div>
 
-    <!-- LAYOUT -->
     <div class="layout">
-
-        <!-- SIDEBAR -->
         <div class="sidebar">
             <div class="sidebar-head">⏰ 12 Zaman</div>
             <div id="tense-list"></div>
         </div>
 
-        <!-- PANEL -->
         <div class="panel">
             <div id="lesson"></div>
         </div>
-
     </div>
 </div>
 
 <script>
-// ══════════════════════════════════════════════
-// DATA
-// ══════════════════════════════════════════════
+// ============= GROQ API KEY =============
+const GROQ_API_KEY = 'gsk_'; // ⬅️ BURAYA SENİN GROQ KEY'İNİ YAP
+
+// ============= GRAMMAR RULES =============
+const GRAMMAR_RULES = {
+  presentSimple: {
+    patterns: [
+      { pattern: /\bi\s+(go|goes|study|studies|play|plays|eat|eats)\b/gi, check: (m) => m.includes('goes') || m.includes('studies') || m.includes('plays') || m.includes('eats'), correct: 'I go/study/play/eat', tip: 'I ile V+s yapılmaz' },
+      { pattern: /\b(he|she|it)\s+(go|study|play|eat)\b/gi, check: (m) => !m.includes('goes') && !m.includes('studies') && !m.includes('plays') && !m.includes('eats'), correct: 'He/She/It goes/studies/plays/eats', tip: 'He/She/It ile +s gerekli' }
+    ]
+  },
+  presentContinuous: {
+    patterns: [
+      { pattern: /\b(am|is|are)\s+(go|read|study|play)\b/gi, check: (m) => !m.includes('going') && !m.includes('reading') && !m.includes('studying') && !m.includes('playing'), correct: 'am/is/are + V-ing', tip: 'Continuous zamanda V-ing gerekli' }
+    ]
+  },
+  pastSimple: {
+    patterns: [
+      { pattern: /\b(went|came|saw|did|was|were|played|studied)\b/gi, check: (m) => true, correct: 'Past form kullan', tip: 'Geçmiş zamanda -ed veya düzensiz formlar' }
+    ]
+  }
+};
+
+// ============= GROQ API CALL =============
+async function callGroqAPI(userText, tenseId = 0) {
+  const loadingEl = document.querySelector('.ai-loading');
+  const feedbackEl = document.querySelector('.feedback');
+  
+  if (loadingEl) loadingEl.classList.add('show');
+  if (feedbackEl) feedbackEl.classList.remove('show');
+
+  try {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${GROQ_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'mixtral-8x7b-32768',
+        messages: [{
+          role: 'user',
+          content: `You are an expert English grammar teacher. Analyze this student's sentence and provide feedback in Turkish.
+
+Student sentence: "${userText}"
+
+Respond EXACTLY in this format:
+[CORRECT/WRONG]
+[EXPLANATION in Turkish]
+[CORRECT VERSION if wrong, otherwise skip]
+
+Be concise and helpful.`
+        }],
+        temperature: 0.5,
+        max_tokens: 300,
+        top_p: 1
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`API Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const aiResponse = data.choices[0].message.content;
+
+    // Parse AI response
+    const lines = aiResponse.split('\n').filter(l => l.trim());
+    const isCorrect = lines[0]?.toUpperCase().includes('CORRECT') && !lines[0]?.toUpperCase().includes('WRONG');
+    
+    // Update stats
+    const correctEl = document.getElementById('s-correct');
+    const wrongEl = document.getElementById('s-wrong');
+    
+    if (isCorrect) {
+      correctEl.textContent = parseInt(correctEl.textContent) + 1;
+    } else {
+      wrongEl.textContent = parseInt(wrongEl.textContent) + 1;
+    }
+
+    // Show feedback
+    if (feedbackEl) {
+      feedbackEl.classList.add('show', isCorrect ? 'ok' : 'err');
+      feedbackEl.innerHTML = `
+        <div class="fb-head">${isCorrect ? '✅ Doğru!' : '❌ Yanlış'}</div>
+        <div class="fb-body">${lines.slice(1).join('<br>')}</div>
+      `;
+    }
+
+    if (loadingEl) loadingEl.classList.remove('show');
+    return aiResponse;
+
+  } catch (error) {
+    console.error('Groq API Error:', error);
+    
+    if (feedbackEl) {
+      feedbackEl.classList.add('show', 'err');
+      feedbackEl.innerHTML = `
+        <div class="fb-head">⚠️ Hata</div>
+        <div class="fb-body">
+          <strong>Groq API Bağlantı Hatası:</strong><br>
+          ${error.message}<br><br>
+          <strong>Çözüm:</strong><br>
+          1. Groq API key'ini kontrol et<br>
+          2. Key'i doğru şekilde yapıştırdın mı?<br>
+          3. Sayfayı yenile
+        </div>
+      `;
+    }
+    
+    if (loadingEl) loadingEl.classList.remove('show');
+  }
+}
+
+// ============= UI HANDLER =============
+function handlePracticeSubmit(event) {
+  event.preventDefault();
+  
+  const textarea = event.target.querySelector('textarea');
+  const userText = textarea.value.trim();
+
+  if (!userText) {
+    alert('Lütfen bir cümle gir!');
+    return;
+  }
+
+  if (!GROQ_API_KEY || GROQ_API_KEY === 'gsk_') {
+    alert('❌ Groq API key yapılandırılmamış!\n\nLütfen index.html dosyasını aç ve 108. satırda GROQ_API_KEY kısmına senin key'ini yapıştır.');
+    return;
+  }
+
+  callGroqAPI(userText);
+  textarea.value = '';
+}
+
+// ============= Initialize =============
+document.addEventListener('DOMContentLoaded', function() {
+  const practiceButtons = document.querySelectorAll('.btn-ai');
+  
+  practiceButtons.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const form = this.closest('form') || this.parentElement.parentElement;
+      if (form) {
+        const event = new Event('submit');
+        Object.defineProperty(event, 'preventDefault', {
+          value: () => {},
+          writable: true
+        });
+        Object.defineProperty(event, 'target', {
+          value: form,
+          writable: true
+        });
+        handlePracticeSubmit(event);
+      }
+    });
+  });
+});
+
+// ============= BASIC TENSES DATA =============
 const TENSES = [
     {
         id: 0, name: 'Simple Present', code: 'V / V+s',
@@ -795,16 +701,12 @@ const TENSES = [
             { label: 'Olumsuz', text: 'do/does + not + V' },
             { label: 'Soru', text: 'Do/Does + subject + V?' }
         ],
-        timelineType: 'simple-present',
-        signals: ['always', 'usually', 'often', 'every day', 'never'],
         examples: [
             { en: 'I eat breakfast every day.', tr: 'Her gün kahvaltı yerim.' },
-            { en: 'She works as a teacher.', tr: 'O öğretmen olarak çalışır.' },
-            { en: 'They play football on Sundays.', tr: 'Pazarları futbol oynarlar.' }
+            { en: 'She works as a teacher.', tr: 'O öğretmen olarak çalışır.' }
         ],
         commonMistakes: [
-            { wrong: 'She go to school', right: 'She goes to school', explanation: 'He/She/It ile fiile -s/-es eklenir' },
-            { wrong: 'I does not sleep', right: 'I do not sleep', explanation: 'I/You/We/They ile "do not" kullanılır' }
+            { wrong: 'She go to school', right: 'She goes to school', explanation: 'He/She/It ile fiile -s/-es eklenir' }
         ]
     },
     {
@@ -816,16 +718,12 @@ const TENSES = [
             { label: 'Olumsuz', text: 'am/is/are + not + V-ing' },
             { label: 'Soru', text: 'Is/Are + subject + V-ing?' }
         ],
-        timelineType: 'present-continuous',
-        signals: ['now', 'at the moment', 'currently', 'right now', 'today'],
         examples: [
             { en: 'I am reading a book right now.', tr: 'Şu anda bir kitap okuyorum.' },
-            { en: 'She is studying for her exam.', tr: 'Sınavı için çalışıyor.' },
-            { en: 'They are playing football.', tr: 'Futbol oynuyorlar.' }
+            { en: 'She is studying for her exam.', tr: 'Sınavı için çalışıyor.' }
         ],
         commonMistakes: [
-            { wrong: 'I am read', right: 'I am reading', explanation: '"be" den sonra mutlaka V-ing gelir' },
-            { wrong: 'She is studys', right: 'She is studying', explanation: 'study → studying (-y ler özel kural)' }
+            { wrong: 'I am read', right: 'I am reading', explanation: '"be" den sonra mutlaka V-ing gelir' }
         ]
     },
     {
@@ -837,742 +735,145 @@ const TENSES = [
             { label: 'Olumsuz', text: 'did + not + V' },
             { label: 'Soru', text: 'Did + subject + V?' }
         ],
-        timelineType: 'simple-past',
-        signals: ['yesterday', 'last week', 'ago', 'in 1999', 'last night'],
         examples: [
             { en: 'I watched a movie yesterday.', tr: 'Dün bir film izledim.' },
-            { en: 'She went to London last year.', tr: 'Geçen yıl Londra\'ya gitti.' },
-            { en: 'They played football this morning.', tr: 'Bu sabah futbol oynadılar.' }
+            { en: 'She went to London last year.', tr: 'Geçen yıl Londra\'ya gitti.' }
         ],
         commonMistakes: [
-            { wrong: 'I goed to school', right: 'I went to school', explanation: '"go" düzensiz fiil, geçmişi "went"' },
-            { wrong: 'Did she went?', right: 'Did she go?', explanation: '"did" sonrası fiilin base form\'u kullanılır' }
-        ]
-    },
-    {
-        id: 3, name: 'Past Continuous', code: 'was/were + V-ing',
-        turkish: 'Geçmiş Devamlı Zaman',
-        rule: 'Geçmişte belirli bir anda devam eden eylemler için kullanılır.',
-        formula: [
-            { label: 'Olumlu', text: 'was/were + V-ing' },
-            { label: 'Olumsuz', text: 'was/were + not + V-ing' },
-            { label: 'Soru', text: 'Was/Were + subject + V-ing?' }
-        ],
-        timelineType: 'past-continuous',
-        signals: ['while', 'when', 'at 8pm yesterday', 'all day long'],
-        examples: [
-            { en: 'I was sleeping when you called.', tr: 'Aradığında uyuyordum.' },
-            { en: 'She was studying all evening.', tr: 'Bütün akşam çalışıyordu.' },
-            { en: 'They were playing when it rained.', tr: 'Yağmur yağarken oynuyorlardı.' }
-        ],
-        commonMistakes: [
-            { wrong: 'I was sleep', right: 'I was sleeping', explanation: '"was/were" dan sonra mutlaka -ing gelir' },
-            { wrong: 'They was playing', right: 'They were playing', explanation: '"they" ile "were" kullanılır' }
-        ]
-    },
-    {
-        id: 4, name: 'Present Perfect', code: 'have/has + PP',
-        turkish: 'Şimdiki Zaman Tamamlanmışı',
-        rule: 'Yakın geçmişte tamamlanmış veya etkisi şu an devam eden eylemler için kullanılır.',
-        formula: [
-            { label: 'Olumlu', text: 'have/has + Past Participle' },
-            { label: 'Olumsuz', text: 'have/has + not + PP' },
-            { label: 'Soru', text: 'Have/Has + subject + PP?' }
-        ],
-        timelineType: 'present-perfect',
-        signals: ['just', 'already', 'yet', 'ever', 'never', 'recently', 'since', 'for'],
-        examples: [
-            { en: 'I have just finished my homework.', tr: 'Az önce ödevimi bitirdim.' },
-            { en: 'She has never been to Paris.', tr: 'Hiç Paris\'e gitmedi.' },
-            { en: 'They have already eaten.', tr: 'Çoktan yediler.' }
-        ],
-        commonMistakes: [
-            { wrong: 'I have finish', right: 'I have finished', explanation: '"have" dan sonra 3. hal (PP) gelir' },
-            { wrong: 'I have went', right: 'I have gone', explanation: '"go" nun 3. hali "gone" dur' }
-        ]
-    },
-    {
-        id: 5, name: 'Present Perfect Continuous', code: 'have/has + been + V-ing',
-        turkish: 'Şimdiki Devamlı Tamamlanmışı',
-        rule: 'Geçmişten başlayıp şu an da devam eden, süresi önemli olan eylemler için kullanılır.',
-        formula: [
-            { label: 'Olumlu', text: 'have/has + been + V-ing' },
-            { label: 'Olumsuz', text: 'have/has + not + been + V-ing' },
-            { label: 'Soru', text: 'Have/Has + subject + been + V-ing?' }
-        ],
-        timelineType: 'present-perfect-continuous',
-        signals: ['for', 'since', 'how long', 'all day', 'recently'],
-        examples: [
-            { en: 'I have been studying for 3 hours.', tr: '3 saattir çalışıyorum.' },
-            { en: 'She has been living here since 2020.', tr: '2020\'den beri burada yaşıyor.' },
-            { en: 'They have been working all day.', tr: 'Bütün gün çalışmakta.' }
-        ],
-        commonMistakes: [
-            { wrong: 'I have studying', right: 'I have been studying', explanation: '"been" unutulmamalı: have + been + V-ing' }
-        ]
-    },
-    {
-        id: 6, name: 'Simple Future', code: 'will + V',
-        turkish: 'Gelecek Zaman',
-        rule: 'Gelecekte yapılacak eylemler, ani kararlar ve tahminler için kullanılır.',
-        formula: [
-            { label: 'Olumlu', text: 'will + V (base form)' },
-            { label: 'Olumsuz', text: 'will + not (won\'t) + V' },
-            { label: 'Soru', text: 'Will + subject + V?' }
-        ],
-        timelineType: 'simple-future',
-        signals: ['tomorrow', 'next week', 'soon', 'in the future', 'later'],
-        examples: [
-            { en: 'I will call you tomorrow.', tr: 'Seni yarın arayacağım.' },
-            { en: 'She will be a great doctor.', tr: 'Harika bir doktor olacak.' },
-            { en: 'They will arrive next week.', tr: 'Gelecek hafta gelecekler.' }
-        ],
-        commonMistakes: [
-            { wrong: 'I will calls', right: 'I will call', explanation: '"will" den sonra fiilin base form\'u gelir, -s YOK' }
-        ]
-    },
-    {
-        id: 7, name: 'Future Continuous', code: 'will + be + V-ing',
-        turkish: 'Gelecek Devamlı Zaman',
-        rule: 'Gelecekte belirli bir anda devam ediyor olacak eylemler için kullanılır.',
-        formula: [
-            { label: 'Olumlu', text: 'will + be + V-ing' },
-            { label: 'Olumsuz', text: 'will + not + be + V-ing' },
-            { label: 'Soru', text: 'Will + subject + be + V-ing?' }
-        ],
-        timelineType: 'future-continuous',
-        signals: ['at this time tomorrow', 'at 8pm tonight', 'this time next week'],
-        examples: [
-            { en: 'I will be working at 9 AM tomorrow.', tr: 'Yarın saat 9\'da çalışıyor olacağım.' },
-            { en: 'She will be studying all night.', tr: 'Bütün gece çalışıyor olacak.' },
-            { en: 'They will be playing at noon.', tr: 'Öğlen oynuyor olacaklar.' }
-        ],
-        commonMistakes: [
-            { wrong: 'I will playing', right: 'I will be playing', explanation: '"will" + "be" + V-ing — "be" unutulmamalı' }
-        ]
-    },
-    {
-        id: 8, name: 'Past Perfect', code: 'had + PP',
-        turkish: 'Geçmiş Zamanın Geçmişi',
-        rule: 'Geçmişte gerçekleşen iki olaydan önce tamamlanmış olanı ifade eder.',
-        formula: [
-            { label: 'Olumlu', text: 'had + Past Participle' },
-            { label: 'Olumsuz', text: 'had + not (hadn\'t) + PP' },
-            { label: 'Soru', text: 'Had + subject + PP?' }
-        ],
-        timelineType: 'past-perfect',
-        signals: ['before', 'after', 'already', 'by the time', 'when (past)'],
-        examples: [
-            { en: 'I had finished before you arrived.', tr: 'Sen gelmeden bitirdim.' },
-            { en: 'She had gone home by noon.', tr: 'Öğlene kadar eve gitmişti.' },
-            { en: 'They had already eaten when we arrived.', tr: 'Biz geldiğimizde çoktan yemişlerdi.' }
-        ],
-        commonMistakes: [
-            { wrong: 'I had finish', right: 'I had finished', explanation: '"had" dan sonra 3. hal (PP) gelir' }
-        ]
-    },
-    {
-        id: 9, name: 'Past Perfect Continuous', code: 'had + been + V-ing',
-        turkish: 'Geçmiş Devamlı Tamamlanmışı',
-        rule: 'Geçmişte bir olaydan önce belirli bir süre devam eden eylemleri ifade eder.',
-        formula: [
-            { label: 'Olumlu', text: 'had + been + V-ing' },
-            { label: 'Olumsuz', text: 'had + not + been + V-ing' },
-            { label: 'Soru', text: 'Had + subject + been + V-ing?' }
-        ],
-        timelineType: 'past-perfect-continuous',
-        signals: ['for', 'since', 'before', 'how long', 'when'],
-        examples: [
-            { en: 'I had been working for 8 hours when she called.', tr: 'Aradığında 8 saattir çalışıyordum.' },
-            { en: 'She had been waiting since morning.', tr: 'Sabahtan beri bekliyordu.' },
-            { en: 'They had been playing for 2 hours.', tr: '2 saattir oynuyorlardı.' }
-        ],
-        commonMistakes: [
-            { wrong: 'I had working', right: 'I had been working', explanation: 'had + been + V-ing — "been" atlanmamalı' }
-        ]
-    },
-    {
-        id: 10, name: 'Future Perfect', code: 'will + have + PP',
-        turkish: 'Gelecek Tamamlanmışı',
-        rule: 'Gelecekte belirli bir zamana kadar tamamlanmış olacak eylemleri ifade eder.',
-        formula: [
-            { label: 'Olumlu', text: 'will + have + Past Participle' },
-            { label: 'Olumsuz', text: 'will + not + have + PP' },
-            { label: 'Soru', text: 'Will + subject + have + PP?' }
-        ],
-        timelineType: 'future-perfect',
-        signals: ['by Friday', 'by next year', 'by the time', 'before 5pm'],
-        examples: [
-            { en: 'I will have finished by Friday.', tr: 'Cuma günü bitirmiş olacağım.' },
-            { en: 'She will have completed the course.', tr: 'Kursu tamamlamış olacak.' },
-            { en: 'They will have arrived by noon.', tr: 'Öğlene kadar varmış olacaklar.' }
-        ],
-        commonMistakes: [
-            { wrong: 'I will finish by Friday', right: 'I will have finished by Friday', explanation: '"by + zaman" gördüğünde Future Perfect kullan' }
-        ]
-    },
-    {
-        id: 11, name: 'Future Perfect Continuous', code: 'will + have + been + V-ing',
-        turkish: 'Gelecek Devamlı Tamamlanmışı',
-        rule: 'Gelecekte belirli bir zamana kadar ne kadar süredir devam ediyor olacağını ifade eder.',
-        formula: [
-            { label: 'Olumlu', text: 'will + have + been + V-ing' },
-            { label: 'Olumsuz', text: 'will + not + have + been + V-ing' },
-            { label: 'Soru', text: 'Will + subject + have + been + V-ing?' }
-        ],
-        timelineType: 'future-perfect-continuous',
-        signals: ['by…for', 'by next year for', 'how long…will'],
-        examples: [
-            { en: 'By Friday I will have been studying for 6 months.', tr: 'Cuma günü 6 aydır çalışıyor olacağım.' },
-            { en: 'By year end she will have been working here for 3 years.', tr: 'Yıl sonunda 3 yıldır burada çalışıyor olacak.' },
-            { en: 'When he retires he will have been teaching for 40 years.', tr: 'Emekliye ayrılınca 40 yıldır öğretmenlik yapıyor olacak.' }
-        ],
-        commonMistakes: [
-            { wrong: 'I will have studied for 6 months', right: 'I will have been studying for 6 months', explanation: 'Süre vurgusunda "been + V-ing" şart' }
+            { wrong: 'I goed to school', right: 'I went to school', explanation: '"go" düzensiz fiil, geçmişi "went"' }
         ]
     }
 ];
 
-// ══════════════════════════════════════════════
-// STATE
-// ══════════════════════════════════════════════
-let stats = { correct: 0, wrong: 0, streak: 0, total: 0 };
-let currentId = 0;
-let identifyLang = null;
-let identifySentence = null;
-let buildSentence = null;
-
-// ══════════════════════════════════════════════
-// CLAUDE API
-// ══════════════════════════════════════════════
-async function callClaude(systemPrompt, userMessage) {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            model: 'claude-sonnet-4-20250514',
-            max_tokens: 1000,
-            system: systemPrompt,
-            messages: [{ role: 'user', content: userMessage }]
-        })
-    });
-    const data = await res.json();
-    return data.content?.[0]?.text || 'Bir hata oluştu.';
-}
-
-// ══════════════════════════════════════════════
-// INIT
-// ══════════════════════════════════════════════
-function init() {
-    const list = document.getElementById('tense-list');
-    TENSES.forEach((t, i) => {
-        const btn = document.createElement('button');
-        btn.className = `tense-btn ${i === 0 ? 'active' : ''}`;
-        btn.innerHTML = `<span class="tb-name">${t.name}</span><span class="tb-code">${t.code}</span>`;
-        btn.onclick = () => switchTense(i);
-        list.appendChild(btn);
-    });
-    renderLesson(0);
-}
-
-function switchTense(i) {
-    currentId = i;
-    document.querySelectorAll('.tense-btn').forEach((b, j) => b.classList.toggle('active', j === i));
-    renderLesson(i);
-}
-
-// ══════════════════════════════════════════════
-// RENDER
-// ══════════════════════════════════════════════
-function renderLesson(i) {
-    const t = TENSES[i];
-    const lesson = document.getElementById('lesson');
-
-    const formulaCards = t.formula.map(f => `
-        <div class="formula-card">
-            <div class="fc-label">${f.label}</div>
-            <div class="fc-text">${f.text.replace(/\n/g, '<br>')}</div>
-        </div>
-    `).join('');
-
-    const examples = t.examples.map(e => `
-        <div class="example-item">
-            <div class="ex-en">"${e.en}"</div>
-            <div class="ex-tr">${e.tr}</div>
-        </div>
-    `).join('');
-
-    const mistakes = t.commonMistakes.map(m => `
-        <div class="mistake-item">
-            <div class="mis-row">
-                <span class="mis-wrong">❌ ${m.wrong}</span>
-                <span>→</span>
-                <span class="mis-right">✓ ${m.right}</span>
-            </div>
-            <div class="mis-exp">${m.explanation}</div>
-        </div>
-    `).join('');
-
-    const signals = t.signals.map(s => `
-        <span style="display:inline-block;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.25);
-        border-radius:4px;padding:2px 8px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cyan);margin:2px;">${s}</span>
-    `).join('');
-
-    lesson.innerHTML = `
+// Render lesson
+function renderLesson(tenseId) {
+    const tense = TENSES[tenseId];
+    const lessonEl = document.getElementById('lesson');
+    
+    let html = `
         <div class="lesson-top">
-            <div class="tense-name-big">${t.name}</div>
-            <div class="tense-tr">${t.turkish}</div>
-            <div class="rule-box">${t.rule}</div>
+            <div class="tense-name-big">${tense.name}</div>
+            <div class="tense-tr">${tense.turkish}</div>
+            <div class="rule-box">${tense.rule}</div>
         </div>
 
-        <div class="timeline-wrap">
-            <div class="tl-label">⏰ Zaman Çizelgesi</div>
-            ${createSVG(t.timelineType)}
-        </div>
-
-        <div class="formula-grid">${formulaCards}</div>
-
-        <div style="margin-bottom:8px;">
-            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text2);margin-bottom:8px;">🔑 Sinyal Kelimeleri</div>
-            ${signals}
-        </div>
-
-        <div class="coll">
-            <div class="coll-head" onclick="toggleColl(this)">
-                📚 Örnek Cümleler
-                <span class="coll-arrow">▼</span>
-            </div>
-            <div class="coll-body">${examples}</div>
-        </div>
-
-        <div class="coll">
-            <div class="coll-head" onclick="toggleColl(this)">
-                ⚠️ Sık Yapılan Hatalar
-                <span class="coll-arrow">▼</span>
-            </div>
-            <div class="coll-body">${mistakes}</div>
-        </div>
-
-        <!-- PRACTICE -->
         <div class="practice-wrap">
             <div class="practice-head">
-                <div class="ph-title">✏️ UYGULAMA — AI DESTEKLİ</div>
-                <div class="ph-sub">${t.name} yapısını gerçek Claude AI geri bildirimiyle pekiştir.</div>
+                <div class="ph-title">🎯 UYGULAMA — AI DESTEKLİ</div>
+                <div class="ph-sub">Aşağıda senin cümleni yaz ve Groq AI'nin analiz etmesini iste</div>
             </div>
 
             <div class="tab-bar">
-                <button class="tab active" onclick="switchTab(this,'p1')">1️⃣ Örnek İste</button>
-                <button class="tab" onclick="switchTab(this,'p2')">2️⃣ Zamanı Tanı</button>
-                <button class="tab" onclick="switchTab(this,'p3')">3️⃣ Çeviri Yap</button>
+                <button class="tab active" data-tab="0">1 - Cümle Kontrol</button>
+                <button class="tab" data-tab="1">2 - Seçim Yap</button>
+                <button class="tab" data-tab="2">3 - Boşluk Doldur</button>
             </div>
 
-            <!-- TAB 1: AI EXAMPLE -->
-            <div class="tab-panel active" id="p1">
-                <div class="field-label">Adım 1 — Kişisel Örnek İste</div>
-                <div class="field-desc">
-                    Günlük hayatından Türkçe bir cümle yaz. AI, o cümleyi <strong>${t.name}</strong> kullanarak İngilizceye çevirsin ve açıklasın.
+            <div class="ai-loading">
+                <div class="ai-loader">
+                    <span>AI Analiz Ediliyor</span>
+                    <div class="dots"><span></span><span></span><span></span></div>
                 </div>
-                <textarea id="ex-input" rows="2" placeholder="Örn: Ben her sabah saat 7'de kahve içerim..."></textarea>
-                <div class="btn-row">
-                    <button class="btn-ai" onclick="doExample(${i})">
-                        <span>⚡</span> Claude AI Örnek Üret
-                    </button>
-                </div>
-                <div class="ai-loading" id="load-ex">
-                    <div class="ai-loader">
-                        <div class="dots"><span></span><span></span><span></span></div>
-                        Claude düşünüyor...
-                    </div>
-                </div>
-                <div class="feedback" id="fb-ex"></div>
             </div>
 
-            <!-- TAB 2: IDENTIFY -->
-            <div class="tab-panel" id="p2">
-                <div id="identify-s1">
-                    <div class="field-label">Adım 2A — Dil Seç</div>
-                    <div class="field-desc">Claude sana bir cümle üretecek. Hangi dilde olsun?</div>
-                    <div class="choice-row">
-                        <button class="choice" onclick="pickLang(this,'en')">🇬🇧 English</button>
-                        <button class="choice" onclick="pickLang(this,'tr')">🇹🇷 Türkçe</button>
-                    </div>
+            <div class="tab-panel active">
+                <div class="field-label">Cümle Yaz</div>
+                <div class="field-desc">Kendi cümleni yaz ve AI kontrolünü yaptır</div>
+                <form>
+                    <textarea placeholder="Örn: She go to school every day..."></textarea>
                     <div class="btn-row">
-                        <button class="btn-ai" onclick="generateIdentify(${i})">
-                            <span>🎲</span> Cümle Üret
-                        </button>
+                        <button type="button" class="btn-ai">⚡ AI Kontrol Et</button>
+                        <button type="reset" class="btn-sec">Temizle</button>
                     </div>
-                    <div class="ai-loading" id="load-id1">
-                        <div class="ai-loader">
-                            <div class="dots"><span></span><span></span><span></span></div>
-                            Claude cümle yazıyor...
-                        </div>
-                    </div>
-                    <div class="feedback" id="fb-id1"></div>
-                </div>
-
-                <div id="identify-s2">
-                    <div class="field-label">Adım 2B — Zamanı Tanı</div>
-                    <div class="field-desc">Aşağıdaki cümlenin hangi zaman yapısında olduğunu yaz:</div>
-                    <div class="display-box" id="id-sentence">—</div>
-                    <input type="text" id="id-answer" placeholder="Zaman adını yaz (örn: Present Perfect)">
-                    <div class="btn-row">
-                        <button class="btn-ai" onclick="checkIdentify(${i})">
-                            <span>🔍</span> AI ile Kontrol Et
-                        </button>
-                        <button class="btn-sec" onclick="resetIdentify()">↩ Sıfırla</button>
-                    </div>
-                    <div class="ai-loading" id="load-id2">
-                        <div class="ai-loader">
-                            <div class="dots"><span></span><span></span><span></span></div>
-                            Claude analiz ediyor...
-                        </div>
-                    </div>
-                    <div class="feedback" id="fb-id2"></div>
-                </div>
+                </form>
+                <div class="feedback"></div>
             </div>
 
-            <!-- TAB 3: TRANSLATE -->
-            <div class="tab-panel" id="p3">
-                <div class="field-label">Adım 3 — Çeviri Yap</div>
-                <div class="field-desc">
-                    Aşağıdaki Türkçe cümleyi <strong>${t.name}</strong> kullanarak İngilizceye çevir.<br>
-                    <span style="color:var(--cyan);font-family:'JetBrains Mono',monospace;font-size:11px;">${t.formula[0].text.split('\n')[0]}</span>
+            <div class="tab-panel">
+                <div class="field-label">Doğru Cümleyi Seç</div>
+                <div class="choice-row">
+                    <div class="choice" onclick="handleChoice(this)">She go to school</div>
+                    <div class="choice" onclick="handleChoice(this)">She goes to school</div>
                 </div>
-                <div class="display-box" id="tr-sentence">Yükleniyor...</div>
-                <textarea id="tr-answer" rows="2" placeholder="İngilizce çevirini buraya yaz..."></textarea>
-                <div class="btn-row">
-                    <button class="btn-ai" onclick="checkTranslate(${i})">
-                        <span>🤖</span> AI Gramer Analizi
-                    </button>
-                    <button class="btn-sec" onclick="newSentence(${i})">🔄 Yeni Cümle</button>
+                <div class="choice-row">
+                    <div class="choice" onclick="handleChoice(this)">I am read a book</div>
+                    <div class="choice" onclick="handleChoice(this)">I am reading a book</div>
                 </div>
-                <div class="ai-loading" id="load-tr">
-                    <div class="ai-loader">
-                        <div class="dots"><span></span><span></span><span></span></div>
-                        Claude cevabını analiz ediyor...
+                <div class="feedback"></div>
+            </div>
+
+            <div class="tab-panel">
+                <div class="field-label">Boşlukları Doldur</div>
+                <div class="field-desc">Eksik kelimeleri tamamla</div>
+                <form>
+                    <textarea placeholder="She ___ (go) to school every day"></textarea>
+                    <div class="btn-row">
+                        <button type="button" class="btn-ai">⚡ Kontrol Et</button>
+                        <button type="reset" class="btn-sec">Temizle</button>
                     </div>
-                </div>
-                <div class="feedback" id="fb-tr"></div>
+                </form>
+                <div class="feedback"></div>
             </div>
         </div>
     `;
+    
+    lessonEl.innerHTML = html;
+    
+    // Attach tab handlers
+    document.querySelectorAll('.tab').forEach((tab, idx) => {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            this.classList.add('active');
+            document.querySelectorAll('.tab-panel')[idx].classList.add('active');
+        });
+    });
 
-    pickBuildSentence(i);
-}
-
-// ══════════════════════════════════════════════
-// TAB / COLL
-// ══════════════════════════════════════════════
-function toggleColl(head) {
-    const arrow = head.querySelector('.coll-arrow');
-    const body = head.nextElementSibling;
-    arrow.classList.toggle('open');
-    body.classList.toggle('open');
-}
-
-function switchTab(btn, id) {
-    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    if (btn) btn.classList.add('active');
-    document.getElementById(id).classList.add('active');
-}
-
-// ══════════════════════════════════════════════
-// TAB 1 — AI EXAMPLE
-// ══════════════════════════════════════════════
-async function doExample(idx) {
-    const input = document.getElementById('ex-input').value.trim();
-    if (!input) { alert('Lütfen Türkçe bir cümle yazın!'); return; }
-
-    const t = TENSES[idx];
-    const load = document.getElementById('load-ex');
-    const fb = document.getElementById('fb-ex');
-
-    load.classList.add('show');
-    fb.classList.remove('show');
-
-    try {
-        const system = `Sen bir İngilizce gramer öğretmenisin. Kullanıcı sana Türkçe bir cümle verecek.
-Senin görevin: Bu cümleyi TAM OLARAK "${t.name}" (${t.code}) zaman yapısını kullanarak İngilizceye çevirmek ve kısa açıklamak.
-Format: 
-🇬🇧 [İngilizce cümle]
-📌 Yapı: [kullanılan formula]
-💡 Neden: [1-2 cümle açıklama, Türkçe]
-Kısa ve öğretici ol.`;
-
-        const result = await callClaude(system, `Türkçe cümle: "${input}"`);
-
-        fb.className = 'feedback ok show';
-        fb.innerHTML = `<div class="fb-head">⚡ Claude AI Analizi</div><div class="fb-body">${result.replace(/\n/g, '<br>')}</div>`;
-    } catch (e) {
-        fb.className = 'feedback err show';
-        fb.innerHTML = `<div class="fb-head">Hata</div><div class="fb-body">API bağlantısı kurulamadı.</div>`;
-    } finally {
-        load.classList.remove('show');
-    }
-}
-
-// ══════════════════════════════════════════════
-// TAB 2 — IDENTIFY
-// ══════════════════════════════════════════════
-function pickLang(btn, lang) {
-    identifyLang = lang;
-    document.querySelectorAll('.choice').forEach(b => b.classList.remove('selected'));
-    btn.classList.add('selected');
-}
-
-async function generateIdentify(idx) {
-    if (!identifyLang) { alert('Lütfen bir dil seçin!'); return; }
-
-    const load = document.getElementById('load-id1');
-    const fb = document.getElementById('fb-id1');
-    load.classList.add('show');
-    fb.classList.remove('show');
-
-    const langLabel = identifyLang === 'en' ? 'English' : 'Turkish';
-    const randomTense = TENSES[Math.floor(Math.random() * TENSES.length)];
-
-    try {
-        const system = `You are an English grammar teacher. Generate ONE simple example sentence in ${langLabel} using the "${randomTense.name}" tense. Return ONLY the sentence, nothing else. No quotes, no explanation, just the sentence.`;
-        const sentence = await callClaude(system, 'Generate the sentence.');
-
-        identifySentence = { sentence: sentence.trim(), tenseName: randomTense.name };
-
-        document.getElementById('id-sentence').textContent = sentence.trim();
-        document.getElementById('identify-s1').style.display = 'none';
-        document.getElementById('identify-s2').style.display = 'block';
-    } catch (e) {
-        fb.className = 'feedback err show';
-        fb.innerHTML = `<div class="fb-head">Hata</div><div class="fb-body">API bağlantısı kurulamadı.</div>`;
-    } finally {
-        load.classList.remove('show');
-    }
-}
-
-async function checkIdentify(idx) {
-    const answer = document.getElementById('id-answer').value.trim();
-    if (!answer) { alert('Lütfen bir zaman adı yazın!'); return; }
-
-    const load = document.getElementById('load-id2');
-    const fb = document.getElementById('fb-id2');
-    load.classList.add('show');
-    fb.classList.remove('show');
-
-    try {
-        const system = `Sen bir İngilizce gramer öğretmenisin. 
-Cümle: "${identifySentence.sentence}"
-Doğru zaman: ${identifySentence.tenseName}
-Öğrencinin cevabı: "${answer}"
-
-Öğrenci doğru mu yanlış mı? 
-Format:
-SONUÇ: [DOĞRU veya YANLIŞ]
-AÇIKLAMA: [Türkçe, 1-2 cümle, nedenini açıkla]`;
-
-        const result = await callClaude(system, 'Değerlendir.');
-        const isCorrect = result.toUpperCase().includes('DOĞRU') || result.toUpperCase().includes('CORRECT');
-
-        if (isCorrect) {
-            stats.correct++; stats.streak++;
-            fb.className = 'feedback ok show';
-        } else {
-            stats.wrong++; stats.streak = 0;
-            fb.className = 'feedback err show';
+    // Attach submit handlers
+    document.querySelectorAll('.tab-panel form').forEach(form => {
+        const btn = form.querySelector('.btn-ai');
+        if (btn) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                handlePracticeSubmit({ target: form, preventDefault: () => {} });
+            });
         }
-        stats.total++;
-        updateStats();
-
-        fb.innerHTML = `<div class="fb-head">${isCorrect ? '🎉 Harika!' : '❌ Tekrar Dene'}</div><div class="fb-body">${result.replace(/\n/g, '<br>')}</div>`;
-    } catch (e) {
-        fb.className = 'feedback err show';
-        fb.innerHTML = `<div class="fb-head">Hata</div><div class="fb-body">API bağlantısı kurulamadı.</div>`;
-    } finally {
-        load.classList.remove('show');
-    }
+    });
 }
 
-function resetIdentify() {
-    identifyLang = null;
-    identifySentence = null;
-    document.getElementById('identify-s1').style.display = 'block';
-    document.getElementById('identify-s2').style.display = 'none';
-    document.getElementById('id-answer').value = '';
-    document.querySelectorAll('.choice').forEach(b => b.classList.remove('selected'));
-    document.getElementById('fb-id1').classList.remove('show');
-    document.getElementById('fb-id2').classList.remove('show');
+function handleChoice(element) {
+    element.parentElement.querySelectorAll('.choice').forEach(c => c.classList.remove('selected'));
+    element.classList.add('selected');
+    
+    const feedback = element.closest('.tab-panel').querySelector('.feedback');
+    const isCorrect = element.textContent.includes('goes') || element.textContent.includes('reading');
+    
+    feedback.classList.add('show', isCorrect ? 'ok' : 'err');
+    feedback.innerHTML = `
+        <div class="fb-head">${isCorrect ? '✅ Doğru!' : '❌ Yanlış'}</div>
+        <div class="fb-body">${isCorrect ? 'Harika! Doğru seçtim.' : 'Tekrar dene!'}</div>
+    `;
 }
 
-// ══════════════════════════════════════════════
-// TAB 3 — TRANSLATE + AI CHECK
-// ══════════════════════════════════════════════
-function pickBuildSentence(idx) {
-    const t = TENSES[idx];
-    buildSentence = t.examples[Math.floor(Math.random() * t.examples.length)];
-    const el = document.getElementById('tr-sentence');
-    if (el) el.textContent = buildSentence.tr;
-}
-
-function newSentence(idx) {
-    const t = TENSES[idx];
-    const prev = buildSentence;
-    do {
-        buildSentence = t.examples[Math.floor(Math.random() * t.examples.length)];
-    } while (buildSentence === prev && t.examples.length > 1);
-    document.getElementById('tr-sentence').textContent = buildSentence.tr;
-    document.getElementById('tr-answer').value = '';
-    document.getElementById('fb-tr').classList.remove('show');
-}
-
-async function checkTranslate(idx) {
-    const answer = document.getElementById('tr-answer').value.trim();
-    if (!answer) { alert('Lütfen cevabınızı yazın!'); return; }
-
-    const t = TENSES[idx];
-    const load = document.getElementById('load-tr');
-    const fb = document.getElementById('fb-tr');
-    load.classList.add('show');
-    fb.classList.remove('show');
-
-    try {
-        const system = `Sen profesyonel bir İngilizce gramer öğretmenisin. Strict ve eğitici değerlendirme yaparsın.
-
-Görev: Öğrencinin cümlesini analiz et.
-Türkçe orijinal: "${buildSentence.tr}"
-Beklenen zaman: ${t.name} (${t.code})
-Doğru cevap: "${buildSentence.en}"
-Öğrencinin cevabı: "${answer}"
-
-Değerlendirme formatı (Türkçe):
-✅ SONUÇ: [DOĞRU / KISMI DOĞRU / YANLIŞ]
-📝 DOĞRU CEVAP: [cümle]
-🔍 ANALİZ: [Öğrencinin hataları varsa spesifik olarak belirt: hangi kelime/yapı yanlış ve neden. Doğruysa ne iyi yaptığını söyle.]
-💡 KURAL HATIRLATMA: [${t.name} için 1 kritik kural]`;
-
-        const result = await callClaude(system, 'Değerlendir.');
-
-        const upper = result.toUpperCase();
-        const isCorrect = upper.includes('DOĞRU') && !upper.includes('YANLIŞ') && !upper.includes('KISMİ');
-        const isPartial = upper.includes('KISMİ');
-
-        if (isCorrect) {
-            stats.correct++; stats.streak++;
-            fb.className = 'feedback ok show';
-        } else {
-            stats.wrong++; stats.streak = 0;
-            fb.className = 'feedback err show';
-        }
-        stats.total++;
-        updateStats();
-
-        fb.innerHTML = `
-            <div class="fb-head">${isCorrect ? '🏆 Mükemmel!' : isPartial ? '🤔 Yakın!' : '❌ Düzeltme Gerekli'}</div>
-            <div class="fb-body">${result.replace(/\n/g, '<br>')}</div>
-        `;
-    } catch (e) {
-        fb.className = 'feedback err show';
-        fb.innerHTML = `<div class="fb-head">Hata</div><div class="fb-body">API bağlantısı kurulamadı.</div>`;
-    } finally {
-        load.classList.remove('show');
-    }
-}
-
-// ══════════════════════════════════════════════
-// STATS
-// ══════════════════════════════════════════════
-function updateStats() {
-    document.getElementById('s-correct').textContent = stats.correct;
-    document.getElementById('s-wrong').textContent = stats.wrong;
-    document.getElementById('s-streak').textContent = stats.streak;
-    const acc = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) + '%' : '—';
-    document.getElementById('s-acc').textContent = acc;
-}
-
-// ══════════════════════════════════════════════
-// SVG TIMELINES
-// ══════════════════════════════════════════════
-function createSVG(type) {
-    const w = 500, h = 120, cy = 65;
-    let inner = '';
-
-    // Base line
-    inner += `<line x1="20" y1="${cy}" x2="480" y2="${cy}" stroke="#1e2d3d" stroke-width="2"/>`;
-
-    // Arrow ends
-    inner += `<polygon points="480,${cy-5} 490,${cy} 480,${cy+5}" fill="#1e2d3d"/>`;
-
-    // Labels
-    inner += `<text x="30" y="${cy+30}" font-size="10" fill="#475569" font-family="JetBrains Mono">PAST</text>`;
-    inner += `<text x="225" y="${cy+30}" font-size="10" fill="#3b82f6" font-family="JetBrains Mono" text-anchor="middle">NOW</text>`;
-    inner += `<text x="455" y="${cy+30}" font-size="10" fill="#475569" font-family="JetBrains Mono" text-anchor="end">FUTURE</text>`;
-
-    // Now marker
-    inner += `<line x1="250" y1="${cy-14}" x2="250" y2="${cy+14}" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3,2"/>`;
-
-    if (type === 'simple-present') {
-        for (let j = 0; j < 5; j++) {
-            const x = 220 + j * 20;
-            inner += `<circle cx="${x}" cy="${cy}" r="4" fill="#3b82f6"/>`;
-            inner += `<line x1="${x}" y1="${cy-12}" x2="${x}" y2="${cy-4}" stroke="#3b82f6" stroke-width="1.5"/>`;
-        }
-    } else if (type === 'present-continuous') {
-        inner += `<path d="M210,${cy} L290,${cy}" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>`;
-        inner += `<polygon points="288,${cy-5} 298,${cy} 288,${cy+5}" fill="#06b6d4"/>`;
-        inner += `<circle cx="210" cy="${cy}" r="5" fill="none" stroke="#06b6d4" stroke-width="2"/>`;
-    } else if (type === 'simple-past') {
-        inner += `<circle cx="80" cy="${cy}" r="6" fill="#f43f5e"/>`;
-        inner += `<line x1="80" y1="${cy-15}" x2="80" y2="${cy-7}" stroke="#f43f5e" stroke-width="1.5"/>`;
-        inner += `<text x="80" y="${cy-20}" font-size="9" fill="#f43f5e" text-anchor="middle" font-family="JetBrains Mono">✓</text>`;
-    } else if (type === 'past-continuous') {
-        inner += `<path d="M50,${cy} L150,${cy}" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>`;
-        inner += `<circle cx="50" cy="${cy}" r="4" fill="none" stroke="#f59e0b" stroke-width="2"/>`;
-        inner += `<circle cx="150" cy="${cy}" r="4" fill="none" stroke="#f59e0b" stroke-width="2"/>`;
-        inner += `<text x="100" y="${cy-15}" font-size="9" fill="#f59e0b" text-anchor="middle" font-family="JetBrains Mono">ONGOING</text>`;
-    } else if (type === 'present-perfect') {
-        inner += `<path d="M100,${cy} Q175,${cy-25} 250,${cy}" stroke="#10b981" stroke-width="2.5" fill="none"/>`;
-        inner += `<circle cx="100" cy="${cy}" r="5" fill="#10b981"/>`;
-        inner += `<polygon points="248,${cy-5} 258,${cy} 248,${cy+5}" fill="#10b981"/>`;
-    } else if (type === 'present-perfect-continuous') {
-        inner += `<path d="M60,${cy} L250,${cy}" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>`;
-        inner += `<circle cx="60" cy="${cy}" r="5" fill="#10b981"/>`;
-        inner += `<polygon points="248,${cy-5} 258,${cy} 248,${cy+5}" fill="#10b981"/>`;
-        inner += `<text x="155" y="${cy-15}" font-size="9" fill="#10b981" text-anchor="middle" font-family="JetBrains Mono">←duration→</text>`;
-    } else if (type === 'simple-future') {
-        for (let j = 0; j < 3; j++) {
-            const x = 310 + j * 60;
-            inner += `<circle cx="${x}" cy="${cy}" r="4" fill="#6366f1"/>`;
-            inner += `<line x1="${x}" y1="${cy-12}" x2="${x}" y2="${cy-4}" stroke="#6366f1" stroke-width="1.5"/>`;
-        }
-    } else if (type === 'future-continuous') {
-        inner += `<path d="M300,${cy} L420,${cy}" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>`;
-        inner += `<circle cx="300" cy="${cy}" r="4" fill="none" stroke="#a855f7" stroke-width="2"/>`;
-        inner += `<polygon points="418,${cy-5} 428,${cy} 418,${cy+5}" fill="#a855f7"/>`;
-    } else if (type === 'past-perfect') {
-        inner += `<circle cx="60" cy="${cy}" r="5" fill="#f59e0b"/>`;
-        inner += `<line x1="60" y1="${cy}" x2="120" y2="${cy}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,2"/>`;
-        inner += `<circle cx="120" cy="${cy}" r="5" fill="#f43f5e"/>`;
-        inner += `<text x="60" y="${cy-15}" font-size="9" fill="#f59e0b" text-anchor="middle" font-family="JetBrains Mono">1st</text>`;
-        inner += `<text x="120" y="${cy-15}" font-size="9" fill="#f43f5e" text-anchor="middle" font-family="JetBrains Mono">2nd</text>`;
-    } else if (type === 'past-perfect-continuous') {
-        inner += `<path d="M30,${cy} L120,${cy}" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>`;
-        inner += `<circle cx="30" cy="${cy}" r="4" fill="#f59e0b"/>`;
-        inner += `<circle cx="120" cy="${cy}" r="5" fill="#f43f5e"/>`;
-        inner += `<text x="75" y="${cy-15}" font-size="9" fill="#f59e0b" text-anchor="middle" font-family="JetBrains Mono">duration</text>`;
-    } else if (type === 'future-perfect') {
-        inner += `<circle cx="250" cy="${cy}" r="4" fill="#06b6d4"/>`;
-        inner += `<line x1="250" y1="${cy}" x2="380" y2="${cy}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,2"/>`;
-        inner += `<circle cx="380" cy="${cy}" r="5" fill="#10b981"/>`;
-        inner += `<text x="380" y="${cy-15}" font-size="9" fill="#10b981" text-anchor="middle" font-family="JetBrains Mono">by then ✓</text>`;
-    } else if (type === 'future-perfect-continuous') {
-        inner += `<path d="M250,${cy} L390,${cy}" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>`;
-        inner += `<circle cx="250" cy="${cy}" r="4" fill="#06b6d4"/>`;
-        inner += `<circle cx="390" cy="${cy}" r="5" fill="#10b981"/>`;
-        inner += `<text x="320" y="${cy-15}" font-size="9" fill="#10b981" text-anchor="middle" font-family="JetBrains Mono">←duration→</text>`;
-    }
-
-    return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:${h}px;">${inner}</svg>`;
-}
-
-init();
+// Initialize
+window.addEventListener('load', function() {
+    renderLesson(0);
+    
+    // Tense list
+    const tenseListEl = document.getElementById('tense-list');
+    TENSES.forEach((tense, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'tense-btn' + (idx === 0 ? ' active' : '');
+        btn.innerHTML = `<span class="tb-name">${tense.name}</span><span class="tb-code">${tense.code}</span>`;
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tense-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderLesson(idx);
+        });
+        tenseListEl.appendChild(btn);
+    });
+});
 </script>
+
 </body>
 </html>
