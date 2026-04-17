@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turkish-to-English Vocabulary Tutor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #007bff;
+        }
+        .vocabulary {
+            margin: 20px 0;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Turkish-to-English Vocabulary Tutor</h1>
+    <div class="vocabulary">
+        <h2>Vocabulary Database</h2>
+        <ul id="vocab-list">
+            <li><strong>merhaba</strong> - hello</li>
+            <li><strong>ev</strong> - house</li>
+            <li><strong>kitap</strong> - book</li>
+            <li><strong>öğrenci</strong> - student</li>
+            <li><strong>dil</strong> - language</li>
+        </ul>
+    </div>
+    <h2>Grammar Rule Checker</h2>
+    <p>Use the form below to check your Turkish sentences:</p>
+    <textarea id="sentence-input" rows="4" cols="50" placeholder="Type your Turkish sentence here..."></textarea>
+    <button onclick="checkGrammar()">Check Grammar</button>
+    <p id="grammar-result"></p>
+
+    <script>
+        function checkGrammar() {
+            const input = document.getElementById('sentence-input').value;
+            let errors = [];
+
+            // Simple error detection logic (for demonstration)
+            if (!input.includes(' ')) {
+                errors.push('Missing spaces between words.');
+            }
+            // Additional grammar checks can be added here.
+
+            const resultElement = document.getElementById('grammar-result');
+            resultElement.innerHTML = errors.length > 0 ? errors.join('<br/>') : 'No errors found!';
+            resultElement.className = errors.length > 0 ? 'error' : '';
+        }
+    </script>
+</body>
+</html>
