@@ -1,965 +1,609 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LinguaCheck — Çeviri Alıştırma</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VocabMaster — Turkish-English Learning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-:root {
-  --cream: #f5f0e8;
-  --cream2: #ede7d9;
-  --ink: #1a1814;
-  --ink2: #4a453e;
-  --ink3: #9a948a;
-  --green: #2d6a4f;
-  --green-light: #d8f3dc;
-  --red: #c1440e;
-  --red-light: #fde8e0;
-  --amber: #b5620a;
-  --amber-light: #fef3e2;
-  --blue: #1d4e89;
-  --blue-light: #e8f0fb;
-  --border: #ddd7cc;
-  --shadow: 0 2px 20px rgba(26,24,20,0.08);
-}
+        :root {
+            --primary: #6366f1;
+            --primary-light: #e0e7ff;
+            --success: #10b981;
+            --error: #ef4444;
+            --warning: #f59e0b;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
 
-body {
-  background: var(--cream);
-  color: var(--ink);
-  font-family: 'DM Sans', sans-serif;
-  min-height: 100vh;
-  padding: 0;
-}
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, var(--bg) 0%, #f1f5f9 100%);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.6;
-}
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(245,240,232,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  padding: 1rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.brand {
-  display: flex;
-  align-items: baseline;
-  gap: 0.4rem;
-}
-.brand-name {
-  font-family: 'Instrument Serif', serif;
-  font-size: 1.5rem;
-  color: var(--ink);
-  letter-spacing: -0.02em;
-}
-.brand-tag {
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink3);
-}
-.streak {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--ink2);
-}
-.streak-num {
-  font-weight: 600;
-  color: var(--amber);
-  font-size: 1rem;
-}
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-.container {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 3rem 2rem 6rem;
-  position: relative;
-  z-index: 1;
-}
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
 
-/* API KEY SETUP */
-.setup-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: var(--shadow);
-  margin-bottom: 2rem;
-}
-.setup-card h2 {
-  font-family: 'Instrument Serif', serif;
-  font-size: 1.3rem;
-  margin-bottom: 0.4rem;
-}
-.setup-card p {
-  font-size: 0.875rem;
-  color: var(--ink2);
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-.api-row {
-  display: flex;
-  gap: 0.6rem;
-}
-.api-input {
-  flex: 1;
-  padding: 0.7rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  font-family: 'DM Sans', monospace;
-  font-size: 0.85rem;
-  background: var(--cream);
-  color: var(--ink);
-  outline: none;
-  transition: border-color 0.2s;
-}
-.api-input:focus { border-color: var(--ink2); }
-.btn-save {
-  padding: 0.7rem 1.4rem;
-  background: var(--ink);
-  color: var(--cream);
-  border: none;
-  border-radius: 10px;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: opacity 0.15s;
-  white-space: nowrap;
-}
-.btn-save:hover { opacity: 0.8; }
-.api-saved {
-  display: none;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  color: var(--green);
-  margin-top: 0.6rem;
-  font-weight: 500;
-}
-.api-saved.show { display: flex; }
+        .tagline {
+            color: var(--text-muted);
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
-/* Gemini badge */
-.gemini-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: var(--blue-light);
-  color: var(--blue);
-  padding: 3px 10px;
-  border-radius: 100px;
-  margin-bottom: 0.8rem;
-}
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
 
-/* DECK SELECTOR */
-.deck-label {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink3);
-  margin-bottom: 0.8rem;
-}
-.deck-grid {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 2.5rem;
-}
-.deck-btn {
-  padding: 7px 16px;
-  border-radius: 100px;
-  border: 1px solid var(--border);
-  background: white;
-  color: var(--ink2);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-.deck-btn:hover { border-color: var(--ink2); color: var(--ink); }
-.deck-btn.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+        .stat-card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
 
-/* CARD */
-.card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 2.5rem 2.5rem 2rem;
-  box-shadow: var(--shadow);
-  margin-bottom: 1.5rem;
-  position: relative;
-  overflow: hidden;
-}
-.card::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--ink) 0%, transparent 100%);
-  opacity: 0.15;
-}
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+        }
 
-.progress-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.8rem;
-}
-.progress-track {
-  flex: 1;
-  height: 3px;
-  background: var(--cream2);
-  border-radius: 100px;
-  overflow: hidden;
-}
-.progress-fill {
-  height: 100%;
-  background: var(--ink);
-  border-radius: 100px;
-  transition: width 0.4s ease;
-}
-.progress-label {
-  font-size: 0.75rem;
-  color: var(--ink3);
-  font-weight: 500;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
 
-.q-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink3);
-  margin-bottom: 0.6rem;
-}
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
 
-.turkish-word {
-  font-family: 'Instrument Serif', serif;
-  font-size: 2.8rem;
-  line-height: 1.1;
-  color: var(--ink);
-  margin-bottom: 0.4rem;
-  letter-spacing: -0.02em;
-}
+        .card h2 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: var(--text);
+        }
 
-.word-hint {
-  font-size: 0.82rem;
-  color: var(--ink3);
-  margin-bottom: 1.8rem;
-}
+        .turkish-word {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-family: 'IBM Plex Mono', monospace;
+        }
 
-.input-group {
-  position: relative;
-}
-.answer-input {
-  width: 100%;
-  padding: 1rem 1.2rem;
-  border: 1.5px solid var(--border);
-  border-radius: 14px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1.05rem;
-  color: var(--ink);
-  background: var(--cream);
-  outline: none;
-  transition: all 0.2s;
-  resize: none;
-  min-height: 56px;
-}
-.answer-input:focus {
-  border-color: var(--ink);
-  background: white;
-}
-.answer-input::placeholder { color: var(--ink3); }
+        .word-hint {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
 
-.btn-check {
-  width: 100%;
-  margin-top: 0.8rem;
-  padding: 0.9rem;
-  background: var(--ink);
-  color: var(--cream);
-  border: none;
-  border-radius: 14px;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.15s;
-  letter-spacing: 0.02em;
-}
-.btn-check:hover { background: #2d2a24; }
-.btn-check:active { transform: scale(0.99); }
-.btn-check:disabled { opacity: 0.4; cursor: default; transform: none; }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
 
-/* FEEDBACK PANEL */
-.feedback-panel {
-  display: none;
-  border-radius: 16px;
-  padding: 1.5rem;
-  margin-top: 1.2rem;
-  animation: fadeIn 0.3s ease;
-}
-@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        input[type="text"], textarea {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
 
-.feedback-panel.show { display: block; }
-.feedback-panel.correct { background: var(--green-light); border: 1px solid #b7e4c7; }
-.feedback-panel.partial { background: var(--amber-light); border: 1px solid #fcd19b; }
-.feedback-panel.wrong { background: var(--red-light); border: 1px solid #f5c6b5; }
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: #f0f4ff;
+        }
 
-.fb-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-bottom: 0.8rem;
-}
-.fb-header.correct { color: var(--green); }
-.fb-header.partial { color: var(--amber); }
-.fb-header.wrong { color: var(--red); }
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
 
-.fb-icon {
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-.fb-icon.correct { background: var(--green); color: white; }
-.fb-icon.partial { background: var(--amber); color: white; }
-.fb-icon.wrong { background: var(--red); color: white; }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
 
-.fb-correct-ans {
-  font-size: 0.85rem;
-  color: var(--ink2);
-  margin-bottom: 1rem;
-  padding: 0.6rem 0.8rem;
-  background: rgba(255,255,255,0.6);
-  border-radius: 8px;
-}
-.fb-correct-ans strong { color: var(--ink); }
+        .btn-primary:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+        }
 
-.errors-title {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink3);
-  margin-bottom: 0.6rem;
-}
+        .btn-secondary {
+            background: transparent;
+            border: 1.5px solid var(--border);
+            color: var(--text);
+        }
 
-.error-item {
-  display: flex;
-  gap: 0.8rem;
-  padding: 0.7rem 0;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-.error-item:last-child { border-bottom: none; }
-.error-type {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 2px 8px;
-  border-radius: 100px;
-  white-space: nowrap;
-  height: fit-content;
-  margin-top: 1px;
-}
-.error-type.grammar { background: #fde8e0; color: var(--red); }
-.error-type.spelling { background: var(--blue-light); color: var(--blue); }
-.error-type.vocab { background: var(--amber-light); color: var(--amber); }
-.error-type.missing { background: var(--cream2); color: var(--ink2); }
+        .btn-secondary:hover {
+            background: var(--bg);
+        }
 
-.error-text { flex: 1; color: var(--ink2); }
-.error-text strong { color: var(--ink); }
+        .feedback {
+            display: none;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            animation: slideIn 0.3s ease;
+        }
 
-/* LOADING */
-.loading-wrap {
-  display: none;
-  align-items: center;
-  gap: 0.7rem;
-  padding: 1rem 0;
-  color: var(--ink3);
-  font-size: 0.875rem;
-}
-.loading-wrap.show { display: flex; }
-.spinner {
-  width: 18px; height: 18px;
-  border: 2px solid var(--border);
-  border-top-color: var(--ink);
-  border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-  flex-shrink: 0;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
+        .feedback.show {
+            display: block;
+        }
 
-/* NEXT BTN */
-.btn-next {
-  width: 100%;
-  margin-top: 0.8rem;
-  padding: 0.9rem;
-  background: none;
-  border: 1.5px solid var(--ink);
-  border-radius: 14px;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--ink);
-  cursor: pointer;
-  transition: all 0.15s;
-  display: none;
-}
-.btn-next:hover { background: var(--ink); color: var(--cream); }
-.btn-next.show { display: block; }
+        .feedback.correct {
+            background: #d1fae5;
+            border: 1px solid #6ee7b7;
+        }
 
-/* STATS */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.8rem;
-  margin-top: 0;
-}
-.stat-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1rem 1.2rem;
-  text-align: center;
-}
-.stat-num {
-  font-family: 'Instrument Serif', serif;
-  font-size: 2rem;
-  line-height: 1;
-  margin-bottom: 0.2rem;
-}
-.stat-num.green { color: var(--green); }
-.stat-num.red { color: var(--red); }
-.stat-num.amber { color: var(--amber); }
-.stat-label { font-size: 0.75rem; color: var(--ink3); font-weight: 500; }
+        .feedback.partial {
+            background: #fef3c7;
+            border: 1px solid #fcd34d;
+        }
 
-/* RESULT */
-.result-screen {
-  display: none;
-  text-align: center;
-  padding: 2rem 0;
-}
-.result-screen.show { display: block; }
-.result-emoji { font-size: 3rem; margin-bottom: 1rem; }
-.result-score {
-  font-family: 'Instrument Serif', serif;
-  font-size: 4rem;
-  line-height: 1;
-  color: var(--ink);
-  margin-bottom: 0.4rem;
-}
-.result-msg { font-size: 1rem; color: var(--ink2); margin-bottom: 2rem; }
-.btn-restart {
-  padding: 0.9rem 2.5rem;
-  background: var(--ink);
-  color: var(--cream);
-  border: none;
-  border-radius: 14px;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-}
+        .feedback.incorrect {
+            background: #fee2e2;
+            border: 1px solid #fca5a5;
+        }
 
-/* NO KEY MSG */
-.no-key-msg {
-  display: none;
-  padding: 1rem;
-  background: var(--amber-light);
-  border: 1px solid #fcd19b;
-  border-radius: 12px;
-  font-size: 0.875rem;
-  color: var(--amber);
-  text-align: center;
-  margin-top: 0.8rem;
-}
-.no-key-msg.show { display: block; }
+        .feedback-title {
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-@media (max-width: 600px) {
-  .container { padding: 1.5rem 1rem 5rem; }
-  .card { padding: 1.5rem; }
-  .turkish-word { font-size: 2rem; }
-  header { padding: 0.8rem 1rem; }
-}
-</style>
+        .feedback.correct .feedback-title { color: var(--success); }
+        .feedback.partial .feedback-title { color: var(--warning); }
+        .feedback.incorrect .feedback-title { color: var(--error); }
+
+        .correct-answer {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .correct-answer strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .errors-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .error-item {
+            display: flex;
+            gap: 12px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .error-tag {
+            flex-shrink: 0;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .error-tag.grammar {
+            background: #fee2e2;
+            color: var(--error);
+        }
+
+        .error-tag.spelling {
+            background: #e0e7ff;
+            color: var(--primary);
+        }
+
+        .error-tag.vocab {
+            background: #fef3c7;
+            color: var(--warning);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        @media (max-width: 600px) {
+            .turkish-word {
+                font-size: 28px;
+            }
+            .card {
+                padding: 20px;
+            }
+            .input-group {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <div class="brand">
-    <span class="brand-name">LinguaCheck</span>
-    <span class="brand-tag">TR → EN</span>
-  </div>
-  <div class="streak">
-    <span>🔥</span>
-    <span class="streak-num" id="streak-num">0</span>
-    <span>seri</span>
-    &nbsp;|&nbsp;
-    <span id="score-display" style="color:var(--ink2)">0 doğru</span>
-  </div>
-</header>
-
 <div class="container">
+    <header>
+        <div class="logo">VocabMaster</div>
+        <div class="tagline">🇹🇷 → 🇬���� Turkish-English Learning</div>
+    </header>
 
-  <!-- API KEY SETUP -->
-  <div class="setup-card" id="setup-card">
-    <div class="gemini-badge">✦ Gemini AI</div>
-    <h2>Google Gemini API Anahtarı</h2>
-    <p>Hata analizi için Google Gemini API anahtarına ihtiyaç var. <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:var(--blue)">aistudio.google.com</a>'dan ücretsiz alabilirsin (günde 1500 istek). Anahtar sadece tarayıcında saklanır.</p>
-    <div class="api-row">
-      <input class="api-input" type="password" id="api-key-input" placeholder="AIzaSy...">
-      <button class="btn-save" onclick="saveApiKey()">Kaydet</button>
-    </div>
-    <div class="api-saved" id="api-saved">
-      <span>✓</span> Gemini API anahtarı kaydedildi
-    </div>
-  </div>
-
-  <!-- DECK SELECTOR -->
-  <div class="deck-label">Konu Seç</div>
-  <div class="deck-grid">
-    <button class="deck-btn active" onclick="setDeck('gunluk', this)">☀️ Günlük hayat</button>
-    <button class="deck-btn" onclick="setDeck('seyahat', this)">✈️ Seyahat</button>
-    <button class="deck-btn" onclick="setDeck('is', this)">💼 İş hayatı</button>
-    <button class="deck-btn" onclick="setDeck('duygu', this)">💬 Duygular</button>
-    <button class="deck-btn" onclick="setDeck('zaman', this)">⏰ Zaman ifadeleri</button>
-  </div>
-
-  <!-- QUIZ CARD -->
-  <div class="card" id="quiz-card">
-    <div class="progress-row">
-      <div class="progress-track">
-        <div class="progress-fill" id="prog-fill" style="width:0%"></div>
-      </div>
-      <div class="progress-label" id="prog-label">1 / 10</div>
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number" id="correct-count">0</div>
+            <div class="stat-label">Correct</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="wrong-count">0</div>
+            <div class="stat-label">Incorrect</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="streak-count">0</div>
+            <div class="stat-label">Streak</div>
+        </div>
     </div>
 
-    <div class="q-label">Türkçeden İngilizceye çevir</div>
-    <div class="turkish-word" id="turkish-word">—</div>
-    <div class="word-hint" id="word-hint"></div>
+    <div class="card">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+        </div>
 
-    <div class="input-group">
-      <textarea class="answer-input" id="answer-input" rows="1"
-        placeholder="İngilizce çevirini buraya yaz..."
-        onkeydown="handleKey(event)"
-        oninput="autoResize(this)"></textarea>
+        <h2>Translate the Turkish word to English</h2>
+        
+        <div class="turkish-word" id="turkish-word">merhaba</div>
+        <div class="word-hint" id="word-hint">💡 Hint: Common greeting</div>
+
+        <div class="input-group">
+            <input type="text" id="answer-input" placeholder="Type your English translation..." onkeypress="if(event.key==='Enter') checkAnswer()">
+            <button class="btn-primary" onclick="checkAnswer()">Check</button>
+        </div>
+
+        <button class="btn-secondary" onclick="nextWord()">Skip</button>
+
+        <div class="feedback" id="feedback"></div>
     </div>
-
-    <button class="btn-check" id="btn-check" onclick="checkAnswer()">Kontrol Et →</button>
-
-    <div class="loading-wrap" id="loading-wrap">
-      <div class="spinner"></div>
-      <span>Gemini analiz ediyor...</span>
-    </div>
-
-    <div class="feedback-panel" id="feedback-panel"></div>
-
-    <div class="no-key-msg" id="no-key-msg">
-      ⚠️ Gemini API anahtarı gerekli. Yukarıdan ekle.
-    </div>
-
-    <button class="btn-next" id="btn-next" onclick="nextQuestion()">Sonraki →</button>
-
-    <div class="result-screen" id="result-screen">
-      <div class="result-emoji" id="result-emoji">🎉</div>
-      <div class="result-score" id="result-score">0/10</div>
-      <div class="result-msg" id="result-msg"></div>
-      <button class="btn-restart" onclick="restart()">Tekrar Başla</button>
-    </div>
-  </div>
-
-  <!-- STATS -->
-  <div class="stats-row">
-    <div class="stat-card">
-      <div class="stat-num green" id="stat-correct">0</div>
-      <div class="stat-label">Doğru</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num red" id="stat-wrong">0</div>
-      <div class="stat-label">Hatalı</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num amber" id="stat-streak">0</div>
-      <div class="stat-label">En uzun seri</div>
-    </div>
-  </div>
-
 </div>
 
 <script>
-const DECKS = {
-  gunluk: [
-    { tr: 'Ben her sabah kahve içerim.', hint: 'Simple Present — alışkanlık' },
-    { tr: 'O dün markete gitti.', hint: 'Simple Past' },
-    { tr: 'Yarın seni arayacağım.', hint: 'Simple Future' },
-    { tr: 'Şu anda kitap okuyorum.', hint: 'Present Continuous' },
-    { tr: 'Onlar her gün İngilizce çalışır.', hint: 'Simple Present — 3. çoğul' },
-    { tr: 'Kapıyı açar mısın?', hint: 'Kibarca rica — Can/Could' },
-    { tr: 'Bu benim çantam.', hint: 'İyelik — possessive' },
-    { tr: 'Bugün hava çok güzel.', hint: 'Simple Present — it' },
-    { tr: 'Geçen hafta film izledik.', hint: 'Simple Past — we' },
-    { tr: 'Saat kaçta uyandın?', hint: 'Simple Past — soru' },
-  ],
-  seyahat: [
-    { tr: 'Havalimanına nasıl gidebilirim?', hint: 'Yön sorma — How can I' },
-    { tr: 'İki gecelik bir oda rezervasyonu yapmak istiyorum.', hint: 'I would like to...' },
-    { tr: 'Bu tren nereye gidiyor?', hint: 'Simple Present — Where does' },
-    { tr: 'Pasaportunuzu görebilir miyim?', hint: 'Kibarca — Can/May I' },
-    { tr: 'En yakın restoran nerede?', hint: 'Where is the nearest...' },
-    { tr: 'Uçağım bir saat gecikti.', hint: 'Simple Past — delay' },
-    { tr: 'Bagajım kayboldu.', hint: 'Present Perfect ya da Past' },
-    { tr: 'Bu fiyata kahvaltı dahil mi?', hint: 'Is breakfast included?' },
-    { tr: 'Bilet fiyatı ne kadar?', hint: 'How much is...' },
-    { tr: 'Beni havalimanına bırakabilir misiniz?', hint: 'Could you take me to...' },
-  ],
-  is: [
-    { tr: 'Toplantı saat 3\'te başlıyor.', hint: 'Simple Present — schedule' },
-    { tr: 'Raporu dün bitirdim.', hint: 'Simple Past' },
-    { tr: 'Proje önümüzdeki hafta teslim edilecek.', hint: 'Passive Future' },
-    { tr: 'Müşteri ile görüşmem var.', hint: 'I have a meeting with...' },
-    { tr: 'E-postanı aldım, teşekkürler.', hint: 'Present Perfect' },
-    { tr: 'Bütçeyi gözden geçirebilir misiniz?', hint: 'Could you review...' },
-    { tr: 'Ekip bu hafta çok çalıştı.', hint: 'Present Perfect' },
-    { tr: 'Yeni bir proje üzerinde çalışıyoruz.', hint: 'Present Continuous — we' },
-    { tr: 'Sonuçları yarın paylaşacağım.', hint: 'Simple Future' },
-    { tr: 'Sunum çok başarılıydı.', hint: 'Simple Past — adjective' },
-  ],
-  duygu: [
-    { tr: 'Çok mutluyum.', hint: 'I am very...' },
-    { tr: 'Bu film beni ağlattı.', hint: 'Simple Past — made me' },
-    { tr: 'Sınavdan korktum.', hint: 'Simple Past — afraid/scared' },
-    { tr: 'Seninle konuşmak beni mutlu eder.', hint: 'Simple Present — makes me' },
-    { tr: 'Bugün kendimi yorgun hissediyorum.', hint: 'Present Continuous — feel' },
-    { tr: 'Onunla gurur duyuyorum.', hint: 'Present Continuous — proud of' },
-    { tr: 'Özür dilerim, geç kaldım.', hint: 'Apologizing — I\'m sorry' },
-    { tr: 'Bu habere çok şaşırdım.', hint: 'Simple Past — surprised' },
-    { tr: 'Seni özledim.', hint: 'Simple Past veya Present Perfect' },
-    { tr: 'Endişelenme, her şey yoluna girecek.', hint: 'Imperative + Future' },
-  ],
-  zaman: [
-    { tr: 'İki yıldır burada çalışıyorum.', hint: 'Present Perfect Continuous' },
-    { tr: 'Daha önce hiç İtalya\'ya gittin mi?', hint: 'Present Perfect — ever' },
-    { tr: 'Telefon çaldığında uyuyordum.', hint: 'Past Continuous + Simple Past' },
-    { tr: 'O geldiğinde, ben zaten çıkmıştım.', hint: 'Past Perfect' },
-    { tr: 'Saat 6\'ya kadar burada olacağım.', hint: 'Simple Future + by' },
-    { tr: 'Haftaya bu saatte uçuyorum.', hint: 'Present Continuous — planned future' },
-    { tr: 'Sabahtan beri bekleyiyorum.', hint: 'Present Perfect Continuous — since' },
-    { tr: 'Önümüzdeki yıla kadar bitirmiş olacağız.', hint: 'Future Perfect' },
-    { tr: 'Çocukken her yaz denize giderdim.', hint: 'Used to / would — past habit' },
-    { tr: 'Az önce çıktı.', hint: 'Present Perfect — just' },
-  ]
-};
+// ════════════════════════════════════════════════════════════════════════
+// VOCABULARY DATABASE
+// ════════════════════��═══════════════════════════════════════════════════
 
-// ── STATE ──────────────────────────────────────────────────────────────
-let apiKey = localStorage.getItem('lc_gemini_apikey') || '';
-let currentDeck = 'gunluk';
-let questions = [];
-let qIndex = 0;
+const DATABASE = [
+    {
+        turkish: 'merhaba',
+        english: 'hello',
+        hint: 'Common greeting',
+        grammarRules: ['basic vocabulary'],
+        partOfSpeech: 'noun'
+    },
+    {
+        turkish: 'evim',
+        english: 'my house',
+        hint: 'Possessive form with "house"',
+        grammarRules: ['possessive adjective'],
+        partOfSpeech: 'noun'
+    },
+    {
+        turkish: 'kitabı oku',
+        english: 'read the book',
+        hint: 'Imperative form',
+        grammarRules: ['imperative', 'definite article'],
+        partOfSpeech: 'verb'
+    },
+    {
+        turkish: 'öğrenci',
+        english: 'student',
+        hint: 'Person who studies',
+        grammarRules: ['basic vocabulary'],
+        partOfSpeech: 'noun'
+    },
+    {
+        turkish: 'dil öğren',
+        english: 'learn a language',
+        hint: 'Imperative form of learn',
+        grammarRules: ['imperative', 'infinitive'],
+        partOfSpeech: 'verb phrase'
+    },
+    {
+        turkish: 'ben yürüyorum',
+        english: 'I am walking',
+        hint: 'Present continuous with first person',
+        grammarRules: ['present continuous', 'first person'],
+        partOfSpeech: 'verb phrase'
+    },
+    {
+        turkish: 'o güzel',
+        english: 'she is beautiful',
+        hint: 'Adjective with third person',
+        grammarRules: ['present simple', 'adjective'],
+        partOfSpeech: 'sentence'
+    },
+    {
+        turkish: 'biz öğrendik',
+        english: 'we learned',
+        hint: 'Past tense with first person plural',
+        grammarRules: ['simple past', 'first person plural'],
+        partOfSpeech: 'verb phrase'
+    },
+    {
+        turkish: 'onlar gitti',
+        english: 'they left',
+        hint: 'Past tense with third person plural',
+        grammarRules: ['simple past', 'third person plural'],
+        partOfSpeech: 'verb phrase'
+    },
+    {
+        turkish: 'yarın gelecek',
+        english: 'will come tomorrow',
+        hint: 'Future tense',
+        grammarRules: ['simple future', 'adverb of time'],
+        partOfSpeech: 'verb phrase'
+    }
+];
+
+// ════════════════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════════════════
+
+let currentIndex = 0;
 let correct = 0;
 let wrong = 0;
 let streak = 0;
-let bestStreak = 0;
 let answered = false;
+let shuffledDatabase = [];
 
-// ── INIT ───────────────────────────────────────────────────────────────
+// ════════════════════════════════════════════════════════════════════════
+// INITIALIZATION
+// ════════════════════════════════════════════════════════════════════════
+
 function init() {
-  if (apiKey) {
-    document.getElementById('api-key-input').value = apiKey;
-    document.getElementById('api-saved').classList.add('show');
-  }
-  loadDeck();
+    shuffledDatabase = [...DATABASE].sort(() => Math.random() - 0.5);
+    renderWord();
 }
 
-function saveApiKey() {
-  const val = document.getElementById('api-key-input').value.trim();
-  if (!val) return;
-  apiKey = val;
-  localStorage.setItem('lc_gemini_apikey', val);
-  document.getElementById('api-saved').classList.add('show');
+function renderWord() {
+    const word = shuffledDatabase[currentIndex];
+    document.getElementById('turkish-word').textContent = word.turkish;
+    document.getElementById('word-hint').textContent = '💡 ' + word.hint;
+    document.getElementById('answer-input').value = '';
+    document.getElementById('answer-input').focus();
+    document.getElementById('feedback').classList.remove('show', 'correct', 'partial', 'incorrect');
+    answered = false;
+
+    // Update progress
+    const progress = ((currentIndex) / shuffledDatabase.length) * 100;
+    document.getElementById('progress-fill').style.width = progress + '%';
 }
 
-function setDeck(name, btn) {
-  currentDeck = name;
-  document.querySelectorAll('.deck-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  restart();
-}
+// ════════════════════════════════════════════════════════════════════════
+// ANSWER CHECKING
+// ════════════════════════════════════════════════════════════════════════
 
-function loadDeck() {
-  questions = shuffle([...DECKS[currentDeck]]);
-  qIndex = 0; correct = 0; wrong = 0; streak = 0; bestStreak = 0;
-  answered = false;
-  document.getElementById('result-screen').classList.remove('show');
-  document.getElementById('quiz-card').querySelector('.progress-row').style.display = 'flex';
-  document.getElementById('turkish-word').style.display = 'block';
-  document.getElementById('word-hint').style.display = 'block';
-  document.getElementById('answer-input').style.display = 'block';
-  document.getElementById('btn-check').style.display = 'block';
-  updateStats();
-  renderQuestion();
-}
-
-function renderQuestion() {
-  if (qIndex >= questions.length) { showResult(); return; }
-  const q = questions[qIndex];
-  const pct = (qIndex / questions.length) * 100;
-  document.getElementById('prog-fill').style.width = pct + '%';
-  document.getElementById('prog-label').textContent = (qIndex+1) + ' / ' + questions.length;
-  document.getElementById('turkish-word').textContent = q.tr;
-  document.getElementById('word-hint').textContent = '💡 İpucu: ' + q.hint;
-  document.getElementById('answer-input').value = '';
-  document.getElementById('answer-input').style.height = 'auto';
-  document.getElementById('answer-input').className = 'answer-input';
-  document.getElementById('feedback-panel').classList.remove('show');
-  document.getElementById('feedback-panel').className = 'feedback-panel';
-  document.getElementById('btn-next').classList.remove('show');
-  document.getElementById('btn-check').disabled = false;
-  document.getElementById('btn-check').textContent = 'Kontrol Et →';
-  document.getElementById('loading-wrap').classList.remove('show');
-  document.getElementById('no-key-msg').classList.remove('show');
-  answered = false;
-  setTimeout(() => document.getElementById('answer-input').focus(), 100);
-}
-
-async function checkAnswer() {
-  if (answered) { nextQuestion(); return; }
-  const userAnswer = document.getElementById('answer-input').value.trim();
-  if (!userAnswer) return;
-
-  if (!apiKey) {
-    document.getElementById('no-key-msg').classList.add('show');
-    return;
-  }
-
-  const q = questions[qIndex];
-  document.getElementById('btn-check').disabled = true;
-  document.getElementById('loading-wrap').classList.add('show');
-
-  const prompt = `Sen bir İngilizce öğretmenisin. Türkçeden İngilizceye çeviri alıştırması yapan A1 seviyesinde bir öğrenci var.
-
-Türkçe cümle: "${q.tr}"
-İpucu verilen gramer konusu: "${q.hint}"
-Öğrencinin cevabı: "${userAnswer}"
-
-Lütfen şunları yap:
-1. Doğru İngilizce çeviriyi ver (en doğal, en yaygın kullanılan)
-2. Öğrencinin cevabını değerlendir: "correct", "partial" veya "wrong"
-3. Varsa hataları listele — her hata için şu formatı kullan:
-   - type: "grammar" | "spelling" | "vocab" | "missing"
-   - explanation: Türkçe açıklama (kısa, öğretici, teşvik edici)
-   - wrong: öğrencinin yazdığı yanlış kısım
-   - correct: doğrusu
-
-JSON formatında yanıt ver, başka hiçbir şey yazma:
-{
-  "verdict": "correct" | "partial" | "wrong",
-  "correct_answer": "...",
-  "errors": [
-    { "type": "grammar", "wrong": "...", "correct": "...", "explanation": "..." }
-  ],
-  "encouragement": "Türkçe kısa motivasyon cümlesi (1 cümle)"
-}`;
-
-  try {
-    // Google Gemini API — gemini-1.5-flash (ücretsiz tier)
-    const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: {
-            temperature: 0.2,
-            maxOutputTokens: 800
-          }
-        })
-      }
-    );
-
-    const data = await res.json();
-
-    // Hata kontrolü
-    if (data.error) {
-      throw new Error(data.error.message || 'Gemini API hatası');
+function checkAnswer() {
+    if (answered) {
+        nextWord();
+        return;
     }
 
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-    const clean = text.replace(/```json|```/g, '').trim();
-    let result;
-try {
-  result = JSON.parse(clean);
-  } catch {
-  throw new Error("Model düzgün JSON dönmedi");
-  }
-    showFeedback(result, userAnswer);
-catch(e) {
-  document.getElementById('loading-wrap').classList.remove('show');
-  document.getElementById('btn-check').disabled = false;
+    const userAnswer = document.getElementById('answer-input').value.trim().toLowerCase();
+    const word = shuffledDatabase[currentIndex];
 
-  console.error('Tam hata:', e); // Browser konsolunda hata detayını görmek için
-  
-  let errMsg = 'API anahtarını kontrol et veya internet bağlantını dene.';
-  if (e.message && e.message.includes('API_KEY')) {
-    errMsg = 'Geçersiz API anahtarı. Lütfen doğru Gemini API anahtarını gir.';
-  } else if (e.message && e.message.includes('quota')) {
-    errMsg = 'Günlük istek limitine ulaştın. Yarın tekrar dene.';
-  }
+    if (!userAnswer) {
+        alert('Please enter an answer!');
+        return;
+    }
 
-    document.getElementById('feedback-panel').className = 'feedback-panel wrong show';
-    document.getElementById('feedback-panel').innerHTML = `
-      <div class="fb-header wrong"><div class="fb-icon wrong">!</div> Bağlantı hatası</div>
-      <div style="font-size:0.85rem;color:var(--ink2)">${errMsg}</div>
+    answered = true;
+    const result = analyzeAnswer(userAnswer, word);
+    showFeedback(result, word);
+}
+
+function analyzeAnswer(userAnswer, word) {
+    const correctAnswer = word.english.toLowerCase();
+    
+    // Exact match
+    if (userAnswer === correctAnswer) {
+        return { verdict: 'correct', errors: [] };
+    }
+
+    // Partial match (check if contains key words)
+    const userWords = userAnswer.split(/\s+/);
+    const correctWords = correctAnswer.split(/\s+/);
+    const matchedWords = userWords.filter(w => correctWords.includes(w));
+
+    const errors = [];
+
+    // Detect errors
+    if (userAnswer.length < correctAnswer.length * 0.7) {
+        errors.push({
+            type: 'missing',
+            wrong: 'incomplete answer',
+            correct: correctAnswer,
+            explanation: 'Your answer is incomplete. Try including all words.'
+        });
+    } else if (matchedWords.length >= correctWords.length * 0.5) {
+        errors.push({
+            type: 'vocab',
+            wrong: userAnswer,
+            correct: correctAnswer,
+            explanation: `Check the word order or missing words. Grammar rule: ${word.grammarRules[0]}`
+        });
+    } else {
+        errors.push({
+            type: 'vocab',
+            wrong: userAnswer,
+            correct: correctAnswer,
+            explanation: `The correct translation uses: ${word.grammarRules.join(', ')}`
+        });
+    }
+
+    // Check for missing grammar elements
+    if (word.grammarRules.includes('possessive') && !userAnswer.includes('my|your|his|her|our|their')) {
+        errors.push({
+            type: 'grammar',
+            wrong: 'missing possessive',
+            correct: 'Add possessive adjective (my, your, etc.)',
+            explanation: 'Turkish uses possessive suffixes that become possessive adjectives in English.'
+        });
+    }
+
+    if (matchedWords.length > 0 && matchedWords.length >= correctWords.length * 0.5) {
+        return { verdict: 'partial', errors };
+    } else {
+        return { verdict: 'incorrect', errors };
+    }
+}
+
+function showFeedback(result, word) {
+    const feedback = document.getElementById('feedback');
+    const verdictClass = result.verdict === 'correct' ? 'correct' : 
+                        result.verdict === 'partial' ? 'partial' : 'incorrect';
+    
+    const icons = { correct: '✓', partial: '~', incorrect: '✗' };
+    const titles = { correct: 'Perfect!', partial: 'Almost there!', incorrect: 'Not quite right' };
+
+    let errorsHtml = '';
+    if (result.errors.length > 0) {
+        errorsHtml = '<div class="errors-list">';
+        result.errors.forEach(err => {
+            errorsHtml += `
+                <div class="error-item">
+                    <span class="error-tag ${err.type}">${err.type}</span>
+                    <div>
+                        <strong>"${err.wrong}"</strong> → <strong>"${err.correct}"</strong><br>
+                        <small>${err.explanation}</small>
+                    </div>
+                </div>
+            `;
+        });
+        errorsHtml += '</div>';
+    }
+
+    feedback.className = `feedback ${verdictClass} show`;
+    feedback.innerHTML = `
+        <div class="feedback-title">
+            ${icons[result.verdict]} ${titles[result.verdict]}
+        </div>
+        <div class="correct-answer">
+            Correct answer: <strong>${word.english}</strong>
+        </div>
+        ${errorsHtml}
     `;
-  }
-}
 
-function showFeedback(result, userAnswer) {
-  document.getElementById('loading-wrap').classList.remove('show');
-  answered = true;
+    // Update stats
+    if (result.verdict === 'correct') {
+        correct++;
+        streak++;
+    } else {
+        wrong++;
+        streak = 0;
+    }
 
-  const verdict = result.verdict;
-  const panel = document.getElementById('feedback-panel');
-  panel.className = `feedback-panel ${verdict} show`;
-
-  const labels = { correct: '✓ Doğru!', partial: '~ Neredeyse doğru', wrong: '✗ Yanlış' };
-  const icons = { correct: '✓', partial: '~', wrong: '✗' };
-
-  let errorsHtml = '';
-  if (result.errors && result.errors.length > 0) {
-    errorsHtml = `<div class="errors-title">Hatalar</div>`;
-    result.errors.forEach(e => {
-      const typeLabels = { grammar: 'Gramer', spelling: 'Yazım', vocab: 'Kelime', missing: 'Eksik' };
-      errorsHtml += `
-        <div class="error-item">
-          <span class="error-type ${e.type}">${typeLabels[e.type] || e.type}</span>
-          <div class="error-text">
-            <strong>"${e.wrong || '—'}"</strong> yerine <strong>"${e.correct}"</strong> olmalı.<br>
-            ${e.explanation}
-          </div>
-        </div>`;
-    });
-  }
-
-  panel.innerHTML = `
-    <div class="fb-header ${verdict}">
-      <div class="fb-icon ${verdict}">${icons[verdict]}</div>
-      ${labels[verdict]}
-    </div>
-    <div class="fb-correct-ans">
-      Doğru çeviri: <strong>${result.correct_answer}</strong>
-    </div>
-    ${errorsHtml}
-    ${result.encouragement ? `<div style="font-size:0.82rem;color:var(--ink3);margin-top:0.8rem;font-style:italic;">${result.encouragement}</div>` : ''}
-  `;
-
-  if (verdict === 'correct') {
-    correct++; streak++;
-    if (streak > bestStreak) bestStreak = streak;
-  } else {
-    wrong++;
-    streak = 0;
-  }
-  updateStats();
-
-  document.getElementById('btn-check').style.display = 'none';
-  document.getElementById('btn-next').classList.add('show');
-  document.getElementById('btn-next').textContent = qIndex < questions.length - 1 ? 'Sonraki →' : 'Sonuçları Gör →';
-}
-
-function nextQuestion() {
-  qIndex++;
-  renderQuestion();
+    updateStats();
+    document.getElementById('answer-input').disabled = true;
 }
 
 function updateStats() {
-  document.getElementById('stat-correct').textContent = correct;
-  document.getElementById('stat-wrong').textContent = wrong;
-  document.getElementById('stat-streak').textContent = bestStreak;
-  document.getElementById('streak-num').textContent = streak;
-  document.getElementById('score-display').textContent = correct + ' doğru';
+    document.getElementById('correct-count').textContent = correct;
+    document.getElementById('wrong-count').textContent = wrong;
+    document.getElementById('streak-count').textContent = streak;
 }
 
-function showResult() {
-  document.getElementById('quiz-card').querySelector('.progress-row').style.display = 'none';
-  document.getElementById('turkish-word').style.display = 'none';
-  document.getElementById('word-hint').style.display = 'none';
-  document.getElementById('answer-input').style.display = 'none';
-  document.getElementById('btn-check').style.display = 'none';
-  document.getElementById('btn-next').classList.remove('show');
-  document.getElementById('feedback-panel').classList.remove('show');
-
-  const total = questions.length;
-  const pct = Math.round((correct / total) * 100);
-  const emojis = pct >= 80 ? '🎉' : pct >= 50 ? '💪' : '📚';
-  const msgs = pct >= 80 ? 'Harika! Çok iyi gidiyorsun.' : pct >= 50 ? 'İyi iş! Biraz daha pratik yapınca mükemmel olacak.' : 'Devam et, her tekrar seni ilerletiyor!';
-
-  document.getElementById('result-emoji').textContent = emojis;
-  document.getElementById('result-score').textContent = correct + '/' + total;
-  document.getElementById('result-msg').textContent = msgs;
-  document.getElementById('result-screen').classList.add('show');
-  document.getElementById('prog-fill').style.width = '100%';
-  document.getElementById('prog-label').textContent = total + ' / ' + total;
+function nextWord() {
+    currentIndex++;
+    if (currentIndex >= shuffledDatabase.length) {
+        currentIndex = 0;
+        shuffledDatabase = [...DATABASE].sort(() => Math.random() - 0.5);
+    }
+    document.getElementById('answer-input').disabled = false;
+    renderWord();
 }
 
-function restart() { loadDeck(); }
-
-function handleKey(e) {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault();
-    if (answered) nextQuestion();
-    else checkAnswer();
-  }
-}
-
-function autoResize(el) {
-  el.style.height = 'auto';
-  el.style.height = el.scrollHeight + 'px';
-}
-
-function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
+// ════════════════════════════════════════════════════════════════════════
+// START
+// ════════════════════════════════════════════════════════════════════════
 
 init();
 </script>
+
 </body>
 </html>
