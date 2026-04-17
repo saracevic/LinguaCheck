@@ -797,7 +797,7 @@ JSON formatında yanıt ver, başka hiçbir şey yazma:
   try {
     // Google Gemini API — gemini-1.5-flash (ücretsiz tier)
     const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -805,8 +805,7 @@ JSON formatında yanıt ver, başka hiçbir şey yazma:
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
             temperature: 0.2,
-            maxOutputTokens: 800,
-            responseMimeType: 'application/json'
+            maxOutputTokens: 800
           }
         })
       }
