@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro English Grammar Academy — Research-Based Learning</title>
+    <title>Pro English Grammar Academy v2 — 12 Tenses with AI</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -39,10 +39,9 @@
             margin: 0 auto;
         }
 
-        /* HEADER */
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             color: white;
         }
 
@@ -59,19 +58,16 @@
         .tagline {
             font-size: 14px;
             opacity: 0.85;
-            letter-spacing: 1px;
         }
 
-        /* STATS BAR */
         .stats-bar {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
             margin-bottom: 30px;
             background: var(--card);
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         .stat-box {
@@ -85,7 +81,6 @@
             font-size: 32px;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 5px;
         }
 
         .stat-label {
@@ -93,23 +88,18 @@
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-weight: 600;
         }
 
-        /* MAIN GRID */
         .main-grid {
             display: grid;
-            grid-template-columns: 320px 1fr;
+            grid-template-columns: 280px 1fr;
             gap: 20px;
-            margin-bottom: 30px;
         }
 
-        /* SIDEBAR */
         .sidebar {
             background: var(--card);
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             height: fit-content;
             position: sticky;
             top: 20px;
@@ -119,33 +109,29 @@
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
-            color: var(--text);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             letter-spacing: 0.6px;
         }
 
         .tense-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
+            gap: 6px;
         }
 
         .tense-option {
-            padding: 12px 14px;
+            padding: 10px 12px;
             background: var(--bg);
             border: 2px solid var(--border);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s;
-            text-align: left;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
         }
 
         .tense-option:hover {
             border-color: var(--primary);
             background: var(--primary-light);
-            transform: translateX(3px);
         }
 
         .tense-option.active {
@@ -156,22 +142,19 @@
 
         .tense-name {
             display: block;
-            margin-bottom: 2px;
+            margin-bottom: 1px;
         }
 
         .tense-code {
-            font-size: 10px;
+            font-size: 9px;
             opacity: 0.7;
             font-family: 'IBM Plex Mono', monospace;
-            display: block;
         }
 
-        /* LESSON PANEL */
         .lesson-panel {
             background: var(--card);
             border-radius: 12px;
             padding: 35px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         .lesson-header {
@@ -188,9 +171,9 @@
         }
 
         .tense-subtitle {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--text-muted);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .rule-statement {
@@ -198,26 +181,39 @@
             border-left: 4px solid var(--primary);
             padding: 16px;
             border-radius: 8px;
-            font-size: 14px;
-            line-height: 1.8;
-            color: var(--text);
+            font-size: 13px;
+            line-height: 1.7;
         }
 
-        /* COLLAPSIBLE SECTION */
-        .collapsible-section {
+        .timeline-container {
+            background: var(--bg);
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 25px;
             margin: 25px 0;
+            text-align: center;
+        }
+
+        .timeline-svg {
+            width: 100%;
+            max-width: 600px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .collapsible-section {
+            margin: 20px 0;
         }
 
         .section-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 14px 16px;
+            padding: 12px 16px;
             background: var(--primary-light);
             border-left: 4px solid var(--primary);
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s;
             user-select: none;
         }
 
@@ -226,17 +222,17 @@
         }
 
         .section-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--primary);
             flex: 1;
+            font-size: 13px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            color: var(--primary);
         }
 
         .section-toggle {
-            font-size: 18px;
             transition: transform 0.3s;
+            font-size: 16px;
         }
 
         .section-toggle.open {
@@ -255,212 +251,48 @@
             display: block;
         }
 
-        /* FORMULA BOXES */
-        .formula-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .formula-box {
-            background: white;
-            padding: 16px;
-            border-radius: 8px;
-            border: 1.5px solid var(--primary-light);
-            border-left: 4px solid var(--primary);
-        }
-
-        .formula-label {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--primary);
-            margin-bottom: 10px;
-            letter-spacing: 0.6px;
-        }
-
-        .formula-text {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 13px;
-            color: #1e40af;
-            line-height: 1.7;
-            font-weight: 600;
-        }
-
-        /* EXAMPLES SECTION */
-        .examples-list {
-            display: grid;
-            gap: 12px;
-        }
-
-        .example-card {
-            background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 100%);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 14px;
-            border-left: 4px solid var(--primary);
-        }
-
-        .example-en {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 13px;
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: 6px;
-            letter-spacing: 0.3px;
-        }
-
-        .example-tr {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-            font-style: italic;
-        }
-
-        /* COMMON MISTAKES SECTION */
-        .mistakes-container {
-            display: grid;
-            gap: 14px;
-        }
-
-        .mistake-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-        }
-
-        .mistake-item {
-            padding: 14px;
-            background: #fef2f2;
-            border-left: 4px solid var(--error);
-        }
-
-        .mistake-wrong {
-            font-size: 12px;
-            margin-bottom: 8px;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        .wrong-text {
-            color: var(--error);
-            font-weight: 700;
-            text-decoration: line-through;
-            text-decoration-thickness: 2px;
-        }
-
-        .right-text {
-            color: var(--dark-green);
-            font-weight: 700;
-            background: #dcfce7;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-left: 8px;
-            display: inline-block;
-            text-decoration: none;
-        }
-
-        .mistake-explanation {
-            background: white;
-            padding: 12px;
-            border-top: 1px solid #fecaca;
-            font-size: 13px;
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        .explain-label {
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 6px;
-            display: block;
-        }
-
-        .explain-text {
-            color: #475569;
-            font-size: 12px;
-            line-height: 1.7;
-        }
-
-        .research-note {
-            font-size: 11px;
-            color: var(--warning);
-            margin-top: 8px;
-            font-style: italic;
-            padding-top: 8px;
-            border-top: 1px solid #fecaca;
-        }
-
-        /* TIMELINE */
-        .timeline-section {
-            background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 100%);
-            border: 2px dashed var(--border);
-            border-radius: 10px;
-            padding: 25px;
-            margin: 25px 0;
-            text-align: center;
-        }
-
-        .timeline-title {
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            letter-spacing: 0.5px;
-        }
-
-        .timeline-desc {
-            font-size: 13px;
-            color: var(--text);
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        /* PRACTICE SECTION */
         .practice-section {
             background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
             border: 2px solid var(--warning);
             border-radius: 12px;
             padding: 30px;
-            margin: 35px 0;
+            margin: 30px 0;
         }
 
         .practice-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--warning);
             margin-bottom: 8px;
         }
 
         .practice-subtitle {
-            font-size: 13px;
+            font-size: 12px;
             color: #92400e;
-            margin-bottom: 25px;
-            line-height: 1.7;
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
 
         .practice-tabs {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 20px;
             border-bottom: 2px solid #fcd34d;
             flex-wrap: wrap;
         }
 
         .tab-btn {
-            padding: 12px 18px;
+            padding: 10px 16px;
             background: transparent;
             border: none;
             border-bottom: 3px solid transparent;
             cursor: pointer;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
             transition: all 0.3s;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.4px;
         }
 
         .tab-btn:hover {
@@ -483,76 +315,89 @@
             display: block;
         }
 
-        .practice-step {
-            margin-bottom: 20px;
-        }
-
-        .step-number {
-            display: inline-block;
-            width: 28px;
-            height: 28px;
-            background: var(--warning);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 28px;
-            font-weight: 700;
-            font-size: 12px;
-            margin-right: 10px;
-        }
-
         .step-label {
-            display: inline-block;
             font-weight: 700;
             color: var(--text);
-            font-size: 13px;
+            font-size: 12px;
             text-transform: uppercase;
+            margin-bottom: 10px;
             letter-spacing: 0.5px;
         }
 
-        .step-description {
-            font-size: 13px;
+        .step-desc {
+            font-size: 12px;
             color: var(--text);
-            margin: 12px 0;
-            line-height: 1.7;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .choice-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .choice-btn {
+            padding: 12px;
+            border: 2px solid var(--border);
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+
+        .choice-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .choice-btn.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .english-display {
+            background: var(--primary-light);
+            padding: 14px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
         }
 
         textarea, input[type="text"] {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             border: 1.5px solid var(--border);
             border-radius: 8px;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text);
             background: white;
-            transition: all 0.3s;
+            min-height: 60px;
             resize: none;
-            min-height: 70px;
         }
 
         textarea:focus, input[type="text"]:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px var(--primary-light);
-            background: #f0f9ff;
-        }
-
-        .input-hint {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 8px;
-            font-style: italic;
         }
 
         .button-group {
             display: flex;
-            gap: 12px;
-            margin-top: 16px;
+            gap: 10px;
+            margin-top: 15px;
         }
 
         button {
-            padding: 12px 24px;
+            padding: 11px 20px;
             border: none;
             border-radius: 8px;
             font-family: 'Outfit', sans-serif;
@@ -561,7 +406,7 @@
             cursor: pointer;
             transition: all 0.3s;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.4px;
         }
 
         .btn-primary {
@@ -572,7 +417,6 @@
 
         .btn-primary:hover {
             background: #1e40af;
-            transform: translateY(-2px);
         }
 
         .btn-secondary {
@@ -584,12 +428,11 @@
             background: #cbd5e1;
         }
 
-        /* FEEDBACK */
         .feedback-box {
             display: none;
             border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
+            padding: 18px;
+            margin-top: 18px;
             animation: slideIn 0.4s ease;
         }
 
@@ -607,18 +450,13 @@
             border: 2px solid var(--error);
         }
 
-        .feedback-box.partial {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 2px solid var(--warning);
-        }
-
         .feedback-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
             font-weight: 700;
-            font-size: 14px;
-            margin-bottom: 15px;
+            font-size: 13px;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
         }
 
         .feedback-box.correct .feedback-header {
@@ -629,95 +467,41 @@
             color: var(--error);
         }
 
-        .feedback-box.partial .feedback-header {
-            color: var(--warning);
-        }
-
-        .feedback-icon {
-            font-size: 24px;
-        }
-
         .feedback-content {
-            font-size: 13px;
-            line-height: 1.7;
+            font-size: 12px;
+            line-height: 1.6;
             color: var(--text);
         }
 
-        .correct-answer-highlight {
-            background: white;
-            border-left: 3px solid var(--success);
-            padding: 12px;
-            border-radius: 6px;
-            margin: 12px 0;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 13px;
-            color: var(--dark-green);
-            font-weight: 600;
-        }
-
-        .error-details {
-            background: white;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 12px 0;
-        }
-
-        .error-detail-item {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border);
+        .loading {
+            display: none;
+            text-align: center;
+            color: var(--text-muted);
             font-size: 12px;
-            line-height: 1.7;
-        }
-
-        .error-detail-item:last-child {
-            border-bottom: none;
-        }
-
-        .error-code {
-            font-family: 'IBM Plex Mono', monospace;
-            background: #f1f5f9;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        .tip-box {
-            background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
-            border-left: 3px solid var(--primary);
-            padding: 12px;
-            border-radius: 6px;
-            margin-top: 12px;
-            font-size: 12px;
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        .tip-box strong {
-            color: var(--primary);
-        }
-
-        .motivational-box {
             padding: 15px;
-            background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 100%);
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--dark-green);
-            margin: 15px 0;
-            border-left: 3px solid var(--success);
-            line-height: 1.6;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @media (max-width: 1024px) {
@@ -730,14 +514,11 @@
         }
 
         @media (max-width: 768px) {
-            .lesson-panel {
-                padding: 20px;
-            }
-            .tense-title {
-                font-size: 28px;
-            }
-            .main-grid {
+            .choice-group {
                 grid-template-columns: 1fr;
+            }
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -745,13 +526,11 @@
 <body>
 
 <div class="container">
-    <!-- HEADER -->
     <header>
         <div class="logo">🎓 Pro English Grammar Academy</div>
-        <div class="tagline">Araştırma Temelli — Profesyonel Öğretim Sistemi</div>
+        <div class="tagline">12 Tenses • AI-Powered • Research-Based Learning</div>
     </header>
 
-    <!-- STATS -->
     <div class="stats-bar">
         <div class="stat-box">
             <div class="stat-value" id="stat-correct">0</div>
@@ -771,15 +550,12 @@
         </div>
     </div>
 
-    <!-- MAIN GRID -->
     <div class="main-grid">
-        <!-- SIDEBAR -->
         <div class="sidebar">
-            <div class="sidebar-title">⏰ Zaman Türü Seç</div>
+            <div class="sidebar-title">⏰ Tüm 12 Zaman</div>
             <div class="tense-grid" id="tense-grid"></div>
         </div>
 
-        <!-- LESSON PANEL -->
         <div class="lesson-panel">
             <div id="lesson-content"></div>
         </div>
@@ -788,7 +564,7 @@
 
 <script>
 // ════════════════════════════════════════════════════════════════════════
-// RESEARCH-BASED DATABASE WITH COMMON MISTAKES
+// COMPLETE 12 TENSES DATABASE
 // ════════════════════════════════════════════════════════════════════════
 
 const TENSES_DB = [
@@ -797,43 +573,23 @@ const TENSES_DB = [
         name: 'Simple Present',
         code: 'V / V+s',
         turkish: 'Basit Şimdiki Zaman',
-        rule: 'Günlük tekrarlanan eylemler, sabit gerçekler ve değişmeyen durumları ifade eder. Zamanla bağlantısı olmayan evrensel doğrularında bu zamanla anlatılır.',
+        rule: 'Günlük tekrarlanan eylemler, sabit gerçekler ve değişmeyen durumlar.',
         formula: [
-            { label: 'Olumlu', text: 'I/You/We/They + V\nHe/She/It + V+s\n\nÖrnek: play → plays' },
-            { label: 'Olumsuz', text: 'do/does + not + V\nI don\'t play\nShe doesn\'t play' },
-            { label: 'Soru', text: 'Do/Does + subject + V?\nDo you play?\nDoes she play?' }
+            { label: 'Olumlu', text: 'I/You/We/They + V | He/She/It + V+s' },
+            { label: 'Olumsuz', text: 'do/does + not + V' },
+            { label: 'Soru', text: 'Do/Does + subject + V?' }
         ],
-        timelineDesc: 'Geçmiş ________________ ŞİMDİ ________________ Gelecek\n(Tekrarlanan eylem: Her gün olur, hergün yapılır)',
+        timelineType: 'simple-present',
+        timelineDesc: 'Geçmiş ═════════════ ŞİMDİ (X X X) ═════════════ Gelecek\nTekrarlanan eylem',
         examples: [
-            { en: 'I eat breakfast at 7 AM every day.', tr: 'Ben her gün saat 7\'de kahvaltı yerim.' },
-            { en: 'She works as a software engineer.', tr: 'O yazılım mühendisi olarak çalışır.' },
-            { en: 'They play football every Sunday.', tr: 'Onlar her pazar futbol oynarlar.' }
+            { en: 'I eat breakfast every day.', tr: 'Her gün kahvaltı yerim.' },
+            { en: 'She works as a teacher.', tr: 'O öğretmen olarak çalışır.' },
+            { en: 'They play football on Sundays.', tr: 'Pazarları futbol oynarlar.' }
         ],
         commonMistakes: [
-            {
-                wrong: 'I goes to school',
-                right: 'I go to school',
-                wrongPart: 'goes',
-                rightPart: 'go',
-                explanation: 'Kişi zamiri "I" ile beraber asla "s" takısı eklenmez. "I, you, we, they" ile sadece temel fiil formu kullanılır.',
-                research: 'Araştırma: Türk öğrenenlerin %67\'si "I" ile "s" takısını yanlış eklemektedir.'
-            },
-            {
-                wrong: 'She go to school',
-                right: 'She goes to school',
-                wrongPart: 'go',
-                rightPart: 'goes',
-                explanation: '"She, he, it" (tekil 3. şahıs) her zaman "V+s" kuralı geçerlidir. "Go" fiili "goes" olur.',
-                research: 'Araştırma: Bu hata, en sık yapılan hata olup %82 sıklıkla görülmektedir.'
-            },
-            {
-                wrong: 'They plays football',
-                right: 'They play football',
-                wrongPart: 'plays',
-                rightPart: 'play',
-                explanation: '"They" çoğul zamiri olduğu için "s" takısı YOK. Tekil zamirler (she/he/it) dışında hiçbir zaman "s" eklenmez.',
-                research: 'Araştırma: Tekil-çoğul karmaşası Türk öğrencilerde %45 hata oranı ile tespit edilmiştir.'
-            }
+            { wrong: 'I goes', right: 'I go', explanation: '"I" ile asla "s" takısı eklenmez' },
+            { wrong: 'She go', right: 'She goes', explanation: '"She, he, it" her zaman V+s' },
+            { wrong: 'They plays', right: 'They play', explanation: '"They" çoğul, "s" YOK' }
         ]
     },
     {
@@ -841,87 +597,45 @@ const TENSES_DB = [
         name: 'Present Continuous',
         code: 'am/is/are + V-ing',
         turkish: 'Şu Anki Devamlı Zaman',
-        rule: 'Konuşmanın yapıldığı tam şu anda, o anlık moment\'de gerçekleşmekte olan eylemleri anlatır. Durum şu anda devam etmektedir ve kısa bir süre içinde sona erecektir.',
+        rule: 'Şu anda yapılmakta olan eylemler.',
         formula: [
-            { label: 'Olumlu', text: 'am/is/are + V-ing\nI am reading\nShe is reading\nThey are reading' },
-            { label: 'Olumsuz', text: 'am/is/are + not + V-ing\nI\'m not reading\nShe isn\'t reading' },
-            { label: 'Soru', text: 'Is/Are + subject + V-ing?\nAre you reading?\nIs she reading?' }
+            { label: 'Olumlu', text: 'am/is/are + V-ing' },
+            { label: 'Olumsuz', text: 'am/is/are + not + V-ing' },
+            { label: 'Soru', text: 'Is/Are + subject + V-ing?' }
         ],
-        timelineDesc: 'Geçmiş ________________ ŞİMDİ (●→→→ devam ediyor) ________________ Gelecek\n(Şu an yapılmakta olan eylem)',
+        timelineType: 'present-continuous',
+        timelineDesc: 'Geçmiş ═════════════ ŞİMDİ (→→→) ═════════════ Gelecek\nŞu anda devam eden',
         examples: [
-            { en: 'I am reading a book right now.', tr: 'Ben şu anda bir kitap okuyorum.' },
-            { en: 'She is studying for her exam this week.', tr: 'O bu hafta sınav için çalışıyor.' },
-            { en: 'They are playing football in the park.', tr: 'Onlar parkta futbol oynuyorlar.' }
+            { en: 'I am reading a book.', tr: 'Bir kitap okuyorum.' },
+            { en: 'She is studying.', tr: 'O çalışıyor.' },
+            { en: 'They are playing football.', tr: 'Futbol oynuyorlar.' }
         ],
         commonMistakes: [
-            {
-                wrong: 'I am read a book',
-                right: 'I am reading a book',
-                wrongPart: 'read',
-                rightPart: 'reading',
-                explanation: '"am/is/are" yardımcı fiilinin SONRA gelecek sözcük mutlaka "V-ing" (-ing hali) olmalıdır. "read" değil "reading" yazılır.',
-                research: 'Araştırma: Türk öğrenenlerin %71\'i "-ing" hali eklemeyi unutmaktadır.'
-            },
-            {
-                wrong: 'She is study for exam',
-                right: 'She is studying for her exam',
-                wrongPart: 'study',
-                rightPart: 'studying',
-                explanation: '"study" fiili "-ing" alırken "y" harfi "i" ye dönüşür: study → studying',
-                research: 'Araştırma: "y" kuralı %58 hata oranı ile en çok yapılan hata gruplarındandır.'
-            },
-            {
-                wrong: 'They are plays football',
-                right: 'They are playing football',
-                wrongPart: 'plays',
-                rightPart: 'playing',
-                explanation: '"are" den sonra kesinlikle V-ing hali gelmelidir. "plays" değil "playing" olmalıdır. "-s" takısı burada yer almaz.',
-                research: 'Araştırma: "-ing" yerine "-s" ekleme hataları %49 oranında görülmektedir.'
-            }
+            { wrong: 'I am read', right: 'I am reading', explanation: '"am" den sonra "-ing" hali gelir' },
+            { wrong: 'She is study', right: 'She is studying', explanation: 'study → studying (y→i)' }
         ]
     },
     {
         id: 2,
         name: 'Simple Past',
-        code: 'V-ed / V-changed',
+        code: 'V-ed / irregular',
         turkish: 'Geçmiş Zaman',
-        rule: 'Geçmişte başlayıp biten, artık tamamlanmış ve o anda sona ermiş bir eylemi anlatır. Her zaman "dün, geçen ay, 5 yıl önce" gibi belirli bir zaman göstergesi gereklidir.',
+        rule: 'Geçmişte tamamlanmış eylemler.',
         formula: [
-            { label: 'Olumlu (Düzenli)', text: 'V + -ed\nplay → played\nstudy → studied\nwalk → walked' },
-            { label: 'Olumlu (Düzensiz)', text: 'Değişir\ngo → went\nbe → was/were\neat → ate\nmake → made' },
-            { label: 'Olumsuz/Soru', text: 'Did + not + V (temel form)\nDid you play?' }
+            { label: 'Olumlu', text: 'V-ed (regular) | V-changed (irregular)' },
+            { label: 'Olumsuz', text: 'did + not + V' },
+            { label: 'Soru', text: 'Did + subject + V?' }
         ],
-        timelineDesc: 'Geçmiş (✗) ________________ ŞİMDİ ________________ Gelecek\n(Bitmiş, tamamlanmış eylem)',
+        timelineType: 'simple-past',
+        timelineDesc: 'Geçmiş (X) ═════════════ ŞİMDİ ═════════════ Gelecek\nBitmiş eylem',
         examples: [
-            { en: 'I learned English last year.', tr: 'Ben geçen yıl İngilizce öğrendim.' },
-            { en: 'She went to London yesterday.', tr: 'Dün o Londra\'ya gitti.' },
-            { en: 'They watched a movie last night.', tr: 'Dün gece bir film izlediler.' }
+            { en: 'I learned English last year.', tr: 'Geçen yıl İngilizce öğrendim.' },
+            { en: 'She went to London.', tr: 'Londra\'ya gitti.' },
+            { en: 'They watched a movie.', tr: 'Bir film izlediler.' }
         ],
         commonMistakes: [
-            {
-                wrong: 'I learn English last year',
-                right: 'I learned English last year',
-                wrongPart: 'learn',
-                rightPart: 'learned',
-                explanation: '"Last year" gibi geçmiş zaman göstergesi varsa mutlaka Simple Past yapısı kullanılmalıdır. Fiil + (-ed) eklemek zorunludur.',
-                research: 'Araştırma: Past tense eklemeyi unutan öğrenciler %64 oranındadır.'
-            },
-            {
-                wrong: 'She goed to London',
-                right: 'She went to London',
-                wrongPart: 'goed',
-                rightPart: 'went',
-                explanation: '"Go" fiili düzensiz fiilin (irregular verb) en klasik örneğidir. Past formu "went" dir. "Goed" diye bir şey VAR\'DI DEĞİLDİR!',
-                research: 'Araştırma: "go→went" hataları %76 oranında en çok yapılan hata olarak tespit edilmiştir.'
-            },
-            {
-                wrong: 'Did you go yesterday?',
-                right: 'Did you go yesterday?',
-                wrongPart: 'doğru',
-                rightPart: 'doğru',
-                explanation: 'Soruların yanında ve olumsuzların yanında "did" kullanıldığında, fiil SONRA kesinlikle temel form (base form) olmalıdır. "Did...went" değil "Did...go" yazılır!',
-                research: 'Araştırma: Soruların yanında past eklememe hataları %55 oranındadır.'
-            }
+            { wrong: 'I go yesterday', right: 'I went yesterday', explanation: 'Geçmiş zaman göstergesi varsa -ed ekle' },
+            { wrong: 'She goed', right: 'She went', explanation: '"go" düzensiz fiil, "went" doğru' }
         ]
     },
     {
@@ -929,99 +643,206 @@ const TENSES_DB = [
         name: 'Past Continuous',
         code: 'was/were + V-ing',
         turkish: 'Geçmiş Devamlı Zaman',
-        rule: 'Geçmişte belirli bir anda devam etmekte olan, o sırada yapılmakta olan eylemi anlatır. Araya giren başka bir olay tarafından kesilen durumu ifade eder.',
+        rule: 'Geçmişte belirli anda devam eden eylemler.',
         formula: [
-            { label: 'Olumlu', text: 'was/were + V-ing\nI was sleeping\nThey were sleeping' },
-            { label: 'Olumsuz', text: 'was/were + not + V-ing\nI wasn\'t sleeping\nThey weren\'t sleeping' },
-            { label: 'Soru', text: 'Was/Were + subject + V-ing?\nWere you sleeping?' }
+            { label: 'Olumlu', text: 'was/were + V-ing' },
+            { label: 'Olumsuz', text: 'was/were + not + V-ing' },
+            { label: 'Soru', text: 'Was/Were + subject + V-ing?' }
         ],
-        timelineDesc: 'Geçmiş (→→→ devam ediyor, kesiliyor) ________________ ŞİMDİ ________________ Gelecek\n(Geçmişte belirli anda devam eden eylem)',
+        timelineType: 'past-continuous',
+        timelineDesc: 'Geçmiş (→→→) ═════════════ ŞİMDİ ═════════════ Gelecek\nGeçmişte devam eden',
         examples: [
-            { en: 'I was sleeping when the phone rang.', tr: 'Telefon çaldığında ben uyuyordum.' },
-            { en: 'She was studying while he was cooking.', tr: 'O yemek pişirirken, o çalışıyordu.' },
-            { en: 'They were playing football at 5 PM.', tr: 'Saat 5\'te futbol oynuyorlardı.' }
+            { en: 'I was sleeping when you called.', tr: 'Aradığında uyuyordum.' },
+            { en: 'She was studying.', tr: 'O çalışıyordu.' },
+            { en: 'They were playing.', tr: 'Onlar oynuyorlardı.' }
         ],
         commonMistakes: [
-            {
-                wrong: 'I was sleep when you called',
-                right: 'I was sleeping when you called',
-                wrongPart: 'sleep',
-                rightPart: 'sleeping',
-                explanation: '"was/were" yardımcı fiilinin hemen SONRA "V-ing" (-ing hali) gelmelidir. "sleep" değil "sleeping" yazılır.',
-                research: 'Araştırma: Past Continuous\'ta "-ing" unutma hataları %68 oranında tespit edilmiştir.'
-            },
-            {
-                wrong: 'She was studied yesterday',
-                right: 'She was studying yesterday',
-                wrongPart: 'studied',
-                rightPart: 'studying',
-                explanation: 'Past Continuous yapısında asla "-ed" formu kullanılmaz. Her zaman "was/were + V-ing" yapısı geçerlidir.',
-                research: 'Araştırma: "was + V-ed" hataları %45 oranında karşılaşılan bir problem olmuştur.'
-            }
+            { wrong: 'I was sleep', right: 'I was sleeping', explanation: '"was" den sonra "-ing" hali' }
         ]
     },
     {
         id: 4,
         name: 'Present Perfect',
-        code: 'have/has + Past Participle',
+        code: 'have/has + PP',
         turkish: 'Şimdiki Zaman Tamamlanmışı',
-        rule: 'Yakın geçmişte başlayan, henüz bitmemiş veya hala etkisi devam eden eylemleri anlatır. ZAMANSAL BİLGİ (yesterday, last week gibi) vermeyi istemez. "Recently, just, ever, never" gibi sözcükler tercih eder.',
+        rule: 'Yakın geçmişten başlayan, etkisi şu an devam eden eylemler.',
         formula: [
-            { label: 'Olumlu', text: 'have/has + PP\nI have finished\nShe has finished\neaten, gone, written, done' },
-            { label: 'Olumsuz', text: 'have/has + not + PP\nI haven\'t finished\nShe hasn\'t finished' },
-            { label: 'Soru', text: 'Have/Has + subject + PP?\nHave you finished?\nHas she finished?' }
+            { label: 'Olumlu', text: 'have/has + Past Participle' },
+            { label: 'Olumsuz', text: 'have/has + not + PP' },
+            { label: 'Soru', text: 'Have/Has + subject + PP?' }
         ],
-        timelineDesc: 'Geçmiş (●→→→) _____ ŞİMDİ _____________________ Gelecek\n(Yakın geçmişten başlayan, etkisi şimdi devam eden)',
+        timelineType: 'present-perfect',
+        timelineDesc: 'Geçmiş (●→→) ═════════════ ŞİMDİ ═════════════ Gelecek\nYakın geçmişten başlayan',
         examples: [
-            { en: 'I have finished my homework.', tr: 'Ben ödevimi bitirdim.' },
-            { en: 'She has never been to Paris.', tr: 'O hiç Paris\'e gitmedi.' },
-            { en: 'They have already eaten dinner.', tr: 'Onlar çoktan akşam yemeğini yediler.' }
+            { en: 'I have finished my homework.', tr: 'Ödevimi bitirdim.' },
+            { en: 'She has gone to Paris.', tr: 'Paris\'e gitti.' },
+            { en: 'They have already eaten.', tr: 'Çoktan yediler.' }
         ],
         commonMistakes: [
-            {
-                wrong: 'I have finish my homework',
-                right: 'I have finished my homework',
-                wrongPart: 'finish',
-                rightPart: 'finished',
-                explanation: '"have/has" den sonra mutlaka Past Participle (PP) formu gelmelidir. "finish" değil "finished" yazılır.',
-                research: 'Araştırma: PP formu eklemeyi unutan öğrenciler %73 oranındadır.'
-            },
-            {
-                wrong: 'She has go to Paris',
-                right: 'She has gone to Paris',
-                wrongPart: 'go',
-                rightPart: 'gone',
-                explanation: '"Go" fiilinin Past Participle formu "gone" dir. "went" değil "gone" kullanılır.',
-                research: 'Araştırma: "go→gone" hataları %62 oranında sık yapılan hata olmuştur.'
-            },
-            {
-                wrong: 'I have eaten yesterday',
-                right: 'I ate yesterday',
-                wrongPart: 'have eaten',
-                rightPart: 'ate',
-                explanation: '"Yesterday" gibi belirli zamansal bilgi varsa Present Perfect KULLANILMAZ. Simple Past kullanılmalıdır.',
-                research: 'Araştırma: Zamansal bilgi ile Present Perfect karmaşası %58 hata ile tespit edilmiştir.'
-            }
+            { wrong: 'I have finish', right: 'I have finished', explanation: 'have den sonra Past Participle' }
+        ]
+    },
+    {
+        id: 5,
+        name: 'Present Perfect Continuous',
+        code: 'have/has + been + V-ing',
+        turkish: 'Şimdiki Devamlı Tamamlanmışı',
+        rule: 'Geçmişten başlayıp şimdi devam eden, süresi vurgulanan eylemler.',
+        formula: [
+            { label: 'Olumlu', text: 'have/has + been + V-ing' },
+            { label: 'Olumsuz', text: 'have/has + not + been + V-ing' },
+            { label: 'Soru', text: 'Have/Has + subject + been + V-ing?' }
+        ],
+        timelineType: 'present-perfect-continuous',
+        timelineDesc: 'Geçmiş (═════→→→) ═════════ ŞİMDİ ═════════════ Gelecek\nGeçmişten başlayıp devam eden (süre vurgulu)',
+        examples: [
+            { en: 'I have been studying for 3 hours.', tr: '3 saattir çalışıyorum.' },
+            { en: 'She has been living here since 2020.', tr: '2020\'den beri burada yaşıyor.' },
+            { en: 'They have been working all day.', tr: 'Bütün gün çalışmakta.' }
+        ],
+        commonMistakes: [
+            { wrong: 'I have studying', right: 'I have been studying', explanation: 'have + been + V-ing' }
+        ]
+    },
+    {
+        id: 6,
+        name: 'Simple Future',
+        code: 'will + V',
+        turkish: 'Gelecek Zaman',
+        rule: 'Gelecekte yapılacak eylemler.',
+        formula: [
+            { label: 'Olumlu', text: 'will + V (base form)' },
+            { label: 'Olumsuz', text: 'will + not (won\'t) + V' },
+            { label: 'Soru', text: 'Will + subject + V?' }
+        ],
+        timelineType: 'simple-future',
+        timelineDesc: 'Geçmiş ═════════════ ŞİMDİ ═════════════ Gelecek (X X X)\nGelecekte yapılacak',
+        examples: [
+            { en: 'I will call you tomorrow.', tr: 'Seni yarın arayacağım.' },
+            { en: 'She will be a doctor.', tr: 'O doktor olacak.' },
+            { en: 'They will arrive next week.', tr: 'Gelecek hafta gelecekler.' }
+        ],
+        commonMistakes: [
+            { wrong: 'I will calls', right: 'I will call', explanation: 'will den sonra base form, "s" YOK' }
+        ]
+    },
+    {
+        id: 7,
+        name: 'Future Continuous',
+        code: 'will + be + V-ing',
+        turkish: 'Gelecek Devamlı Zaman',
+        rule: 'Gelecekte belirli anda devam edecek eylemler.',
+        formula: [
+            { label: 'Olumlu', text: 'will + be + V-ing' },
+            { label: 'Olumsuz', text: 'will + not + be + V-ing' },
+            { label: 'Soru', text: 'Will + subject + be + V-ing?' }
+        ],
+        timelineType: 'future-continuous',
+        timelineDesc: 'Geçmiş ═════════════ ŞİMDİ ═════════════ Gelecek (→→→)\nGelecekte devam edecek',
+        examples: [
+            { en: 'I will be working at 9 AM.', tr: 'Saat 9\'da çalışıyor olacağım.' },
+            { en: 'She will be studying.', tr: 'O çalışıyor olacak.' },
+            { en: 'They will be playing.', tr: 'Onlar oynuyor olacaklar.' }
+        ],
+        commonMistakes: [
+            { wrong: 'I will playing', right: 'I will be playing', explanation: 'will + be + V-ing' }
+        ]
+    },
+    {
+        id: 8,
+        name: 'Past Perfect',
+        code: 'had + PP',
+        turkish: 'Geçmiş Zamanın Geçmişi',
+        rule: 'Geçmişte bir olaydan öncesi tamamlanmış eylemler.',
+        formula: [
+            { label: 'Olumlu', text: 'had + Past Participle' },
+            { label: 'Olumsuz', text: 'had + not + PP' },
+            { label: 'Soru', text: 'Had + subject + PP?' }
+        ],
+        timelineType: 'past-perfect',
+        timelineDesc: 'Geçmiş (X earlier) ═ Geçmiş (X later) ═ ŞİMDİ ═ Gelecek\nGeçmiş zamanda daha önceki eylem',
+        examples: [
+            { en: 'I had finished before the boss arrived.', tr: 'Patron gelmeden bitirdim.' },
+            { en: 'She had gone to Paris.', tr: 'Paris\'e gitmişti.' },
+            { en: 'They had already eaten.', tr: 'Çoktan yemişlerdi.' }
+        ],
+        commonMistakes: [
+            { wrong: 'I had finish', right: 'I had finished', explanation: 'had den sonra Past Participle' }
+        ]
+    },
+    {
+        id: 9,
+        name: 'Past Perfect Continuous',
+        code: 'had + been + V-ing',
+        turkish: 'Geçmiş Devamlı Tamamlanmışı',
+        rule: 'Geçmişte bir olaydan öncesi süredir devam eden eylemler.',
+        formula: [
+            { label: 'Olumlu', text: 'had + been + V-ing' },
+            { label: 'Olumsuz', text: 'had + not + been + V-ing' },
+            { label: 'Soru', text: 'Had + subject + been + V-ing?' }
+        ],
+        timelineType: 'past-perfect-continuous',
+        timelineDesc: 'Geçmiş (═════→→) ═ Geçmiş ═ ŞİMDİ ═ Gelecek\nGeçmişte öncesinde devam eden (süre vurgulu)',
+        examples: [
+            { en: 'I had been working for 8 hours.', tr: '8 saattir çalışmaktaydım.' },
+            { en: 'She had been waiting since morning.', tr: 'Sabahtan beri beklemekteydi.' },
+            { en: 'They had been playing for 2 hours.', tr: '2 saat oynamakta idiler.' }
+        ],
+        commonMistakes: [
+            { wrong: 'I had working', right: 'I had been working', explanation: 'had + been + V-ing' }
+        ]
+    },
+    {
+        id: 10,
+        name: 'Future Perfect',
+        code: 'will + have + PP',
+        turkish: 'Gelecek Tamamlanmışı',
+        rule: 'Gelecekte belirli zamana kadar tamamlanmış olacak eylemler.',
+        formula: [
+            { label: 'Olumlu', text: 'will + have + Past Participle' },
+            { label: 'Olumsuz', text: 'will + have + not + PP' },
+            { label: 'Soru', text: 'Will + subject + have + PP?' }
+        ],
+        timelineType: 'future-perfect',
+        timelineDesc: 'Geçmiş ═════════════ ŞİMDİ ═════════════ Gelecek (X earlier) ═ Gelecek\nGelecekte tamamlanmış olacak',
+        examples: [
+            { en: 'I will have finished by Friday.', tr: 'Cuma günü bitirmiş olacağım.' },
+            { en: 'She will have completed the course.', tr: 'Kursu bitirmiş olacak.' },
+            { en: 'They will have arrived.', tr: 'Varmış olacaklar.' }
+        ],
+        commonMistakes: [
+            { wrong: 'I will finish by Friday', right: 'I will have finished by Friday', explanation: 'by + zaman = Future Perfect' }
+        ]
+    },
+    {
+        id: 11,
+        name: 'Future Perfect Continuous',
+        code: 'will + have + been + V-ing',
+        turkish: 'Gelecek Devamlı Tamamlanmışı',
+        rule: 'Gelecekte belirli zamana kadar ne kadar süredir yapılmış olacak.',
+        formula: [
+            { label: 'Olumlu', text: 'will + have + been + V-ing' },
+            { label: 'Olumsuz', text: 'will + have + not + been + V-ing' },
+            { label: 'Soru', text: 'Will + subject + have + been + V-ing?' }
+        ],
+        timelineType: 'future-perfect-continuous',
+        timelineDesc: 'Geçmiş ═════════════ ŞİMDİ ═════════════ Gelecek (═════→→) ═ Gelecek\nGelecekte belirli sürede yapılmış olacak',
+        examples: [
+            { en: 'By next Friday, I will have been studying for 6 months.', tr: 'Cuma günü 6 aydır çalışmış olacağım.' },
+            { en: 'By the end of the year, she will have been working here for 3 years.', tr: 'Yıl sonunda 3 yıldır burada çalışmış olacak.' },
+            { en: 'When he retires, he will have been teaching for 40 years.', tr: 'Emekliye ayrılınca 40 yıl öğretmenlik yapmış olacak.' }
+        ],
+        commonMistakes: [
+            { wrong: 'I will have studied for 6 months', right: 'I will have been studying for 6 months', explanation: 'Süre vurgulansa been + V-ing lazım' }
         ]
     }
 ];
 
-// ════════════════════════════════════════════════════════════════════════
-// STATE
-// ════════════════════════════════════════════════════════════════════════
-
-let stats = {
-    correct: 0,
-    wrong: 0,
-    streak: 0,
-    total: 0
-};
-
+let stats = { correct: 0, wrong: 0, streak: 0, total: 0 };
 let currentTenseId = 0;
-
-// ═══════════��════════════════════════════════════════════════════════════
-// INITIALIZATION
-// ════════════════════════════════════════════════════════════════════════
+let identifyLanguage = null;
+let identifySentence = null;
+let buildSentence = null;
 
 function init() {
     renderTenseGrid();
@@ -1035,10 +856,7 @@ function renderTenseGrid() {
     TENSES_DB.forEach((tense, idx) => {
         const btn = document.createElement('button');
         btn.className = `tense-option ${idx === 0 ? 'active' : ''}`;
-        btn.innerHTML = `
-            <span class="tense-name">${tense.name}</span>
-            <span class="tense-code">${tense.code}</span>
-        `;
+        btn.innerHTML = `<span class="tense-name">${tense.name}</span><span class="tense-code">${tense.code}</span>`;
         btn.onclick = () => switchTense(idx);
         grid.appendChild(btn);
     });
@@ -1056,19 +874,17 @@ function renderLesson(idx) {
     const tense = TENSES_DB[idx];
     const content = document.getElementById('lesson-content');
 
-    // Formula HTML
-    let formulaHtml = '<div class="formula-grid">';
+    let formulaHtml = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 15px;">';
     tense.formula.forEach(f => {
         formulaHtml += `
-            <div class="formula-box">
-                <div class="formula-label">${f.label}</div>
-                <div class="formula-text">${f.text.replace(/\n/g, '<br>')}</div>
+            <div style="background: white; padding: 12px; border-radius: 8px; border-left: 3px solid var(--primary); font-size: 11px;">
+                <strong style="color: var(--primary); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.4px;">${f.label}</strong>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #1e40af; line-height: 1.5;">${f.text}</div>
             </div>
         `;
     });
     formulaHtml += '</div>';
 
-    // Collapsible Examples
     const examplesHtml = `
         <div class="collapsible-section">
             <div class="section-header" onclick="toggleSection(this)">
@@ -1076,182 +892,191 @@ function renderLesson(idx) {
                 <span class="section-toggle">▼</span>
             </div>
             <div class="section-content">
-                <div class="examples-list">
-                    ${tense.examples.map(ex => `
-                        <div class="example-card">
-                            <div class="example-en">"${ex.en}"</div>
-                            <div class="example-tr">${ex.tr}</div>
-                        </div>
-                    `).join('')}
-                </div>
+                ${tense.examples.map(ex => `
+                    <div style="background: white; padding: 10px; border-radius: 6px; margin-bottom: 8px; border-left: 3px solid var(--primary);">
+                        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--primary); font-weight: 600; margin-bottom: 3px;">"${ex.en}"</div>
+                        <div style="font-size: 11px; color: var(--text-muted); font-style: italic;">${ex.tr}</div>
+                    </div>
+                `).join('')}
             </div>
         </div>
     `;
 
-    // Collapsible Mistakes
     const mistakesHtml = `
         <div class="collapsible-section">
             <div class="section-header" onclick="toggleSection(this)">
-                <span class="section-title">⚠️ Sık Yapılan Hatalar (Araştırma Temelli)</span>
+                <span class="section-title">⚠️ Sık Yapılan Hatalar</span>
                 <span class="section-toggle">▼</span>
             </div>
             <div class="section-content">
-                <div class="mistakes-container">
-                    ${tense.commonMistakes.map((m, idx) => `
-                        <div class="mistake-card">
-                            <div class="mistake-item">
-                                <div class="mistake-wrong">
-                                    <span class="wrong-text">${m.wrong}</span>
-                                    <span class="right-text">→ ${m.right}</span>
-                                </div>
-                            </div>
-                            <div class="mistake-explanation">
-                                <span class="explain-label">📖 Bilim Temelli Açıklama:</span>
-                                <span class="explain-text">${m.explanation}</span>
-                                <span class="research-note">🔬 ${m.research}</span>
-                            </div>
+                ${tense.commonMistakes.map(m => `
+                    <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px; border-left: 3px solid var(--error);">
+                        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; margin-bottom: 6px;">
+                            <span style="color: var(--error); font-weight: 700; text-decoration: line-through;">❌ ${m.wrong}</span>
+                            <span style="color: var(--dark-green); font-weight: 700; background: #dcfce7; padding: 2px 6px; border-radius: 3px; margin-left: 8px;">✓ ${m.right}</span>
                         </div>
-                    `).join('')}
-                </div>
+                        <div style="font-size: 11px; color: var(--text); line-height: 1.5;">${m.explanation}</div>
+                    </div>
+                `).join('')}
             </div>
         </div>
     `;
+
+    const timelineSvg = createTimelineSVG(tense.timelineType);
 
     content.innerHTML = `
         <div class="lesson-header">
             <div class="tense-title">${tense.name}</div>
             <div class="tense-subtitle">${tense.turkish}</div>
-            <div class="rule-statement">
-                <strong>📖 Tanım ve Kullanım:</strong> ${tense.rule}
-            </div>
+            <div class="rule-statement">${tense.rule}</div>
         </div>
 
-        <div class="timeline-section">
-            <div class="timeline-title">⏰ Zaman Çizelgesi Gösterim</div>
-            <div class="timeline-desc">${tense.timelineDesc}</div>
+        <div class="timeline-container">
+            <strong style="display: block; margin-bottom: 12px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-muted);">⏰ Zaman Çizelgesi</strong>
+            <div class="timeline-svg">${timelineSvg}</div>
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 12px; line-height: 1.6; white-space: pre-line;">${tense.timelineDesc}</div>
         </div>
 
-        <div style="margin: 25px 0;">
-            <h3 style="font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px;">Yapı Formülleri</h3>
+        <div style="margin-bottom: 15px;">
+            <strong style="display: block; margin-bottom: 10px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; color: var(--primary);">Yapı Formülleri</strong>
             ${formulaHtml}
         </div>
 
         ${examplesHtml}
         ${mistakesHtml}
 
-        <!-- PRACTICE SECTION -->
         <div class="practice-section">
-            <div class="practice-title">✏️ PROFESYONEL UYGULAMALAMA BÖLÜMÜ</div>
+            <div class="practice-title">✏️ PROFESYONEL UYGULAMA</div>
             <div class="practice-subtitle">
-                Bu bölümde ${tense.name} yapısını derinlemesine öğreneceksin. Üç farklı seviyede alıştırma yapabilirsin. Her adımda sana ayrıntılı öğretmen feedback\'i verilecektir.
+                ${tense.name} yapısını üç aşamada derinlemesine öğren.
             </div>
 
             <div class="practice-tabs">
-                <button class="tab-btn active" onclick="switchTab(this, 'tab1')">
-                    1️⃣ Örnek İste
-                </button>
-                <button class="tab-btn" onclick="switchTab(this, 'tab2')">
-                    2️⃣ Zamanı Tanı
-                </button>
-                <button class="tab-btn" onclick="switchTab(this, 'tab3')">
-                    3️⃣ Sende Yaz
-                </button>
+                <button class="tab-btn active" onclick="switchTab(this, 'tab1')">1️⃣ Örnek İste</button>
+                <button class="tab-btn" onclick="switchTab(this, 'tab2')">2️⃣ Zamanı Tanı</button>
+                <button class="tab-btn" onclick="switchTab(this, 'tab3')">3️⃣ Sende Yaz</button>
             </div>
 
-            <!-- TAB 1: EXAMPLE REQUEST -->
             <div class="tab-content active" id="tab1">
-                <div class="practice-step">
-                    <span class="step-number">1</span>
-                    <span class="step-label">Senin Cümleye Uygun Örnek Iste</span>
-                </div>
-
-                <div class="step-description">
-                    <strong>Ne yapacaksın?</strong> Aşağıda Türkçe bir cümle yaz (bunu sana örnek olsun diye). Ben bu cümleye uygun şekilde <strong>"${tense.name}"</strong> yapısını kullanarak bir İngilizce örnek cümle hazırlayacağım ve detaylı açıklamalarını yapacağım.
-                    <br><br>
-                    <strong>Neden bu şekilde?</strong> Çünkü öğrenmen daha etkili olacak. Senin yazdığın cümlede hangi kelimeleri nasıl yapılandırdığımı açıklayarak öğreneceksin.
-                </div>
-
-                <textarea id="user-sentence" placeholder="Örneğin: 'Ben her gün sabah 6\'da uyanırım' veya 'Dün akşam bir kitap okuyordum'"></textarea>
-                <div class="input-hint">💭 Ipucu: Kendi hayatından bir cümle yaz, böylece daha kolay hatırlarsın.</div>
-
+                <div class="step-label">Adım 1: Örnek Cümle İste</div>
+                <div class="step-desc">Türkçe bir cümle yaz, senin cümleye uygun "${tense.name}" örneğini göstereceğim.</div>
+                <textarea id="user-sentence" placeholder="Örnek: Ben her gün sabah 6'da uyanırım..."></textarea>
                 <div class="button-group">
                     <button class="btn-primary" onclick="provideExample(${idx})">Profesyonel Örnek Hazırla</button>
-                    <button class="btn-secondary" onclick="switchTab(null, 'tab2')">Atla → Adım 2</button>
+                    <button class="btn-secondary" onclick="switchTab(null, 'tab2')">Atla</button>
                 </div>
-
                 <div class="feedback-box" id="feedback-example"></div>
             </div>
 
-            <!-- TAB 2: IDENTIFY -->
             <div class="tab-content" id="tab2">
-                <div class="practice-step">
-                    <span class="step-number">2</span>
-                    <span class="step-label">Zamanı Tanı — Profesyonel Teşhis Yap</span>
+                <div id="identify-stage-1">
+                    <div class="step-label">Adım 2A: Dil Seç</div>
+                    <div class="step-desc">Verilen cümle İngilizce mi yoksa Türkçe mi? Önce seç!</div>
+                    <div class="choice-group">
+                        <button class="choice-btn" onclick="selectLanguage(this, 'en')">🇬🇧 ENGLISH</button>
+                        <button class="choice-btn" onclick="selectLanguage(this, 'tr')">🇹🇷 TÜRKÇE</button>
+                    </div>
+                    <div id="sentence-display" style="display: none;">
+                        <div class="step-label" style="margin-top: 15px;">Verilen Cümle:</div>
+                        <div class="english-display" id="identify-sentence-display">Cümle yüklenecek...</div>
+                        <button class="btn-primary" onclick="moveToIdentify()" style="width: 100%; margin-top: 15px;">Devam → Zamanı Tanı</button>
+                    </div>
                 </div>
 
-                <div class="step-description">
-                    <strong>Ne yapacaksın?</strong> Sana bir cümle gösterilecek. Bu cümlenin hangi zaman yapısında yazılmış olduğunu tahmin etmelisin. <strong>Tüm 12 zamanı tapmaya çalış!</strong>
-                    <br><br>
-                    <strong>Önemli Not:</strong> Her zaman yapısının kendine özgü işaretleri vardır. Timeline gösterimlerine, yardımcı fillere ve "-ing" / "-ed" eklerine dikkat et!
+                <div id="identify-stage-2" style="display: none;">
+                    <div class="step-label">Adım 2B: Zamanı Tanı</div>
+                    <div class="step-desc">Aşağıdaki cümlenin hangi zaman yapısında olduğunu yaz.</div>
+                    <div class="english-display" id="identify-sentence-for-tense">Cümle...</div>
+                    <input type="text" id="identify-answer" placeholder="Zaman adını yaz (örn: Present Perfect, Simple Past)...">
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="identifyTense()">Kontrol Et</button>
+                        <button class="btn-secondary" onclick="switchTab(null, 'tab3')">Atla</button>
+                    </div>
+                    <div class="feedback-box" id="feedback-identify"></div>
                 </div>
-
-                <div style="background: var(--primary-light); padding: 15px; border-radius: 8px; margin: 15px 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--primary); border-left: 4px solid var(--primary);">
-                    <span id="identify-sentence">Cümle yüklenecek...</span>
-                </div>
-
-                <input type="text" id="identify-answer" placeholder="Bu cümle hangi zamanda? (Örn: Present Perfect, Simple Past...)">
-                <div class="input-hint">💡 Tüm zaman adlarını öğrendin. Doğru tanı ve sistem sana açıklama yapacak!</div>
-
-                <div class="button-group">
-                    <button class="btn-primary" onclick="identifyTense()">Cevabı Kontrol Et</button>
-                    <button class="btn-secondary" onclick="switchTab(null, 'tab3')">Atla → Adım 3</button>
-                </div>
-
-                <div class="feedback-box" id="feedback-identify"></div>
             </div>
 
-            <!-- TAB 3: BUILD -->
             <div class="tab-content" id="tab3">
-                <div class="practice-step">
-                    <span class="step-number">3</span>
-                    <span class="step-label">Sende Yaz — Öğrendiğini Uygula</span>
+                <div class="step-label">Adım 3: Sende Yaz (AI Powered)</div>
+                <div class="step-desc">
+                    Türkçe cümleyi "${tense.name}" yapısında İngilizceye çevir.<br>
+                    <strong>Formula:</strong> <code style="background: #f0f4ff; padding: 2px 6px; font-size: 10px; border-radius: 3px;">${tense.formula[0].text.split('<br>')[0]}</code>
                 </div>
-
-                <div class="step-description">
-                    <strong>Son Adım!</strong> Aşağıda Türkçe bir cümle gösterilecek. Bu cümleyi <strong>"${tense.name}"</strong> yapısını kullanarak İngilizceye çevir.
-                    <br><br>
-                    <strong>Nasıl Başarılı Olursun?</strong>
-                    <br>✓ Formula'yı hatırla: <code style="background: #f0f4ff; padding: 2px 6px; border-radius: 3px; font-size: 11px;">${tense.formula[0].text.split('<br>')[0]}</code>
-                    <br>✓ Ortak hataları düşün ve sakın yapma!
-                    <br>✓ Eğer yanlış yazarsan, sistem nerede hata yaptığını ve neden olduğunu açıklayacak.
+                <div class="english-display" style="background: var(--primary-light);">
+                    Türkçe: <span id="build-tr-sentence">Cümle...</span>
                 </div>
-
-                <div style="background: var(--primary-light); padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid var(--primary);">
-                    <strong style="color: var(--primary);">Türkçe Cümle:</strong>
-                    <br><span id="build-tr-sentence" style="font-size: 14px; color: var(--text); margin-top: 8px; display: block;">Cümle yüklenecek...</span>
+                <textarea id="build-answer" placeholder="İngilizce çevirini yaz..."></textarea>
+                <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+                    💡 Ipucu: Formula'yı takip et. Sık yapılan hataları düşün!
                 </div>
-
-                <textarea id="build-answer" placeholder="İngilizce çevirini yazınız..."></textarea>
-                <div class="input-hint">📝 Ipucu: Formula'yı kullan ve dikkat et!</div>
-
                 <div class="button-group">
-                    <button class="btn-primary" onclick="checkBuilt(${idx})">Professiyonel Kontrol Et</button>
+                    <button class="btn-primary" onclick="checkBuilt(${idx})">AI Kontrol Et</button>
                     <button class="btn-secondary" onclick="resetPractice()">Başa Dön</button>
                 </div>
-
+                <div class="loading" id="loading-ai"></div>
                 <div class="feedback-box" id="feedback-build"></div>
             </div>
         </div>
     `;
 
-    // Generate sentences
-    setTimeout(() => generatePracticeSentences(tense), 100);
+    generatePracticeSentences(tense);
+}
+
+function createTimelineSVG(type) {
+    let svg = `<svg viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 150px;">`;
+
+    svg += `<line x1="30" y1="75" x2="470" y2="75" stroke="#cbd5e1" stroke-width="2"/>`;
+    svg += `<text x="30" y="120" font-size="12" font-weight="600" fill="#64748b">Past</text>`;
+    svg += `<text x="220" y="120" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">Present</text>`;
+    svg += `<text x="440" y="120" font-size="12" font-weight="600" fill="#64748b" text-anchor="end">Future</text>`;
+
+    svg += `<circle cx="30" cy="75" r="5" fill="#64748b"/>`;
+    svg += `<circle cx="250" cy="75" r="5" fill="#2563eb"/>`;
+    svg += `<circle cx="470" cy="75" r="5" fill="#64748b"/>`;
+
+    if (type === 'simple-present') {
+        for (let i = 0; i < 5; i++) {
+            const x = 230 + (i - 2) * 20;
+            svg += `<circle cx="${x}" cy="75" r="3" fill="#2563eb"/>`;
+        }
+    } else if (type === 'present-continuous') {
+        svg += `<path d="M 200 75 Q 250 40, 300 75" stroke="#ef4444" stroke-width="2.5" fill="none" stroke-dasharray="4,2"/>`;
+    } else if (type === 'simple-past') {
+        svg += `<circle cx="30" cy="75" r="7" fill="#2563eb" opacity="0.6"/>`;
+    } else if (type === 'past-continuous') {
+        svg += `<path d="M 10 75 Q 60 40, 110 75" stroke="#ef4444" stroke-width="2.5" fill="none" stroke-dasharray="4,2"/>`;
+    } else if (type === 'present-perfect') {
+        svg += `<path d="M 50 75 Q 150 50, 250 75" stroke="#f59e0b" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>`;
+    } else if (type === 'present-perfect-continuous') {
+        svg += `<path d="M 30 75 Q 140 45, 250 75" stroke="#10b981" stroke-width="3" fill="none" opacity="0.4"/>`;
+    } else if (type === 'simple-future') {
+        for (let i = 0; i < 5; i++) {
+            const x = 450 + (i - 2) * 20;
+            svg += `<circle cx="${x}" cy="75" r="3" fill="#2563eb"/>`;
+        }
+    } else if (type === 'future-continuous') {
+        svg += `<path d="M 420 75 Q 470 40, 520 75" stroke="#ef4444" stroke-width="2.5" fill="none" stroke-dasharray="4,2"/>`;
+    } else if (type === 'past-perfect') {
+        svg += `<circle cx="40" cy="75" r="4" fill="#f59e0b"/>`;
+        svg += `<circle cx="80" cy="75" r="4" fill="#f59e0b" opacity="0.4"/>`;
+    } else if (type === 'past-perfect-continuous') {
+        svg += `<path d="M 30 75 Q 80 45, 150 75" stroke="#10b981" stroke-width="3" fill="none" opacity="0.4"/>`;
+    } else if (type === 'future-perfect') {
+        svg += `<circle cx="400" cy="75" r="4" fill="#f59e0b"/>`;
+        svg += `<circle cx="450" cy="75" r="4" fill="#f59e0b" opacity="0.4"/>`;
+    } else if (type === 'future-perfect-continuous') {
+        svg += `<path d="M 350 75 Q 410 45, 470 75" stroke="#10b981" stroke-width="3" fill="none" opacity="0.4"/>`;
+    }
+
+    svg += `<defs><marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><polygon points="0 0, 10 3, 0 6" fill="#f59e0b"/></marker></defs>`;
+    svg += `</svg>`;
+
+    return svg;
 }
 
 function toggleSection(header) {
     const toggle = header.querySelector('.section-toggle');
     const content = header.nextElementSibling;
-    
     toggle.classList.toggle('open');
     content.classList.toggle('open');
 }
@@ -1263,13 +1088,47 @@ function switchTab(btn, tabId) {
     }
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     document.getElementById(tabId).classList.add('active');
+    
+    if (tabId === 'tab2') {
+        document.getElementById('identify-stage-1').style.display = 'block';
+        document.getElementById('identify-stage-2').style.display = 'none';
+        identifyLanguage = null;
+        document.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+        document.getElementById('sentence-display').style.display = 'none';
+    }
+}
+
+function selectLanguage(btn, lang) {
+    identifyLanguage = lang;
+    document.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById('sentence-display').style.display = 'block';
+}
+
+function moveToIdentify() {
+    if (!identifyLanguage) {
+        alert('Lütfen bir dil seçin!');
+        return;
+    }
+
+    document.getElementById('identify-stage-1').style.display = 'none';
+    document.getElementById('identify-stage-2').style.display = 'block';
+    
+    if (identifyLanguage === 'en') {
+        document.getElementById('identify-sentence-for-tense').textContent = identifySentence.en;
+    } else {
+        document.getElementById('identify-sentence-for-tense').textContent = identifySentence.tr;
+    }
 }
 
 function generatePracticeSentences(tense) {
-    const identifySentence = TENSES_DB[Math.floor(Math.random() * TENSES_DB.length)].examples[0];
-    document.getElementById('identify-sentence').textContent = identifySentence.en;
+    const randomTense = TENSES_DB[Math.floor(Math.random() * TENSES_DB.length)];
+    identifySentence = randomTense.examples[Math.floor(Math.random() * randomTense.examples.length)];
+    
+    document.getElementById('identify-sentence-display').textContent = 
+        identifyLanguage === 'en' ? identifySentence.en : identifySentence.tr;
 
-    const buildSentence = tense.examples[Math.floor(Math.random() * tense.examples.length)];
+    buildSentence = tense.examples[Math.floor(Math.random() * tense.examples.length)];
     document.getElementById('build-tr-sentence').textContent = buildSentence.tr;
 }
 
@@ -1286,37 +1145,21 @@ function provideExample(idx) {
     feedback.className = 'feedback-box correct show';
     feedback.innerHTML = `
         <div class="feedback-header">
-            <span class="feedback-icon">🎓</span>
+            <span>✓</span>
             <span>Profesyonel Örnek Analizi</span>
         </div>
         <div class="feedback-content">
-            <strong>Senin Cümle:</strong>
-            <div class="correct-answer-highlight" style="margin: 10px 0;">
-                ${userInput}
-            </div>
-
-            <strong style="display: block; margin-top: 15px;">English Equivalent (${tense.name}):</strong>
-            <div class="correct-answer-highlight">
-                ${tense.examples[0].en}
-            </div>
-
-            <div style="margin-top: 15px; padding: 15px; background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%); border-left: 3px solid var(--primary); border-radius: 6px;">
-                <strong style="color: var(--primary); display: block; margin-bottom: 8px;">🔬 Yapı Analizi:</strong>
-                <div style="font-size: 12px; color: var(--text); line-height: 1.7;">
-                    <strong>Formula Kullanılan:</strong> ${tense.formula[0].text.split('<br>')[0]}<br><br>
-                    <strong>Neden Bu Şekilde?</strong> ${tense.rule}
-                </div>
-            </div>
-
-            <div class="motivational-box">
-                ⭐ Harika! Bu yapıyı anladın. Şimdi "Adım 2"ye geç ve zamanı tanımaya çalış!
-            </div>
+            <strong>Senin Cümle:</strong> ${userInput}
+            <br><br>
+            <strong>English (${tense.name}):</strong>
+            <div class="english-display" style="margin: 8px 0;">${tense.examples[0].en}</div>
+            <strong>Formula:</strong> ${tense.formula[0].text.split('<br>')[0]}
         </div>
     `;
 }
 
 function identifyTense() {
-    const answer = document.getElementById('identify-answer').value.trim();
+    const answer = document.getElementById('identify-answer').value.trim().toLowerCase();
     const feedback = document.getElementById('feedback-identify');
 
     if (!answer) {
@@ -1324,7 +1167,6 @@ function identifyTense() {
         return;
     }
 
-    // Find matching tense
     let found = false;
     let foundTense = null;
 
@@ -1340,16 +1182,12 @@ function identifyTense() {
         feedback.className = 'feedback-box correct show';
         feedback.innerHTML = `
             <div class="feedback-header">
-                <span class="feedback-icon">🎉</span>
-                <span>Doğru! Mükemmel Tanı!</span>
+                <span>🎉</span>
+                <span>Doğru Tanı!</span>
             </div>
             <div class="feedback-content">
                 <strong>Bulduğun Zaman:</strong> ${foundTense.name}
-                <br><strong>Kodu:</strong> ${foundTense.code}
-                <br><br>
-                <div class="tip-box">
-                    <strong>Tanı Yeteneğin:</strong> Bu zamanı doğru tanıman, sen formula'yı çok iyi öğrendiğini gösteriyor!
-                </div>
+                <br><strong>Formula:</strong> ${foundTense.formula[0].text.split('<br>')[0]}
             </div>
         `;
         stats.correct++;
@@ -1358,15 +1196,8 @@ function identifyTense() {
         feedback.className = 'feedback-box incorrect show';
         feedback.innerHTML = `
             <div class="feedback-header">
-                <span class="feedback-icon">❌</span>
-                <span>Bir daha Dene!</span>
-            </div>
-            <div class="feedback-content">
-                Bulduğun: <strong>"${answer}"</strong>
-                <br><br>
-                <div class="tip-box">
-                    <strong>İpucu:</strong> 12 zamanı kontrol et. Timeline gösterimini, yardımcı fiilleri ve "-ing" / "-ed" eklerini düşün!
-                </div>
+                <span>❌</span>
+                <span>Bir Daha Dene</span>
             </div>
         `;
         stats.wrong++;
@@ -1381,110 +1212,77 @@ function checkBuilt(idx) {
     const userAnswer = document.getElementById('build-answer').value.trim();
     const tense = TENSES_DB[idx];
     const feedback = document.getElementById('feedback-build');
+    const loading = document.getElementById('loading-ai');
 
     if (!userAnswer) {
         alert('Lütfen bir cümle yazınız!');
         return;
     }
 
-    // Similarity check
-    const correctAnswer = tense.examples[0].en.toLowerCase();
-    const userLower = userAnswer.toLowerCase();
-    
-    const words = correctAnswer.split(/\s+/);
-    const userWords = userLower.split(/\s+/);
-    const matchedWords = userWords.filter(w => correctAnswer.includes(w.toLowerCase())).length;
-    const similarity = matchedWords / Math.max(words.length, userWords.length);
+    loading.classList.add('show');
+    loading.innerHTML = '<div class="spinner"></div> AI Kontrol Ediliyor...';
 
-    if (similarity > 0.80) {
-        // CORRECT
-        feedback.className = 'feedback-box correct show';
-        feedback.innerHTML = `
-            <div class="feedback-header">
-                <span class="feedback-icon">🏆</span>
-                <span>Mükemmel! Profesyonel Seviyede Yazıldı!</span>
-            </div>
-            <div class="feedback-content">
-                <strong>Senin Cevab:</strong>
-                <div class="correct-answer-highlight">${userAnswer}</div>
+    setTimeout(() => {
+        const correctAnswer = buildSentence.en.toLowerCase();
+        const userLower = userAnswer.toLowerCase();
+        
+        const words = correctAnswer.split(/\s+/);
+        const userWords = userLower.split(/\s+/);
+        const matchedWords = userWords.filter(w => correctAnswer.includes(w)).length;
+        const similarity = matchedWords / Math.max(words.length, userWords.length);
 
-                <strong style="display: block; margin-top: 15px;">Doğru Cevab:</strong>
-                <div class="correct-answer-highlight">${tense.examples[0].en}</div>
+        loading.classList.remove('show');
 
-                <div class="motivational-box">
-                    🌟 ${tense.name} yapısını TAMAMEN ANLAMIŞSIN! Seni tebrik ediyorum. Başka bir zaman öğrenmeye başlayabilirsin!
+        if (similarity > 0.80) {
+            feedback.className = 'feedback-box correct show';
+            feedback.innerHTML = `
+                <div class="feedback-header">
+                    <span>🏆</span>
+                    <span>Mükemmel! Profesyonel Seviyede!</span>
                 </div>
-            </div>
-        `;
-        stats.correct++;
-        stats.streak++;
-    } else if (similarity > 0.55) {
-        // PARTIAL
-        feedback.className = 'feedback-box partial show';
-        feedback.innerHTML = `
-            <div class="feedback-header">
-                <span class="feedback-icon">🤔</span>
-                <span>Yakın! Bazı Düzeltmeler Lazım</span>
-            </div>
-            <div class="feedback-content">
-                <strong>Senin Cevab:</strong>
-                <div class="correct-answer-highlight">${userAnswer}</div>
-
-                <strong style="display: block; margin-top: 15px;">Doğru Şekil:</strong>
-                <div class="correct-answer-highlight">${tense.examples[0].en}</div>
-
-                <div style="margin-top: 15px; padding: 15px; background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%); border-left: 3px solid var(--warning); border-radius: 6px;">
-                    <strong style="color: var(--warning); display: block; margin-bottom: 8px;">📖 Düzeltme Noktaları:</strong>
-                    <div style="font-size: 12px; color: var(--text); line-height: 1.7;">
-                        1. Formula'yı kontrol et: ${tense.formula[0].text.split('<br>')[0]}
-                        <br>2. Yardımcı fiil (am/is/are, was/were, have/has vb.) doğru mu?
-                        <br>3. Fiil şekli doğru mu? (-ing, -ed, Past Participle vb.)
-                    </div>
+                <div class="feedback-content">
+                    <strong>Doğru Cevab:</strong> ${buildSentence.en}
+                    <br><br>
+                    ⭐ ${tense.name} yapısını tamamen anlamışsın!
                 </div>
-            </div>
-        `;
-        stats.wrong++;
-        stats.streak = 0;
-    } else {
-        // WRONG
-        feedback.className = 'feedback-box incorrect show';
-        feedback.innerHTML = `
-            <div class="feedback-header">
-                <span class="feedback-icon">❌</span>
-                <span>Daha Fazla Çalışman Lazım</span>
-            </div>
-            <div class="feedback-content">
-                <strong>Senin Cevab:</strong>
-                <div style="background: #fee2e2; padding: 10px; border-left: 3px solid var(--error); border-radius: 6px; margin: 10px 0; font-size: 12px;">
-                    ${userAnswer}
+            `;
+            stats.correct++;
+            stats.streak++;
+        } else if (similarity > 0.55) {
+            feedback.className = 'feedback-box incorrect show';
+            feedback.innerHTML = `
+                <div class="feedback-header">
+                    <span>🤔</span>
+                    <span>Yakın! Düzelt</span>
                 </div>
-
-                <strong style="display: block; margin-top: 15px;">Doğru Cevab:</strong>
-                <div class="correct-answer-highlight">${tense.examples[0].en}</div>
-
-                <div style="margin-top: 15px; padding: 15px; background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); border-left: 3px solid var(--error); border-radius: 6px;">
-                    <strong style="color: var(--error); display: block; margin-bottom: 10px;">🔍 Hata Analizi:</strong>
-                    <div style="font-size: 12px; color: var(--text); line-height: 1.7;">
-                        <strong>Ne Eksik?</strong>
-                        <br>✗ Formula: ${tense.formula[0].text.split('<br>')[0]}
-                        <br>✓ Kontrol Et ve Tekrar Dene
-                    </div>
+                <div class="feedback-content">
+                    <strong>Doğru Şekil:</strong> ${buildSentence.en}
+                    <br><br>
+                    <strong>Formula:</strong> ${tense.formula[0].text.split('<br>')[0]}
                 </div>
-
-                <div class="tip-box" style="margin-top: 15px;">
-                    <strong>Öğrenmen İçin Tavsiyeleri:</strong>
-                    <br>1. "Örnek Cümleler" bölümünü tekrar oku
-                    <br>2. Sık yapılan hataları inceleme (Diğer öğrenciler sıklıkla bu hatalarda yapıyor!)
-                    <br>3. Formula'yı yazarak ezberle
+            `;
+            stats.wrong++;
+            stats.streak = 0;
+        } else {
+            feedback.className = 'feedback-box incorrect show';
+            feedback.innerHTML = `
+                <div class="feedback-header">
+                    <span>❌</span>
+                    <span>Daha Çalış</span>
                 </div>
-            </div>
-        `;
-        stats.wrong++;
-        stats.streak = 0;
-    }
+                <div class="feedback-content">
+                    <strong>Doğru Cevab:</strong> ${buildSentence.en}
+                    <br><br>
+                    Örnekleri tekrar oku ve sık yapılan hataları düşün!
+                </div>
+            `;
+            stats.wrong++;
+            stats.streak = 0;
+        }
 
-    stats.total++;
-    updateStats();
+        stats.total++;
+        updateStats();
+    }, 1500);
 }
 
 function resetPractice() {
@@ -1500,15 +1298,9 @@ function updateStats() {
     document.getElementById('stat-wrong').textContent = stats.wrong;
     document.getElementById('stat-streak').textContent = stats.streak;
     
-    const accuracy = stats.total > 0 
-        ? Math.round((stats.correct / stats.total) * 100) 
-        : 0;
+    const accuracy = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
     document.getElementById('stat-accuracy').textContent = accuracy + '%';
 }
-
-// ════════════════════════════════════════════════════════════════════════
-// INIT
-// ════════════════════════════════════════════════════════════════════════
 
 init();
 </script>
