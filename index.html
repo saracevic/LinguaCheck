@@ -827,16 +827,18 @@ try {
   throw new Error("Model düzgün JSON dönmedi");
   }
     showFeedback(result, userAnswer);
-  } catch(e) {
-    document.getElementById('loading-wrap').classList.remove('show');
-    document.getElementById('btn-check').disabled = false;
+catch(e) {
+  document.getElementById('loading-wrap').classList.remove('show');
+  document.getElementById('btn-check').disabled = false;
 
-    let errMsg = 'API anahtarını kontrol et veya internet bağlantını dene.';
-    if (e.message && e.message.includes('API_KEY')) {
-      errMsg = 'Geçersiz API anahtarı. Lütfen doğru Gemini API anahtarını gir.';
-    } else if (e.message && e.message.includes('quota')) {
-      errMsg = 'Günlük istek limitine ulaştın. Yarın tekrar dene.';
-    }
+  console.error('Tam hata:', e); // Browser konsolunda hata detayını görmek için
+  
+  let errMsg = 'API anahtarını kontrol et veya internet bağlantını dene.';
+  if (e.message && e.message.includes('API_KEY')) {
+    errMsg = 'Geçersiz API anahtarı. Lütfen doğru Gemini API anahtarını gir.';
+  } else if (e.message && e.message.includes('quota')) {
+    errMsg = 'Günlük istek limitine ulaştın. Yarın tekrar dene.';
+  }
 
     document.getElementById('feedback-panel').className = 'feedback-panel wrong show';
     document.getElementById('feedback-panel').innerHTML = `
