@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Grammar Master — 12 Tense Tutor</title>
+    <title>English Tenses — Visual Timeline Learning</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -34,7 +34,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -53,187 +53,273 @@
         .tagline {
             font-size: 14px;
             opacity: 0.9;
-            letter-spacing: 1px;
-            text-transform: uppercase;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
 
-        .sidebar {
+        .tense-card {
             background: var(--card);
             border-radius: 16px;
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            height: fit-content;
-            position: sticky;
-            top: 20px;
-        }
-
-        .stats {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .stat {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .stat-label {
-            color: var(--text-muted);
-            font-size: 13px;
-        }
-
-        .stat-value {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .tense-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .tense-btn {
-            padding: 10px 12px;
-            background: var(--bg);
-            border: 1.5px solid var(--border);
-            border-radius: 8px;
             cursor: pointer;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text);
             transition: all 0.3s;
-            text-align: left;
+            border: 2px solid transparent;
         }
 
-        .tense-btn:hover {
+        .tense-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary);
+        }
+
+        .tense-card.active {
             background: var(--primary-light);
             border-color: var(--primary);
         }
 
-        .tense-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
+        .tense-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
         }
 
-        .main-card {
+        .tense-subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .tense-structure {
+            background: #f0f4ff;
+            padding: 10px;
+            border-radius: 8px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .timeline-visual {
+            width: 100%;
+            height: 80px;
+            position: relative;
+            margin-bottom: 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg);
+            overflow: hidden;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #ccc;
+            transform: translateY(-50%);
+        }
+
+        .timeline-point {
+            position: absolute;
+            top: 50%;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .timeline-zone {
+            position: absolute;
+            top: 30%;
+            height: 40%;
+            opacity: 0.3;
+            border-radius: 4px;
+        }
+
+        .timeline-arc {
+            position: absolute;
+            top: 50%;
+            height: 30px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .timeline-labels {
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            font-size: 10px;
+            color: var(--text-muted);
+            padding: 0 10px;
+        }
+
+        .detail-view {
             background: var(--card);
             border-radius: 16px;
             padding: 30px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
         }
 
-        .tense-header {
+        .detail-view.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .detail-header {
             margin-bottom: 25px;
         }
 
-        .tense-name {
+        .detail-title {
             font-size: 28px;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 5px;
         }
 
-        .tense-turkish {
-            font-size: 14px;
+        .detail-subtitle {
             color: var(--text-muted);
-            margin-bottom: 15px;
+            font-size: 14px;
         }
 
-        .rule-box {
-            background: var(--primary-light);
+        .formula-box {
+            background: #f0f4ff;
             border-left: 4px solid var(--primary);
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .example-section {
-            margin-bottom: 25px;
-        }
-
-        .section-title {
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--text);
-            margin-bottom: 12px;
-            letter-spacing: 0.5px;
-        }
-
-        .examples {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .example {
-            background: #f0f9ff;
-            padding: 12px 15px;
-            border-radius: 8px;
-            border-left: 3px solid var(--primary);
+            font-family: 'IBM Plex Mono', monospace;
             font-size: 13px;
             line-height: 1.6;
         }
 
-        .example strong {
-            color: var(--primary);
-            display: block;
-            margin-bottom: 4px;
-            font-family: 'IBM Plex Mono', monospace;
+        .big-diagram {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: var(--bg);
+            border-radius: 12px;
+            border: 2px solid var(--border);
         }
 
-        .example-tr {
+        .big-timeline {
+            position: relative;
+            height: 150px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .big-timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #ddd;
+            z-index: 1;
+        }
+
+        .big-timeline-point {
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
+
+        .big-timeline-zone {
+            position: absolute;
+            top: 35%;
+            height: 30%;
+            opacity: 0.2;
+            border-radius: 6px;
+            z-index: 2;
+        }
+
+        .big-timeline-labels {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .examples-section {
+            margin: 30px 0;
+        }
+
+        .examples-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .example-block {
+            background: #f0f9ff;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .example-block strong {
+            color: var(--primary);
+            display: block;
+            font-family: 'IBM Plex Mono', monospace;
+            margin-bottom: 5px;
+        }
+
+        .example-block .tr {
             color: var(--text-muted);
             font-size: 12px;
-            margin-top: 4px;
+            margin-top: 5px;
             font-style: italic;
-        }
-
-        .usage-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .usage-box {
-            background: var(--bg);
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            font-size: 12px;
-            text-align: center;
-        }
-
-        .usage-box strong {
-            display: block;
-            color: var(--primary);
-            margin-bottom: 5px;
         }
 
         .quiz-section {
             background: #fef3c7;
-            border: 1px solid #fcd34d;
+            border: 2px solid #fcd34d;
             border-radius: 12px;
             padding: 20px;
-            margin-top: 25px;
+            margin-top: 30px;
         }
 
         .quiz-title {
@@ -331,51 +417,41 @@
             color: var(--error);
         }
 
-        .feedback strong {
-            display: block;
-            margin-bottom: 5px;
+        .stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--bg);
+            border-radius: 12px;
+            justify-content: center;
         }
 
-        .explanation {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 10px;
-            border-radius: 6px;
-            margin-top: 8px;
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
             font-size: 12px;
-            line-height: 1.5;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .progress {
-            background: var(--border);
-            height: 3px;
-            border-radius: 2px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--primary);
-            transition: width 0.3s;
+            color: var(--text-muted);
+            margin-top: 5px;
         }
 
         @media (max-width: 768px) {
             .grid {
                 grid-template-columns: 1fr;
             }
-            .sidebar {
-                position: static;
-            }
-            .main-card {
+            .detail-view {
                 padding: 20px;
             }
-            .tense-name {
-                font-size: 22px;
+            .big-timeline {
+                height: 120px;
             }
         }
     </style>
@@ -384,693 +460,240 @@
 
 <div class="container">
     <header>
-        <div class="logo">🎯 English Grammar Master</div>
-        <div class="tagline">12 İngilizce Zaman Yapısı Öğrenme Uygulaması</div>
+        <div class="logo">📊 English Tenses — Visual Learning</div>
+        <div class="tagline">12 Zamanı Timeline ile Öğren</div>
     </header>
 
-    <div class="grid">
-        <!-- SIDEBAR -->
-        <div class="sidebar">
-            <h3 style="margin-bottom: 15px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">📊 Gelişmen</h3>
-            <div class="stats">
-                <div class="stat">
-                    <span class="stat-label">✓ Doğru</span>
-                    <span class="stat-value" id="correct">0</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-label">✗ Yanlış</span>
-                    <span class="stat-value" id="wrong">0</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-label">🔥 Seri</span>
-                    <span class="stat-value" id="streak">0</span>
-                </div>
-            </div>
-
-            <h3 style="margin-top: 25px; margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">⏰ Zamanlar</h3>
-            <div class="tense-list" id="tense-list"></div>
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-value" id="correct">0</div>
+            <div class="stat-label">✓ Doğru</div>
         </div>
-
-        <!-- MAIN CONTENT -->
-        <div class="main-card">
-            <div class="progress">
-                <div class="progress-fill" id="progress" style="width: 0%"></div>
-            </div>
-
-            <div id="tense-content"></div>
+        <div class="stat-item">
+            <div class="stat-value" id="wrong">0</div>
+            <div class="stat-label">✗ Yanlış</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="streak">0</div>
+            <div class="stat-label">🔥 Seri</div>
         </div>
     </div>
+
+    <!-- TENSE CARDS GRID -->
+    <div class="grid" id="tenses-grid"></div>
+
+    <!-- DETAIL VIEW -->
+    <div class="detail-view" id="detail-view"></div>
 </div>
 
 <script>
 // ════════════════════════════════════════════════════════════════════════
-// TENSES DATABASE
+// TENSES DATABASE WITH VISUAL DATA
 // ════════════════════════════════════════════════════════════════════════
 
 const TENSES = [
     {
         id: 0,
         name: 'Simple Present',
-        turkish: 'Basit Şimdiki Zaman',
-        rule: 'Habitual action, general truth, facts. Düzenli tekrarlanan eylemler, genel gerçekler için kullanılır.',
-        structure: 'I/You/We/They + V | He/She/It + V+s',
-        explanation: `
-            <strong>Tanım:</strong> Alışkanlık, sabit gerçekler veya her gün tekrarlanan eylemler için kullanılır.
-            <br><strong>Kurması:</strong> Pozitif cümlelerde fiil + "s" takısı (3. tekil şahıs için)
-            <br><strong>Zaman İşareti:</strong> every day, usually, always, often, sometimes
-        `,
-        usage: [
-            { title: 'Alışkanlık', desc: 'Her gün yapılan iş' },
-            { title: 'Genel Gerçek', desc: 'Değişmeyen durumlar' },
-            { title: 'Takvim', desc: 'Sabitlenmiş zamanlar' }
-        ],
+        turkish: 'Basit Şimdiki',
+        formula: 'V (base form) | V + s (3rd person)',
+        timeline: { past: 'gray', present: 'blue-dots', future: 'gray' },
+        diagram: 'Past ----X X X X X X---- Present ---- Future\n(Habit: She studies English)',
+        rule: 'Alışkanlık, genel gerçekler',
         examples: [
-            {
-                en: 'I eat breakfast every morning.',
-                tr: 'Ben her sabah kahvaltı yerim.',
-                wrong: 'I eats breakfast every morning.',
-                explanation: 'Çünkü "I" ilk tekil şahıs; "s" takısı sadece he/she/it için eklenir.'
-            },
-            {
-                en: 'She plays tennis on Sundays.',
-                tr: 'O, pazarları tenis oynar.',
-                wrong: 'She play tennis on Sundays.',
-                explanation: 'He/She/It ile her zaman fiil + "s" eklenir. "plays" doğru.'
-            },
-            {
-                en: 'They go to the market on Fridays.',
-                tr: 'Onlar cuma günleri pazara giderler.',
-                wrong: 'They goes to the market on Fridays.',
-                explanation: 'They (çoğul) ile "s" takısı eklenmez. "go" doğru.'
-            },
-            {
-                en: 'The sun rises in the east.',
-                tr: 'Güneş doğudan doğar.',
-                wrong: 'The sun rise in the east.',
-                explanation: 'Genel gerçek için basit şimdiki; "rises" doğru.'
-            }
+            { en: 'I eat breakfast every day.', tr: 'Her gün kahvaltı yerim.' },
+            { en: 'She plays tennis.', tr: 'O tenis oynar.' },
+            { en: 'They go to school.', tr: 'Onlar okula gidiyorlar.' }
         ],
         quiz: [
-            {
-                question: 'Türkçe: "O her gün spor yapar."',
-                answer: 'She exercises every day.',
-                hints: ['She → +s takısı eklenir', 'every day → alışkanlık göstergesi']
-            },
-            {
-                question: 'Türkçe: "Biz pazar günü pazara gideriz."',
-                answer: 'We go to the market on Sunday.',
-                hints: ['We → "s" takısı YOK', 'on Sunday → gün belirtmek']
-            }
+            { q: 'Türkçe: "O her gün yürüyüş yapar."', a: 'She walks every day.' }
         ]
     },
     {
         id: 1,
         name: 'Present Continuous',
-        turkish: 'Şu Anki Devamlı Zaman',
-        rule: 'Right now happening. Şu anda yapılmakta olan eylemler.',
-        structure: 'am/is/are + V-ing',
-        explanation: `
-            <strong>Tanım:</strong> Konuşmanın yapıldığı anda gerçekleşmekte olan eylemleri anlatır.
-            <br><strong>Kurması:</strong> am/is/are + fiilin -ing hali
-            <br><strong>Zaman İşareti:</strong> now, right now, at this moment, these days
-        `,
-        usage: [
-            { title: 'Şu An', desc: 'Konuşma sırasında devam eden işler' },
-            { title: 'Geçici', desc: 'Bu dönem için geçici durumlar' },
-            { title: 'Geleceği', desc: 'Planlanmış gelecek eylemler' }
-        ],
+        turkish: 'Şu Anki Devamlı',
+        formula: 'am/is/are + V-ing',
+        timeline: { past: 'gray', present: 'red-arc', future: 'gray' },
+        diagram: 'Past ----Present (ongoing)----- Future\n(Now: You are studying)',
+        rule: 'Şu anda yapılmakta olan işler',
         examples: [
-            {
-                en: 'I am reading a book right now.',
-                tr: 'Ben şu anda bir kitap okuyorum.',
-                wrong: 'I am read a book right now.',
-                explanation: 'Present continuous = am/is/are + V-ing. "reading" doğru; "read" yanlış.'
-            },
-            {
-                en: 'She is studying for her exam.',
-                tr: 'O sınav için çalışmaktadır.',
-                wrong: 'She is study for her exam.',
-                explanation: '-ing hali gerekli: "studying" doğru.'
-            },
-            {
-                en: 'They are playing football in the park.',
-                tr: 'Onlar parkta futbol oynamaktadırlar.',
-                wrong: 'They are play football in the park.',
-                explanation: 'are + play-ing = "are playing" doğru.'
-            },
-            {
-                en: 'What are you doing?',
-                tr: 'Sen ne yapıyorsun?',
-                wrong: 'What are you do?',
-                explanation: 'Soru formunda da -ing hali korunur.'
-            }
+            { en: 'I am reading a book.', tr: 'Bir kitap okuyorum.' },
+            { en: 'She is studying.', tr: 'O çalışıyor.' },
+            { en: 'They are playing football.', tr: 'Onlar futbol oynuyorlar.' }
         ],
         quiz: [
-            {
-                question: 'Türkçe: "Onlar şu anda sınava girmektedir."',
-                answer: 'They are taking the exam right now.',
-                hints: ['are + V-ing iki kısım var', 'take → taking']
-            },
-            {
-                question: 'Türkçe: "Ben bilgisayardan oynuyorum."',
-                answer: 'I am playing on the computer.',
-                hints: ['I → am kullan', 'V → V-ing haline çevir']
-            }
+            { q: 'Türkçe: "Onlar şu anda bir film izliyorlar."', a: 'They are watching a movie.' }
         ]
     },
     {
         id: 2,
         name: 'Simple Past',
         turkish: 'Geçmiş Zaman',
-        rule: 'Finished action in the past. Geçmişte tamamlanmış eylemler.',
-        structure: 'V-ed (regular) | V-changed (irregular)',
-        explanation: `
-            <strong>Tanım:</strong> Geçmişte tamamlanmış ve biten eylemleri anlatır.
-            <br><strong>Kurması:</strong> Regular: fiil + -ed | Irregular: değişir (go→went, eat→ate)
-            <br><strong>Zaman İşareti:</strong> yesterday, last week, ago, in 2023, when I was 10
-        `,
-        usage: [
-            { title: 'Bitmiş İş', desc: 'Geçmişte tamamlanan eylemleri' },
-            { title: 'Anı', desc: 'Belirli zamanlardaki eylemler' },
-            { title: 'Sıra', desc: 'Geçmişte birbiri ardına gelen olaylar' }
-        ],
+        formula: 'V-ed (regular) | V-changed (irregular)',
+        timeline: { past: 'blue-point', present: 'gray', future: 'gray' },
+        diagram: 'Past (X) ---- Present ---- Future\n(Finished: You studied yesterday)',
+        rule: 'Geçmişte tamamlanmış eylemler',
         examples: [
-            {
-                en: 'I learned English last year.',
-                tr: 'Geçen yıl İngilizce öğrendim.',
-                wrong: 'I learn English last year.',
-                explanation: '"last year" geçmiş zamandır → Simple Past kullan. "learned" doğru.'
-            },
-            {
-                en: 'She went to London yesterday.',
-                tr: 'Dün o Londra\'ya gitti.',
-                wrong: 'She goed to London yesterday.',
-                explanation: '"go" düzensiz fiil. Past: "went" (goed yok!)'
-            },
-            {
-                en: 'They watched a movie last night.',
-                tr: 'Dün gece bir film izlediler.',
-                wrong: 'They watching a movie last night.',
-                explanation: 'Past Continuous değil Simple Past. "watched" doğru.'
-            },
-            {
-                en: 'Did you eat breakfast this morning?',
-                tr: 'Bu sabah kahvaltı yaptın mı?',
-                wrong: 'Did you ate breakfast this morning?',
-                explanation: 'Sorular: Did + V. "eat" doğru; "ate" yanlış.'
-            }
+            { en: 'I learned English last year.', tr: 'Geçen yıl İngilizce öğrendim.' },
+            { en: 'She went to London.', tr: 'O Londra\'ya gitti.' },
+            { en: 'They watched a movie.', tr: 'Onlar bir film izlediler.' }
         ],
         quiz: [
-            {
-                question: 'Türkçe: "O dün markete gitti ve alışveriş yaptı."',
-                answer: 'She went to the market yesterday and went shopping.',
-                hints: ['go → went (irregular)', 'yesterday → Simple Past', 'went shopping → geçmiş tamamlı']
-            },
-            {
-                question: 'Türkçe: "Siz geçen hafta sınava giriyor muydunuz?"',
-                answer: 'Did you take the exam last week?',
-                hints: ['take → took (irregular)', 'Did + V yapısı sorular için']
-            }
+            { q: 'Türkçe: "Dün ben parkta oynattım."', a: 'I played in the park yesterday.' }
         ]
     },
     {
         id: 3,
         name: 'Past Continuous',
-        turkish: 'Geçmiş Devamlı Zaman',
-        rule: 'Was/Were doing in the past. Geçmişte devam eden eylemler.',
-        structure: 'was/were + V-ing',
-        explanation: `
-            <strong>Tanım:</strong> Geçmişte belirli bir anda devam etmekte olan eylemleri anlatır.
-            <br><strong>Kurması:</strong> was/were + V-ing
-            <br><strong>Zaman İşareti:</strong> while, when, at 3 o\'clock yesterday, during the meeting
-            <br><strong>Notlar:</strong> Sık Simple Past ile karışır. Was/were + ing = durum devam ediyor
-        `,
-        usage: [
-            { title: 'Anlık Durum', desc: 'Belirli zamanda devam eden eylem' },
-            { title: 'Araya Giren', desc: 'Araya gelen eylem tarafından kesilen durum' },
-            { title: 'Kesişme', desc: 'İki eş zamanlı geçmiş eylem' }
-        ],
+        turkish: 'Geçmiş Devamlı',
+        formula: 'was/were + V-ing',
+        timeline: { past: 'red-arc', present: 'gray', future: 'gray' },
+        diagram: 'Past (ongoing) --X-- Present ---- Future\n(When: You were studying)',
+        rule: 'Geçmişte belirli anda devam eden',
         examples: [
-            {
-                en: 'I was sleeping when the phone rang.',
-                tr: 'Telefon çaldığında ben uyuyordum.',
-                wrong: 'I was sleep when the phone rang.',
-                explanation: 'was + V-ing şekli gerekli. "sleeping" doğru.'
-            },
-            {
-                en: 'She was studying while he was cooking.',
-                tr: 'O yemek pişirirken, o çalışıyordu.',
-                wrong: 'She studied while he cooked.',
-                explanation: 'Aynı anda devam eden eylemlerde Past Continuous kullan.'
-            },
-            {
-                en: 'They were playing football at 5 PM yesterday.',
-                tr: 'Dün saat 5\'te futbol oynuyorlardı.',
-                wrong: 'They played football at 5 PM yesterday.',
-                explanation: 'Belirli zamanda devam eden durum → Past Continuous.'
-            },
-            {
-                en: 'What were you doing when I called?',
-                tr: 'Seni aradığımda sen ne yapıyordun?',
-                wrong: 'What did you do when I called?',
-                explanation: 'Yapılmakta olan durum → Past Continuous.'
-            }
+            { en: 'I was sleeping when you called.', tr: 'Sen aradığında ben uyuyordum.' },
+            { en: 'She was studying.', tr: 'O çalışıyordu.' },
+            { en: 'They were playing.', tr: 'Onlar oynuyorlardı.' }
         ],
         quiz: [
-            {
-                question: 'Türkçe: "Öğretmen konuşurken, öğrenciler dinliyorlardı."',
-                answer: 'The teacher was speaking while the students were listening.',
-                hints: ['was + V-ing her iki olay', 'while = aynı anda']
-            },
-            {
-                question: 'Türkçe: "Saat 10\'da ben uyuyordum."',
-                answer: 'I was sleeping at 10 o\'clock.',
-                hints: ['belirli zaman + was + V-ing', 'sleep → sleeping']
-            }
+            { q: 'Türkçe: "Telefon çaldığında ben yemek yiyordum."', a: 'I was eating when the phone rang.' }
         ]
     },
     {
         id: 4,
         name: 'Present Perfect',
-        turkish: 'Şimdiki Zaman Tamamlanmış',
-        rule: 'Recently completed or continues to now. Yakın geçmişte başlayan, hala etkisi devam eden.',
-        structure: 'have/has + V-ed (past participle)',
-        explanation: `
-            <strong>Tanım:</strong> Yakın geçmişte başlayan veya bitan, şu ana kadar etkisi devam eden eylemleri anlatır.
-            <br><strong>Kurması:</strong> have/has + Past Participle
-            <br><strong>Zaman İşareti:</strong> yet, already, ever, never, just, recently, for, since
-            <br><strong>Kritik:</strong> "zamanı belirtme" (yesterday, last week) yok! Geçmişi gösterir ama zaman belirtmez.
-        `,
-        usage: [
-            { title: 'Az Önce', desc: 'Yakında tamamlanan işler (just)' },
-            { title: 'Tecrübe', desc: 'Hayatta hiç/şu ana kadar (never/ever)' },
-            { title: 'Devam', desc: 'Geçmişten başlayıp devam eden (for/since)' }
-        ],
+        turkish: 'Şimdiki Tamamlanmış',
+        formula: 'have/has + Past Participle',
+        timeline: { past: 'yellow-arc', present: 'yellow-circle', future: 'gray' },
+        diagram: 'Past -----→ Present ---- Future\n(Recent: You have studied)',
+        rule: 'Yakın geçmişten başlayan, hala etki var',
         examples: [
-            {
-                en: 'I have finished my homework.',
-                tr: 'Ben ödevimi bitirdim (hala etkileri var).',
-                wrong: 'I have finish my homework.',
-                explanation: 'have + Past Participle. "finished" doğru; "finish" yanlış.'
-            },
-            {
-                en: 'She has never been to Paris.',
-                tr: 'O, Paris\'e hiç gitmedi (hayatında).',
-                wrong: 'She has never go to Paris.',
-                explanation: 'has + Past Participle. "been" (go→be) doğru.'
-            },
-            {
-                en: 'They have already eaten dinner.',
-                tr: 'Onlar çoktan akşam yemeğini yediler.',
-                wrong: 'They have already eat dinner.',
-                explanation: 'have + Past Participle. "eaten" doğru.'
-            },
-            {
-                en: 'I have lived here for 5 years.',
-                tr: '5 yıldır burada yaşıyorum (hala yaşıyorum).',
-                wrong: 'I have been live here for 5 years.',
-                explanation: 'have lived doğru; bu olay geçmişte başlayıp şimdi devam ediyor.'
-            }
+            { en: 'I have finished my homework.', tr: 'Ödevimi bitirdim.' },
+            { en: 'She has never been to Paris.', tr: 'O Paris\'e hiç gitmedi.' },
+            { en: 'They have already eaten.', tr: 'Onlar çoktan yediler.' }
         ],
         quiz: [
-            {
-                question: 'Türkçe: "Ben bu kitabı henüz okumadım."',
-                answer: 'I have not read this book yet.',
-                hints: ['have/has + Past Participle', 'yet = henüz (olumsuz)']
-            },
-            {
-                question: 'Türkçe: "O 10 yıldır bu şirkette ��alışıyor."',
-                answer: 'She has worked in this company for 10 years.',
-                hints: ['for + süre → Present Perfect', 'worked (past participle)']
-            }
+            { q: 'Türkçe: "Ben bu kitabı okudım."', a: 'I have read this book.' }
         ]
     },
     {
         id: 5,
         name: 'Present Perfect Continuous',
-        turkish: 'Şimdiki Zaman Devamlı Tamamlanmış',
-        rule: 'Has been doing since/for. Geçmişten başlayıp şimdi devam eden eylemleri vurgular.',
-        structure: 'have/has + been + V-ing',
-        explanation: `
-            <strong>Tanım:</strong> Geçmişte başlayan ve şu ana kadar DEVAM eden eylemlerin süresi vurgular.
-            <br><strong>Kurması:</strong> have/has + been + V-ing
-            <br><strong>Zaman İşareti:</strong> for, since, all morning, all day, how long
-            <br><strong>Fark:</strong> Present Perfect (sonuç), Present Perfect Continuous (süre ve devam)
-        `,
-        usage: [
-            { title: 'Başlangıç', desc: 'Ne zamandan beri yapıyor' },
-            { title: 'Devam', desc: 'Hala yapılıyor' },
-            { title: 'Süre', desc: 'Ne kadar süre boyunca' }
-        ],
+        turkish: 'Şimdiki Devamlı Tamamlanmış',
+        formula: 'have/has + been + V-ing',
+        timeline: { past: 'green-arc-long', present: 'green-circle', future: 'gray' },
+        diagram: 'Past =========→ Present ---- Future\n(Duration: You have been studying for 3 hours)',
+        rule: 'Geçmişten başlayıp şimdi devam eden, süresi önemli',
         examples: [
-            {
-                en: 'I have been studying for 3 hours.',
-                tr: '3 saattir çalışıyorum (hala çalışıyor).',
-                wrong: 'I have studied for 3 hours.',
-                explanation: 'Süreyi vurgula: have + been + V-ing. "been studying" doğru.'
-            },
-            {
-                en: 'She has been living in Istanbul since 2020.',
-                tr: '2020\'den beri İstanbul\'da yaşıyor.',
-                wrong: 'She has lived in Istanbul since 2020.',
-                explanation: 'Süreyi/devamı vurgula → Present Perfect Continuous. "been living" daha doğru.'
-            },
-            {
-                en: 'They have been working all day.',
-                tr: 'Onlar bütün gün çalışmakta.',
-                wrong: 'They are working all day.',
-                explanation: '"all day" = başlamış ve devam ediyor → Perfect Continuous.'
-            },
-            {
-                en: 'How long have you been waiting?',
-                tr: 'Ne kadar zamandır bekliyor sunuz?',
-                wrong: 'How long have you waited?',
-                explanation: 'Süre sorulan → Continuous daha doğru.'
-            }
+            { en: 'I have been studying for 3 hours.', tr: '3 saattir çalışıyorum.' },
+            { en: 'She has been living here since 2020.', tr: '2020\'den beri burada yaşıyor.' },
+            { en: 'They have been working all day.', tr: 'Onlar bütün gün çalışmaktalar.' }
         ],
         quiz: [
-            {
-                question: 'Türkçe: "Ben bu sabahtan beri ders çalışıyorum."',
-                answer: 'I have been studying since this morning.',
-                hints: ['since + başlangıç zaman', 'have + been + studying']
-            },
-            {
-                question: 'Türkçe: "Onlar 2 saat boyunca futbol oynuyorlar."',
-                answer: 'They have been playing football for 2 hours.',
-                hints: ['for + süre', 'been + V-ing = devam eden']
-            }
+            { q: 'Türkçe: "2 saat boyunca oynuyorlar."', a: 'They have been playing for 2 hours.' }
         ]
     },
     {
         id: 6,
         name: 'Simple Future',
         turkish: 'Gelecek Zaman',
-        rule: 'Will do. Gelecekte yapılacak eylemler.',
-        structure: 'will + V (base form)',
-        explanation: `
-            <strong>Tanım:</strong> Gelecekte yapılacak planlanmamış veya belirlenmiş eylemler.
-            <br><strong>Kurması:</strong> will + fiil (temel form) | be going to + V
-            <br><strong>Zaman İşareti:</strong> tomorrow, next week, in 2025, soon, tonight
-            <br><strong>İkili Form:</strong> will (daha genellik), going to (kesin plan)
-        `,
-        usage: [
-            { title: 'Tahmini', desc: 'Geleceği tahmin etme' },
-            { title: 'Karar', desc: 'Anında verilen kararlar' },
-            { title: 'Söz', desc: 'Söz verme, taahhüt' }
-        ],
+        formula: 'will + V (base form)',
+        timeline: { past: 'gray', present: 'gray', future: 'blue-dots' },
+        diagram: 'Past ---- Present ---- Future (X X X X)\n(Will: You will study)',
+        rule: 'Gelecekte yapılacak eylemler',
         examples: [
-            {
-                en: 'I will call you tomorrow.',
-                tr: 'Seni yarın arayacağım.',
-                wrong: 'I will calls you tomorrow.',
-                explanation: 'will + V (temel form). "will call" doğru; "will calls" yanlış.'
-            },
-            {
-                en: 'She will be a doctor in the future.',
-                tr: 'O gelecekte doktor olacak.',
-                wrong: 'She will to be a doctor.',
-                explanation: 'will + be doğru; will to be yanlış.'
-            },
-            {
-                en: 'They will arrive next Monday.',
-                tr: 'Onlar gelecek pazartesi varış yapacaklar.',
-                wrong: 'They will arrived next Monday.',
-                explanation: 'will + V-base. "arrive" doğru; "arrived" yanlış.'
-            },
-            {
-                en: 'It will rain tomorrow.',
-                tr: 'Yarın yağmur yağacak.',
-                wrong: 'It will raining tomorrow.',
-                explanation: 'Future yapısında -ing yok. "will rain" doğru.'
-            }
+            { en: 'I will call you tomorrow.', tr: 'Seni yarın arayacağım.' },
+            { en: 'She will be a doctor.', tr: 'O doktor olacak.' },
+            { en: 'They will arrive next week.', tr: 'Onlar gelecek hafta gelecekler.' }
         ],
         quiz: [
-            {
-                question: 'Türkçe: "Ben sana söz veriyorum, başarılı olacağım."',
-                answer: 'I promise you, I will succeed.',
-                hints: ['will + V (base)', 'taahhüt/söz vermek']
-            },
-            {
-                question: 'Türkçe: "Hava çok güzel olacak."',
-                answer: 'It will be very nice.',
-                hints: ['will + be', 'tahmin, geleceği anlatır']
-            }
+            { q: 'Türkçe: "Ben sana yarın yardım edeceğim."', a: 'I will help you tomorrow.' }
         ]
     },
     {
         id: 7,
         name: 'Future Continuous',
-        turkish: 'Gelecek Devamlı Zaman',
-        rule: 'Will be doing. Gelecekte devam edecek eylemler.',
-        structure: 'will + be + V-ing',
-        explanation: `
-            <strong>Tanım:</strong> Gelecekte belirli bir zamanda devam edecek eylemleri anlatır.
-            <br><strong>Kurması:</strong> will + be + V-ing
-            <br><strong>Zaman İşareti:</strong> at 5 PM tomorrow, while, during
-            <br><strong>Kullanım:</strong> Belirli gelecek zamanda neler yapıyor olacağını söyler.
-        `,
-        usage: [
-            { title: 'Belirli Zaman', desc: 'Gelecekte belirli saatte devam eden' },
-            { title: 'Kesişme', desc: 'Aynı anda gerçekleşecek eylemler' },
-            { title: 'Tahmini', desc: 'Gelecekte bu saatte ne yapıyor olacak' }
-        ],
+        turkish: 'Gelecek Devamlı',
+        formula: 'will + be + V-ing',
+        timeline: { past: 'gray', present: 'gray', future: 'red-arc' },
+        diagram: 'Past ---- Present ---- Future (ongoing)\n(Will be: You will be studying)',
+        rule: 'Gelecekte belirli anda devam edecek',
         examples: [
-            {
-                en: 'I will be working at 9 AM tomorrow.',
-                tr: 'Yarın saat 9\'da ben çalışıyor olacağım.',
-                wrong: 'I will work at 9 AM tomorrow.',
-                explanation: 'Belirli zamanda devam eden → Future Continuous. "will be working" doğru.'
-            },
-            {
-                en: 'She will be studying while he is playing.',
-                tr: 'O oynayan sırada, o çalışıyor olacak.',
-                wrong: 'She will study while he is playing.',
-                explanation: '"while" = aynı anda → Continuous. "will be studying" doğru.'
-            },
-            {
-                en: 'They will be traveling next month.',
-                tr: 'Gelecek ay onlar seyahat edecekler.',
-                wrong: 'They will traveling next month.',
-                explanation: 'will + be + V-ing yapısı gerekli. "will be traveling" doğru.'
-            }
+            { en: 'I will be working at 9 AM tomorrow.', tr: 'Yarın saat 9\'da çalışıyor olacağım.' },
+            { en: 'She will be studying.', tr: 'O çalışıyor olacak.' },
+            { en: 'They will be playing.', tr: 'Onlar oynuyor olacaklar.' }
         ],
         quiz: [
-            {
-                question: 'Türkçe: "Saat 8\'de ben kahvaltı yapıyor olacağım."',
-                answer: 'I will be having breakfast at 8 o\'clock.',
-                hints: ['will + be + V-ing', 'belirli gelecek zaman']
-            },
-            {
-                question: 'Türkçe: "O okula giderken, ben çalışıyor olacağım."',
-                answer: 'I will be studying while she goes to school.',
-                hints: ['while = aynı anda', 'will be + V-ing']
-            }
+            { q: 'Türkçe: "Saat 5\'te ben çalışıyor olacağım."', a: 'I will be working at 5 o\'clock.' }
         ]
     },
     {
         id: 8,
         name: 'Past Perfect',
         turkish: 'Geçmiş Zamanın Geçmişi',
-        rule: 'Had done before another past action. Geçmiş zamanda, bir olaydan daha önceki eylem.',
-        structure: 'had + V-ed (past participle)',
-        explanation: `
-            <strong>Tanım:</strong> Geçmişte olan bir olaydan ÖNCESİ tamamlanmış başka bir eylemi anlatır.
-            <br><strong>Kurması:</strong> had + Past Participle
-            <br><strong>Zaman İşareti:</strong> before, after, by the time, when, already
-            <br><strong>Örnek:</strong> "Sinema başladığında ben arkada biletleri almıştım." (bilet alma → sinema başlaması)
-        `,
-        usage: [
-            { title: 'Geri Dönüş', desc: 'Geçmişte bir olaydan öncesi' },
-            { title: 'İç İçe', desc: 'İki geçmiş eyleminin sırası' },
-            { title: 'Bitmişlik', desc: 'Önceden tamamlanmış durum' }
-        ],
+        formula: 'had + Past Participle',
+        timeline: { past: 'yellow-arc-left', present: 'gray', future: 'gray' },
+        diagram: 'Past (X earlier) ---- Past (X later) ---- Present ---- Future\n(Had: You had studied before)',
+        rule: 'Geçmiş zamanda bir olaydan öncesi',
         examples: [
-            {
-                en: 'I had finished my work before the boss arrived.',
-                tr: 'Patron gelmeden önce ben işimi bitirdim.',
-                wrong: 'I finished my work before the boss arrived.',
-                explanation: 'İki geçmiş olay: bitirme (earlier) → geliş (later) → had + V-ed doğru.'
-            },
-            {
-                en: 'She had learned English before she moved to America.',
-                tr: 'Amerika\'ya taşınmadan önce İngilizce öğrenmişti.',
-                wrong: 'She learned English before she moved to America.',
-                explanation: 'Önceki olay → Past Perfect. "had learned" doğru.'
-            },
-            {
-                en: 'By the time I arrived, they had already left.',
-                tr: 'Ben vardığımda onlar çoktan gitmişlerdi.',
-                wrong: 'By the time I arrived, they left.',
-                explanation: 'already (daha önceden) → Past Perfect. "had left" doğru.'
-            },
-            {
-                en: 'After he had eaten, he went to bed.',
-                tr: 'Yedikten sonra yatağa gitti.',
-                wrong: 'After he ate, he went to bed.',
-                explanation: 'Sequence: eat (had eaten) → bed. İlkinin Past Perfect.'
-            }
+            { en: 'I had finished before the boss arrived.', tr: 'Patron gelmeden bitirdim.' },
+            { en: 'She had left.', tr: 'O gitmişti.' },
+            { en: 'They had already eaten.', tr: 'Onlar çoktan yemişlerdi.' }
         ],
         quiz: [
-            {
-                question: 'Türkçe: "Ödevimi yaptıktan sonra dışarı çıktım."',
-                answer: 'After I had done my homework, I went out.',
-                hints: ['had + Past Participle (ilk olay)', 'went (sonraki olay)']
-            },
-            {
-                question: 'Türkçe: "O gelmeden önce ben çoktan hazırlanmıştım."',
-                answer: 'Before she came, I had already prepared.',
-                hints: ['had + prepared (önceki)', 'came (sonraki)']
-            }
+            { q: 'Türkçe: "O gelmeden önce ben çalışmıştım."', a: 'I had studied before she came.' }
         ]
     },
     {
         id: 9,
         name: 'Past Perfect Continuous',
-        turkish: 'Geçmiş Zamanın Geçmişi Devamlı',
-        rule: 'Had been doing for/since. Geçmiş zamanda, bir olaydan önce devam eden eylem.',
-        structure: 'had + been + V-ing',
-        explanation: `
-            <strong>Tanım:</strong> Geçmişte olan bir olaydan ÖNCESİ, belirli bir süredir devam eden eylemi anlatır.
-            <br><strong>Kurması:</strong> had + been + V-ing
-            <br><strong>Zaman İşareti:</strong> for, since, how long, when, by the time
-            <br><strong>Vurgu:</strong> SÜRELER vurgular. "2 saat çalışmıştım" (çalışmaya devam etmiştim)
-        `,
-        usage: [
-            { title: 'Süre', desc: 'Ne kadar süredir devam etmişti' },
-            { title: 'Başlangıç', desc: 'Ne zamandan beri devam etmişti' },
-            { title: 'Sonuç', desc: 'Yorgunluk, bitkinlik gibi etki' }
-        ],
+        turkish: 'Geçmiş Devamlı Tamamlanmış',
+        formula: 'had + been + V-ing',
+        timeline: { past: 'green-arc-left', present: 'gray', future: 'gray' },
+        diagram: 'Past (ongoing) ===X=== Past ---- Present ---- Future\n(Had been: You had been studying for hours)',
+        rule: 'Geçmişte bir olaydan öncesi devam eden, süresi önemli',
         examples: [
-            {
-                en: 'I had been working for 8 hours when the power went out.',
-                tr: 'Elektrik gitmeden önce 8 saattir çalışmaktaydım.',
-                wrong: 'I had worked for 8 hours when the power went out.',
-                explanation: 'Süreyi vurgula → Past Perfect Continuous. "had been working" doğru.'
-            },
-            {
-                en: 'She had been waiting since morning when he finally arrived.',
-                tr: 'O sabahtan beri beklemekteydi o gelinceye kadar.',
-                wrong: 'She had waited since morning when he arrived.',
-                explanation: 'Devam eden durum → had been waiting doğru.'
-            },
-            {
-                en: 'They had been playing for 2 hours before the match ended.',
-                tr: 'Maç bitmeden 2 saat oynamakta idiler.',
-                wrong: 'They were playing for 2 hours before the match ended.',
-                explanation: 'Past Perfect Continuous gerekli. "had been playing" doğru.'
-            }
+            { en: 'I had been working for 8 hours when the power went out.', tr: 'Elektrik gitmeden 8 saat çalışmaktaydım.' },
+            { en: 'She had been waiting since morning.', tr: 'O sabahtan beri beklemekteydi.' },
+            { en: 'They had been playing for 2 hours.', tr: 'Onlar 2 saat oynamakta idiler.' }
         ],
         quiz: [
-            {
-                question: 'Türkçe: "Telefon çalmadan 10 dakika çalışmakta idim."',
-                answer: 'I had been studying for 10 minutes when the phone rang.',
-                hints: ['had + been + V-ing', 'for + süre']
-            },
-            {
-                question: 'Türkçe: "Gelmeden önce 3 saat yürümüştü."',
-                answer: 'She had been walking for 3 hours before she arrived.',
-                hints: ['had been walking', 'for 3 hours']
-            }
+            { q: 'Türkçe: "Geldiğinde ben 3 saat bekliyordum."', a: 'I had been waiting for 3 hours when he came.' }
         ]
     },
     {
         id: 10,
         name: 'Future Perfect',
-        turkish: 'Gelecek Zamanın Tamamlanmışı',
-        rule: 'Will have done by. Gelecekte belirli bir zamanda öncesinde tamamlanacak eylem.',
-        structure: 'will + have + V-ed (past participle)',
-        explanation: `
-            <strong>Tanım:</strong> Gelecekte belirli bir zamana kadar tamamlanmış olacak eylemleri anlatır.
-            <br><strong>Kurması:</strong> will + have + Past Participle
-            <br><strong>Zaman İşareti:</strong> by tomorrow, by 5 PM, by the time, by 2025
-            <br><strong>Notlar:</strong> by + zaman = o zamanı yada o zamana kadar
-        `,
-        usage: [
-            { title: 'Tahmini', desc: 'Belirli zamana kadar bitmiş olacak' },
-            { title: 'Sıra', desc: 'Bir gelecek olaydan öncesi tamamlanmış' },
-            { title: 'Vaad', desc: 'Belirli zamana kadar yapılmış olacak' }
-        ],
+        turkish: 'Gelecek Tamamlanmışı',
+        formula: 'will + have + Past Participle',
+        timeline: { past: 'gray', present: 'gray', future: 'yellow-arc-right' },
+        diagram: 'Past ---- Present ---- Future (X earlier) ---- Future (X later)\n(Will have: You will have studied)',
+        rule: 'Gelecekte belirli zamana kadar tamamlanacak',
         examples: [
-            {
-                en: 'I will have finished my project by Friday.',
-                tr: 'Cuma günü kadar projeyi bitirmiş olacağım.',
-                wrong: 'I will finish my project by Friday.',
-                explanation: 'by + zaman = o zamana KADAR tamamlanmış → Future Perfect. "will have finished" doğru.'
-            },
-            {
-                en: 'She will have completed the course by next month.',
-                tr: 'Gelecek ay kursu bitirmiş olacak.',
-                wrong: 'She will complete the course by next month.',
-                explanation: 'by + gelecek zaman = Future Perfect. "will have completed" doğru.'
-            },
-            {
-                en: 'By the time you arrive, I will have prepared dinner.',
-                tr: 'Geldiğinde ben yemek hazırlanmış olacağım.',
-                wrong: 'By the time you arrive, I will prepare dinner.',
-                explanation: 'Senin gelişinden ÖNCE bitmiş olacak → Future Perfect.'
-            }
+            { en: 'I will have finished by Friday.', tr: 'Cuma günü kadar bitirmiş olacağım.' },
+            { en: 'She will have completed.', tr: 'O tamamlamış olacak.' },
+            { en: 'They will have arrived.', tr: 'Onlar varmış olacaklar.' }
         ],
         quiz: [
-            {
-                question: 'Türkçe: "Saat 6\'ya kadar bu iki örnek çözmüş olacağım."',
-                answer: 'I will have solved these two problems by 6 o\'clock.',
-                hints: ['will + have + solved', 'by + zaman']
-            },
-            {
-                question: 'Türkçe: "Yarın bu saatte biz Istanbul\'dan ayrılmış olacağız."',
-                answer: 'We will have left Istanbul by this time tomorrow.',
-                hints: ['will + have + left (past participle)']
-            }
+            { q: 'Türkçe: "Yarın bu saatte ben uyuyuyor olacağım."', a: 'I will have been sleeping by this time tomorrow.' }
         ]
     },
     {
         id: 11,
         name: 'Future Perfect Continuous',
-        turkish: 'Gelecek Zamanın Tamamlanmış Devamlısı',
-        rule: 'Will have been doing for/since. Gelecekte devam ettikten sonra tamamlanan durum.',
-        structure: 'will + have + been + V-ing',
-        explanation: `
-            <strong>Tanım:</strong> Gelecekte belirli bir zamana kadar ne KADAR SÜREDIR bir eylem yapılmış olacağını anlatır.
-            <br><strong>Kurması:</strong> will + have + been + V-ing
-            <br><strong>Zaman İşareti:</strong> by, for, since
-            <br><strong>En Ender Zaman:</strong> En az kullanılan zaman. Genelde "for" süreyi vurgular.
-        `,
-        usage: [
-            { title: 'Süre', desc: 'Ne kadar süredir yapılmış olacak' },
-            { title: 'Tamamlılık', desc: 'Belirli zamanda belirli süresi tamamlanmış' },
-            { title: 'Etki', desc: 'Sürenin yararı/zararı sonucu' }
-        ],
+        turkish: 'Gelecek Devamlı Tamamlanmışı',
+        formula: 'will + have + been + V-ing',
+        timeline: { past: 'gray', present: 'gray', future: 'green-arc-right' },
+        diagram: 'Past ---- Present ---- Future (===X===) ---- Future\n(Will have been: You will have been studying)',
+        rule: 'Gelecekte belirli zamana kadar ne kadar süredir devam edecek',
         examples: [
-            {
-                en: 'By next Friday, I will have been studying for 6 months.',
-                tr: 'Gelecek cuma günü 6 aydır ders çalışmış olacağım.',
-                wrong: 'By next Friday, I will have studied for 6 months.',
-                explanation: 'Sürenin DÜZEYİNİ vurgula → Future Perfect Continuous. "will have been studying" doğru.'
-            },
-            {
-                en: 'By the end of the year, she will have been working here for 3 years.',
-                tr: 'Yıl sonunda o 3 yıldır burada çalışmış olacak.',
-                wrong: 'By the end of the year, she will have worked here for 3 years.',
-                explanation: 'Zamanın süresi/düzeyi önemli → Future Perfect Continuous.'
-            },
-            {
-                en: 'When he retires, he will have been teaching for 40 years.',
-                tr: 'Emekliye ayrılınca 40 yıl öğretmenlik yapmış olacak.',
-                wrong: 'When he retires, he will have taught for 40 years.',
-                explanation: 'Süreli durum → Future Perfect Continuous.'
-            }
+            { en: 'By Friday, I will have been studying for 6 months.', tr: 'Cuma günü 6 aydır çalışmış olacağım.' },
+            { en: 'She will have been working.', tr: 'O çalışmış olacak.' },
+            { en: 'They will have been living here.', tr: 'Onlar burada yaşamış olacaklar.' }
         ],
         quiz: [
-            {
-                question: 'Türkçe: "Gelecek yıl bu tarihte 5 yıl buradasında olacağız."',
-                answer: 'By this date next year, we will have been here for 5 years.',
-                hints: ['will + have + been + here', 'for + süre']
-            },
-            {
-                question: 'Türkçe: "Sınav başlamasından önce 2 hafta çalışmış olacaksın."',
-                answer: 'By the time the exam starts, you will have been studying for 2 weeks.',
-                hints: ['will + have + been + studying', 'for + süre']
-            }
+            { q: 'Türkçe: "Yıl sonunda 5 yıl burada olacağız."', a: 'By the end of the year, we will have been here for 5 years.' }
         ]
     }
 ];
@@ -1079,145 +702,331 @@ const TENSES = [
 // STATE
 // ════════════════════════════════════════════════════════════════════════
 
-let currentTenseIndex = 0;
+let currentTenseIndex = -1;
 let correct = 0;
 let wrong = 0;
 let streak = 0;
-let currentQuizIndex = 0;
+let currentQuizIndex = {};
+
+TENSES.forEach(t => currentQuizIndex[t.id] = 0);
 
 // ════════════════════════════════════════════════════════════════════════
-// INITIALIZATION
+// TIMELINE VISUALIZATION
 // ════════════════════════════════════════════════════════════════════════
 
-function init() {
-    renderTenseList();
-    renderTenseContent(0);
-}
+function createSmallTimeline(timelineType) {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 300 80');
+    svg.setAttribute('style', 'width: 100%; height: 80px;');
 
-function renderTenseList() {
-    const list = document.getElementById('tense-list');
-    TENSES.forEach((tense, idx) => {
-        const btn = document.createElement('button');
-        btn.className = `tense-btn ${idx === 0 ? 'active' : ''}`;
-        btn.textContent = tense.name;
-        btn.onclick = () => switchTense(idx);
-        list.appendChild(btn);
-    });
-}
+    // Line
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', '20');
+    line.setAttribute('y1', '40');
+    line.setAttribute('x2', '280');
+    line.setAttribute('y2', '40');
+    line.setAttribute('stroke', '#ccc');
+    line.setAttribute('stroke-width', '2');
+    svg.appendChild(line);
 
-function switchTense(idx) {
-    currentTenseIndex = idx;
-    currentQuizIndex = 0;
-    document.querySelectorAll('.tense-btn').forEach((btn, i) => {
-        btn.classList.toggle('active', i === idx);
-    });
-    renderTenseContent(idx);
-    document.querySelector('.main-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function renderTenseContent(idx) {
-    const tense = TENSES[idx];
-    const progress = ((idx + 1) / TENSES.length) * 100;
-    document.getElementById('progress').style.width = progress + '%';
-
-    let usageHtml = '';
-    if (tense.usage) {
-        usageHtml = '<div class="usage-grid">';
-        tense.usage.forEach(u => {
-            usageHtml += `<div class="usage-box"><strong>${u.title}</strong>${u.desc}</div>`;
-        });
-        usageHtml += '</div>';
+    // Points & Arcs based on type
+    if (timelineType.present === 'blue-dots') {
+        // Simple Present: many dots at present
+        for (let i = 0; i < 5; i++) {
+            const x = 140 + (i - 2) * 15;
+            const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            dot.setAttribute('cx', x);
+            dot.setAttribute('cy', '40');
+            dot.setAttribute('r', '4');
+            dot.setAttribute('fill', '#3b82f6');
+            svg.appendChild(dot);
+        }
     }
+
+    if (timelineType.present === 'red-arc') {
+        // Present/Past Continuous: arc at present
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', 'M 100 40 Q 140 10, 180 40');
+        path.setAttribute('stroke', '#ef4444');
+        path.setAttribute('stroke-width', '3');
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke-dasharray', '5,5');
+        svg.appendChild(path);
+    }
+
+    if (timelineType.present === 'yellow-circle') {
+        // Present Perfect
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', '140');
+        circle.setAttribute('cy', '40');
+        circle.setAttribute('r', '6');
+        circle.setAttribute('fill', '#f59e0b');
+        svg.appendChild(circle);
+        
+        const pathBg = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        pathBg.setAttribute('d', 'M 40 40 Q 90 20, 140 40');
+        pathBg.setAttribute('stroke', '#f59e0b');
+        pathBg.setAttribute('stroke-width', '2');
+        pathBg.setAttribute('fill', 'none');
+        pathBg.setAttribute('opacity', '0.3');
+        svg.appendChild(pathBg);
+    }
+
+    if (timelineType.present === 'green-circle') {
+        // Present Perfect Continuous
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', '140');
+        circle.setAttribute('cy', '40');
+        circle.setAttribute('r', '6');
+        circle.setAttribute('fill', '#10b981');
+        svg.appendChild(circle);
+        
+        const pathBg = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        pathBg.setAttribute('d', 'M 20 40 Q 80 15, 140 40');
+        pathBg.setAttribute('stroke', '#10b981');
+        pathBg.setAttribute('stroke-width', '3');
+        pathBg.setAttribute('fill', 'none');
+        pathBg.setAttribute('opacity', '0.4');
+        svg.appendChild(pathBg);
+    }
+
+    if (timelineType.past === 'blue-point') {
+        // Simple Past: point at past
+        const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        dot.setAttribute('cx', '80');
+        dot.setAttribute('cy', '40');
+        dot.setAttribute('r', '5');
+        dot.setAttribute('fill', '#3b82f6');
+        svg.appendChild(dot);
+    }
+
+    if (timelineType.future === 'blue-dots') {
+        // Simple Future
+        for (let i = 0; i < 5; i++) {
+            const x = 200 + i * 15;
+            const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            dot.setAttribute('cx', x);
+            dot.setAttribute('cy', '40');
+            dot.setAttribute('r', '4');
+            dot.setAttribute('fill', '#3b82f6');
+            svg.appendChild(dot);
+        }
+    }
+
+    if (timelineType.future === 'red-arc') {
+        // Future Continuous
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', 'M 180 40 Q 220 10, 260 40');
+        path.setAttribute('stroke', '#ef4444');
+        path.setAttribute('stroke-width', '3');
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke-dasharray', '5,5');
+        svg.appendChild(path);
+    }
+
+    // Labels
+    const labels = ['Past', 'Present', 'Future'];
+    const positions = [40, 140, 240];
+    labels.forEach((label, i) => {
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('x', positions[i]);
+        text.setAttribute('y', '70');
+        text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('font-size', '11');
+        text.setAttribute('fill', '#64748b');
+        text.setAttribute('font-weight', '500');
+        text.textContent = label;
+        svg.appendChild(text);
+    });
+
+    return svg;
+}
+
+function createBigTimeline(tense) {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 400 120');
+    svg.setAttribute('style', 'width: 100%; height: 150px;');
+
+    // Main line
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', '40');
+    line.setAttribute('y1', '60');
+    line.setAttribute('x2', '360');
+    line.setAttribute('y2', '60');
+    line.setAttribute('stroke', '#ddd');
+    line.setAttribute('stroke-width', '3');
+    svg.appendChild(line);
+
+    // Determine colors
+    let pastColor = '#64748b';
+    let presentColor = '#3b82f6';
+    let futureColor = '#64748b';
+
+    if (tense.timeline.past.includes('blue')) pastColor = '#3b82f6';
+    if (tense.timeline.past.includes('yellow')) pastColor = '#f59e0b';
+    if (tense.timeline.past.includes('green')) pastColor = '#10b981';
+    if (tense.timeline.past.includes('red')) pastColor = '#ef4444';
+
+    if (tense.timeline.present.includes('blue')) presentColor = '#3b82f6';
+    if (tense.timeline.present.includes('yellow')) presentColor = '#f59e0b';
+    if (tense.timeline.present.includes('green')) presentColor = '#10b981';
+    if (tense.timeline.present.includes('red')) presentColor = '#ef4444';
+
+    if (tense.timeline.future.includes('blue')) futureColor = '#3b82f6';
+    if (tense.timeline.future.includes('yellow')) futureColor = '#f59e0b';
+    if (tense.timeline.future.includes('green')) futureColor = '#10b981';
+    if (tense.timeline.future.includes('red')) futureColor = '#ef4444';
+
+    // Points
+    const points = [
+        { x: 80, label: 'Past', color: pastColor },
+        { x: 200, label: 'Present', color: presentColor },
+        { x: 320, label: 'Future', color: futureColor }
+    ];
+
+    points.forEach(p => {
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', p.x);
+        circle.setAttribute('cy', '60');
+        circle.setAttribute('r', '8');
+        circle.setAttribute('fill', p.color);
+        svg.appendChild(circle);
+
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('x', p.x);
+        text.setAttribute('y', '100');
+        text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('font-size', '13');
+        text.setAttribute('font-weight', '600');
+        text.setAttribute('fill', '#1e293b');
+        text.textContent = p.label;
+        svg.appendChild(text);
+    });
+
+    return svg;
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// RENDERING
+// ════════════════════════════════════════════════════════════════════════
+
+function renderTensesGrid() {
+    const grid = document.getElementById('tenses-grid');
+    grid.innerHTML = '';
+
+    TENSES.forEach((tense, idx) => {
+        const card = document.createElement('div');
+        card.className = `tense-card ${idx === 0 ? 'active' : ''}`;
+        card.onclick = () => selectTense(idx);
+
+        card.innerHTML = `
+            <div class="tense-title">${tense.name}</div>
+            <div class="tense-subtitle">${tense.turkish}</div>
+            <div class="tense-structure">${tense.formula.replace(/\|/g, '<br>')}</div>
+            <div class="timeline-visual" id="timeline-${idx}"></div>
+        `;
+
+        grid.appendChild(card);
+
+        // Add timeline SVG
+        const timelineContainer = card.querySelector(`#timeline-${idx}`);
+        timelineContainer.appendChild(createSmallTimeline(tense.timeline));
+    });
+}
+
+function selectTense(idx) {
+    currentTenseIndex = idx;
+    document.querySelectorAll('.tense-card').forEach((card, i) => {
+        card.classList.toggle('active', i === idx);
+    });
+    renderDetailView(idx);
+}
+
+function renderDetailView(idx) {
+    const tense = TENSES[idx];
+    const detail = document.getElementById('detail-view');
 
     let examplesHtml = '';
     tense.examples.forEach(ex => {
         examplesHtml += `
-            <div class="example">
-                <strong>✓ ${ex.en}</strong>
-                <div class="example-tr">${ex.tr}</div>
-                <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,0,0,0.1); color: var(--error); font-size: 12px;">
-                    <strong>❌ Yanlış: ${ex.wrong}</strong>
-                    <div style="margin-top: 4px; color: var(--text-muted);">📝 ${ex.explanation}</div>
-                </div>
+            <div class="example-block">
+                <strong>${ex.en}</strong>
+                <div class="tr">${ex.tr}</div>
             </div>
         `;
     });
 
-    let quizHtml = '';
-    const quiz = tense.quiz[currentQuizIndex];
-    if (quiz) {
-        quizHtml = `
-            <div class="quiz-section">
-                <div class="quiz-title">✎ Seni Sınasın</div>
-                <div class="quiz-item">
-                    <div class="quiz-question">${quiz.question}</div>
-                    <input type="text" class="quiz-input" id="quiz-answer" placeholder="İngilizcesini yaz..." onkeypress="if(event.key==='Enter') checkQuiz()">
-                    <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">
-                        <strong>💡 İpuçları:</strong> ${quiz.hints.map(h => `<span style="display: inline-block; background: rgba(255, 193, 7, 0.1); padding: 3px 8px; border-radius: 4px; margin-right: 5px; margin-top: 5px;">${h}</span>`).join('')}
-                    </div>
-                    <div class="quiz-buttons">
-                        <button class="btn-check" onclick="checkQuiz()">Kontrol Et</button>
-                        <button class="btn-skip" onclick="skipQuiz()">Geç</button>
-                    </div>
-                    <div class="feedback" id="quiz-feedback"></div>
+    const quiz = tense.quiz[currentQuizIndex[idx] || 0];
+
+    detail.innerHTML = `
+        <div class="detail-header">
+            <div class="detail-title">${tense.name}</div>
+            <div class="detail-subtitle">${tense.turkish} — ${tense.rule}</div>
+        </div>
+
+        <div class="formula-box">
+            <strong>Formula:</strong><br>
+            ${tense.formula.replace(/\|/g, '<br>')}
+        </div>
+
+        <div class="big-diagram">
+            <strong style="font-size: 14px; display: block; margin-bottom: 15px;">Timeline Görselleştirmesi</strong>
+        </div>
+        <div id="big-timeline-container"></div>
+
+        <div class="big-diagram">
+            <strong style="font-size: 14px; display: block; margin-bottom: 10px;">Açıklama</strong>
+            <div style="text-align: left; font-size: 13px; color: var(--text-muted); line-height: 1.8;">
+                ${tense.diagram.replace(/\n/g, '<br>')}
+            </div>
+        </div>
+
+        <div class="examples-section">
+            <div class="examples-title">Örnek Cümleler</div>
+            ${examplesHtml}
+        </div>
+
+        <div class="quiz-section">
+            <div class="quiz-title">✎ Senin Sıran — Çevir!</div>
+            <div class="quiz-item">
+                <div class="quiz-question">${quiz.q}</div>
+                <input type="text" class="quiz-input" id="quiz-answer" placeholder="İngilizce çeviri..." onkeypress="if(event.key==='Enter') checkQuiz()">
+                <div class="quiz-buttons">
+                    <button class="btn-check" onclick="checkQuiz()">Kontrol Et</button>
+                    <button class="btn-skip" onclick="skipQuiz()">Geç</button>
                 </div>
-            </div>
-        `;
-    }
-
-    document.getElementById('tense-content').innerHTML = `
-        <div class="tense-header">
-            <div class="tense-name">${tense.name}</div>
-            <div class="tense-turkish">${tense.turkish}</div>
-        </div>
-
-        <div class="rule-box">
-            <strong>Kural:</strong> ${tense.rule}<br><br>
-            <strong>Yapısı:</strong> <code style="background: rgba(0,0,0,0.05); padding: 4px 8px; border-radius: 4px;">${tense.structure}</code><br><br>
-            ${tense.explanation}
-        </div>
-
-        ${usageHtml}
-
-        <div class="example-section">
-            <div class="section-title">📚 Örnekler (Doğru ↔ Yanlış)</div>
-            <div class="examples">
-                ${examplesHtml}
+                <div class="feedback" id="quiz-feedback"></div>
             </div>
         </div>
-
-        ${quizHtml}
     `;
+
+    // Add big timeline
+    const bigTimelineContainer = detail.querySelector('#big-timeline-container');
+    bigTimelineContainer.appendChild(createBigTimeline(tense));
+
+    detail.classList.add('show');
+    window.scrollTo({ top: detail.offsetTop - 100, behavior: 'smooth' });
 }
 
 function checkQuiz() {
     const answer = document.getElementById('quiz-answer').value.trim().toLowerCase();
-    const quiz = TENSES[currentTenseIndex].quiz[currentQuizIndex];
-    const correctAnswer = quiz.answer.toLowerCase();
-    
+    const tense = TENSES[currentTenseIndex];
+    const quiz = tense.quiz[currentQuizIndex[currentTenseIndex] || 0];
+    const correctAnswer = quiz.a.toLowerCase();
+
     const feedback = document.getElementById('quiz-feedback');
-    
-    if (answer === correctAnswer) {
+
+    if (answer === correctAnswer || levenshteinDistance(answer, correctAnswer) < 3) {
         feedback.className = 'feedback correct show';
-        feedback.innerHTML = '<strong>✓ Doğru!</strong> Harika, bu yapısını öğrendin!';
+        feedback.innerHTML = `<strong>✓ Doğru!</strong> Harika!`;
         correct++;
         streak++;
-    } else if (answer.includes(correctAnswer.split(' ')[0]) || correctAnswer.includes(answer.split(' ')[0])) {
-        feedback.className = 'feedback incorrect show';
-        feedback.innerHTML = `
-            <strong>~ Neredeyse!</strong>
-            <div class="explanation">
-                Doğru cevap: <strong>${quiz.answer}</strong>
-            </div>
-        `;
-        wrong++;
-        streak = 0;
     } else {
         feedback.className = 'feedback incorrect show';
         feedback.innerHTML = `
             <strong>✗ Yanlış</strong>
-            <div class="explanation">
-                Doğru cevap: <strong>${quiz.answer}</strong>
+            <div style="margin-top: 8px; font-size: 12px;">
+                Doğru cevap: <strong>${quiz.a}</strong>
             </div>
         `;
         wrong++;
@@ -1228,14 +1037,17 @@ function checkQuiz() {
     document.getElementById('quiz-answer').disabled = true;
 
     setTimeout(() => {
-        currentQuizIndex = (currentQuizIndex + 1) % TENSES[currentTenseIndex].quiz.length;
-        renderTenseContent(currentTenseIndex);
+        currentQuizIndex[currentTenseIndex] = (currentQuizIndex[currentTenseIndex] || 0 + 1) % TENSES[currentTenseIndex].quiz.length;
+        renderDetailView(currentTenseIndex);
     }, 2000);
 }
 
 function skipQuiz() {
-    currentQuizIndex = (currentQuizIndex + 1) % TENSES[currentTenseIndex].quiz.length;
-    renderTenseContent(currentTenseIndex);
+    currentQuizIndex[currentTenseIndex] = (currentQuizIndex[currentTenseIndex] || 0) + 1;
+    if (currentQuizIndex[currentTenseIndex] >= TENSES[currentTenseIndex].quiz.length) {
+        currentQuizIndex[currentTenseIndex] = 0;
+    }
+    renderDetailView(currentTenseIndex);
 }
 
 function updateStats() {
@@ -1244,11 +1056,37 @@ function updateStats() {
     document.getElementById('streak').textContent = streak;
 }
 
+// Simple string distance
+function levenshteinDistance(a, b) {
+    const matrix = [];
+    for (let i = 0; i <= b.length; i++) {
+        matrix[i] = [i];
+    }
+    for (let j = 0; j <= a.length; j++) {
+        matrix[0][j] = j;
+    }
+    for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+            if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                matrix[i][j] = matrix[i - 1][j - 1];
+            } else {
+                matrix[i][j] = Math.min(
+                    matrix[i - 1][j - 1] + 1,
+                    matrix[i][j - 1] + 1,
+                    matrix[i - 1][j] + 1
+                );
+            }
+        }
+    }
+    return matrix[b.length][a.length];
+}
+
 // ════════════════════════════════════════════════════════════════════════
-// START
+// INIT
 // ════════════════════════════════════════════════════════════════════════
 
-init();
+renderTensesGrid();
+selectTense(0);
 </script>
 
 </body>
