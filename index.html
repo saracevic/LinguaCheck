@@ -34,7 +34,6 @@ body {
   padding: 0;
 }
 
-/* GRAIN OVERLAY */
 body::before {
   content: '';
   position: fixed;
@@ -45,7 +44,6 @@ body::before {
   opacity: 0.6;
 }
 
-/* HEADER */
 header {
   position: sticky;
   top: 0;
@@ -90,7 +88,6 @@ header {
   font-size: 1rem;
 }
 
-/* MAIN LAYOUT */
 .container {
   max-width: 760px;
   margin: 0 auto;
@@ -160,6 +157,22 @@ header {
   font-weight: 500;
 }
 .api-saved.show { display: flex; }
+
+/* Gemini badge */
+.gemini-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--blue-light);
+  color: var(--blue);
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-bottom: 0.8rem;
+}
 
 /* DECK SELECTOR */
 .deck-label {
@@ -268,7 +281,6 @@ header {
 .answer-input {
   width: 100%;
   padding: 1rem 1.2rem;
-  padding-right: 3rem;
   border: 1.5px solid var(--border);
   border-radius: 14px;
   font-family: 'DM Sans', sans-serif;
@@ -525,14 +537,15 @@ header {
 
   <!-- API KEY SETUP -->
   <div class="setup-card" id="setup-card">
-    <h2>Claude API Anahtarı</h2>
-    <p>Hata analizi için Anthropic API anahtarına ihtiyaç var. <a href="https://console.anthropic.com" target="_blank" style="color:var(--blue)">console.anthropic.com</a>'dan ücretsiz alabilirsin. Anahtar sadece tarayıcında saklanır, hiçbir yere gönderilmez.</p>
+    <div class="gemini-badge">✦ Gemini AI</div>
+    <h2>Google Gemini API Anahtarı</h2>
+    <p>Hata analizi için Google Gemini API anahtarına ihtiyaç var. <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:var(--blue)">aistudio.google.com</a>'dan ücretsiz alabilirsin (günde 1500 istek). Anahtar sadece tarayıcında saklanır.</p>
     <div class="api-row">
-      <input class="api-input" type="password" id="api-key-input" placeholder="sk-ant-api03-...">
+      <input class="api-input" type="password" id="api-key-input" placeholder="AIzaSy...">
       <button class="btn-save" onclick="saveApiKey()">Kaydet</button>
     </div>
     <div class="api-saved" id="api-saved">
-      <span>✓</span> API anahtarı kaydedildi
+      <span>✓</span> Gemini API anahtarı kaydedildi
     </div>
   </div>
 
@@ -570,13 +583,13 @@ header {
 
     <div class="loading-wrap" id="loading-wrap">
       <div class="spinner"></div>
-      <span>Analiz ediliyor...</span>
+      <span>Gemini analiz ediyor...</span>
     </div>
 
     <div class="feedback-panel" id="feedback-panel"></div>
 
     <div class="no-key-msg" id="no-key-msg">
-      ⚠️ API anahtarı gerekli. Yukarıdan ekle.
+      ⚠️ Gemini API anahtarı gerekli. Yukarıdan ekle.
     </div>
 
     <button class="btn-next" id="btn-next" onclick="nextQuestion()">Sonraki →</button>
@@ -608,7 +621,6 @@ header {
 </div>
 
 <script>
-// ── DECKS ──────────────────────────────────────────────────────────────
 const DECKS = {
   gunluk: [
     { tr: 'Ben her sabah kahve içerim.', hint: 'Simple Present — alışkanlık' },
@@ -673,7 +685,7 @@ const DECKS = {
 };
 
 // ── STATE ──────────────────────────────────────────────────────────────
-let apiKey = localStorage.getItem('lc_apikey') || '';
+let apiKey = localStorage.getItem('lc_gemini_apikey') || '';
 let currentDeck = 'gunluk';
 let questions = [];
 let qIndex = 0;
@@ -696,7 +708,7 @@ function saveApiKey() {
   const val = document.getElementById('api-key-input').value.trim();
   if (!val) return;
   apiKey = val;
-  localStorage.setItem('lc_apikey', val);
+  localStorage.setItem('lc_gemini_apikey', val);
   document.getElementById('api-saved').classList.add('show');
 }
 
@@ -783,33 +795,49 @@ JSON formatında yanıt ver, başka hiçbir şey yazma:
 }`;
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 800,
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
+    // Google Gemini API — gemini-1.5-flash (ücretsiz tier)
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: {
+            temperature: 0.2,
+            maxOutputTokens: 800,
+            responseMimeType: 'application/json'
+          }
+        })
+      }
+    );
 
     const data = await res.json();
-    const text = data.content?.[0]?.text || '';
+
+    // Hata kontrolü
+    if (data.error) {
+      throw new Error(data.error.message || 'Gemini API hatası');
+    }
+
+    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
     const clean = text.replace(/```json|```/g, '').trim();
     const result = JSON.parse(clean);
     showFeedback(result, userAnswer);
   } catch(e) {
     document.getElementById('loading-wrap').classList.remove('show');
     document.getElementById('btn-check').disabled = false;
+
+    let errMsg = 'API anahtarını kontrol et veya internet bağlantını dene.';
+    if (e.message && e.message.includes('API_KEY')) {
+      errMsg = 'Geçersiz API anahtarı. Lütfen doğru Gemini API anahtarını gir.';
+    } else if (e.message && e.message.includes('quota')) {
+      errMsg = 'Günlük istek limitine ulaştın. Yarın tekrar dene.';
+    }
+
     document.getElementById('feedback-panel').className = 'feedback-panel wrong show';
     document.getElementById('feedback-panel').innerHTML = `
       <div class="fb-header wrong"><div class="fb-icon wrong">!</div> Bağlantı hatası</div>
-      <div style="font-size:0.85rem;color:var(--ink2)">API anahtarını kontrol et veya internet bağlantını dene.</div>
+      <div style="font-size:0.85rem;color:var(--ink2)">${errMsg}</div>
     `;
   }
 }
