@@ -988,78 +988,45 @@ async function callGroqAPI(userText, tenseId = 0) {
         const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${GROQ_API_KEY}`,
+                'Authorization': `Bearer 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`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 model: 'mixtral-8x7b-32768',
                 messages: [{
                     role: 'user',
-                    content: `You are an expert English grammar teacher. Analyze this student's sentence and provide feedback in Turkish.
-
-Student sentence: "${userText}"
-
-Respond EXACTLY in this format:
-[CORRECT/WRONG]
-[EXPLANATION in Turkish]
-[CORRECT VERSION if wrong, otherwise skip]
-
-Be concise and helpful.`
+                    content: `Analyze: "${userText}". Is it correct English? Reply: CORRECT or WRONG, then brief explanation in Turkish.`
                 }],
-                temperature: 0.5,
-                max_tokens: 300,
-                top_p: 1
+                temperature: 0.3,
+                max_tokens: 200
             })
         });
 
         if (!response.ok) {
-            throw new Error(`API Error: ${response.status}`);
+            const error = await response.text();
+            throw new Error(`${response.status}: ${error}`);
         }
 
         const data = await response.json();
         const aiResponse = data.choices[0].message.content;
-
-        const lines = aiResponse.split('\n').filter(l => l.trim());
-        const isCorrect = lines[0]?.toUpperCase().includes('CORRECT') && !lines[0]?.toUpperCase().includes('WRONG');
+        const isCorrect = aiResponse.toUpperCase().includes('CORRECT') && !aiResponse.toUpperCase().includes('WRONG');
         
-        const correctEl = document.getElementById('s-correct');
-        const wrongEl = document.getElementById('s-wrong');
-        
-        if (isCorrect) {
-            correctEl.textContent = parseInt(correctEl.textContent) + 1;
-        } else {
-            wrongEl.textContent = parseInt(wrongEl.textContent) + 1;
-        }
+        document.getElementById('s-correct').textContent = parseInt(document.getElementById('s-correct').textContent) + (isCorrect ? 1 : 0);
+        document.getElementById('s-wrong').textContent = parseInt(document.getElementById('s-wrong').textContent) + (isCorrect ? 0 : 1);
 
         if (feedbackEl) {
             feedbackEl.classList.add('show', isCorrect ? 'ok' : 'err');
-            feedbackEl.innerHTML = `
-                <div class="fb-head">${isCorrect ? '✅ Doğru!' : '❌ Yanlış'}</div>
-                <div class="fb-body">${lines.slice(1).join('<br>')}</div>
-            `;
+            feedbackEl.innerHTML = `<div class="fb-head">${isCorrect ? '✅ Doğru!' : '❌ Yanlış'}</div><div class="fb-body">${aiResponse}</div>`;
         }
 
         if (loadingEl) loadingEl.classList.remove('show');
-        return aiResponse;
 
     } catch (error) {
-        console.error('Groq API Error:', error);
-        
+        console.error('Error:', error);
         if (feedbackEl) {
             feedbackEl.classList.add('show', 'err');
-            feedbackEl.innerHTML = `
-                <div class="fb-head">⚠️ Hata</div>
-                <div class="fb-body">
-                    <strong>Groq API Bağlantı Hatası:</strong><br>
-                    ${error.message}<br><br>
-                    <strong>Çözüm:</strong><br>
-                    1. Groq API key'ini kontrol et<br>
-                    2. Key'i doğru şekilde yapıştırdın mı?<br>
-                    3. Sayfayı yenile
-                </div>
-            `;
+            feedbackEl.innerHTML = `<div class="fb-head">⚠️ API Hatası</div><div class="fb-body">${error.message}<br><br>Lütfen sayfayı yenile ve tekrar dene.</div>`;
         }
-        
         if (loadingEl) loadingEl.classList.remove('show');
     }
 }
