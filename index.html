@@ -22,8 +22,6 @@
             background-size: 40px 40px; pointer-events: none; z-index: 0;
         }
         .wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 20px 16px; }
-
-        /* HEADER */
         header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; padding-bottom: 16px; border-bottom: 1px solid var(--border); flex-wrap: wrap; gap: 10px; }
         .brand { display: flex; align-items: center; gap: 12px; }
         .brand-icon { width: 42px; height: 42px; background: linear-gradient(135deg, var(--blue), var(--cyan)); border-radius: 12px; display: grid; place-items: center; font-size: 20px; flex-shrink: 0; }
@@ -32,18 +30,12 @@
         .lt-badge { display: flex; align-items: center; gap: 7px; padding: 6px 14px; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); border-radius: 20px; font-size: 11px; font-weight: 700; color: var(--emerald); }
         .lt-dot { width: 6px; height: 6px; background: var(--emerald); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
         @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-        /* STATS */
         .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 22px; }
         .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; }
         .stat-icon { font-size: 18px; }
         .stat-val { font-size: 22px; font-weight: 800; color: var(--blue); line-height: 1; }
         .stat-lbl { font-size: 10px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.8px; }
-
-        /* LAYOUT */
         .main-grid { display: grid; grid-template-columns: 250px 1fr; gap: 18px; }
-
-        /* SIDEBAR */
         #grammar-tenses { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 14px; height: fit-content; position: sticky; top: 20px; }
         #grammar-tenses h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--text2); margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
         .tense { padding: 8px 10px; border: 1px solid transparent; border-radius: 8px; cursor: pointer; transition: all 0.18s; margin-bottom: 3px; }
@@ -52,11 +44,7 @@
         .tense h3 { font-size: 11px; font-weight: 700; color: var(--text); margin-bottom: 1px; }
         .tense.active h3 { color: var(--blue); }
         .tense-code { font-family: 'JetBrains Mono',monospace; font-size: 9px; color: var(--text2); }
-
-        /* RIGHT */
         .right-panel { display: flex; flex-direction: column; gap: 16px; }
-
-        /* TENSE DETAIL */
         .tense-detail { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
         .td-name { font-size: 24px; font-weight: 800; letter-spacing: -0.8px; background: linear-gradient(135deg,#e2e8f0,var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 4px; }
         .td-tr { font-size: 12px; color: var(--text2); margin-bottom: 10px; }
@@ -71,8 +59,6 @@
         .ex-item { background: var(--ink2); border-left: 3px solid var(--blue); padding: 7px 11px; border-radius: 0 6px 6px 0; margin-bottom: 5px; }
         .ex-en { font-family: 'JetBrains Mono',monospace; font-size: 11px; color: var(--cyan); margin-bottom: 2px; }
         .ex-tr { font-size: 11px; color: var(--text2); }
-
-        /* PRACTICE */
         #practice { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
         .prac-head { padding: 14px 20px; background: linear-gradient(135deg,rgba(245,158,11,0.1),rgba(244,63,94,0.06)); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
         #practice h2 { font-size: 14px; font-weight: 800; color: var(--amber); }
@@ -95,8 +81,6 @@
         #check-grammar:disabled, .btn-check:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
         .btn-sec { padding: 10px 14px; background: transparent; color: var(--text2); border: 1px solid var(--border); border-radius: 8px; font-family: 'Syne',sans-serif; font-weight: 700; font-size: 11px; cursor: pointer; transition: all 0.2s; }
         .btn-sec:hover { border-color: var(--text2); color: var(--text); }
-
-        /* LOADING */
         .loading-wrap { display: none; padding: 16px; text-align: center; }
         .loading-wrap.show { display: block; }
         .loading-inner { display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--text2); font-size: 12px; }
@@ -104,8 +88,6 @@
         .dots span:nth-child(2) { animation-delay: 0.2s; }
         .dots span:nth-child(3) { animation-delay: 0.4s; }
         @keyframes bounce { 0%,80%,100%{transform:scale(0.6);opacity:0.4} 40%{transform:scale(1);opacity:1} }
-
-        /* RESULTS */
         #results, #tr-results, #gap-results { margin-top: 16px; }
         .result-summary { display: flex; align-items: center; gap: 12px; padding: 13px 16px; border-radius: 10px; margin-bottom: 12px; flex-wrap: wrap; }
         .result-summary.clean { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.3); }
@@ -126,14 +108,36 @@
         .suggestion-btn:hover { background: rgba(16,185,129,0.2); transform: translateY(-1px); }
         .no-suggestions { font-size: 11px; color: var(--text2); font-style: italic; }
 
+        /* TENSE ANALYSIS */
+        .tense-analysis-box { background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.25); border-radius: 10px; padding: 14px 16px; margin-top: 14px; animation: fadeUp 0.3s ease; }
+        .ta-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--blue); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+        .ta-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .ta-item:last-child { border-bottom: none; }
+        .ta-verb { font-family: 'JetBrains Mono',monospace; font-size: 12px; color: var(--cyan); font-weight: 600; min-width: 120px; }
+        .ta-info { flex: 1; }
+        .ta-tense-name { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+        .ta-tense-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-right: 5px; }
+        .badge-present { background: rgba(16,185,129,0.15); color: var(--emerald); border: 1px solid rgba(16,185,129,0.3); }
+        .badge-past { background: rgba(245,158,11,0.15); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+        .badge-future { background: rgba(59,130,246,0.15); color: var(--blue); border: 1px solid rgba(59,130,246,0.3); }
+        .ta-explanation { font-size: 11px; color: var(--text2); line-height: 1.5; }
+
         /* TRANSLATE */
+        .sentence-counter { font-size: 10px; color: var(--text2); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; }
         .sentence-display { background: var(--ink2); border: 1px solid var(--border); border-left: 3px solid var(--cyan); padding: 11px 14px; border-radius: 0 8px 8px 0; font-size: 14px; color: var(--cyan); font-family: 'JetBrains Mono',monospace; margin-bottom: 12px; line-height: 1.5; }
         .answer-reveal { display: none; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 13px 16px; margin-top: 10px; animation: fadeUp 0.3s ease; }
         .answer-reveal.show { display: block; }
         .ar-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--emerald); margin-bottom: 5px; }
         .ar-text { font-family: 'JetBrains Mono',monospace; font-size: 13px; color: var(--text); }
 
-        /* PROGRESS */
+        /* TRANSLATE RESULT */
+        .tr-semantic-ok { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 13px 16px; margin-bottom: 8px; animation: fadeUp 0.3s ease; }
+        .tr-semantic-warn { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.3); border-radius: 10px; padding: 13px 16px; margin-bottom: 8px; animation: fadeUp 0.3s ease; }
+        .tr-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .tr-semantic-ok .tr-label { color: var(--emerald); }
+        .tr-semantic-warn .tr-label { color: var(--amber); }
+        .tr-text { font-size: 12px; color: var(--text2); line-height: 1.6; }
+
         #progress { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; }
         #progress h2 { font-size: 14px; font-weight: 800; color: var(--amber); margin-bottom: 14px; }
         .score-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 14px; }
@@ -143,22 +147,19 @@
         .pb-label { font-size: 11px; color: var(--text2); margin-bottom: 5px; display: flex; justify-content: space-between; }
         .pb-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
         .pb-fill { height: 100%; background: linear-gradient(90deg,var(--blue),var(--cyan)); border-radius: 3px; transition: width 0.5s ease; }
-
         footer { text-align: center; padding: 20px; margin-top: 22px; border-top: 1px solid var(--border); font-size: 11px; color: var(--text2); }
-
         @media (max-width: 860px) { .main-grid { grid-template-columns: 1fr; } #grammar-tenses { position: static; } }
         @media (max-width: 580px) { .stats-row { grid-template-columns: repeat(2,1fr); } .formula-grid { grid-template-columns: 1fr; } .score-grid { grid-template-columns: repeat(2,1fr); } }
     </style>
 </head>
 <body>
 <div class="wrap">
-
     <header>
         <div class="brand">
             <div class="brand-icon">🎓</div>
             <div>
                 <h1>English Grammar Platform</h1>
-                <div class="header-sub">12 Tenses · Free Grammar Checker · No API Key</div>
+                <div class="header-sub">12 Tenses · Grammar Checker · Tense Detector</div>
             </div>
         </div>
         <div class="lt-badge"><div class="lt-dot"></div>LanguageTool Aktif</div>
@@ -172,21 +173,19 @@
     </div>
 
     <div class="main-grid">
-
         <section id="grammar-tenses">
             <h2>⏰ 12 Tenses</h2>
             <div id="tense-list"></div>
         </section>
 
         <div class="right-panel">
-
             <div class="tense-detail" id="tense-detail"></div>
 
             <section id="practice">
                 <div class="prac-head">
                     <div>
                         <h2>✏️ Interactive Practice</h2>
-                        <div class="prac-sub">Grammar checker + translation exercises</div>
+                        <div class="prac-sub">Grammar checker + tense detector + translation exercises</div>
                     </div>
                     <div class="lt-powered">✓ LanguageTool API — Ücretsiz</div>
                 </div>
@@ -200,10 +199,10 @@
                     <!-- TAB 1 -->
                     <div class="ptab-panel active" id="pt1">
                         <div class="field-label">Metni Yaz veya Yapıştır</div>
-                        <div class="field-desc">İngilizce yaz, LanguageTool API gerçek gramer hatalarını bulur — ücretsiz, key gerektirmez.</div>
-                        <textarea id="text-input" placeholder="Type your English text here..."></textarea>
+                        <div class="field-desc">İngilizce yaz → LanguageTool gramer hatalarını bulur + her fiil için hangi zaman kullanıldığı tespit edilir.</div>
+                        <textarea id="text-input" placeholder="Type your English text here... e.g. She goes to school. I was working when he called."></textarea>
                         <div class="btn-row">
-                            <button id="check-grammar" onclick="checkGrammar()">🔍 Check Grammar</button>
+                            <button id="check-grammar" onclick="checkGrammar()">🔍 Check Grammar + Detect Tenses</button>
                             <button class="btn-sec" onclick="clearCheck()">Temizle</button>
                         </div>
                         <div class="loading-wrap" id="load-grammar"><div class="loading-inner"><div class="dots"><span></span><span></span><span></span></div>LanguageTool analiz ediyor...</div></div>
@@ -213,7 +212,8 @@
                     <!-- TAB 2 -->
                     <div class="ptab-panel" id="pt2">
                         <div class="field-label">Çeviri Alıştırması</div>
-                        <div class="field-desc">Seçili zamanı kullanarak Türkçe cümleyi İngilizceye çevir. Sonra gramer kontrolü de yapılır!</div>
+                        <div class="field-desc">Türkçe cümleyi İngilizceye çevir. Anlam kontrolü yapılır — aynı anlam taşıyan farklı ifadeler de kabul edilir!</div>
+                        <div class="sentence-counter" id="tr-counter">Cümle: — / 50</div>
                         <div class="sentence-display" id="tr-display">Soldan bir zaman seçin...</div>
                         <textarea class="practice-input" id="tr-answer" placeholder="Write your English translation here..."></textarea>
                         <div class="btn-row">
@@ -222,7 +222,7 @@
                             <button class="btn-sec" onclick="revealAnswer()">👁 Cevap</button>
                         </div>
                         <div class="loading-wrap" id="load-tr"><div class="loading-inner"><div class="dots"><span></span><span></span><span></span></div>Kontrol ediliyor...</div></div>
-                        <div class="answer-reveal" id="answer-reveal"><div class="ar-label">✅ Doğru Cevap</div><div class="ar-text" id="answer-text"></div></div>
+                        <div class="answer-reveal" id="answer-reveal"><div class="ar-label">✅ Örnek Doğru Cevap</div><div class="ar-text" id="answer-text"></div></div>
                         <div id="tr-results"></div>
                     </div>
 
@@ -251,7 +251,6 @@
                 </div>
                 <div><div class="pb-label"><span>Genel Başarı</span><span id="pb-pct">0%</span></div><div class="pb-track"><div class="pb-fill" id="pb-fill" style="width:0%"></div></div></div>
             </section>
-
         </div>
     </div>
 
@@ -259,54 +258,631 @@
 </div>
 
 <script>
-const TENSES=[
-  {id:0,name:'Simple Present',code:'V / V+s',turkish:'Basit Şimdiki Zaman',rule:'Günlük alışkanlıklar, değişmeyen gerçekler için.',formula:[{l:'Olumlu',t:'I/You/We/They + V\nHe/She/It + V+s'},{l:'Olumsuz',t:'do/does not + V'},{l:'Soru',t:'Do/Does + S + V?'}],signals:['always','usually','often','every day','never'],examples:[{en:'I eat breakfast every day.',tr:'Her gün kahvaltı yerim.'},{en:'She works as a teacher.',tr:'O öğretmen olarak çalışır.'}],gaps:[{sentence:'She ___ (go) to school every day.',answer:'She goes to school every day.'},{sentence:'They ___ (not/work) on Sundays.',answer:'They do not work on Sundays.'}]},
-  {id:1,name:'Present Continuous',code:'am/is/are + V-ing',turkish:'Şu Anki Devamlı Zaman',rule:'Şu anda devam eden eylemler için.',formula:[{l:'Olumlu',t:'am/is/are + V-ing'},{l:'Olumsuz',t:'am/is/are + not + V-ing'},{l:'Soru',t:'Is/Are + S + V-ing?'}],signals:['now','at the moment','currently','right now'],examples:[{en:'I am reading a book.',tr:'Bir kitap okuyorum.'},{en:'She is studying now.',tr:'Şu an çalışıyor.'}],gaps:[{sentence:'She ___ (study) right now.',answer:'She is studying right now.'},{sentence:'They ___ (not/play) at the moment.',answer:'They are not playing at the moment.'}]},
-  {id:2,name:'Simple Past',code:'V-ed / irregular',turkish:'Geçmiş Zaman',rule:'Geçmişte tamamlanmış eylemler için.',formula:[{l:'Olumlu',t:'V-ed / V2 (irregular)'},{l:'Olumsuz',t:'did not + V'},{l:'Soru',t:'Did + S + V?'}],signals:['yesterday','last week','ago','last night'],examples:[{en:'I watched a movie yesterday.',tr:'Dün film izledim.'},{en:"She went to London.",tr:"Londra'ya gitti."}],gaps:[{sentence:'She ___ (go) to the market yesterday.',answer:'She went to the market yesterday.'},{sentence:'They ___ (not/watch) TV last night.',answer:'They did not watch TV last night.'}]},
-  {id:3,name:'Past Continuous',code:'was/were + V-ing',turkish:'Geçmiş Devamlı Zaman',rule:'Geçmişte devam eden eylemler için.',formula:[{l:'Olumlu',t:'was/were + V-ing'},{l:'Olumsuz',t:'was/were not + V-ing'},{l:'Soru',t:'Was/Were + S + V-ing?'}],signals:['while','when','at 8pm yesterday'],examples:[{en:'I was sleeping when you called.',tr:'Aradığında uyuyordum.'},{en:'She was reading all evening.',tr:'Bütün akşam okudu.'}],gaps:[{sentence:'She ___ (read) when I arrived.',answer:'She was reading when I arrived.'},{sentence:'They ___ (not/sleep) at midnight.',answer:'They were not sleeping at midnight.'}]},
-  {id:4,name:'Present Perfect',code:'have/has + PP',turkish:'Şimdiki Tamamlanmış Zaman',rule:'Geçmişte olup şu anı etkileyen eylemler için.',formula:[{l:'Olumlu',t:'have/has + PP'},{l:'Olumsuz',t:'have/has not + PP'},{l:'Soru',t:'Have/Has + S + PP?'}],signals:['just','already','yet','ever','never','recently'],examples:[{en:'I have just finished.',tr:'Az önce bitirdim.'},{en:'She has never been there.',tr:'Hiç gitmedi.'}],gaps:[{sentence:'She has just ___ (finish) her homework.',answer:'She has just finished her homework.'},{sentence:'They have never ___ (see) snow.',answer:'They have never seen snow.'}]},
-  {id:5,name:'Present Perfect Continuous',code:'have/has + been + V-ing',turkish:'Şimdiki Devam Tamamlanmış',rule:'Geçmişten beri devam eden eylemler için.',formula:[{l:'Olumlu',t:'have/has + been + V-ing'},{l:'Olumsuz',t:'have/has not + been + V-ing'},{l:'Soru',t:'Have/Has + S + been + V-ing?'}],signals:['for','since','how long','all day'],examples:[{en:'I have been studying for 3 hours.',tr:'3 saattir çalışıyorum.'},{en:'She has been living here since 2020.',tr:"2020'den beri burada."}],gaps:[{sentence:'She has been ___ (work) since morning.',answer:'She has been working since morning.'},{sentence:'They have been ___ (study) for 5 hours.',answer:'They have been studying for 5 hours.'}]},
-  {id:6,name:'Simple Future',code:'will + V',turkish:'Gelecek Zaman',rule:'Gelecekteki eylemler ve ani kararlar için.',formula:[{l:'Olumlu',t:'will + V (base)'},{l:'Olumsuz',t:"won't + V"},{l:'Soru',t:'Will + S + V?'}],signals:['tomorrow','next week','soon','later'],examples:[{en:'I will call you tomorrow.',tr:'Yarın seni arayacağım.'},{en:'She will be a doctor.',tr:'Doktor olacak.'}],gaps:[{sentence:'She ___ (call) you tomorrow.',answer:'She will call you tomorrow.'},{sentence:"They ___ (not/come) next week.",answer:"They won't come next week."}]},
-  {id:7,name:'Future Continuous',code:'will + be + V-ing',turkish:'Gelecek Devamlı Zaman',rule:'Gelecekte devam ediyor olacak eylemler için.',formula:[{l:'Olumlu',t:'will + be + V-ing'},{l:'Olumsuz',t:'will not + be + V-ing'},{l:'Soru',t:'Will + S + be + V-ing?'}],signals:['at this time tomorrow','at 8pm tonight'],examples:[{en:"I will be working at 9 AM.",tr:"Saat 9'da çalışıyor olacağım."},{en:'She will be sleeping.',tr:'Uyuyor olacak.'}],gaps:[{sentence:'She will be ___ (study) at 10pm tonight.',answer:'She will be studying at 10pm tonight.'},{sentence:'I will be ___ (work) this time tomorrow.',answer:'I will be working this time tomorrow.'}]},
-  {id:8,name:'Past Perfect',code:'had + PP',turkish:'Geçmişin Geçmişi',rule:'Geçmişte iki olaydan önce olanı belirtir.',formula:[{l:'Olumlu',t:'had + PP'},{l:'Olumsuz',t:"hadn't + PP"},{l:'Soru',t:'Had + S + PP?'}],signals:['before','after','already','by the time'],examples:[{en:'I had finished before you arrived.',tr:'Sen gelmeden bitirdim.'},{en:'She had gone home.',tr:'Eve gitmişti.'}],gaps:[{sentence:'She had already ___ (leave) when I arrived.',answer:'She had already left when I arrived.'},{sentence:'They had not ___ (eat) before the meeting.',answer:'They had not eaten before the meeting.'}]},
-  {id:9,name:'Past Perfect Continuous',code:'had + been + V-ing',turkish:'Geçmiş Devam Tamamlanmış',rule:'Geçmişte belirli süre devam eden eylemler için.',formula:[{l:'Olumlu',t:'had + been + V-ing'},{l:'Olumsuz',t:'had not + been + V-ing'},{l:'Soru',t:'Had + S + been + V-ing?'}],signals:['for','since','before','how long'],examples:[{en:'I had been working for 8 hours.',tr:'8 saattir çalışıyordum.'},{en:'She had been waiting since morning.',tr:'Sabahtan beri bekliyordu.'}],gaps:[{sentence:'She had been ___ (wait) for 2 hours when he called.',answer:'She had been waiting for 2 hours when he called.'},{sentence:'They had been ___ (run) for an hour before it rained.',answer:'They had been running for an hour before it rained.'}]},
-  {id:10,name:'Future Perfect',code:'will + have + PP',turkish:'Gelecek Tamamlanmış Zaman',rule:'Gelecekte belirli zamana kadar tamamlanacak eylemler için.',formula:[{l:'Olumlu',t:'will + have + PP'},{l:'Olumsuz',t:'will not + have + PP'},{l:'Soru',t:'Will + S + have + PP?'}],signals:['by Friday','by next year','by the time'],examples:[{en:'I will have finished by Friday.',tr:'Cuma gününe bitirmiş olacağım.'},{en:'She will have completed the course.',tr:'Kursu tamamlamış olacak.'}],gaps:[{sentence:'She will have ___ (finish) by 5pm.',answer:'She will have finished by 5pm.'},{sentence:'They will have ___ (arrive) by noon.',answer:'They will have arrived by noon.'}]},
-  {id:11,name:'Future Perfect Continuous',code:'will + have + been + V-ing',turkish:'Gelecek Devam Tamamlanmış',rule:'Gelecekte ne kadar süredir devam edeceğini belirtir.',formula:[{l:'Olumlu',t:'will + have + been + V-ing'},{l:'Olumsuz',t:'will not + have + been + V-ing'},{l:'Soru',t:'Will + S + have + been + V-ing?'}],signals:['by…for','by next year for'],examples:[{en:'By Friday I will have been studying for 6 months.',tr:'Cuma gününe 6 aydır çalışıyor olacağım.'},{en:'She will have been working here for 3 years.',tr:'3 yıldır burada çalışıyor olacak.'}],gaps:[{sentence:'By next month, she will have been ___ (teach) for a year.',answer:'By next month, she will have been teaching for a year.'},{sentence:'They will have been ___ (live) here for 10 years by 2030.',answer:'They will have been living here for 10 years by 2030.'}]}
+// ===================== TENSE DATA =====================
+const TENSES = [
+  {
+    id: 0, name: 'Simple Present', code: 'V / V+s', turkish: 'Basit Şimdiki Zaman',
+    rule: 'Günlük alışkanlıklar, değişmeyen gerçekler için.',
+    formula: [{l:'Olumlu',t:'I/You/We/They + V\nHe/She/It + V+s'},{l:'Olumsuz',t:'do/does not + V'},{l:'Soru',t:'Do/Does + S + V?'}],
+    signals: ['always','usually','often','every day','never'],
+    examples: [
+      {en:'I eat breakfast every day.',tr:'Her gün kahvaltı yerim.'},{en:'She works as a teacher.',tr:'O bir öğretmen olarak çalışır.'},
+      {en:'They play football on Sundays.',tr:'Pazar günleri futbol oynarlar.'},{en:'He reads the newspaper every morning.',tr:'Her sabah gazete okur.'},
+      {en:'We go to the gym three times a week.',tr:'Haftada üç kez spor salonuna gideriz.'},{en:'She always drinks coffee in the morning.',tr:'Her sabah kahve içer.'},
+      {en:'Dogs like to run in the park.',tr:'Köpekler parkta koşmayı sever.'},{en:'The sun rises in the east.',tr:'Güneş doğudan doğar.'},
+      {en:'My brother lives in Ankara.',tr:'Kardeşim Ankara\'da yaşar.'},{en:'She usually walks to work.',tr:'Genellikle işe yürür.'},
+      {en:'They often visit their grandparents.',tr:'Sık sık büyükanne ve büyükbabalarını ziyaret ederler.'},{en:'He speaks three languages.',tr:'Üç dil konuşur.'},
+      {en:'We watch TV after dinner.',tr:'Akşam yemeğinden sonra TV izleriz.'},{en:'She never eats fast food.',tr:'Asla fast food yemez.'},
+      {en:'The train leaves at 9 AM.',tr:'Tren sabah 9\'da kalkar.'},{en:'I like listening to music.',tr:'Müzik dinlemeyi severim.'},
+      {en:'He works at a hospital.',tr:'Hastanede çalışır.'},{en:'They live near the school.',tr:'Okula yakın yaşarlar.'},
+      {en:'She teaches English at university.',tr:'Üniversitede İngilizce öğretir.'},{en:'Water boils at 100 degrees.',tr:'Su 100 derecede kaynar.'},
+      {en:'My parents wake up early every day.',tr:'Ailem her gün erken kalkar.'},{en:'He drives to work on Mondays.',tr:'Pazartesi günleri işe arabayla gider.'},
+      {en:'She smiles at everyone.',tr:'Herkese gülümser.'},{en:'We study together every week.',tr:'Her hafta birlikte çalışırız.'},
+      {en:'Birds sing in the morning.',tr:'Kuşlar sabahları şarkı söyler.'},{en:'He never forgets his keys.',tr:'Anahtarlarını asla unutmaz.'},
+      {en:'She bakes bread on weekends.',tr:'Hafta sonları ekmek yapar.'},{en:'They travel a lot for work.',tr:'İş için çok seyahat ederler.'},
+      {en:'I drink two cups of tea a day.',tr:'Günde iki bardak çay içerim.'},{en:'She always arrives on time.',tr:'Her zaman zamanında gelir.'},
+      {en:'He goes to bed at ten o\'clock.',tr:'Saat on\'da yatar.'},{en:'We eat dinner together every night.',tr:'Her akşam birlikte yemek yeriz.'},
+      {en:'She does yoga every morning.',tr:'Her sabah yoga yapar.'},{en:'The library opens at eight.',tr:'Kütüphane sekizde açılır.'},
+      {en:'He loves his job.',tr:'İşini sever.'},{en:'She knows how to swim.',tr:'Yüzmeyi bilir.'},
+      {en:'They speak English very well.',tr:'İngilizceyi çok iyi konuşurlar.'},{en:'He eats lunch at the office.',tr:'Öğle yemeğini ofiste yer.'},
+      {en:'She always helps her friends.',tr:'Her zaman arkadaşlarına yardım eder.'},{en:'I brush my teeth twice a day.',tr:'Günde iki kez dişlerimi fırçalarım.'},
+      {en:'He rarely watches TV.',tr:'Nadiren TV izler.'},{en:'She works hard every day.',tr:'Her gün çok çalışır.'},
+      {en:'They go to school by bus.',tr:'Okula otobüsle giderler.'},{en:'He uses the internet every day.',tr:'Her gün interneti kullanır.'},
+      {en:'She cleans the house on Saturdays.',tr:'Cumartesi günleri evi temizler.'},{en:'We usually have tea at five.',tr:'Genellikle beşte çay içeriz.'},
+      {en:'He plays the guitar on weekends.',tr:'Hafta sonları gitar çalar.'},{en:'She buys groceries every Friday.',tr:'Her Cuma alışveriş yapar.'}
+    ],
+    gaps: [
+      {sentence:'She ___ (go) to school every day.',answer:'She goes to school every day.'},
+      {sentence:'They ___ (not/work) on Sundays.',answer:'They do not work on Sundays.'},
+      {sentence:'He ___ (read) the newspaper every morning.',answer:'He reads the newspaper every morning.'},
+      {sentence:'We ___ (play) football on weekends.',answer:'We play football on weekends.'}
+    ]
+  },
+  {
+    id: 1, name: 'Present Continuous', code: 'am/is/are + V-ing', turkish: 'Şu Anki Devamlı Zaman',
+    rule: 'Şu anda devam eden eylemler için.',
+    formula: [{l:'Olumlu',t:'am/is/are + V-ing'},{l:'Olumsuz',t:'am/is/are + not + V-ing'},{l:'Soru',t:'Is/Are + S + V-ing?'}],
+    signals: ['now','at the moment','currently','right now'],
+    examples: [
+      {en:'I am reading a book.',tr:'Bir kitap okuyorum.'},{en:'She is studying now.',tr:'Şu an çalışıyor.'},
+      {en:'They are playing in the garden.',tr:'Bahçede oynuyorlar.'},{en:'He is talking on the phone.',tr:'Telefonda konuşuyor.'},
+      {en:'We are having lunch right now.',tr:'Şu an öğle yemeği yiyoruz.'},{en:'She is watching a movie at the moment.',tr:'Şu an film izliyor.'},
+      {en:'I am learning Spanish currently.',tr:'Şu sıralar İspanyolca öğreniyorum.'},{en:'He is writing an email.',tr:'Bir e-posta yazıyor.'},
+      {en:'They are building a new house.',tr:'Yeni bir ev inşa ediyorlar.'},{en:'She is cooking dinner.',tr:'Akşam yemeği pişiriyor.'},
+      {en:'I am working from home today.',tr:'Bugün evden çalışıyorum.'},{en:'He is listening to music right now.',tr:'Şu an müzik dinliyor.'},
+      {en:'We are planning a trip.',tr:'Bir gezi planlıyoruz.'},{en:'She is not feeling well today.',tr:'Bugün iyi hissetmiyor.'},
+      {en:'They are waiting for the bus.',tr:'Otobüs bekliyorlar.'},{en:'I am trying to call you.',tr:'Seni aramaya çalışıyorum.'},
+      {en:'He is running in the park.',tr:'Parkta koşuyor.'},{en:'She is meeting her friend now.',tr:'Şu an arkadaşıyla buluşuyor.'},
+      {en:'We are discussing the project.',tr:'Projeyi tartışıyoruz.'},{en:'He is fixing the car.',tr:'Arabayı tamir ediyor.'},
+      {en:'She is sending a message.',tr:'Mesaj gönderiyor.'},{en:'I am drinking coffee.',tr:'Kahve içiyorum.'},
+      {en:'They are moving to a new city.',tr:'Yeni bir şehre taşınıyorlar.'},{en:'He is not coming today.',tr:'Bugün gelmiyor.'},
+      {en:'She is preparing for the exam.',tr:'Sınava hazırlanıyor.'},{en:'We are watching the news.',tr:'Haberleri izliyoruz.'},
+      {en:'I am taking a walk.',tr:'Yürüyüş yapıyorum.'},{en:'He is checking his phone.',tr:'Telefonuna bakıyor.'},
+      {en:'She is teaching a class right now.',tr:'Şu an ders veriyor.'},{en:'They are having a meeting.',tr:'Toplantıdalar.'},
+      {en:'I am cleaning my room.',tr:'Odamı temizliyorum.'},{en:'He is making breakfast.',tr:'Kahvaltı hazırlıyor.'},
+      {en:'She is shopping at the mall.',tr:'Alışveriş merkezinde alışveriş yapıyor.'},{en:'We are eating at a restaurant.',tr:'Bir restoranda yemek yiyoruz.'},
+      {en:'They are studying for the test.',tr:'Sınav için çalışıyorlar.'},{en:'I am looking for my keys.',tr:'Anahtarlarımı arıyorum.'},
+      {en:'He is wearing a blue shirt.',tr:'Mavi bir gömlek giyiyor.'},{en:'She is reading the news.',tr:'Haberleri okuyor.'},
+      {en:'They are laughing at a joke.',tr:'Bir şakaya gülüyorlar.'},{en:'I am thinking about the problem.',tr:'Problem hakkında düşünüyorum.'},
+      {en:'He is driving to work.',tr:'İşe gidiyor.'},{en:'She is not sleeping right now.',tr:'Şu an uyumuyor.'},
+      {en:'We are learning new things every day.',tr:'Her gün yeni şeyler öğreniyoruz.'},{en:'He is helping his mother.',tr:'Annesine yardım ediyor.'},
+      {en:'She is writing a report.',tr:'Rapor yazıyor.'},{en:'They are playing chess.',tr:'Satranç oynuyorlar.'},
+      {en:'I am waiting for my friend.',tr:'Arkadaşımı bekliyorum.'},{en:'He is painting the wall.',tr:'Duvarı boyuyor.'},
+      {en:'She is practicing the piano.',tr:'Piyano çalışıyor.'},{en:'We are discussing tomorrow\'s plans.',tr:'Yarınki planları konuşuyoruz.'}
+    ],
+    gaps: [
+      {sentence:'She ___ (study) right now.',answer:'She is studying right now.'},
+      {sentence:'They ___ (not/play) at the moment.',answer:'They are not playing at the moment.'},
+      {sentence:'He ___ (talk) on the phone.',answer:'He is talking on the phone.'},
+      {sentence:'We ___ (have) lunch right now.',answer:'We are having lunch right now.'}
+    ]
+  },
+  {
+    id: 2, name: 'Simple Past', code: 'V-ed / irregular', turkish: 'Geçmiş Zaman',
+    rule: 'Geçmişte tamamlanmış eylemler için.',
+    formula: [{l:'Olumlu',t:'V-ed / V2 (irregular)'},{l:'Olumsuz',t:'did not + V'},{l:'Soru',t:'Did + S + V?'}],
+    signals: ['yesterday','last week','ago','last night'],
+    examples: [
+      {en:'I watched a movie yesterday.',tr:'Dün film izledim.'},{en:'She went to London last year.',tr:'Geçen yıl Londra\'ya gitti.'},
+      {en:'They played football last weekend.',tr:'Geçen hafta sonu futbol oynadılar.'},{en:'He cooked dinner last night.',tr:'Dün gece akşam yemeği pişirdi.'},
+      {en:'We visited our grandparents yesterday.',tr:'Dün büyükanne ve büyükbabamızı ziyaret ettik.'},{en:'She called me two hours ago.',tr:'İki saat önce beni aradı.'},
+      {en:'I bought a new phone last week.',tr:'Geçen hafta yeni bir telefon aldım.'},{en:'He finished the project on time.',tr:'Projeyi zamanında bitirdi.'},
+      {en:'They traveled to Paris last summer.',tr:'Geçen yaz Paris\'e gittiler.'},{en:'She met her friend at the café.',tr:'Arkadaşıyla kafede buluştu.'},
+      {en:'I woke up late this morning.',tr:'Bu sabah geç kalktım.'},{en:'He studied all night long.',tr:'Bütün gece çalıştı.'},
+      {en:'She wrote a letter last week.',tr:'Geçen hafta bir mektup yazdı.'},{en:'We ate pizza for dinner.',tr:'Akşam yemeğinde pizza yedik.'},
+      {en:'They went to the cinema yesterday.',tr:'Dün sinemaya gittiler.'},{en:'I forgot my umbrella at home.',tr:'Şemsiyemi evde unuttum.'},
+      {en:'He took a taxi to the airport.',tr:'Havaalanına taksiyle gitti.'},{en:'She found her keys under the table.',tr:'Anahtarlarını masanın altında buldu.'},
+      {en:'We worked until midnight.',tr:'Gece yarısına kadar çalıştık.'},{en:'He lost his wallet yesterday.',tr:'Dün cüzdanını kaybetti.'},
+      {en:'She passed the exam last month.',tr:'Geçen ay sınavı geçti.'},{en:'I sent the email an hour ago.',tr:'Bir saat önce e-postayı gönderdim.'},
+      {en:'They moved to Istanbul two years ago.',tr:'İki yıl önce İstanbul\'a taşındılar.'},{en:'He read the book in one day.',tr:'Kitabı bir günde okudu.'},
+      {en:'She learned to drive last year.',tr:'Geçen yıl araba kullanmayı öğrendi.'},{en:'We had a great time last night.',tr:'Dün gece çok eğlendik.'},
+      {en:'I came home late yesterday.',tr:'Dün akşam eve geç geldim.'},{en:'He called his mother last night.',tr:'Dün gece annesini aradı.'},
+      {en:'She started a new job last month.',tr:'Geçen ay yeni bir işe başladı.'},{en:'They saw a concert last week.',tr:'Geçen hafta bir konser izlediler.'},
+      {en:'I cleaned my room yesterday.',tr:'Dün odamı temizledim.'},{en:'He broke his leg two months ago.',tr:'İki ay önce bacağını kırdı.'},
+      {en:'She bought a new dress last Saturday.',tr:'Geçen Cumartesi yeni bir elbise aldı.'},{en:'We finished dinner early yesterday.',tr:'Dün akşam yemeğini erken bitirdik.'},
+      {en:'They arrived at the hotel late at night.',tr:'Geceye kadar otele vardılar.'},{en:'I drank too much coffee this morning.',tr:'Bu sabah çok fazla kahve içtim.'},
+      {en:'He drove to work this morning.',tr:'Bu sabah işe arabayla gitti.'},{en:'She planted flowers in the garden.',tr:'Bahçeye çiçek dikti.'},
+      {en:'They built a sandcastle on the beach.',tr:'Plajda kum kalesi yaptılar.'},{en:'I talked to my boss yesterday.',tr:'Dün patronumla konuştum.'},
+      {en:'He painted his room last week.',tr:'Geçen hafta odasını boyadı.'},{en:'She made a cake for the party.',tr:'Parti için pasta yaptı.'},
+      {en:'We went swimming last Sunday.',tr:'Geçen Pazar yüzmeye gittik.'},{en:'He forgot to call me yesterday.',tr:'Dün beni aramayı unuttu.'},
+      {en:'She smiled when she heard the news.',tr:'Haberi duyunca güldü.'},{en:'They enjoyed their holiday.',tr:'Tatillerini çok beğendiler.'},
+      {en:'I felt tired after work.',tr:'İşten sonra yorgun hissettim.'},{en:'He gave me a present last week.',tr:'Geçen hafta bana hediye verdi.'},
+      {en:'She wore a red dress last night.',tr:'Dün gece kırmızı bir elbise giydi.'},{en:'We talked for hours on the phone.',tr:'Telefonda saatlerce konuştuk.'}
+    ],
+    gaps: [
+      {sentence:'She ___ (go) to the market yesterday.',answer:'She went to the market yesterday.'},
+      {sentence:'They ___ (not/watch) TV last night.',answer:'They did not watch TV last night.'},
+      {sentence:'He ___ (buy) a new car last week.',answer:'He bought a new car last week.'},
+      {sentence:'We ___ (eat) pizza for dinner last night.',answer:'We ate pizza for dinner last night.'}
+    ]
+  },
+  {
+    id: 3, name: 'Past Continuous', code: 'was/were + V-ing', turkish: 'Geçmiş Devamlı Zaman',
+    rule: 'Geçmişte devam eden eylemler için.',
+    formula: [{l:'Olumlu',t:'was/were + V-ing'},{l:'Olumsuz',t:'was/were not + V-ing'},{l:'Soru',t:'Was/Were + S + V-ing?'}],
+    signals: ['while','when','at 8pm yesterday','all day'],
+    examples: [
+      {en:'I was sleeping when you called.',tr:'Aradığında uyuyordum.'},{en:'She was reading all evening.',tr:'Bütün akşam okuyordu.'},
+      {en:'They were playing in the park when it rained.',tr:'Yağmur yağarken parkta oynuyorlardı.'},{en:'He was watching TV at 10 PM.',tr:'Gece 10\'da TV izliyordu.'},
+      {en:'We were studying when the power went out.',tr:'Işıklar kesildiğinde çalışıyorduk.'},{en:'She was cooking while I was cleaning.',tr:'Ben temizlerken o yemek pişiriyordu.'},
+      {en:'I was walking to school when I saw him.',tr:'Onu gördüğümde okula yürüyordum.'},{en:'He was talking on the phone all morning.',tr:'Bütün sabah telefonda konuşuyordu.'},
+      {en:'They were arguing when I arrived.',tr:'Ben geldiğimde tartışıyorlardı.'},{en:'She was working late last night.',tr:'Dün gece geç saate kadar çalışıyordu.'},
+      {en:'I was having dinner when the doorbell rang.',tr:'Kapı zili çalarken akşam yemeği yiyordum.'},{en:'He was driving home when it started to snow.',tr:'Kar yağmaya başladığında eve gidiyordu.'},
+      {en:'We were waiting for you for hours.',tr:'Saatlerce seni bekliyorduk.'},{en:'She was not feeling well yesterday morning.',tr:'Dün sabah iyi hissetmiyordu.'},
+      {en:'They were dancing at the party.',tr:'Partide dans ediyorlardı.'},{en:'I was reading a book when she called.',tr:'O aradığında kitap okuyordum.'},
+      {en:'He was running in the park at 7 AM.',tr:'Sabah 7\'de parkta koşuyordu.'},{en:'She was writing her essay all afternoon.',tr:'Bütün öğleden sonra makalesini yazıyordu.'},
+      {en:'We were having a meeting when the fire alarm went off.',tr:'Yangın alarmı çaldığında toplantıdaydık.'},{en:'He was shopping when I texted him.',tr:'Mesaj attığımda alışveriş yapıyordu.'},
+      {en:'She was crying when I found her.',tr:'Onu bulduğumda ağlıyordu.'},{en:'I was listening to music while studying.',tr:'Çalışırken müzik dinliyordum.'},
+      {en:'They were playing chess at midnight.',tr:'Gece yarısı satranç oynuyorlardı.'},{en:'He was fixing his car all day.',tr:'Bütün gün arabasını tamir ediyordu.'},
+      {en:'She was preparing for the interview.',tr:'Mülakat için hazırlanıyordu.'},{en:'We were watching the match when the lights went out.',tr:'Maçı izlerken ışıklar söndü.'},
+      {en:'I was taking a shower when you knocked.',tr:'Kapıyı çaldığında duş alıyordum.'},{en:'He was painting the house all week.',tr:'Bütün hafta evi boyuyordu.'},
+      {en:'She was not sleeping when I called.',tr:'Aradığımda uyumuyordu.'},{en:'They were discussing the project yesterday.',tr:'Dün projeyi tartışıyorlardı.'},
+      {en:'I was making coffee when the meeting started.',tr:'Toplantı başladığında kahve yapıyordum.'},{en:'He was thinking about you all day.',tr:'Bütün gün seni düşünüyordu.'},
+      {en:'She was looking for a job last month.',tr:'Geçen ay iş arıyordu.'},{en:'We were laughing when the teacher walked in.',tr:'Öğretmen girdiğinde gülüyorduk.'},
+      {en:'They were traveling across Europe.',tr:'Avrupa\'yı gezerek seyahat ediyorlardı.'},{en:'I was trying to sleep but it was too noisy.',tr:'Uyumaya çalışıyordum ama çok gürültülüydü.'},
+      {en:'He was working while everyone else was resting.',tr:'Herkes dinlenirken o çalışıyordu.'},{en:'She was singing when I arrived.',tr:'Geldiğimde şarkı söylüyordu.'},
+      {en:'We were eating lunch when the news broke.',tr:'Öğle yemeği yerken haber çıktı.'},{en:'He was checking his email when she called.',tr:'O aradığında e-postasını kontrol ediyordu.'},
+      {en:'She was getting dressed when I knocked.',tr:'Kapıyı çaldığımda giyiniyordu.'},{en:'They were not paying attention in class.',tr:'Derste dikkat etmiyorlardı.'},
+      {en:'I was doing my homework when the power went out.',tr:'Ödevimi yaparken elektrik kesildi.'},{en:'He was swimming when it started raining.',tr:'Yağmur yağarken yüzüyordu.'},
+      {en:'She was planning her holiday.',tr:'Tatilini planlıyordu.'},{en:'We were cleaning the house all morning.',tr:'Bütün sabah evi temizliyorduk.'},
+      {en:'They were arguing about money.',tr:'Para hakkında tartışıyorlardı.'},{en:'I was thinking about quitting my job.',tr:'İşi bırakmayı düşünüyordum.'}
+    ],
+    gaps: [
+      {sentence:'She ___ (read) when I arrived.',answer:'She was reading when I arrived.'},
+      {sentence:'They ___ (not/sleep) at midnight.',answer:'They were not sleeping at midnight.'},
+      {sentence:'He ___ (watch) TV at 10 PM.',answer:'He was watching TV at 10 PM.'},
+      {sentence:'We ___ (study) when the power went out.',answer:'We were studying when the power went out.'}
+    ]
+  },
+  {
+    id: 4, name: 'Present Perfect', code: 'have/has + PP', turkish: 'Şimdiki Tamamlanmış Zaman',
+    rule: 'Geçmişte olup şu anı etkileyen eylemler için.',
+    formula: [{l:'Olumlu',t:'have/has + PP'},{l:'Olumsuz',t:'have/has not + PP'},{l:'Soru',t:'Have/Has + S + PP?'}],
+    signals: ['just','already','yet','ever','never','recently'],
+    examples: [
+      {en:'I have just finished.',tr:'Az önce bitirdim.'},{en:'She has never been there.',tr:'Hiç gitmedi.'},
+      {en:'They have already eaten.',tr:'Zaten yediler.'},{en:'He has just arrived.',tr:'Az önce geldi.'},
+      {en:'We have visited Paris twice.',tr:'Paris\'e iki kez gittik.'},{en:'She has worked here for five years.',tr:'Burada beş yıldır çalışıyor.'},
+      {en:'I have never seen this movie.',tr:'Bu filmi hiç görmedim.'},{en:'He has already done his homework.',tr:'Ödevini zaten yaptı.'},
+      {en:'They have not replied yet.',tr:'Henüz cevap vermediler.'},{en:'She has recently started a new job.',tr:'Yakın zamanda yeni bir işe başladı.'},
+      {en:'I have lost my phone.',tr:'Telefonumu kaybettim.'},{en:'He has broken his arm.',tr:'Kolunu kırdı.'},
+      {en:'We have met before.',tr:'Daha önce tanışmıştık.'},{en:'She has read many books.',tr:'Birçok kitap okudu.'},
+      {en:'They have moved to a new house.',tr:'Yeni bir eve taşındılar.'},{en:'I have eaten sushi once.',tr:'Bir kez sushi yedim.'},
+      {en:'He has taken the train twice.',tr:'Treni iki kez kullandı.'},{en:'She has not called me yet.',tr:'Beni henüz aramadı.'},
+      {en:'We have finished the report.',tr:'Raporu bitirdik.'},{en:'He has spoken to the manager.',tr:'Müdürle konuştu.'},
+      {en:'She has learned a lot this year.',tr:'Bu yıl çok şey öğrendi.'},{en:'I have just woken up.',tr:'Az önce uyandım.'},
+      {en:'They have decided to travel.',tr:'Seyahat etmeye karar verdiler.'},{en:'He has already left.',tr:'Zaten gitti.'},
+      {en:'She has bought a new car.',tr:'Yeni bir araba aldı.'},{en:'We have seen this film before.',tr:'Bu filmi daha önce gördük.'},
+      {en:'I have never tried surfing.',tr:'Hiç sörf yapmayı denemedim.'},{en:'He has worked hard this month.',tr:'Bu ay çok çalıştı.'},
+      {en:'She has not eaten anything today.',tr:'Bugün hiçbir şey yemedi.'},{en:'They have completed the project.',tr:'Projeyi tamamladılar.'},
+      {en:'I have just sent the email.',tr:'Az önce e-postayı gönderdim.'},{en:'He has visited many countries.',tr:'Birçok ülkeyi ziyaret etti.'},
+      {en:'She has already packed her bags.',tr:'Çantalarını zaten topladı.'},{en:'We have not received the package yet.',tr:'Paketi henüz almadık.'},
+      {en:'They have never met before.',tr:'Daha önce hiç tanışmamışlar.'},{en:'I have had a headache all day.',tr:'Bütün gün başım ağrıdı.'},
+      {en:'He has improved a lot recently.',tr:'Son zamanlarda çok ilerledi.'},{en:'She has just made tea.',tr:'Az önce çay yaptı.'},
+      {en:'We have already booked the hotel.',tr:'Oteli zaten ayırttık.'},{en:'They have eaten at that restaurant before.',tr:'Daha önce o restoranda yediler.'},
+      {en:'I have not finished my homework yet.',tr:'Ödevimi henüz bitirmedim.'},{en:'He has tried many new foods.',tr:'Birçok yeni yemek denedi.'},
+      {en:'She has not been to the gym this week.',tr:'Bu hafta spor salonuna gitmedi.'},{en:'We have traveled abroad many times.',tr:'Yurt dışına birçok kez gittik.'},
+      {en:'He has forgotten his password.',tr:'Şifresini unuttu.'},{en:'She has learned to cook.',tr:'Yemek yapmayı öğrendi.'},
+      {en:'I have run a marathon.',tr:'Maraton koştum.'},{en:'They have opened a new restaurant.',tr:'Yeni bir restoran açtılar.'}
+    ],
+    gaps: [
+      {sentence:'She has just ___ (finish) her homework.',answer:'She has just finished her homework.'},
+      {sentence:'They have never ___ (see) snow.',answer:'They have never seen snow.'},
+      {sentence:'He has already ___ (leave).',answer:'He has already left.'},
+      {sentence:'We have not ___ (receive) the package yet.',answer:'We have not received the package yet.'}
+    ]
+  },
+  {
+    id: 5, name: 'Present Perfect Continuous', code: 'have/has + been + V-ing', turkish: 'Şimdiki Devam Tamamlanmış',
+    rule: 'Geçmişten beri devam eden eylemler için.',
+    formula: [{l:'Olumlu',t:'have/has + been + V-ing'},{l:'Olumsuz',t:'have/has not + been + V-ing'},{l:'Soru',t:'Have/Has + S + been + V-ing?'}],
+    signals: ['for','since','how long','all day'],
+    examples: [
+      {en:'I have been studying for 3 hours.',tr:'3 saattir çalışıyorum.'},{en:'She has been living here since 2020.',tr:'2020\'den beri burada yaşıyor.'},
+      {en:'They have been waiting for an hour.',tr:'Bir saattir bekliyorlar.'},{en:'He has been working all day.',tr:'Bütün gün çalışıyor.'},
+      {en:'We have been learning English for two years.',tr:'İki yıldır İngilizce öğreniyoruz.'},{en:'She has been reading since morning.',tr:'Sabahtan beri okuyor.'},
+      {en:'I have been cooking for an hour.',tr:'Bir saattir yemek pişiriyorum.'},{en:'He has been running since 6 AM.',tr:'Sabah 6\'dan beri koşuyor.'},
+      {en:'They have been arguing for hours.',tr:'Saatlerce tartışıyorlar.'},{en:'She has been teaching for 20 years.',tr:'20 yıldır ders veriyor.'},
+      {en:'I have been feeling tired recently.',tr:'Son zamanlarda yorgun hissediyorum.'},{en:'He has been playing the guitar since childhood.',tr:'Çocukluğundan beri gitar çalıyor.'},
+      {en:'We have been building the house for months.',tr:'Aylardır evi yapıyoruz.'},{en:'She has been not sleeping well lately.',tr:'Son zamanlarda iyi uyuyamıyor.'},
+      {en:'They have been practicing every day.',tr:'Her gün pratik yapıyorlar.'},{en:'I have been waiting for you since noon.',tr:'Öğleden beri seni bekliyorum.'},
+      {en:'He has been watching too much TV lately.',tr:'Son zamanlarda çok fazla TV izliyor.'},{en:'She has been saving money for a trip.',tr:'Bir gezi için para biriktiriyor.'},
+      {en:'We have been living here for ten years.',tr:'On yıldır burada yaşıyoruz.'},{en:'I have been walking for an hour.',tr:'Bir saattir yürüyorum.'},
+      {en:'He has been talking on the phone all morning.',tr:'Bütün sabah telefonda konuşuyor.'},{en:'She has been thinking about changing jobs.',tr:'İş değiştirmeyi düşünüyor.'},
+      {en:'They have been traveling for weeks.',tr:'Haftalardır seyahat ediyorlar.'},{en:'I have been writing this report since yesterday.',tr:'Dünden beri bu raporu yazıyorum.'},
+      {en:'He has been helping at the shelter for years.',tr:'Yıllardır barınakta yardım ediyor.'},{en:'She has been dancing since she was five.',tr:'Beş yaşından beri dans ediyor.'},
+      {en:'We have been trying to fix the problem.',tr:'Problemi çözmeye çalışıyoruz.'},{en:'I have been learning French for six months.',tr:'Altı aydır Fransızca öğreniyorum.'},
+      {en:'He has been exercising every morning.',tr:'Her sabah egzersiz yapıyor.'},{en:'She has been working on her novel for years.',tr:'Yıllardır romanı üzerinde çalışıyor.'},
+      {en:'They have been arguing about it all week.',tr:'Bütün hafta boyunca bu konuda tartışıyorlar.'},{en:'I have been watching this series for weeks.',tr:'Haftalardır bu diziyi izliyorum.'},
+      {en:'He has been training hard for the competition.',tr:'Yarışma için yoğun antrenman yapıyor.'},{en:'She has been studying abroad for a year.',tr:'Bir yıldır yurt dışında okuyor.'},
+      {en:'We have been working on this since Monday.',tr:'Pazartesiden beri bu üzerinde çalışıyoruz.'},{en:'I have been feeling better since yesterday.',tr:'Dünden beri kendimi daha iyi hissediyorum.'},
+      {en:'He has been fixing the roof all day.',tr:'Bütün gün çatıyı tamir ediyor.'},{en:'She has been raising money for charity.',tr:'Hayır kurumu için para topluyor.'},
+      {en:'They have been playing in the band for years.',tr:'Yıllardır grupta çalıyorlar.'},{en:'I have been looking for a new apartment.',tr:'Yeni bir daire arıyorum.'},
+      {en:'He has been recovering from illness.',tr:'Hastalıktan iyileşiyor.'},{en:'She has been baking all afternoon.',tr:'Bütün öğleden sonra fırın işi yapıyor.'},
+      {en:'We have been planning this event for months.',tr:'Aylardır bu etkinliği planlıyoruz.'},{en:'I have been trying to reach him.',tr:'Ona ulaşmaya çalışıyorum.'},
+      {en:'He has been living alone since last year.',tr:'Geçen yıldan beri yalnız yaşıyor.'},{en:'She has been learning to paint.',tr:'Resim yapmayı öğreniyor.'},
+      {en:'They have been watching the game since 3 PM.',tr:'Saat 3\'ten beri maçı izliyorlar.'},{en:'I have been working overtime every week.',tr:'Her hafta mesai yapıyorum.'}
+    ],
+    gaps: [
+      {sentence:'She has been ___ (work) since morning.',answer:'She has been working since morning.'},
+      {sentence:'They have been ___ (study) for 5 hours.',answer:'They have been studying for 5 hours.'},
+      {sentence:'I have been ___ (wait) for you since noon.',answer:'I have been waiting for you since noon.'},
+      {sentence:'He has been ___ (run) since 6 AM.',answer:'He has been running since 6 AM.'}
+    ]
+  },
+  {
+    id: 6, name: 'Simple Future', code: 'will + V', turkish: 'Gelecek Zaman',
+    rule: 'Gelecekteki eylemler ve ani kararlar için.',
+    formula: [{l:'Olumlu',t:'will + V (base)'},{l:'Olumsuz',t:"won't + V"},{l:'Soru',t:'Will + S + V?'}],
+    signals: ['tomorrow','next week','soon','later'],
+    examples: [
+      {en:'I will call you tomorrow.',tr:'Yarın seni arayacağım.'},{en:'She will be a doctor.',tr:'Doktor olacak.'},
+      {en:'They will visit us next week.',tr:'Gelecek hafta bizi ziyaret edecekler.'},{en:'He will finish the report soon.',tr:'Raporu yakında bitirecek.'},
+      {en:'We will travel to Europe next year.',tr:'Gelecek yıl Avrupa\'ya gideceğiz.'},{en:'She will start her new job on Monday.',tr:'Pazartesi yeni işine başlayacak.'},
+      {en:'I will help you with your homework.',tr:'Ödevinle sana yardım edeceğim.'},{en:'He will arrive at 5 PM.',tr:'Saat 5\'te gelecek.'},
+      {en:'They will build a new school.',tr:'Yeni bir okul inşa edecekler.'},{en:'She will cook dinner tonight.',tr:'Bu gece akşam yemeği pişirecek.'},
+      {en:'I will not be late.',tr:'Geç kalmayacağım.'},{en:'He will buy a new car next month.',tr:'Gelecek ay yeni bir araba alacak.'},
+      {en:'We will have a party on Saturday.',tr:'Cumartesi günü parti vereceğiz.'},{en:'She will not come today.',tr:'Bugün gelmeyecek.'},
+      {en:'They will go to the beach this summer.',tr:'Bu yaz plaja gidecekler.'},{en:'I will send you the document later.',tr:'Belgeyi daha sonra sana göndereceğim.'},
+      {en:'He will talk to the manager tomorrow.',tr:'Yarın müdürle konuşacak.'},{en:'She will study harder next semester.',tr:'Gelecek sömestrde daha çok çalışacak.'},
+      {en:'We will meet at the café at noon.',tr:'Öğleden sonra kafede buluşacağız.'},{en:'He will play in the final match.',tr:'Final maçında oynayacak.'},
+      {en:'She will open her own restaurant.',tr:'Kendi restoranını açacak.'},{en:'I will read that book soon.',tr:'O kitabı yakında okuyacağım.'},
+      {en:'They will attend the wedding next Sunday.',tr:'Gelecek Pazar düğüne katılacaklar.'},{en:'He will take the bus tomorrow morning.',tr:'Yarın sabah otobüs alacak.'},
+      {en:'She will graduate next June.',tr:'Gelecek Haziran\'da mezun olacak.'},{en:'We will go hiking next weekend.',tr:'Gelecek hafta sonu yürüyüşe çıkacağız.'},
+      {en:'I will not forget your birthday.',tr:'Doğum gününü unutmayacağım.'},{en:'He will repair the computer later.',tr:'Bilgisayarı daha sonra tamir edecek.'},
+      {en:'She will move to a new city soon.',tr:'Yakında yeni bir şehre taşınacak.'},{en:'They will sign the contract tomorrow.',tr:'Yarın sözleşmeyi imzalayacaklar.'},
+      {en:'I will wake up early tomorrow.',tr:'Yarın erken kalkacağım.'},{en:'He will play tennis on Sunday.',tr:'Pazar günü tenis oynayacak.'},
+      {en:'She will not eat fast food anymore.',tr:'Artık fast food yemeyecek.'},{en:'We will celebrate the new year together.',tr:'Yeni yılı birlikte kutlayacağız.'},
+      {en:'They will complete the project on time.',tr:'Projeyi zamanında tamamlayacaklar.'},{en:'I will go shopping after work.',tr:'İşten sonra alışverişe gideceğim.'},
+      {en:'He will practice piano every day.',tr:'Her gün piyano çalışacak.'},{en:'She will take a vacation next month.',tr:'Gelecek ay tatil yapacak.'},
+      {en:'We will clean the office tomorrow.',tr:'Yarın ofisi temizleyeceğiz.'},{en:'I will give you a call when I arrive.',tr:'Geldiğimde seni arayacağım.'},
+      {en:'He will not attend the meeting.',tr:'Toplantıya katılmayacak.'},{en:'She will learn to drive next year.',tr:'Gelecek yıl araba sürmeyi öğrenecek.'},
+      {en:'They will open the new branch soon.',tr:'Yakında yeni şubeyi açacaklar.'},{en:'I will do my best.',tr:'Elimden gelenin en iyisini yapacağım.'},
+      {en:'He will come back next month.',tr:'Gelecek ay geri dönecek.'},{en:'She will take the exam on Friday.',tr:'Cuma günü sınava girecek.'},
+      {en:'We will have dinner at a nice restaurant.',tr:'Güzel bir restoranda yemek yiyeceğiz.'},{en:'They will improve their English.',tr:'İngilizcelerini geliştirecekler.'}
+    ],
+    gaps: [
+      {sentence:'She ___ (call) you tomorrow.',answer:'She will call you tomorrow.'},
+      {sentence:"They ___ (not/come) next week.",answer:"They will not come next week."},
+      {sentence:'He ___ (arrive) at 5 PM.',answer:'He will arrive at 5 PM.'},
+      {sentence:'We ___ (travel) to Europe next year.',answer:'We will travel to Europe next year.'}
+    ]
+  },
+  {
+    id: 7, name: 'Future Continuous', code: 'will + be + V-ing', turkish: 'Gelecek Devamlı Zaman',
+    rule: 'Gelecekte devam ediyor olacak eylemler için.',
+    formula: [{l:'Olumlu',t:'will + be + V-ing'},{l:'Olumsuz',t:'will not + be + V-ing'},{l:'Soru',t:'Will + S + be + V-ing?'}],
+    signals: ['at this time tomorrow','at 8pm tonight','this time next week'],
+    examples: [
+      {en:'I will be working at 9 AM.',tr:'Sabah 9\'da çalışıyor olacağım.'},{en:'She will be sleeping when you arrive.',tr:'Sen geldiğinde uyuyor olacak.'},
+      {en:'They will be traveling this time next week.',tr:'Gelecek hafta bu saatte seyahat ediyor olacaklar.'},{en:'He will be attending a meeting at noon.',tr:'Öğlen toplantıda olacak.'},
+      {en:'We will be having dinner at 8 PM.',tr:'Akşam 8\'de yemek yiyor olacağız.'},{en:'She will be preparing for the interview.',tr:'Mülakat için hazırlanıyor olacak.'},
+      {en:'I will be studying all night.',tr:'Bütün gece ders çalışıyor olacağım.'},{en:'He will be driving at that time.',tr:'O saatte araba kullanıyor olacak.'},
+      {en:'They will be watching the match tonight.',tr:'Bu gece maçı izliyor olacaklar.'},{en:'She will be running in the marathon.',tr:'Maratonda koşuyor olacak.'},
+      {en:'I will be working from home tomorrow.',tr:'Yarın evden çalışıyor olacağım.'},{en:'He will be staying at a hotel next week.',tr:'Gelecek hafta bir otelde kalıyor olacak.'},
+      {en:'We will be discussing the budget at 3 PM.',tr:'Saat 3\'te bütçeyi tartışıyor olacağız.'},{en:'She will be taking the train at noon.',tr:'Öğlen trene biniyor olacak.'},
+      {en:'They will be singing at the concert.',tr:'Konserde şarkı söylüyor olacaklar.'},{en:'I will be visiting my parents this weekend.',tr:'Bu hafta sonu ailemi ziyaret ediyor olacağım.'},
+      {en:'He will be giving a speech tomorrow morning.',tr:'Yarın sabah konuşma yapıyor olacak.'},{en:'She will be cooking when guests arrive.',tr:'Misafirler geldiğinde yemek pişiriyor olacak.'},
+      {en:'We will be relaxing on the beach.',tr:'Plajda dinleniyor olacağız.'},{en:'He will be painting the house all week.',tr:'Bütün hafta evi boyuyor olacak.'},
+      {en:'She will be teaching all morning.',tr:'Bütün sabah ders veriyor olacak.'},{en:'I will be waiting for you at the station.',tr:'İstasyonda seni bekliyor olacağım.'},
+      {en:'They will be swimming at 10 AM.',tr:'Sabah 10\'da yüzüyor olacaklar.'},{en:'He will be presenting at the conference.',tr:'Konferansta sunum yapıyor olacak.'},
+      {en:'She will be not working next Friday.',tr:'Gelecek Cuma çalışmıyor olacak.'},{en:'We will be playing tennis at 6 PM.',tr:'Akşam 6\'da tenis oynuyor olacağız.'},
+      {en:'I will be thinking about you.',tr:'Seni düşünüyor olacağım.'},{en:'He will be exercising at the gym.',tr:'Spor salonunda egzersiz yapıyor olacak.'},
+      {en:'She will be meeting clients all day.',tr:'Bütün gün müşterilerle görüşüyor olacak.'},{en:'They will be celebrating their anniversary.',tr:'Yıldönümlerini kutluyor olacaklar.'},
+      {en:'I will be finishing the project by then.',tr:'O zamana kadar projeyi bitiriyor olacağım.'},{en:'He will be living in Paris next year.',tr:'Gelecek yıl Paris\'te yaşıyor olacak.'},
+      {en:'She will be taking her final exams.',tr:'Final sınavlarına giriyor olacak.'},{en:'We will be renovating the office.',tr:'Ofisi yeniliyiyor olacağız.'},
+      {en:'They will be moving to a new city.',tr:'Yeni bir şehre taşınıyor olacaklar.'},{en:'I will be giving a presentation.',tr:'Sunum yapıyor olacağım.'},
+      {en:'He will be cooking for fifty people.',tr:'Elli kişi için yemek pişiriyor olacak.'},{en:'She will be rehearsing for the play.',tr:'Oyun için prova yapıyor olacak.'},
+      {en:'We will be sailing in the Aegean.',tr:'Ege\'de yelken yapıyor olacağız.'},{en:'I will be reading all afternoon.',tr:'Bütün öğleden sonra okuyorum olacağım.'},
+      {en:'He will be attending a course next month.',tr:'Gelecek ay bir kursa katılıyor olacak.'},{en:'She will be working on a new project.',tr:'Yeni bir proje üzerinde çalışıyor olacak.'},
+      {en:'They will be training for the championship.',tr:'Şampiyonluk için antrenman yapıyor olacaklar.'},{en:'I will be helping at the event.',tr:'Etkinlikte yardım ediyor olacağım.'},
+      {en:'He will be traveling for business.',tr:'İş seyahatinde olacak.'},{en:'She will be designing the website.',tr:'Web sitesini tasarlıyor olacak.'},
+      {en:'We will be having a party.',tr:'Parti yapıyor olacağız.'},{en:'They will be learning new skills.',tr:'Yeni beceriler öğreniyor olacaklar.'}
+    ],
+    gaps: [
+      {sentence:'She will be ___ (study) at 10pm tonight.',answer:'She will be studying at 10pm tonight.'},
+      {sentence:'I will be ___ (work) this time tomorrow.',answer:'I will be working this time tomorrow.'},
+      {sentence:'He will be ___ (attend) a meeting at noon.',answer:'He will be attending a meeting at noon.'},
+      {sentence:'They will be ___ (travel) next week.',answer:'They will be traveling next week.'}
+    ]
+  },
+  {
+    id: 8, name: 'Past Perfect', code: 'had + PP', turkish: 'Geçmişin Geçmişi',
+    rule: 'Geçmişte iki olaydan önce olanı belirtir.',
+    formula: [{l:'Olumlu',t:'had + PP'},{l:'Olumsuz',t:"hadn't + PP"},{l:'Soru',t:'Had + S + PP?'}],
+    signals: ['before','after','already','by the time'],
+    examples: [
+      {en:'I had finished before you arrived.',tr:'Sen gelmeden bitirdim.'},{en:'She had gone home when I called.',tr:'Aradığımda eve gitmişti.'},
+      {en:'They had eaten before the show started.',tr:'Gösteri başlamadan yemişlerdi.'},{en:'He had already left when we got there.',tr:'Biz oraya geldiğimizde zaten gitmişti.'},
+      {en:'We had met before the conference.',tr:'Konferanstan önce tanışmıştık.'},{en:'She had studied medicine before becoming a nurse.',tr:'Hemşire olmadan önce tıp okumuştu.'},
+      {en:'I had never seen snow before moving north.',tr:'Kuzeye taşınmadan önce hiç kar görmemiştim.'},{en:'He had worked there for ten years before retiring.',tr:'Emekli olmadan önce orada on yıl çalışmıştı.'},
+      {en:'They had saved enough money before the trip.',tr:'Seyahatten önce yeterince para biriktirmişlerdi.'},{en:'She had cleaned the house before the guests arrived.',tr:'Misafirler gelmeden önce evi temizlemişti.'},
+      {en:'I had called him before the meeting.',tr:'Toplantıdan önce onu aramıştım.'},{en:'He had already eaten by the time we sat down.',tr:'Biz oturduğumuzda zaten yemişti.'},
+      {en:'We had finished the project before the deadline.',tr:'Projeyi son tarihe kadar bitirmiştik.'},{en:'She had not slept before the interview.',tr:'Mülakatten önce uyumamıştı.'},
+      {en:'They had practiced for months before the performance.',tr:'Gösteriden önce aylarca pratik yapmışlardı.'},{en:'I had packed my bags the night before.',tr:'Bir gece öncesinden bavulumu hazırlamıştım.'},
+      {en:'He had never tried sushi before visiting Japan.',tr:'Japonya\'ya gitmeden önce hiç sushi denemişti.'},{en:'She had already read the book before the movie came out.',tr:'Film çıkmadan önce kitabı zaten okumuştu.'},
+      {en:'We had spoken before the event.',tr:'Etkinlikten önce konuşmuştuk.'},{en:'He had forgotten her name by the time they met again.',tr:'Tekrar buluştuklarında ismini unutmuştu.'},
+      {en:'She had just arrived when the meeting started.',tr:'Toplantı başladığında yeni gelmişti.'},{en:'I had never heard that song before.',tr:'O şarkıyı daha önce hiç duymamıştım.'},
+      {en:'They had not expected this result.',tr:'Bu sonucu beklemediler.'},{en:'He had been to Paris before.',tr:'Daha önce Paris\'e gitmişti.'},
+      {en:'She had learned the news before everyone.',tr:'Haberi herkesten önce öğrenmişti.'},{en:'We had never worked together before.',tr:'Daha önce hiç birlikte çalışmamıştık.'},
+      {en:'I had already answered the question.',tr:'Soruyu zaten cevaplamıştım.'},{en:'He had signed the contract before the meeting.',tr:'Toplantıdan önce sözleşmeyi imzalamıştı.'},
+      {en:'She had prepared well before the exam.',tr:'Sınavdan önce iyi hazırlanmıştı.'},{en:'They had moved out before the house was sold.',tr:'Ev satılmadan önce taşınmışlardı.'},
+      {en:'I had completed the task before noon.',tr:'Öğleden önce görevi tamamlamıştım.'},{en:'He had visited the museum before.',tr:'Müzeyi daha önce ziyaret etmişti.'},
+      {en:'She had taken notes before the lecture ended.',tr:'Ders bitmeden önce not almıştı.'},{en:'We had left before the storm hit.',tr:'Fırtına gelmeden önce ayrılmıştık.'},
+      {en:'They had argued before making a decision.',tr:'Karar vermeden önce tartışmışlardı.'},{en:'I had grown up there before moving abroad.',tr:'Yurt dışına taşınmadan önce orada büyümüştüm.'},
+      {en:'He had practiced every day before the competition.',tr:'Yarışmadan önce her gün pratik yapmıştı.'},{en:'She had made dinner before he got home.',tr:'O eve gelmeden önce akşam yemeğini yapmıştı.'},
+      {en:'We had seen that film before.',tr:'O filmi daha önce görmüştük.'},{en:'I had told her the truth before she found out.',tr:'O öğrenmeden önce gerçeği söylemişim.'},
+      {en:'He had broken the window before the teacher saw.',tr:'Öğretmen görmeden önce camı kırmıştı.'},{en:'She had met him before the party.',tr:'Partiden önce onunla tanışmıştı.'},
+      {en:'They had finished eating before we arrived.',tr:'Biz gelmeden önce yemeği bitirmişlerdi.'},{en:'I had booked the flight before prices went up.',tr:'Fiyatlar artmadan önce uçuşu ayırttım.'},
+      {en:'He had studied the material before class.',tr:'Dersten önce materyali çalışmıştı.'},{en:'She had not met him before that day.',tr:'O güne kadar onunla tanışmamıştı.'},
+      {en:'We had finished the conversation before she left.',tr:'O gitmeden önce konuşmayı bitirmiştik.'},{en:'They had not realized the mistake before it was too late.',tr:'Artık çok geçti fark etmeden hatayı anlamamışlardı.'}
+    ],
+    gaps: [
+      {sentence:'She had already ___ (leave) when I arrived.',answer:'She had already left when I arrived.'},
+      {sentence:'They had not ___ (eat) before the meeting.',answer:'They had not eaten before the meeting.'},
+      {sentence:'He had ___ (finish) the project before the deadline.',answer:'He had finished the project before the deadline.'},
+      {sentence:'I had never ___ (see) snow before.',answer:'I had never seen snow before.'}
+    ]
+  },
+  {
+    id: 9, name: 'Past Perfect Continuous', code: 'had + been + V-ing', turkish: 'Geçmiş Devam Tamamlanmış',
+    rule: 'Geçmişte belirli süre devam eden eylemler için.',
+    formula: [{l:'Olumlu',t:'had + been + V-ing'},{l:'Olumsuz',t:'had not + been + V-ing'},{l:'Soru',t:'Had + S + been + V-ing?'}],
+    signals: ['for','since','before','how long'],
+    examples: [
+      {en:'I had been working for 8 hours.',tr:'8 saattir çalışıyordum.'},{en:'She had been waiting since morning.',tr:'Sabahtan beri bekliyordu.'},
+      {en:'They had been studying before the exam.',tr:'Sınavdan önce çalışıyorlardı.'},{en:'He had been living there for years.',tr:'Orada yıllardır yaşıyordu.'},
+      {en:'We had been saving money for a vacation.',tr:'Tatil için para biriktiriyorduk.'},{en:'She had been learning Spanish for months before she moved.',tr:'Taşınmadan önce aylarca İspanyolca öğreniyordu.'},
+      {en:'I had been looking for a job for a long time.',tr:'Uzun süredir iş arıyordum.'},{en:'He had been training hard before the competition.',tr:'Yarışmadan önce sıkı antrenman yapıyordu.'},
+      {en:'They had been arguing for hours before they agreed.',tr:'Anlaşmadan önce saatlerce tartışıyorlardı.'},{en:'She had been working on the project for weeks.',tr:'Haftalardır proje üzerinde çalışıyordu.'},
+      {en:'I had been sleeping for only two hours.',tr:'Sadece iki saattir uyuyordum.'},{en:'He had been teaching at that school for ten years.',tr:'O okulda on yıldır öğretmenlik yapıyordu.'},
+      {en:'We had been waiting for the results.',tr:'Sonuçları bekliyorduk.'},{en:'She had been feeling sick for days.',tr:'Günlerdir hasta hissediyordu.'},
+      {en:'They had been traveling for weeks before arriving.',tr:'Varmadan önce haftalardır seyahat ediyorlardı.'},{en:'I had been trying to fix the problem all morning.',tr:'Bütün sabah problemi çözmeye çalışıyordum.'},
+      {en:'He had been running for an hour when he collapsed.',tr:'Düşmeden önce bir saattir koşuyordu.'},{en:'She had been reading before the lights went out.',tr:'Işıklar sönmeden önce okuyordu.'},
+      {en:'We had been cooking dinner for two hours.',tr:'İki saattir akşam yemeği pişiriyorduk.'},{en:'He had been drinking coffee all day.',tr:'Bütün gün kahve içiyordu.'},
+      {en:'She had been crying before I arrived.',tr:'Ben gelmeden önce ağlıyordu.'},{en:'I had been studying that topic for weeks.',tr:'Haftalardır o konuyu çalışıyordum.'},
+      {en:'They had been building the bridge for two years.',tr:'İki yıldır köprüyü inşa ediyorlardı.'},{en:'He had been practicing guitar since he was young.',tr:'Gençliğinden beri gitar çalışıyordu.'},
+      {en:'She had been dieting for months before her wedding.',tr:'Düğününden önce aylarca diyet yapıyordu.'},{en:'We had been discussing plans all day.',tr:'Bütün gün planları tartışıyorduk.'},
+      {en:'I had been walking for hours before I found the place.',tr:'Yeri bulmadan önce saatlerce yürüyordum.'},{en:'He had been searching for the document all morning.',tr:'Bütün sabah belgeyi arıyordu.'},
+      {en:'She had been painting the room before we moved in.',tr:'Biz taşınmadan önce odayı boyuyordu.'},{en:'They had been fighting over the issue for a long time.',tr:'Uzun süredir bu konu üzerinde tartışıyorlardı.'},
+      {en:'I had been working overtime every day.',tr:'Her gün mesai yapıyordum.'},{en:'He had been playing video games all night.',tr:'Bütün gece video oyunu oynuyordu.'},
+      {en:'She had been carrying heavy bags all day.',tr:'Bütün gün ağır çantalar taşıyordu.'},{en:'We had been waiting for the bus for half an hour.',tr:'Yarım saattir otobüs bekliyorduk.'},
+      {en:'They had been living in that city for five years.',tr:'Beş yıldır o şehirde yaşıyorlardı.'},{en:'I had been attending yoga classes for months.',tr:'Aylardır yoga derslerine gidiyordum.'},
+      {en:'He had been skipping meals before he got ill.',tr:'Hasta olmadan önce öğün atlıyordu.'},{en:'She had been managing the team alone.',tr:'Ekibi tek başına yönetiyordu.'},
+      {en:'We had been hoping for good news.',tr:'İyi haberler bekliyorduk.'},{en:'I had been commuting for two hours every day.',tr:'Her gün iki saat yolculuk ediyordum.'},
+      {en:'He had been studying medicine for six years.',tr:'Altı yıldır tıp okuyordu.'},{en:'She had been trying to contact him for days.',tr:'Günlerdir onunla iletişim kurmaya çalışıyordu.'},
+      {en:'They had been saving up before buying the house.',tr:'Evi satın almadan önce para biriktiriyorlardı.'},{en:'I had been writing letters before email existed.',tr:'E-posta olmadan önce mektup yazıyordum.'},
+      {en:'He had been ignoring her calls for weeks.',tr:'Haftalardır onun aramalarını görmezden geliyordu.'},{en:'She had been looking after her sick mother.',tr:'Hasta annesine bakıyordu.'},
+      {en:'We had been working on the deal for months.',tr:'Aylardır anlaşma üzerinde çalışıyorduk.'},{en:'They had been arguing before reaching a solution.',tr:'Çözüme ulaşmadan önce tartışıyorlardı.'}
+    ],
+    gaps: [
+      {sentence:'She had been ___ (wait) for 2 hours when he called.',answer:'She had been waiting for 2 hours when he called.'},
+      {sentence:'They had been ___ (run) for an hour before it rained.',answer:'They had been running for an hour before it rained.'},
+      {sentence:'He had been ___ (live) there for years.',answer:'He had been living there for years.'},
+      {sentence:'We had been ___ (save) money for a vacation.',answer:'We had been saving money for a vacation.'}
+    ]
+  },
+  {
+    id: 10, name: 'Future Perfect', code: 'will + have + PP', turkish: 'Gelecek Tamamlanmış Zaman',
+    rule: 'Gelecekte belirli zamana kadar tamamlanacak eylemler için.',
+    formula: [{l:'Olumlu',t:'will + have + PP'},{l:'Olumsuz',t:'will not + have + PP'},{l:'Soru',t:'Will + S + have + PP?'}],
+    signals: ['by Friday','by next year','by the time'],
+    examples: [
+      {en:'I will have finished by Friday.',tr:'Cuma gününe kadar bitirmiş olacağım.'},{en:'She will have completed the course by June.',tr:'Haziran\'a kadar kursu tamamlamış olacak.'},
+      {en:'They will have arrived by noon.',tr:'Öğlene kadar varmış olacaklar.'},{en:'He will have read the book by tomorrow.',tr:'Yarına kadar kitabı okumuş olacak.'},
+      {en:'We will have saved enough money by next year.',tr:'Gelecek yıla kadar yeterince para biriktirmiş olacağız.'},{en:'She will have graduated by the end of the year.',tr:'Yıl sonuna kadar mezun olmuş olacak.'},
+      {en:'I will have learned Spanish by the time I visit Mexico.',tr:'Meksika\'yı ziyaret ettiğimde İspanyolca öğrenmiş olacağım.'},{en:'He will have retired by 2030.',tr:'2030\'a kadar emekli olmuş olacak.'},
+      {en:'They will have built the bridge by next spring.',tr:'Gelecek bahara kadar köprüyü inşa etmiş olacaklar.'},{en:'She will have published her book by next month.',tr:'Gelecek aya kadar kitabını yayınlamış olacak.'},
+      {en:'I will have prepared everything by the time you arrive.',tr:'Sen gelene kadar her şeyi hazırlamış olacağım.'},{en:'He will have fixed the car by this evening.',tr:'Bu akşama kadar arabayı tamir etmiş olacak.'},
+      {en:'We will have decorated the room by noon.',tr:'Öğlene kadar odayı süslemiş olacağız.'},{en:'She will have not returned by midnight.',tr:'Gece yarısına kadar dönmemiş olacak.'},
+      {en:'They will have sold all the tickets by tomorrow.',tr:'Yarına kadar tüm biletleri satmış olacaklar.'},{en:'I will have cooked dinner by 6 PM.',tr:'Saat 6\'ya kadar akşam yemeğini pişirmiş olacağım.'},
+      {en:'He will have earned a promotion by next year.',tr:'Gelecek yıla kadar terfi almış olacak.'},{en:'She will have moved to a new city.',tr:'Yeni bir şehre taşınmış olacak.'},
+      {en:'We will have met our goals by then.',tr:'O zamana kadar hedeflerimize ulaşmış olacağız.'},{en:'He will have completed ten years of service.',tr:'On yıllık hizmetini tamamlamış olacak.'},
+      {en:'She will have sent the report by Monday.',tr:'Pazartesi\'ye kadar raporu göndermiş olacak.'},{en:'I will have visited twenty countries by thirty.',tr:'Otuzuna kadar yirmi ülke ziyaret etmiş olacağım.'},
+      {en:'They will have painted the house by the weekend.',tr:'Hafta sonuna kadar evi boyamış olacaklar.'},{en:'He will have written three novels.',tr:'Üç roman yazmış olacak.'},
+      {en:'She will have lost twenty kilos.',tr:'Yirmi kilo vermiş olacak.'},{en:'We will have changed the whole system.',tr:'Tüm sistemi değiştirmiş olacağız.'},
+      {en:'I will have not finished the essay by then.',tr:'O zamana kadar denemeyi bitirmemiş olacağım.'},{en:'He will have answered all the emails.',tr:'Tüm e-postaları yanıtlamış olacak.'},
+      {en:'She will have mastered the language.',tr:'Dile hakim olmuş olacak.'},{en:'They will have opened the new branch.',tr:'Yeni şubeyi açmış olacaklar.'},
+      {en:'I will have taken the exam by next week.',tr:'Gelecek haftaya kadar sınava girmiş olacağım.'},{en:'He will have replaced the equipment.',tr:'Ekipmanı değiştirmiş olacak.'},
+      {en:'She will have joined a new team.',tr:'Yeni bir ekibe katılmış olacak.'},{en:'We will have celebrated our anniversary.',tr:'Yıldönümümüzü kutlamış olacağız.'},
+      {en:'They will have crossed the border by evening.',tr:'Akşama kadar sınırı geçmiş olacaklar.'},{en:'I will have practiced a hundred hours.',tr:'Yüz saat pratik yapmış olacağım.'},
+      {en:'He will have won the competition.',tr:'Yarışmayı kazanmış olacak.'},{en:'She will have completed her thesis.',tr:'Tezini tamamlamış olacak.'},
+      {en:'We will have cleared all the debt.',tr:'Tüm borcu kapatmış olacağız.'},{en:'I will have made a decision by then.',tr:'O zamana kadar bir karar vermiş olacağım.'},
+      {en:'He will have traveled to every continent.',tr:'Her kıtaya seyahat etmiş olacak.'},{en:'She will have become fluent in English.',tr:'İngilizcede akıcı olmuş olacak.'},
+      {en:'They will have finished training by September.',tr:'Eylül\'e kadar eğitimi bitirmiş olacaklar.'},{en:'We will have launched the product by spring.',tr:'İlkbahara kadar ürünü piyasaya sürmüş olacağız.'},
+      {en:'I will have read fifty books by year-end.',tr:'Yıl sonuna kadar elli kitap okumuş olacağım.'},{en:'He will have updated all the files.',tr:'Tüm dosyaları güncellemiş olacak.'},
+      {en:'She will have taught for thirty years.',tr:'Otuz yıl öğretmenlik yapmış olacak.'},{en:'They will have designed the new system.',tr:'Yeni sistemi tasarlamış olacaklar.'}
+    ],
+    gaps: [
+      {sentence:'She will have ___ (finish) by 5pm.',answer:'She will have finished by 5pm.'},
+      {sentence:'They will have ___ (arrive) by noon.',answer:'They will have arrived by noon.'},
+      {sentence:'He will have ___ (read) the book by tomorrow.',answer:'He will have read the book by tomorrow.'},
+      {sentence:'I will have ___ (learn) Spanish by the time I visit Mexico.',answer:'I will have learned Spanish by the time I visit Mexico.'}
+    ]
+  },
+  {
+    id: 11, name: 'Future Perfect Continuous', code: 'will + have + been + V-ing', turkish: 'Gelecek Devam Tamamlanmış',
+    rule: 'Gelecekte ne kadar süredir devam edeceğini belirtir.',
+    formula: [{l:'Olumlu',t:'will + have + been + V-ing'},{l:'Olumsuz',t:'will not + have + been + V-ing'},{l:'Soru',t:'Will + S + have + been + V-ing?'}],
+    signals: ['by…for','by next year for','by the time…for'],
+    examples: [
+      {en:'By Friday I will have been studying for 6 months.',tr:'Cuma gününe kadar 6 aydır çalışıyor olacağım.'},{en:'She will have been working here for 3 years by June.',tr:'Haziran\'a kadar burada 3 yıldır çalışıyor olacak.'},
+      {en:'By 2025, they will have been living together for a decade.',tr:'2025\'e kadar on yıldır birlikte yaşıyor olacaklar.'},{en:'He will have been teaching for twenty years by retirement.',tr:'Emekliliğe kadar yirmi yıldır öğretmenlik yapıyor olacak.'},
+      {en:'By the time you arrive, I will have been cooking for an hour.',tr:'Sen gelene kadar bir saattir yemek pişiriyor olacağım.'},{en:'We will have been waiting for two hours by then.',tr:'O zamana kadar iki saattir bekliyecek olacağız.'},
+      {en:'By Monday, she will have been studying for the exam for a week.',tr:'Pazartesi\'ye kadar bir haftadır sınava çalışıyor olacak.'},{en:'He will have been running the company for ten years.',tr:'Şirketi on yıldır yönetiyor olacak.'},
+      {en:'They will have been traveling for three months by December.',tr:'Aralık\'a kadar üç aydır seyahat ediyor olacaklar.'},{en:'I will have been learning French for a year by spring.',tr:'İlkbahara kadar bir yıldır Fransızca öğreniyor olacağım.'},
+      {en:'By next summer, she will have been dancing for fifteen years.',tr:'Gelecek yaza kadar on beş yıldır dans ediyor olacak.'},{en:'We will have been working on this for six months by completion.',tr:'Tamamlanana kadar altı aydır bunun üzerinde çalışıyor olacağız.'},
+      {en:'He will have been exercising for an hour by the time breakfast is ready.',tr:'Kahvaltı hazır olduğunda bir saattir egzersiz yapıyor olacak.'},{en:'By the end of the year, I will have been blogging for five years.',tr:'Yıl sonunda beş yıldır blog yazıyor olacağım.'},
+      {en:'She will have been painting by the time guests arrive.',tr:'Misafirler gelene kadar resim yapıyor olacak.'},{en:'They will have been building the road for two years.',tr:'Yolu iki yıldır inşa ediyor olacaklar.'},
+      {en:'By tomorrow morning, I will have been driving for twelve hours.',tr:'Yarın sabaha kadar on iki saattir araba kullanıyor olacağım.'},{en:'He will have been living abroad for five years by then.',tr:'O zamana kadar beş yıldır yurt dışında yaşıyor olacak.'},
+      {en:'By graduation, she will have been studying medicine for six years.',tr:'Mezuniyete kadar altı yıldır tıp okuyor olacak.'},{en:'We will have been saving money for three years by next summer.',tr:'Gelecek yaza kadar üç yıldır para biriktiriyor olacağız.'},
+      {en:'By 2030, they will have been married for twenty-five years.',tr:'2030\'a kadar yirmi beş yıldır evli olacaklar.'},{en:'I will have been playing this game for ten hours by midnight.',tr:'Gece yarısına kadar bu oyunu on saattir oynuyor olacağım.'},
+      {en:'By next March, he will have been at the company for a decade.',tr:'Gelecek Mart\'a kadar on yıldır şirkette olacak.'},{en:'She will have been volunteering for years by the time she retires.',tr:'Emekli olduğunda yıllardır gönüllü çalışıyor olacak.'},
+      {en:'They will have been practicing yoga for three years.',tr:'Üç yıldır yoga yapıyor olacaklar.'},{en:'By December, we will have been renovating the house for six months.',tr:'Aralık\'a kadar altı aydır evi yeniliyecek olacağız.'},
+      {en:'He will have been reading that book for a month by the time he finishes.',tr:'Bitirdiğinde bir aydır o kitabı okuyor olacak.'},{en:'I will have been working here for a year by next month.',tr:'Gelecek aya kadar burada bir yıldır çalışıyor olacağım.'},
+      {en:'She will have been designing websites for a decade by retirement.',tr:'Emekliliğe kadar on yıldır web sitesi tasarlıyor olacak.'},{en:'They will have been running the marathon training for months.',tr:'Maraton antrenmanını aylardır sürdürüyor olacaklar.'},
+      {en:'By the time the project ends, we will have been collaborating for a year.',tr:'Proje bittiğinde bir yıldır iş birliği yapıyor olacağız.'},{en:'I will have been cooking professionally for fifteen years by then.',tr:'O zamana kadar on beş yıldır profesyonel olarak yemek pişiriyor olacağım.'},
+      {en:'He will have been commuting for an hour every day for five years.',tr:'Beş yıldır her gün bir saattir işe gidip geliyor olacak.'},{en:'She will have been studying this language for two years.',tr:'İki yıldır bu dili çalışıyor olacak.'},
+      {en:'They will have been running the café for a decade.',tr:'Kafeyi on yıldır işletiyor olacaklar.'},{en:'By summer, I will have been swimming every day for three months.',tr:'Yaza kadar üç aydır her gün yüzüyor olacağım.'},
+      {en:'He will have been writing his novel for five years.',tr:'Beş yıldır romanını yazıyor olacak.'},{en:'She will have been teaching abroad for a year.',tr:'Bir yıldır yurt dışında ders veriyor olacak.'},
+      {en:'We will have been waiting in line for over an hour.',tr:'Bir saatten fazla sırada bekliyecek olacağız.'},{en:'I will have been attending this course for six weeks.',tr:'Bu kursa altı haftadır katılıyor olacağım.'},
+      {en:'He will have been managing the team for three years.',tr:'Üç yıldır ekibi yönetiyor olacak.'},{en:'She will have been living with her parents for two years.',tr:'Ailesiyle iki yıldır yaşıyor olacak.'},
+      {en:'They will have been cycling across the country for a month.',tr:'Bir aydır ülke genelinde bisiklet sürüyor olacaklar.'},{en:'By then, I will have been learning to play piano for two years.',tr:'O zamana kadar iki yıldır piyano öğreniyor olacağım.'},
+      {en:'He will have been coaching football for twenty years.',tr:'Yirmi yıldır futbol koçluğu yapıyor olacak.'},{en:'She will have been caring for her children for years.',tr:'Yıllardır çocuklarına bakıyor olacak.'},
+      {en:'We will have been growing vegetables for three seasons.',tr:'Üç mevsimdir sebze yetiştiriyor olacağız.'},{en:'They will have been writing the report for a week.',tr:'Bir haftadır raporu yazıyor olacaklar.'}
+    ],
+    gaps: [
+      {sentence:'By next month, she will have been ___ (teach) for a year.',answer:'By next month, she will have been teaching for a year.'},
+      {sentence:'They will have been ___ (live) here for 10 years by 2030.',answer:'They will have been living here for 10 years by 2030.'},
+      {sentence:'By Friday, I will have been ___ (study) for 6 months.',answer:'By Friday, I will have been studying for 6 months.'},
+      {sentence:'He will have been ___ (run) the company for ten years.',answer:'He will have been running the company for ten years.'}
+    ]
+  }
 ];
 
-let currentTense=0, currentTrSentence=null, currentGapItem=null;
-let prog={total:0,errors:0,streak:0,checked:0,clean:0};
+// ===================== TENSE DETECTOR =====================
+const TENSE_PATTERNS = [
+  {
+    id: 'future_perfect_continuous',
+    name: 'Future Perfect Continuous',
+    badge: 'future',
+    pattern: /\b(will\s+have\s+been\s+\w+ing)\b/gi,
+    explain: (m) => `"${m}" = will + have + been + V-ing → Gelecekte belirli bir süreye kadar devam etmiş olacak eylem`
+  },
+  {
+    id: 'future_perfect',
+    name: 'Future Perfect',
+    badge: 'future',
+    pattern: /\b(will\s+have\s+(?!been)\w+(?:ed|en|ne|wn|ght|unk|ung|ang|ung|oken|aken|iven|tten|aught|ought|iven|elt|ept|ent|ound|ound|een|ome|ose|ore|ome|ught|elt|eld|ept|ept|ept|ound))\b/gi,
+    explain: (m) => `"${m}" = will + have + PP → Gelecekte belirli bir zamana kadar tamamlanmış eylem`
+  },
+  {
+    id: 'future_continuous',
+    name: 'Future Continuous',
+    badge: 'future',
+    pattern: /\b(will\s+be\s+\w+ing)\b/gi,
+    explain: (m) => `"${m}" = will + be + V-ing → Gelecekte devam ediyor olacak eylem`
+  },
+  {
+    id: 'simple_future',
+    name: 'Simple Future',
+    badge: 'future',
+    pattern: /\b(will\s+(?!have|be)\w+)\b/gi,
+    explain: (m) => `"${m}" = will + V → Gelecekte gerçekleşecek eylem veya ani karar`
+  },
+  {
+    id: 'past_perfect_continuous',
+    name: 'Past Perfect Continuous',
+    badge: 'past',
+    pattern: /\b(had\s+been\s+\w+ing)\b/gi,
+    explain: (m) => `"${m}" = had + been + V-ing → Geçmişte belirli süre devam eden eylem`
+  },
+  {
+    id: 'past_perfect',
+    name: 'Past Perfect',
+    badge: 'past',
+    pattern: /\b(had\s+(?!been)\w+(?:ed|en|ne|wn|ght|unk|ung|ang|oken|aken|iven|tten|aught|ought|elt|ept|ent|ound|een|ome|ose|ore|ught|eld))\b/gi,
+    explain: (m) => `"${m}" = had + PP → Geçmişte daha önceki bir eylem (geçmişin geçmişi)`
+  },
+  {
+    id: 'present_perfect_continuous',
+    name: 'Present Perfect Continuous',
+    badge: 'present',
+    pattern: /\b((?:have|has)\s+been\s+\w+ing)\b/gi,
+    explain: (m) => `"${m}" = have/has + been + V-ing → Geçmişten beri devam eden eylem`
+  },
+  {
+    id: 'present_perfect',
+    name: 'Present Perfect',
+    badge: 'present',
+    pattern: /\b((?:have|has)\s+(?!been)\w+(?:ed|en|ne|wn|ght|unk|ung|ang|oken|aken|iven|tten|aught|ought|elt|ept|ent|ound|een|ome|ose|ore|ught|eld|elt|eld|ept))\b/gi,
+    explain: (m) => `"${m}" = have/has + PP → Geçmişten bugüne etkisi devam eden eylem`
+  },
+  {
+    id: 'past_continuous',
+    name: 'Past Continuous',
+    badge: 'past',
+    pattern: /\b((?:was|were)\s+\w+ing)\b/gi,
+    explain: (m) => `"${m}" = was/were + V-ing → Geçmişte devam eden eylem`
+  },
+  {
+    id: 'present_continuous',
+    name: 'Present Continuous',
+    badge: 'present',
+    pattern: /\b((?:am|is|are)\s+\w+ing)\b/gi,
+    explain: (m) => `"${m}" = am/is/are + V-ing → Şu an devam eden eylem`
+  },
+  {
+    id: 'simple_past',
+    name: 'Simple Past',
+    badge: 'past',
+    // common irregular verbs + regular -ed
+    pattern: /\b(went|came|saw|did|made|got|took|knew|thought|bought|brought|caught|taught|fought|felt|kept|slept|wept|left|met|sent|spent|lent|built|dealt|meant|read|led|fed|held|told|sold|said|paid|laid|sat|hit|cut|put|ran|won|flew|grew|drew|threw|knew|blew|chose|drove|wrote|spoke|broke|woke|rose|shone|wore|bore|tore|swore|swam|sang|rang|drank|sank|began|ran|gave|took|made|found|lost|left|led|let|set|shut|spread|hurt|cost|bet|bid|burst|cast|hit|quit|rid|split|spread|thrust|upset|wed|\w+ed)\b/gi,
+    explain: (m) => `"${m}" = V-ed / V2 (düzensiz) → Geçmişte tamamlanmış eylem (Simple Past)`
+  },
+  {
+    id: 'simple_present_3rd',
+    name: 'Simple Present (3rd person)',
+    badge: 'present',
+    pattern: /\b((?:he|she|it)\s+\w+s)\b/gi,
+    explain: (m) => `"${m}" → He/She/It + V+s yapısı — Simple Present (3. tekil şahıs)`
+  }
+];
 
-function init(){
-  const list=document.getElementById('tense-list');
-  TENSES.forEach((t,i)=>{
-    const div=document.createElement('div');
-    div.className='tense'+(i===0?' active':'');
-    div.innerHTML=`<h3>${t.name}</h3><div class="tense-code">${t.code}</div>`;
-    div.onclick=()=>selectTense(i,div);
+function detectTenses(text) {
+  const found = [];
+  const seen = new Set();
+  for (const tp of TENSE_PATTERNS) {
+    const matches = [...text.matchAll(tp.pattern)];
+    for (const match of matches) {
+      const key = match[0].toLowerCase().trim();
+      if (!seen.has(key)) {
+        seen.add(key);
+        found.push({ verb: match[0], tenseName: tp.name, badge: tp.badge, explanation: tp.explain(match[0]) });
+      }
+    }
+  }
+  return found;
+}
+
+function renderTenseAnalysis(text) {
+  const detections = detectTenses(text);
+  if (detections.length === 0) return '';
+  const items = detections.map(d => `
+    <div class="ta-item">
+      <div class="ta-verb">${d.verb}</div>
+      <div class="ta-info">
+        <div class="ta-tense-name">
+          <span class="ta-tense-badge badge-${d.badge}">${d.badge}</span>
+          ${d.tenseName}
+        </div>
+        <div class="ta-explanation">${d.explanation}</div>
+      </div>
+    </div>
+  `).join('');
+  return `
+    <div class="tense-analysis-box">
+      <div class="ta-title">🔬 Zaman Tespiti — Kullanılan Fiil Zamanları</div>
+      ${items}
+    </div>
+  `;
+}
+
+// ===================== STATE =====================
+let currentTense = 0, currentTrSentence = null, currentTrIndex = -1, currentGapItem = null;
+let prog = { total: 0, errors: 0, streak: 0, checked: 0, clean: 0 };
+
+// ===================== INIT =====================
+function init() {
+  const list = document.getElementById('tense-list');
+  TENSES.forEach((t, i) => {
+    const div = document.createElement('div');
+    div.className = 'tense' + (i === 0 ? ' active' : '');
+    div.innerHTML = `<h3>${t.name}</h3><div class="tense-code">${t.code}</div>`;
+    div.onclick = () => selectTense(i, div);
     list.appendChild(div);
   });
   renderDetail(0); loadTrSentence(0); loadGapSentence(0);
 }
 
-function selectTense(i,el){
-  currentTense=i;
-  document.querySelectorAll('.tense').forEach(d=>d.classList.remove('active'));
+function selectTense(i, el) {
+  currentTense = i;
+  document.querySelectorAll('.tense').forEach(d => d.classList.remove('active'));
   el.classList.add('active');
   renderDetail(i); loadTrSentence(i); loadGapSentence(i);
   document.getElementById('answer-reveal').classList.remove('show');
-  document.getElementById('tr-answer').value='';
-  document.getElementById('gap-answer').value='';
-  document.getElementById('tr-results').innerHTML='';
-  document.getElementById('gap-results').innerHTML='';
+  document.getElementById('tr-answer').value = '';
+  document.getElementById('gap-answer').value = '';
+  document.getElementById('tr-results').innerHTML = '';
+  document.getElementById('gap-results').innerHTML = '';
 }
 
-function renderDetail(i){
-  const t=TENSES[i];
-  const fc=t.formula.map(f=>`<div class="formula-card"><div class="fc-label">${f.l}</div><div class="fc-text">${f.t.replace(/\n/g,'<br>')}</div></div>`).join('');
-  const sigs=t.signals.map(s=>`<span class="sig-tag">${s}</span>`).join('');
-  const exs=t.examples.map(e=>`<div class="ex-item"><div class="ex-en">"${e.en}"</div><div class="ex-tr">${e.tr}</div></div>`).join('');
-  document.getElementById('tense-detail').innerHTML=`
+function renderDetail(i) {
+  const t = TENSES[i];
+  const fc = t.formula.map(f => `<div class="formula-card"><div class="fc-label">${f.l}</div><div class="fc-text">${f.t.replace(/\n/g, '<br>')}</div></div>`).join('');
+  const sigs = t.signals.map(s => `<span class="sig-tag">${s}</span>`).join('');
+  const exs = t.examples.slice(0, 3).map(e => `<div class="ex-item"><div class="ex-en">"${e.en}"</div><div class="ex-tr">${e.tr}</div></div>`).join('');
+  document.getElementById('tense-detail').innerHTML = `
     <div class="td-name">${t.name}</div>
     <div class="td-tr">${t.turkish}</div>
     <div class="rule-box">${t.rule}</div>
@@ -315,151 +891,198 @@ function renderDetail(i){
     <div class="ex-head">Örnek Cümleler</div>${exs}`;
 }
 
-async function callLT(text){
-  const fd=new URLSearchParams();
-  fd.append('text',text); fd.append('language','en-US');
-  const r=await fetch('https://api.languagetool.org/v2/check',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:fd.toString()});
-  if(!r.ok) throw new Error('LanguageTool bağlantı hatası: '+r.status);
+// ===================== LT API =====================
+async function callLT(text) {
+  const fd = new URLSearchParams();
+  fd.append('text', text); fd.append('language', 'en-US');
+  const r = await fetch('https://api.languagetool.org/v2/check', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: fd.toString() });
+  if (!r.ok) throw new Error('LanguageTool bağlantı hatası: ' + r.status);
   return r.json();
 }
 
-function renderErr(m,text,targetId){
-  const off=m.offset,len=m.length;
-  const before=text.substring(Math.max(0,off-25),off);
-  const wrong=text.substring(off,off+len);
-  const after=text.substring(off+len,off+len+25);
-  const suggs=m.replacements.slice(0,4);
-  const sugHtml=suggs.length>0
-    ?suggs.map(s=>`<button class="suggestion-btn" onclick="applyFix('${targetId}','${wrong.replace(/'/g,"\\'")}','${s.value.replace(/'/g,"\\'")}')">✓ ${s.value}</button>`).join('')
-    :'<span class="no-suggestions">Öneri yok</span>';
-  const cat=m.rule?.category?.name||m.rule?.issueType||'Grammar';
-  return`<div class="error-card"><span class="ec-type">${cat}</span><div class="ec-context">...${before}<span class="ec-wrong">${wrong}</span>${after}...</div><div class="ec-msg">${m.message}</div><div class="suggestions-row">${sugHtml}</div></div>`;
+function renderErr(m, text, targetId) {
+  const off = m.offset, len = m.length;
+  const before = text.substring(Math.max(0, off - 25), off);
+  const wrong = text.substring(off, off + len);
+  const after = text.substring(off + len, off + len + 25);
+  const suggs = m.replacements.slice(0, 4);
+  const sugHtml = suggs.length > 0
+    ? suggs.map(s => `<button class="suggestion-btn" onclick="applyFix('${targetId}','${wrong.replace(/'/g, "\\'")}','${s.value.replace(/'/g, "\\'")}')">✓ ${s.value}</button>`).join('')
+    : '<span class="no-suggestions">Öneri yok</span>';
+  const cat = m.rule?.category?.name || m.rule?.issueType || 'Grammar';
+  return `<div class="error-card"><span class="ec-type">${cat}</span><div class="ec-context">...${before}<span class="ec-wrong">${wrong}</span>${after}...</div><div class="ec-msg">${m.message}</div><div class="suggestions-row">${sugHtml}</div></div>`;
 }
 
-function applyFix(id,wrong,rep){
-  const el=document.getElementById(id);
-  if(el) el.value=el.value.replace(wrong,rep);
+function applyFix(id, wrong, rep) {
+  const el = document.getElementById(id);
+  if (el) el.value = el.value.replace(wrong, rep);
 }
 
-async function checkGrammar(){
-  const text=document.getElementById('text-input').value.trim();
-  if(!text){alert('Lütfen bir metin yazın!');return;}
-  const btn=document.getElementById('check-grammar');
-  btn.disabled=true;
+// ===================== GRAMMAR CHECK (TAB 1) =====================
+async function checkGrammar() {
+  const text = document.getElementById('text-input').value.trim();
+  if (!text) { alert('Lütfen bir metin yazın!'); return; }
+  const btn = document.getElementById('check-grammar');
+  btn.disabled = true;
   show('load-grammar'); clear('results');
-  try{
-    const d=await callLT(text);
-    const ms=d.matches||[];
+  try {
+    const d = await callLT(text);
+    const ms = d.matches || [];
     prog.checked++; prog.total++;
-    if(ms.length===0){
+    let html = '';
+    if (ms.length === 0) {
       prog.clean++; prog.streak++;
-      set('results',`<div class="result-summary clean"><div class="rs-icon">🎉</div><div><div class="rs-title">Harika! Hata bulunamadı.</div><div class="rs-sub">Metnin tamamen doğru görünüyor.</div></div></div>`);
+      html = `<div class="result-summary clean"><div class="rs-icon">🎉</div><div><div class="rs-title">Harika! Hata bulunamadı.</div><div class="rs-sub">Metnin tamamen doğru görünüyor.</div></div></div>`;
     } else {
-      prog.errors+=ms.length; prog.streak=0;
-      set('results',`<div class="result-summary has-errors"><div class="rs-icon">⚠️</div><div><div class="rs-title">${ms.length} hata bulundu</div><div class="rs-sub">Aşağıdaki hataları incele ve düzelt.</div></div></div>${ms.map(m=>renderErr(m,text,'text-input')).join('')}`);
+      prog.errors += ms.length; prog.streak = 0;
+      html = `<div class="result-summary has-errors"><div class="rs-icon">⚠️</div><div><div class="rs-title">${ms.length} hata bulundu</div><div class="rs-sub">Aşağıdaki hataları incele ve düzelt.</div></div></div>${ms.map(m => renderErr(m, text, 'text-input')).join('')}`;
     }
+    // Add tense detection
+    html += renderTenseAnalysis(text);
+    set('results', html);
     updateStats();
-  } catch(e){
-    set('results',`<div class="result-summary has-errors"><div class="rs-icon">❌</div><div><div class="rs-title">Bağlantı Hatası</div><div class="rs-sub">${e.message}</div></div></div>`);
-  } finally{ btn.disabled=false; hide('load-grammar'); }
+  } catch (e) {
+    set('results', `<div class="result-summary has-errors"><div class="rs-icon">❌</div><div><div class="rs-title">Bağlantı Hatası</div><div class="rs-sub">${e.message}</div></div></div>`);
+  } finally { btn.disabled = false; hide('load-grammar'); }
 }
 
-function clearCheck(){ document.getElementById('text-input').value=''; clear('results'); }
+function clearCheck() { document.getElementById('text-input').value = ''; clear('results'); }
 
-function loadTrSentence(idx){
-  const exs=TENSES[idx].examples;
-  currentTrSentence=exs[Math.floor(Math.random()*exs.length)];
-  document.getElementById('tr-display').textContent=currentTrSentence.tr;
+// ===================== TRANSLATE (TAB 2) =====================
+function loadTrSentence(idx) {
+  const exs = TENSES[idx].examples;
+  let newIdx;
+  do { newIdx = Math.floor(Math.random() * exs.length); } while (exs.length > 1 && newIdx === currentTrIndex);
+  currentTrIndex = newIdx;
+  currentTrSentence = exs[newIdx];
+  document.getElementById('tr-display').textContent = currentTrSentence.tr;
+  document.getElementById('tr-counter').textContent = `Cümle: ${newIdx + 1} / ${exs.length}`;
   document.getElementById('answer-reveal').classList.remove('show');
   clear('tr-results');
 }
 
-function newTrSentence(){ document.getElementById('tr-answer').value=''; loadTrSentence(currentTense); }
+function newTrSentence() { document.getElementById('tr-answer').value = ''; loadTrSentence(currentTense); }
 
-function revealAnswer(){
-  if(!currentTrSentence)return;
-  document.getElementById('answer-text').textContent=currentTrSentence.en;
+function revealAnswer() {
+  if (!currentTrSentence) return;
+  document.getElementById('answer-text').textContent = currentTrSentence.en;
   document.getElementById('answer-reveal').classList.add('show');
 }
 
-async function checkTranslation(){
-  const ans=document.getElementById('tr-answer').value.trim();
-  if(!ans){alert('Lütfen çevirinizi yazın!');return;}
+// Semantic similarity check — keyword-based
+function semanticCheck(userAns, correctAns) {
+  const normalize = s => s.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ').trim();
+  const userN = normalize(userAns);
+  const correctN = normalize(correctAns);
+
+  // Extract content words (length > 3, excluding common function words)
+  const stopwords = new Set(['will','have','been','does','did','was','were','are','the','and','but','for','not','with','that','this','they','them','their','there','then','when','from','into','also','just','more','very','your','our','its','can','had','has','him','her','his','she','you','his','who','how','all','any','one','out','get','use','some','such','each','than','then','only','same','other','what','which','would','could','should','being','having','might','must','shall']);
+  const getKeywords = s => s.split(' ').filter(w => w.length > 2 && !stopwords.has(w));
+
+  const correctWords = getKeywords(correctN);
+  const userWords = getKeywords(userN);
+
+  // Check if key semantic words match
+  const matchCount = correctWords.filter(w => userWords.some(uw => uw.includes(w) || w.includes(uw))).length;
+  const matchRatio = correctWords.length > 0 ? matchCount / correctWords.length : 0;
+
+  return { ratio: matchRatio, matchCount, total: correctWords.length };
+}
+
+async function checkTranslation() {
+  const ans = document.getElementById('tr-answer').value.trim();
+  if (!ans) { alert('Lütfen çevirinizi yazın!'); return; }
   show('load-tr'); clear('tr-results');
-  try{
-    const d=await callLT(ans);
-    const ms=d.matches||[];
+  try {
+    const d = await callLT(ans);
+    const ms = d.matches || [];
     prog.total++;
-    if(ms.length===0){
-      prog.clean++; prog.streak++;
-      set('tr-results',`<div class="result-summary clean"><div class="rs-icon">🎉</div><div><div class="rs-title">Gramer hatası yok!</div><div class="rs-sub">Cevabı görmek için "Cevap" butonuna tıkla.</div></div></div>`);
+
+    const sem = semanticCheck(ans, currentTrSentence.en);
+    let html = '';
+
+    // Semantic feedback
+    if (sem.ratio >= 0.55) {
+      html += `<div class="tr-semantic-ok"><div class="tr-label">✅ Anlam Doğru</div><div class="tr-text">Cümlenin anlamını doğru aktardın! (${Math.round(sem.ratio * 100)}% anahtar kelime eşleşmesi)</div></div>`;
     } else {
-      prog.errors+=ms.length; prog.streak=0;
-      set('tr-results',`<div class="result-summary has-errors"><div class="rs-icon">⚠️</div><div><div class="rs-title">${ms.length} gramer hatası</div><div class="rs-sub">Düzelt ve tekrar dene!</div></div></div>${ms.map(m=>renderErr(m,ans,'tr-answer')).join('')}`);
+      html += `<div class="tr-semantic-warn"><div class="tr-label">⚠️ Anlam Farklı Görünüyor</div><div class="tr-text">Cümlenin anlamı tam olarak aktarılmamış olabilir. Doğru cevabı görmek için "Cevap" butonuna tıkla.</div></div>`;
     }
+
+    if (ms.length === 0) {
+      prog.clean++; prog.streak++;
+      html += `<div class="result-summary clean"><div class="rs-icon">🎉</div><div><div class="rs-title">Gramer hatası yok!</div></div></div>`;
+    } else {
+      prog.errors += ms.length; prog.streak = 0;
+      html += `<div class="result-summary has-errors"><div class="rs-icon">⚠️</div><div><div class="rs-title">${ms.length} gramer hatası</div><div class="rs-sub">Düzelt ve tekrar dene!</div></div></div>${ms.map(m => renderErr(m, ans, 'tr-answer')).join('')}`;
+    }
+    set('tr-results', html);
     updateStats();
-  } catch(e){
-    set('tr-results',`<div class="result-summary has-errors"><div class="rs-icon">❌</div><div><div class="rs-title">Hata</div><div class="rs-sub">${e.message}</div></div></div>`);
-  } finally{ hide('load-tr'); }
+  } catch (e) {
+    set('tr-results', `<div class="result-summary has-errors"><div class="rs-icon">❌</div><div><div class="rs-title">Hata</div><div class="rs-sub">${e.message}</div></div></div>`);
+  } finally { hide('load-tr'); }
 }
 
-function loadGapSentence(idx){
-  const gaps=TENSES[idx].gaps;
-  currentGapItem=gaps[Math.floor(Math.random()*gaps.length)];
-  document.getElementById('gap-sentence').textContent=currentGapItem.sentence;
-  document.getElementById('gap-desc').innerHTML=`<strong>${TENSES[idx].name}</strong> kuralına göre ___ boşluğunu doğru fiil formuyla doldur.`;
-  clear('gap-results'); document.getElementById('gap-answer').value='';
+// ===================== GAP FILL (TAB 3) =====================
+function loadGapSentence(idx) {
+  const gaps = TENSES[idx].gaps;
+  currentGapItem = gaps[Math.floor(Math.random() * gaps.length)];
+  document.getElementById('gap-sentence').textContent = currentGapItem.sentence;
+  document.getElementById('gap-desc').innerHTML = `<strong>${TENSES[idx].name}</strong> kuralına göre ___ boşluğunu doğru fiil formuyla doldur.`;
+  clear('gap-results'); document.getElementById('gap-answer').value = '';
 }
 
-function newGapSentence(){ loadGapSentence(currentTense); }
+function newGapSentence() { loadGapSentence(currentTense); }
 
-async function checkGap(){
-  const ans=document.getElementById('gap-answer').value.trim();
-  if(!ans){alert('Lütfen cevabınızı yazın!');return;}
+async function checkGap() {
+  const ans = document.getElementById('gap-answer').value.trim();
+  if (!ans) { alert('Lütfen cevabınızı yazın!'); return; }
   show('load-gap'); clear('gap-results');
-  const isCorrect=ans.toLowerCase().trim()===currentGapItem.answer.toLowerCase().trim();
-  try{
-    const d=await callLT(ans);
-    const ms=d.matches||[];
+  const isCorrect = ans.toLowerCase().trim() === currentGapItem.answer.toLowerCase().trim();
+  try {
+    const d = await callLT(ans);
+    const ms = d.matches || [];
     prog.total++;
-    if(isCorrect){ prog.clean++; prog.streak++;
-      set('gap-results',`<div class="result-summary clean"><div class="rs-icon">🏆</div><div><div class="rs-title">Mükemmel! Doğru cevap!</div><div class="rs-sub">Cevap: <em>${currentGapItem.answer}</em></div></div></div>`);
-    } else { prog.errors++; prog.streak=0;
-      const gNote=ms.length>0?`<br><small>Ek gramer notu: ${ms.map(m=>m.message).join('; ')}</small>`:'';
-      set('gap-results',`<div class="result-summary has-errors"><div class="rs-icon">❌</div><div><div class="rs-title">Yanlış cevap</div><div class="rs-sub">Doğru: <strong>${currentGapItem.answer}</strong>${gNote}</div></div></div>`);
+    if (isCorrect) {
+      prog.clean++; prog.streak++;
+      set('gap-results', `<div class="result-summary clean"><div class="rs-icon">🏆</div><div><div class="rs-title">Mükemmel! Doğru cevap!</div><div class="rs-sub">Cevap: <em>${currentGapItem.answer}</em></div></div></div>`);
+    } else {
+      prog.errors++; prog.streak = 0;
+      const gNote = ms.length > 0 ? `<br><small>Gramer notu: ${ms.map(m => m.message).join('; ')}</small>` : '';
+      set('gap-results', `<div class="result-summary has-errors"><div class="rs-icon">❌</div><div><div class="rs-title">Yanlış cevap</div><div class="rs-sub">Doğru: <strong>${currentGapItem.answer}</strong>${gNote}</div></div></div>`);
     }
     updateStats();
-  } catch(e){
-    prog.total++; if(isCorrect){prog.clean++;prog.streak++;}else{prog.errors++;prog.streak=0;}
-    set('gap-results',`<div class="result-summary ${isCorrect?'clean':'has-errors'}"><div class="rs-icon">${isCorrect?'🏆':'❌'}</div><div><div class="rs-title">${isCorrect?'Doğru!':'Yanlış'}</div><div class="rs-sub">Doğru: ${currentGapItem.answer}</div></div></div>`);
+  } catch (e) {
+    prog.total++; if (isCorrect) { prog.clean++; prog.streak++; } else { prog.errors++; prog.streak = 0; }
+    set('gap-results', `<div class="result-summary ${isCorrect ? 'clean' : 'has-errors'}"><div class="rs-icon">${isCorrect ? '🏆' : '❌'}</div><div><div class="rs-title">${isCorrect ? 'Doğru!' : 'Yanlış'}</div><div class="rs-sub">Doğru: ${currentGapItem.answer}</div></div></div>`);
     updateStats();
-  } finally{ hide('load-gap'); }
+  } finally { hide('load-gap'); }
 }
 
-function swPTab(btn,id){
-  document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.ptab-panel').forEach(p=>p.classList.remove('active'));
+// ===================== UTILS =====================
+function swPTab(btn, id) {
+  document.querySelectorAll('.ptab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.ptab-panel').forEach(p => p.classList.remove('active'));
   btn.classList.add('active'); document.getElementById(id).classList.add('active');
 }
 
-function updateStats(){
-  document.getElementById('s-checked').textContent=prog.checked;
-  document.getElementById('s-errors').textContent=prog.errors;
-  document.getElementById('s-clean').textContent=prog.clean;
-  document.getElementById('s-streak').textContent=prog.streak;
-  document.getElementById('p-total').textContent=prog.total;
-  document.getElementById('p-errors').textContent=prog.errors;
-  const acc=prog.total>0?Math.round(((prog.total-prog.errors)/prog.total)*100):0;
-  const accStr=prog.total>0?acc+'%':'—';
-  document.getElementById('p-acc').textContent=accStr;
-  document.getElementById('pb-pct').textContent=accStr;
-  document.getElementById('pb-fill').style.width=(prog.total>0?acc:0)+'%';
+function updateStats() {
+  document.getElementById('s-checked').textContent = prog.checked;
+  document.getElementById('s-errors').textContent = prog.errors;
+  document.getElementById('s-clean').textContent = prog.clean;
+  document.getElementById('s-streak').textContent = prog.streak;
+  document.getElementById('p-total').textContent = prog.total;
+  document.getElementById('p-errors').textContent = prog.errors;
+  const acc = prog.total > 0 ? Math.round(((prog.total - prog.errors) / prog.total) * 100) : 0;
+  const accStr = prog.total > 0 ? acc + '%' : '—';
+  document.getElementById('p-acc').textContent = accStr;
+  document.getElementById('pb-pct').textContent = accStr;
+  document.getElementById('pb-fill').style.width = (prog.total > 0 ? acc : 0) + '%';
 }
 
-function show(id){const el=document.getElementById(id);if(el)el.classList.add('show');}
-function hide(id){const el=document.getElementById(id);if(el)el.classList.remove('show');}
-function clear(id){const el=document.getElementById(id);if(el)el.innerHTML='';}
-function set(id,html){const el=document.getElementById(id);if(el)el.innerHTML=html;}
+function show(id) { const el = document.getElementById(id); if (el) el.classList.add('show'); }
+function hide(id) { const el = document.getElementById(id); if (el) el.classList.remove('show'); }
+function clear(id) { const el = document.getElementById(id); if (el) el.innerHTML = ''; }
+function set(id, html) { const el = document.getElementById(id); if (el) el.innerHTML = html; }
 
 init();
 </script>
