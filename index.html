@@ -12,6 +12,7 @@
             --blue: #3b82f6; --blue-dim: #1d4ed8;
             --cyan: #06b6d4; --emerald: #10b981;
             --amber: #f59e0b; --rose: #f43f5e;
+            --violet: #8b5cf6; --orange: #f97316;
             --border: #1e2d3d; --surface: #161b27; --surface2: #1a2236;
             --text: #e2e8f0; --text2: #94a3b8;
         }
@@ -107,8 +108,6 @@
         .suggestion-btn { padding: 4px 11px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); border-radius: 6px; font-family: 'JetBrains Mono',monospace; font-size: 11px; color: var(--emerald); cursor: pointer; transition: all 0.18s; }
         .suggestion-btn:hover { background: rgba(16,185,129,0.2); transform: translateY(-1px); }
         .no-suggestions { font-size: 11px; color: var(--text2); font-style: italic; }
-
-        /* TENSE ANALYSIS */
         .tense-analysis-box { background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.25); border-radius: 10px; padding: 14px 16px; margin-top: 14px; animation: fadeUp 0.3s ease; }
         .ta-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--blue); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
         .ta-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -120,24 +119,18 @@
         .badge-present { background: rgba(16,185,129,0.15); color: var(--emerald); border: 1px solid rgba(16,185,129,0.3); }
         .badge-past { background: rgba(245,158,11,0.15); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
         .badge-future { background: rgba(59,130,246,0.15); color: var(--blue); border: 1px solid rgba(59,130,246,0.3); }
-        .ta-explanation { font-size: 11px; color: var(--text2); line-height: 1.5; }
-
-        /* TRANSLATE */
         .sentence-counter { font-size: 10px; color: var(--text2); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; }
         .sentence-display { background: var(--ink2); border: 1px solid var(--border); border-left: 3px solid var(--cyan); padding: 11px 14px; border-radius: 0 8px 8px 0; font-size: 14px; color: var(--cyan); font-family: 'JetBrains Mono',monospace; margin-bottom: 12px; line-height: 1.5; }
         .answer-reveal { display: none; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 13px 16px; margin-top: 10px; animation: fadeUp 0.3s ease; }
         .answer-reveal.show { display: block; }
         .ar-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--emerald); margin-bottom: 5px; }
         .ar-text { font-family: 'JetBrains Mono',monospace; font-size: 13px; color: var(--text); }
-
-        /* TRANSLATE RESULT */
         .tr-semantic-ok { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 13px 16px; margin-bottom: 8px; animation: fadeUp 0.3s ease; }
         .tr-semantic-warn { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.3); border-radius: 10px; padding: 13px 16px; margin-bottom: 8px; animation: fadeUp 0.3s ease; }
         .tr-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
         .tr-semantic-ok .tr-label { color: var(--emerald); }
         .tr-semantic-warn .tr-label { color: var(--amber); }
         .tr-text { font-size: 12px; color: var(--text2); line-height: 1.6; }
-
         #progress { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; }
         #progress h2 { font-size: 14px; font-weight: 800; color: var(--amber); margin-bottom: 14px; }
         .score-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 14px; }
@@ -147,8 +140,81 @@
         .pb-label { font-size: 11px; color: var(--text2); margin-bottom: 5px; display: flex; justify-content: space-between; }
         .pb-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
         .pb-fill { height: 100%; background: linear-gradient(90deg,var(--blue),var(--cyan)); border-radius: 3px; transition: width 0.5s ease; }
+
+        /* ===== SENTENCE PATTERNS SECTION ===== */
+        #sentence-patterns { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-top: 0; }
+        .sp-head { padding: 14px 20px; background: linear-gradient(135deg,rgba(139,92,246,0.12),rgba(59,130,246,0.07)); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+        .sp-head h2 { font-size: 14px; font-weight: 800; color: var(--violet); }
+        .sp-sub { font-size: 11px; color: var(--text2); margin-top: 2px; }
+        .sp-badge { font-size: 10px; color: var(--violet); background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.3); padding: 4px 10px; border-radius: 12px; font-weight: 700; }
+        .sp-body { padding: 20px; }
+        .sp-tense-info { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+        .sp-tense-name { font-size: 16px; font-weight: 800; color: var(--violet); }
+        .sp-tense-code { font-family: 'JetBrains Mono',monospace; font-size: 11px; color: var(--text2); background: var(--ink2); padding: 3px 10px; border-radius: 6px; border: 1px solid var(--border); }
+        .sp-pattern-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 16px; }
+        .sp-pattern-card { background: var(--ink2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; transition: all 0.2s; cursor: pointer; position: relative; overflow: hidden; }
+        .sp-pattern-card::before { content:''; position:absolute; inset:0; background: linear-gradient(135deg, rgba(139,92,246,0.08), transparent); opacity:0; transition: opacity 0.2s; }
+        .sp-pattern-card:hover::before { opacity:1; }
+        .sp-pattern-card:hover { border-color: rgba(139,92,246,0.4); transform: translateY(-1px); }
+        .sp-pattern-starter { font-family: 'JetBrains Mono',monospace; font-size: 13px; font-weight: 700; color: var(--violet); margin-bottom: 4px; }
+        .sp-pattern-en { font-size: 12px; color: var(--text); line-height: 1.5; margin-bottom: 3px; }
+        .sp-pattern-tr { font-size: 11px; color: var(--text2); font-style: italic; }
+        .sp-nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        .sp-counter { font-family: 'JetBrains Mono',monospace; font-size: 11px; color: var(--text2); padding: 6px 12px; background: var(--ink2); border-radius: 6px; border: 1px solid var(--border); }
+        .btn-violet { padding: 9px 16px; background: linear-gradient(135deg,var(--violet),#7c3aed); color: white; border: none; border-radius: 8px; font-family: 'Syne',sans-serif; font-weight: 700; font-size: 11px; cursor: pointer; transition: all 0.2s; }
+        .btn-violet:hover { filter: brightness(1.1); transform: translateY(-1px); }
+        .sp-highlight-box { background: rgba(139,92,246,0.06); border: 1px solid rgba(139,92,246,0.2); border-radius: 10px; padding: 12px 14px; margin-bottom: 14px; }
+        .sp-highlight-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--violet); margin-bottom: 6px; }
+        .sp-tips { font-size: 11px; color: var(--text2); line-height: 1.7; }
+        .sp-tip-key { color: var(--violet); font-weight: 700; }
+
+        /* ===== MULTIPLE CHOICE SECTION ===== */
+        #multi-choice { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+        .mc-head { padding: 14px 20px; background: linear-gradient(135deg,rgba(249,115,22,0.1),rgba(244,63,94,0.06)); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+        .mc-head h2 { font-size: 14px; font-weight: 800; color: var(--orange); }
+        .mc-sub { font-size: 11px; color: var(--text2); margin-top: 2px; }
+        .mc-body { padding: 20px; }
+        .mc-lang-toggle { display: flex; gap: 6px; margin-bottom: 16px; align-items: center; }
+        .mc-lang-lbl { font-size: 10px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.8px; margin-right: 4px; }
+        .lang-btn { padding: 6px 14px; background: var(--ink2); border: 1px solid var(--border); border-radius: 8px; font-family: 'Syne',sans-serif; font-size: 11px; font-weight: 700; color: var(--text2); cursor: pointer; transition: all 0.18s; }
+        .lang-btn.active-tr { background: rgba(244,63,94,0.15); border-color: rgba(244,63,94,0.4); color: var(--rose); }
+        .lang-btn.active-en { background: rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.4); color: var(--blue); }
+        .mc-question-box { background: var(--ink2); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 14px; position: relative; }
+        .mc-q-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--orange); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .mc-q-num { font-family: 'JetBrains Mono',monospace; font-size: 10px; color: var(--text2); background: var(--ink); padding: 2px 8px; border-radius: 4px; }
+        .mc-q-tense-badge { font-size: 9px; color: var(--violet); background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.25); padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+        .mc-question-text { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.5; margin-bottom: 4px; }
+        .mc-question-sub { font-size: 11px; color: var(--text2); }
+        .mc-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+        .mc-option { padding: 11px 14px; background: var(--ink2); border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; transition: all 0.18s; display: flex; align-items: center; gap: 10px; }
+        .mc-option:hover:not(.disabled) { border-color: rgba(249,115,22,0.5); background: rgba(249,115,22,0.05); }
+        .mc-option.correct { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.5); }
+        .mc-option.wrong { background: rgba(244,63,94,0.1); border-color: rgba(244,63,94,0.4); }
+        .mc-option.disabled { cursor: not-allowed; }
+        .mc-opt-letter { width: 22px; height: 22px; border-radius: 50%; background: var(--ink); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: var(--text2); flex-shrink: 0; transition: all 0.18s; font-family: 'JetBrains Mono',monospace; }
+        .mc-option.correct .mc-opt-letter { background: var(--emerald); border-color: var(--emerald); color: white; }
+        .mc-option.wrong .mc-opt-letter { background: var(--rose); border-color: var(--rose); color: white; }
+        .mc-opt-text { font-size: 12px; color: var(--text); font-family: 'JetBrains Mono',monospace; line-height: 1.4; }
+        .mc-feedback { display: none; padding: 12px 14px; border-radius: 10px; margin-bottom: 12px; animation: fadeUp 0.3s ease; }
+        .mc-feedback.show { display: block; }
+        .mc-feedback.fb-correct { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.3); }
+        .mc-feedback.fb-wrong { background: rgba(244,63,94,0.08); border: 1px solid rgba(244,63,94,0.3); }
+        .mc-fb-title { font-size: 12px; font-weight: 800; margin-bottom: 4px; }
+        .mc-feedback.fb-correct .mc-fb-title { color: var(--emerald); }
+        .mc-feedback.fb-wrong .mc-fb-title { color: var(--rose); }
+        .mc-fb-text { font-size: 11px; color: var(--text2); line-height: 1.6; }
+        .mc-nav-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        .mc-score-row { display: flex; gap: 14px; margin-bottom: 14px; }
+        .mc-score-item { background: var(--ink2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; display: flex; gap: 8px; align-items: center; }
+        .mc-score-val { font-size: 18px; font-weight: 800; line-height: 1; }
+        .mc-score-lbl { font-size: 10px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; }
+        .mc-progress-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; margin-bottom: 16px; }
+        .mc-progress-fill { height: 100%; background: linear-gradient(90deg, var(--orange), var(--rose)); border-radius: 2px; transition: width 0.4s ease; }
+        .btn-orange { padding: 9px 16px; background: linear-gradient(135deg,var(--orange),#ea580c); color: white; border: none; border-radius: 8px; font-family: 'Syne',sans-serif; font-weight: 700; font-size: 11px; cursor: pointer; transition: all 0.2s; }
+        .btn-orange:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
         footer { text-align: center; padding: 20px; margin-top: 22px; border-top: 1px solid var(--border); font-size: 11px; color: var(--text2); }
-        @media (max-width: 860px) { .main-grid { grid-template-columns: 1fr; } #grammar-tenses { position: static; } }
+        @media (max-width: 860px) { .main-grid { grid-template-columns: 1fr; } #grammar-tenses { position: static; } .sp-pattern-grid { grid-template-columns: 1fr; } .mc-options { grid-template-columns: 1fr; } }
         @media (max-width: 580px) { .stats-row { grid-template-columns: repeat(2,1fr); } .formula-grid { grid-template-columns: 1fr; } .score-grid { grid-template-columns: repeat(2,1fr); } }
     </style>
 </head>
@@ -159,7 +225,7 @@
             <div class="brand-icon">🎓</div>
             <div>
                 <h1>English Grammar Platform</h1>
-                <div class="header-sub">12 Tenses · Grammar Checker · Tense Detector</div>
+                <div class="header-sub">12 Tenses · Patterns · Grammar Checker · Quiz</div>
             </div>
         </div>
         <div class="lt-badge"><div class="lt-dot"></div>LanguageTool Aktif</div>
@@ -181,6 +247,87 @@
         <div class="right-panel">
             <div class="tense-detail" id="tense-detail"></div>
 
+            <!-- SENTENCE PATTERNS -->
+            <section id="sentence-patterns">
+                <div class="sp-head">
+                    <div>
+                        <h2>💬 Sentence Patterns</h2>
+                        <div class="sp-sub">Kalıplaşmış cümleler · I can, You can, I like, That is...</div>
+                    </div>
+                    <div class="sp-badge">✦ 12 Zaman × 20 Kalıp</div>
+                </div>
+                <div class="sp-body">
+                    <div class="sp-tense-info">
+                        <div class="sp-tense-name" id="sp-tense-name">Simple Present</div>
+                        <div class="sp-tense-code" id="sp-tense-code">V / V+s</div>
+                    </div>
+                    <div class="sp-highlight-box" id="sp-highlight-box">
+                        <div class="sp-highlight-label">📌 Bu Zaman Hakkında</div>
+                        <div class="sp-tips" id="sp-tips">Günlük alışkanlıklar ve değişmeyen gerçekler için kullanılır.</div>
+                    </div>
+                    <div class="sp-pattern-grid" id="sp-pattern-grid">
+                        <!-- patterns rendered by JS -->
+                    </div>
+                    <div class="sp-nav">
+                        <button class="btn-violet" onclick="spPrev()">← Önceki</button>
+                        <div class="sp-counter" id="sp-counter">Kalıp 1–8 / 20</div>
+                        <button class="btn-violet" onclick="spNext()">Sonraki →</button>
+                        <button class="btn-sec" onclick="spShuffle()">🔀 Karıştır</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MULTIPLE CHOICE -->
+            <section id="multi-choice">
+                <div class="mc-head">
+                    <div>
+                        <h2>🎯 Çoktan Seçmeli Quiz</h2>
+                        <div class="mc-sub">TR → EN / EN → TR · 12 zaman × 20 soru</div>
+                    </div>
+                </div>
+                <div class="mc-body">
+                    <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap;">
+                        <div class="mc-lang-lbl">Mod:</div>
+                        <div class="mc-lang-toggle">
+                            <button class="lang-btn active-tr" id="btn-tr" onclick="setMcLang('TR')">🇹🇷 TR → EN</button>
+                            <button class="lang-btn" id="btn-en" onclick="setMcLang('EN')">🇬🇧 EN → TR</button>
+                        </div>
+                        <div class="mc-lang-lbl" style="margin-left:8px;">Zaman:</div>
+                        <select id="mc-tense-select" onchange="mcTenseChanged()" style="padding:6px 10px;background:var(--ink2);border:1px solid var(--border);border-radius:8px;font-family:'Syne',sans-serif;font-size:11px;color:var(--text);cursor:pointer;">
+                            <option value="all">Tüm Zamanlar</option>
+                        </select>
+                    </div>
+                    <div class="mc-score-row">
+                        <div class="mc-score-item"><div class="mc-score-val" id="mc-correct" style="color:var(--emerald)">0</div><div class="mc-score-lbl">Doğru</div></div>
+                        <div class="mc-score-item"><div class="mc-score-val" id="mc-wrong-count" style="color:var(--rose)">0</div><div class="mc-score-lbl">Yanlış</div></div>
+                        <div class="mc-score-item"><div class="mc-score-val" id="mc-total-count" style="color:var(--blue)">0</div><div class="mc-score-lbl">Toplam</div></div>
+                    </div>
+                    <div class="mc-progress-bar"><div class="mc-progress-fill" id="mc-prog-fill" style="width:0%"></div></div>
+                    <div class="mc-question-box" id="mc-question-box">
+                        <div class="mc-q-label">
+                            <span>❓ Soru</span>
+                            <div style="display:flex;gap:6px;">
+                                <span class="mc-q-num" id="mc-q-num">1/20</span>
+                                <span class="mc-q-tense-badge" id="mc-q-tense">Simple Present</span>
+                            </div>
+                        </div>
+                        <div class="mc-question-text" id="mc-question-text">Yükleniyor...</div>
+                        <div class="mc-question-sub" id="mc-question-sub"></div>
+                    </div>
+                    <div class="mc-options" id="mc-options">
+                        <!-- options rendered by JS -->
+                    </div>
+                    <div class="mc-feedback" id="mc-feedback">
+                        <div class="mc-fb-title" id="mc-fb-title"></div>
+                        <div class="mc-fb-text" id="mc-fb-text"></div>
+                    </div>
+                    <div class="mc-nav-row">
+                        <button class="btn-orange" id="mc-next-btn" onclick="mcNext()" style="display:none;">Sonraki Soru →</button>
+                        <button class="btn-sec" onclick="mcRestart()">🔄 Yeniden Başla</button>
+                    </div>
+                </div>
+            </section>
+
             <section id="practice">
                 <div class="prac-head">
                     <div>
@@ -195,8 +342,6 @@
                         <button class="ptab" onclick="swPTab(this,'pt2')">🔄 Translate</button>
                         <button class="ptab" onclick="swPTab(this,'pt3')">🎯 Fill the Gap</button>
                     </div>
-
-                    <!-- TAB 1 -->
                     <div class="ptab-panel active" id="pt1">
                         <div class="field-label">Metni Yaz veya Yapıştır</div>
                         <div class="field-desc">İngilizce yaz → LanguageTool gramer hatalarını bulur + her fiil için hangi zaman kullanıldığı tespit edilir.</div>
@@ -208,8 +353,6 @@
                         <div class="loading-wrap" id="load-grammar"><div class="loading-inner"><div class="dots"><span></span><span></span><span></span></div>LanguageTool analiz ediyor...</div></div>
                         <div id="results"></div>
                     </div>
-
-                    <!-- TAB 2 -->
                     <div class="ptab-panel" id="pt2">
                         <div class="field-label">Çeviri Alıştırması</div>
                         <div class="field-desc">Türkçe cümleyi İngilizceye çevir. Anlam kontrolü yapılır — aynı anlam taşıyan farklı ifadeler de kabul edilir!</div>
@@ -225,8 +368,6 @@
                         <div class="answer-reveal" id="answer-reveal"><div class="ar-label">✅ Örnek Doğru Cevap</div><div class="ar-text" id="answer-text"></div></div>
                         <div id="tr-results"></div>
                     </div>
-
-                    <!-- TAB 3 -->
                     <div class="ptab-panel" id="pt3">
                         <div class="field-label">Boşluk Doldur</div>
                         <div class="field-desc" id="gap-desc">Seçili zaman kuralına göre boşluğu doğru fiil formuyla doldur.</div>
@@ -257,12 +398,22 @@
     <footer><p>© 2026 English Grammar Platform · Powered by <a href="https://languagetool.org" style="color:var(--emerald)">LanguageTool API</a> — Free, No Key Required</p></footer>
 </div>
 
+<!-- ===================== PART 2: JAVASCRIPT WILL GO HERE ===================== -->
+
+
+</body>
+</html>
 <script>
 // ===================== TENSE DATA =====================
 const TENSES = [
   {
     id: 0, name: 'Simple Present', code: 'V / V+s', turkish: 'Basit Şimdiki Zaman',
     rule: 'Günlük alışkanlıklar, değişmeyen gerçekler için.',
+    pyramid: {
+      positive: { label: 'Positive', formula: 'I/You/We/They + V\nHe/She/It + V+s', example: 'She works every day.' },
+      negative: { label: 'Negative', formula: 'do/does + not + V', example: "She doesn't work today." },
+      question: { label: 'Question', formula: 'Do/Does + S + V?', example: 'Does she work here?' }
+    },
     formula: [{l:'Olumlu',t:'I/You/We/They + V\nHe/She/It + V+s'},{l:'Olumsuz',t:'do/does not + V'},{l:'Soru',t:'Do/Does + S + V?'}],
     signals: ['always','usually','often','every day','never'],
     examples: [
@@ -301,6 +452,11 @@ const TENSES = [
   {
     id: 1, name: 'Present Continuous', code: 'am/is/are + V-ing', turkish: 'Şu Anki Devamlı Zaman',
     rule: 'Şu anda devam eden eylemler için.',
+    pyramid: {
+      positive: { label: 'Positive', formula: 'S + am/is/are + V-ing', example: 'She is studying now.' },
+      negative: { label: 'Negative', formula: 'S + am/is/are + not + V-ing', example: 'She is not studying now.' },
+      question: { label: 'Question', formula: 'Is/Are + S + V-ing?', example: 'Is she studying now?' }
+    },
     formula: [{l:'Olumlu',t:'am/is/are + V-ing'},{l:'Olumsuz',t:'am/is/are + not + V-ing'},{l:'Soru',t:'Is/Are + S + V-ing?'}],
     signals: ['now','at the moment','currently','right now'],
     examples: [
@@ -340,6 +496,11 @@ const TENSES = [
   {
     id: 2, name: 'Simple Past', code: 'V-ed / irregular', turkish: 'Geçmiş Zaman',
     rule: 'Geçmişte tamamlanmış eylemler için.',
+    pyramid: {
+      positive: { label: 'Positive', formula: 'S + V-ed / V2 (irregular)', example: 'She worked yesterday.' },
+      negative: { label: 'Negative', formula: 'S + did not + V', example: "She didn't work yesterday." },
+      question: { label: 'Question', formula: 'Did + S + V?', example: 'Did she work yesterday?' }
+    },
     formula: [{l:'Olumlu',t:'V-ed / V2 (irregular)'},{l:'Olumsuz',t:'did not + V'},{l:'Soru',t:'Did + S + V?'}],
     signals: ['yesterday','last week','ago','last night'],
     examples: [
@@ -379,6 +540,11 @@ const TENSES = [
   {
     id: 3, name: 'Past Continuous', code: 'was/were + V-ing', turkish: 'Geçmiş Devamlı Zaman',
     rule: 'Geçmişte devam eden eylemler için.',
+    pyramid: {
+      positive: { label: 'Positive', formula: 'S + was/were + V-ing', example: 'She was reading all evening.' },
+      negative: { label: 'Negative', formula: 'S + was/were + not + V-ing', example: 'She was not reading.' },
+      question: { label: 'Question', formula: 'Was/Were + S + V-ing?', example: 'Was she reading?' }
+    },
     formula: [{l:'Olumlu',t:'was/were + V-ing'},{l:'Olumsuz',t:'was/were not + V-ing'},{l:'Soru',t:'Was/Were + S + V-ing?'}],
     signals: ['while','when','at 8pm yesterday','all day'],
     examples: [
@@ -417,6 +583,11 @@ const TENSES = [
   {
     id: 4, name: 'Present Perfect', code: 'have/has + PP', turkish: 'Şimdiki Tamamlanmış Zaman',
     rule: 'Geçmişte olup şu anı etkileyen eylemler için.',
+    pyramid: {
+      positive: { label: 'Positive', formula: 'S + have/has + PP', example: 'She has just finished.' },
+      negative: { label: 'Negative', formula: 'S + have/has + not + PP', example: "She hasn't finished yet." },
+      question: { label: 'Question', formula: 'Have/Has + S + PP?', example: 'Has she finished yet?' }
+    },
     formula: [{l:'Olumlu',t:'have/has + PP'},{l:'Olumsuz',t:'have/has not + PP'},{l:'Soru',t:'Have/Has + S + PP?'}],
     signals: ['just','already','yet','ever','never','recently'],
     examples: [
@@ -455,6 +626,11 @@ const TENSES = [
   {
     id: 5, name: 'Present Perfect Continuous', code: 'have/has + been + V-ing', turkish: 'Şimdiki Devam Tamamlanmış',
     rule: 'Geçmişten beri devam eden eylemler için.',
+    pyramid: {
+      positive: { label: 'Positive', formula: 'S + have/has + been + V-ing', example: 'I have been studying for 3 hours.' },
+      negative: { label: 'Negative', formula: 'S + have/has + not + been + V-ing', example: "I haven't been sleeping well." },
+      question: { label: 'Question', formula: 'Have/Has + S + been + V-ing?', example: 'Have you been waiting long?' }
+    },
     formula: [{l:'Olumlu',t:'have/has + been + V-ing'},{l:'Olumsuz',t:'have/has not + been + V-ing'},{l:'Soru',t:'Have/Has + S + been + V-ing?'}],
     signals: ['for','since','how long','all day'],
     examples: [
@@ -464,7 +640,7 @@ const TENSES = [
       {en:'I have been cooking for an hour.',tr:'Bir saattir yemek pişiriyorum.'},{en:'He has been running since 6 AM.',tr:'Sabah 6\'dan beri koşuyor.'},
       {en:'They have been arguing for hours.',tr:'Saatlerce tartışıyorlar.'},{en:'She has been teaching for 20 years.',tr:'20 yıldır ders veriyor.'},
       {en:'I have been feeling tired recently.',tr:'Son zamanlarda yorgun hissediyorum.'},{en:'He has been playing the guitar since childhood.',tr:'Çocukluğundan beri gitar çalıyor.'},
-      {en:'We have been building the house for months.',tr:'Aylardır evi yapıyoruz.'},{en:'She has been not sleeping well lately.',tr:'Son zamanlarda iyi uyuyamıyor.'},
+      {en:'We have been building the house for months.',tr:'Aylardır evi yapıyoruz.'},{en:'She has not been sleeping well lately.',tr:'Son zamanlarda iyi uyuyamıyor.'},
       {en:'They have been practicing every day.',tr:'Her gün pratik yapıyorlar.'},{en:'I have been waiting for you since noon.',tr:'Öğleden beri seni bekliyorum.'},
       {en:'He has been watching too much TV lately.',tr:'Son zamanlarda çok fazla TV izliyor.'},{en:'She has been saving money for a trip.',tr:'Bir gezi için para biriktiriyor.'},
       {en:'We have been living here for ten years.',tr:'On yıldır burada yaşıyoruz.'},{en:'I have been walking for an hour.',tr:'Bir saattir yürüyorum.'},
@@ -493,6 +669,11 @@ const TENSES = [
   {
     id: 6, name: 'Simple Future', code: 'will + V', turkish: 'Gelecek Zaman',
     rule: 'Gelecekteki eylemler ve ani kararlar için.',
+    pyramid: {
+      positive: { label: 'Positive', formula: 'S + will + V (base)', example: 'She will call you tomorrow.' },
+      negative: { label: 'Negative', formula: "S + won't + V", example: "She won't call you today." },
+      question: { label: 'Question', formula: 'Will + S + V?', example: 'Will she call tomorrow?' }
+    },
     formula: [{l:'Olumlu',t:'will + V (base)'},{l:'Olumsuz',t:"won't + V"},{l:'Soru',t:'Will + S + V?'}],
     signals: ['tomorrow','next week','soon','later'],
     examples: [
@@ -531,6 +712,11 @@ const TENSES = [
   {
     id: 7, name: 'Future Continuous', code: 'will + be + V-ing', turkish: 'Gelecek Devamlı Zaman',
     rule: 'Gelecekte devam ediyor olacak eylemler için.',
+    pyramid: {
+      positive: { label: 'Positive', formula: 'S + will + be + V-ing', example: 'I will be working at 9 AM.' },
+      negative: { label: 'Negative', formula: 'S + will not + be + V-ing', example: 'I will not be working then.' },
+      question: { label: 'Question', formula: 'Will + S + be + V-ing?', example: 'Will you be working at 9?' }
+    },
     formula: [{l:'Olumlu',t:'will + be + V-ing'},{l:'Olumsuz',t:'will not + be + V-ing'},{l:'Soru',t:'Will + S + be + V-ing?'}],
     signals: ['at this time tomorrow','at 8pm tonight','this time next week'],
     examples: [
@@ -546,7 +732,7 @@ const TENSES = [
       {en:'We will be relaxing on the beach.',tr:'Plajda dinleniyor olacağız.'},{en:'He will be painting the house all week.',tr:'Bütün hafta evi boyuyor olacak.'},
       {en:'She will be teaching all morning.',tr:'Bütün sabah ders veriyor olacak.'},{en:'I will be waiting for you at the station.',tr:'İstasyonda seni bekliyor olacağım.'},
       {en:'They will be swimming at 10 AM.',tr:'Sabah 10\'da yüzüyor olacaklar.'},{en:'He will be presenting at the conference.',tr:'Konferansta sunum yapıyor olacak.'},
-      {en:'She will be not working next Friday.',tr:'Gelecek Cuma çalışmıyor olacak.'},{en:'We will be playing tennis at 6 PM.',tr:'Akşam 6\'da tenis oynuyor olacağız.'},
+      {en:'She will not be working next Friday.',tr:'Gelecek Cuma çalışmıyor olacak.'},{en:'We will be playing tennis at 6 PM.',tr:'Akşam 6\'da tenis oynuyor olacağız.'},
       {en:'I will be thinking about you.',tr:'Seni düşünüyor olacağım.'},{en:'He will be exercising at the gym.',tr:'Spor salonunda egzersiz yapıyor olacak.'},
       {en:'She will be meeting clients all day.',tr:'Bütün gün müşterilerle görüşüyor olacak.'},{en:'They will be celebrating their anniversary.',tr:'Yıldönümlerini kutluyor olacaklar.'},
       {en:'I will be finishing the project by then.',tr:'O zamana kadar projeyi bitiriyor olacağım.'},{en:'He will be living in Paris next year.',tr:'Gelecek yıl Paris\'te yaşıyor olacak.'},
@@ -569,6 +755,11 @@ const TENSES = [
   {
     id: 8, name: 'Past Perfect', code: 'had + PP', turkish: 'Geçmişin Geçmişi',
     rule: 'Geçmişte iki olaydan önce olanı belirtir.',
+    pyramid: {
+      positive: { label: 'Positive', formula: 'S + had + PP', example: 'I had finished before you arrived.' },
+      negative: { label: 'Negative', formula: "S + hadn't + PP", example: "She hadn't eaten before the show." },
+      question: { label: 'Question', formula: 'Had + S + PP?', example: 'Had she eaten before? ' }
+    },
     formula: [{l:'Olumlu',t:'had + PP'},{l:'Olumsuz',t:"hadn't + PP"},{l:'Soru',t:'Had + S + PP?'}],
     signals: ['before','after','already','by the time'],
     examples: [
@@ -591,7 +782,7 @@ const TENSES = [
       {en:'She had taken notes before the lecture ended.',tr:'Ders bitmeden önce not almıştı.'},{en:'We had left before the storm hit.',tr:'Fırtına gelmeden önce ayrılmıştık.'},
       {en:'They had argued before making a decision.',tr:'Karar vermeden önce tartışmışlardı.'},{en:'I had grown up there before moving abroad.',tr:'Yurt dışına taşınmadan önce orada büyümüştüm.'},
       {en:'He had practiced every day before the competition.',tr:'Yarışmadan önce her gün pratik yapmıştı.'},{en:'She had made dinner before he got home.',tr:'O eve gelmeden önce akşam yemeğini yapmıştı.'},
-      {en:'We had seen that film before.',tr:'O filmi daha önce görmüştük.'},{en:'I had told her the truth before she found out.',tr:'O öğrenmeden önce gerçeği söylemişim.'},
+      {en:'We had seen that film before.',tr:'O filmi daha önce görmüştük.'},{en:'I had told her the truth before she found out.',tr:'O öğrenmeden önce gerçeği söylemiştim.'},
       {en:'He had broken the window before the teacher saw.',tr:'Öğretmen görmeden önce camı kırmıştı.'},{en:'She had met him before the party.',tr:'Partiden önce onunla tanışmıştı.'},
       {en:'They had finished eating before we arrived.',tr:'Biz gelmeden önce yemeği bitirmişlerdi.'},{en:'I had booked the flight before prices went up.',tr:'Fiyatlar artmadan önce uçuşu ayırttım.'},
       {en:'He had studied the material before class.',tr:'Dersten önce materyali çalışmıştı.'},{en:'She had not met him before that day.',tr:'O güne kadar onunla tanışmamıştı.'},
@@ -607,6 +798,11 @@ const TENSES = [
   {
     id: 9, name: 'Past Perfect Continuous', code: 'had + been + V-ing', turkish: 'Geçmiş Devam Tamamlanmış',
     rule: 'Geçmişte belirli süre devam eden eylemler için.',
+    pyramid: {
+      positive: { label: 'Positive', formula: 'S + had + been + V-ing', example: 'I had been working for 8 hours.' },
+      negative: { label: 'Negative', formula: 'S + had not + been + V-ing', example: 'She had not been sleeping well.' },
+      question: { label: 'Question', formula: 'Had + S + been + V-ing?', example: 'Had he been waiting long?' }
+    },
     formula: [{l:'Olumlu',t:'had + been + V-ing'},{l:'Olumsuz',t:'had not + been + V-ing'},{l:'Soru',t:'Had + S + been + V-ing?'}],
     signals: ['for','since','before','how long'],
     examples: [
@@ -645,6 +841,11 @@ const TENSES = [
   {
     id: 10, name: 'Future Perfect', code: 'will + have + PP', turkish: 'Gelecek Tamamlanmış Zaman',
     rule: 'Gelecekte belirli zamana kadar tamamlanacak eylemler için.',
+    pyramid: {
+      positive: { label: 'Positive', formula: 'S + will + have + PP', example: 'I will have finished by Friday.' },
+      negative: { label: 'Negative', formula: 'S + will not + have + PP', example: "She won't have arrived by noon." },
+      question: { label: 'Question', formula: 'Will + S + have + PP?', example: 'Will they have finished by then?' }
+    },
     formula: [{l:'Olumlu',t:'will + have + PP'},{l:'Olumsuz',t:'will not + have + PP'},{l:'Soru',t:'Will + S + have + PP?'}],
     signals: ['by Friday','by next year','by the time'],
     examples: [
@@ -654,14 +855,14 @@ const TENSES = [
       {en:'I will have learned Spanish by the time I visit Mexico.',tr:'Meksika\'yı ziyaret ettiğimde İspanyolca öğrenmiş olacağım.'},{en:'He will have retired by 2030.',tr:'2030\'a kadar emekli olmuş olacak.'},
       {en:'They will have built the bridge by next spring.',tr:'Gelecek bahara kadar köprüyü inşa etmiş olacaklar.'},{en:'She will have published her book by next month.',tr:'Gelecek aya kadar kitabını yayınlamış olacak.'},
       {en:'I will have prepared everything by the time you arrive.',tr:'Sen gelene kadar her şeyi hazırlamış olacağım.'},{en:'He will have fixed the car by this evening.',tr:'Bu akşama kadar arabayı tamir etmiş olacak.'},
-      {en:'We will have decorated the room by noon.',tr:'Öğlene kadar odayı süslemiş olacağız.'},{en:'She will have not returned by midnight.',tr:'Gece yarısına kadar dönmemiş olacak.'},
+      {en:'We will have decorated the room by noon.',tr:'Öğlene kadar odayı süslemiş olacağız.'},{en:'She will not have returned by midnight.',tr:'Gece yarısına kadar dönmemiş olacak.'},
       {en:'They will have sold all the tickets by tomorrow.',tr:'Yarına kadar tüm biletleri satmış olacaklar.'},{en:'I will have cooked dinner by 6 PM.',tr:'Saat 6\'ya kadar akşam yemeğini pişirmiş olacağım.'},
       {en:'He will have earned a promotion by next year.',tr:'Gelecek yıla kadar terfi almış olacak.'},{en:'She will have moved to a new city.',tr:'Yeni bir şehre taşınmış olacak.'},
       {en:'We will have met our goals by then.',tr:'O zamana kadar hedeflerimize ulaşmış olacağız.'},{en:'He will have completed ten years of service.',tr:'On yıllık hizmetini tamamlamış olacak.'},
       {en:'She will have sent the report by Monday.',tr:'Pazartesi\'ye kadar raporu göndermiş olacak.'},{en:'I will have visited twenty countries by thirty.',tr:'Otuzuna kadar yirmi ülke ziyaret etmiş olacağım.'},
       {en:'They will have painted the house by the weekend.',tr:'Hafta sonuna kadar evi boyamış olacaklar.'},{en:'He will have written three novels.',tr:'Üç roman yazmış olacak.'},
       {en:'She will have lost twenty kilos.',tr:'Yirmi kilo vermiş olacak.'},{en:'We will have changed the whole system.',tr:'Tüm sistemi değiştirmiş olacağız.'},
-      {en:'I will have not finished the essay by then.',tr:'O zamana kadar denemeyi bitirmemiş olacağım.'},{en:'He will have answered all the emails.',tr:'Tüm e-postaları yanıtlamış olacak.'},
+      {en:'I will not have finished the essay by then.',tr:'O zamana kadar denemeyi bitirmemiş olacağım.'},{en:'He will have answered all the emails.',tr:'Tüm e-postaları yanıtlamış olacak.'},
       {en:'She will have mastered the language.',tr:'Dile hakim olmuş olacak.'},{en:'They will have opened the new branch.',tr:'Yeni şubeyi açmış olacaklar.'},
       {en:'I will have taken the exam by next week.',tr:'Gelecek haftaya kadar sınava girmiş olacağım.'},{en:'He will have replaced the equipment.',tr:'Ekipmanı değiştirmiş olacak.'},
       {en:'She will have joined a new team.',tr:'Yeni bir ekibe katılmış olacak.'},{en:'We will have celebrated our anniversary.',tr:'Yıldönümümüzü kutlamış olacağız.'},
@@ -683,6 +884,11 @@ const TENSES = [
   {
     id: 11, name: 'Future Perfect Continuous', code: 'will + have + been + V-ing', turkish: 'Gelecek Devam Tamamlanmış',
     rule: 'Gelecekte ne kadar süredir devam edeceğini belirtir.',
+    pyramid: {
+      positive: { label: 'Positive', formula: 'S + will + have + been + V-ing', example: 'By Friday I will have been studying for 6 months.' },
+      negative: { label: 'Negative', formula: 'S + will not + have + been + V-ing', example: "I won't have been working long." },
+      question: { label: 'Question', formula: 'Will + S + have + been + V-ing?', example: 'Will she have been teaching for a year?' }
+    },
     formula: [{l:'Olumlu',t:'will + have + been + V-ing'},{l:'Olumsuz',t:'will not + have + been + V-ing'},{l:'Soru',t:'Will + S + have + been + V-ing?'}],
     signals: ['by…for','by next year for','by the time…for'],
     examples: [
@@ -720,93 +926,350 @@ const TENSES = [
   }
 ];
 
+// ===================== SENTENCE PATTERNS DATA =====================
+// 12 zamanın her biri için 20 kalıplaşmış cümle (I can, You can, I like, That is, I want, I need, vb.)
+const SENTENCE_PATTERNS = [
+  { // 0 - Simple Present
+    tips: "Günlük alışkanlıklar için 'I do / She does' yapısını kullan. He/She/It ile fiil sonuna -s/-es gelir.",
+    patterns: [
+      { starter: 'I can', en: 'I can speak English very well.', tr: 'İngilizce çok iyi konuşabilirim.' },
+      { starter: 'You can', en: 'You can do anything you set your mind to.', tr: 'Aklını koyduğun her şeyi yapabilirsin.' },
+      { starter: 'I like', en: 'I like drinking coffee every morning.', tr: 'Her sabah kahve içmeyi severim.' },
+      { starter: 'She likes', en: 'She likes reading books before bed.', tr: 'Yatmadan önce kitap okumayı sever.' },
+      { starter: 'That is', en: 'That is how she solves every problem.', tr: 'Her sorunu böyle çözer.' },
+      { starter: 'I want', en: 'I want to travel the world someday.', tr: 'Bir gün dünyayı gezmek istiyorum.' },
+      { starter: 'I need', en: 'I need a cup of tea every afternoon.', tr: 'Her öğleden sonra bir bardak çaya ihtiyacım var.' },
+      { starter: 'He always', en: 'He always arrives on time for work.', tr: 'İşe her zaman zamanında gelir.' },
+      { starter: 'I think', en: 'I think this is the best solution.', tr: 'Bunun en iyi çözüm olduğunu düşünüyorum.' },
+      { starter: 'We usually', en: 'We usually have dinner at seven.', tr: 'Genellikle yedide akşam yemeği yeriz.' },
+      { starter: 'I know', en: 'I know how to cook traditional food.', tr: 'Geleneksel yemek yapmayı bilirim.' },
+      { starter: 'She never', en: 'She never forgets her friends\' birthdays.', tr: 'Arkadaşlarının doğum günlerini asla unutmaz.' },
+      { starter: 'I love', en: 'I love spending time with my family.', tr: 'Ailemle vakit geçirmeyi severim.' },
+      { starter: 'He works', en: 'He works as an engineer in a big company.', tr: 'Büyük bir şirkette mühendis olarak çalışır.' },
+      { starter: 'I believe', en: 'I believe hard work always pays off.', tr: 'Çok çalışmanın her zaman karşılığını verdiğine inanırım.' },
+      { starter: 'That means', en: 'That means she studies every single day.', tr: 'Bu, her gün çalıştığı anlamına gelir.' },
+      { starter: 'I prefer', en: 'I prefer tea over coffee in the morning.', tr: 'Sabahları kahveye karşı çayı tercih ederim.' },
+      { starter: 'They often', en: 'They often visit their relatives on weekends.', tr: 'Hafta sonları sık sık akrabalarını ziyaret ederler.' },
+      { starter: 'I feel', en: 'I feel happy when I help others.', tr: 'Başkalarına yardım ettiğimde mutlu hissederim.' },
+      { starter: 'It takes', en: 'It takes courage to admit your mistakes.', tr: 'Hatalarını kabul etmek cesaret ister.' }
+    ]
+  },
+  { // 1 - Present Continuous
+    tips: "Şu an devam eden eylemlerde 'am/is/are + V-ing' yapısını kullan. 'right now', 'at the moment' sinyalleridir.",
+    patterns: [
+      { starter: 'I am', en: 'I am working on a very important project right now.', tr: 'Şu an çok önemli bir proje üzerinde çalışıyorum.' },
+      { starter: 'She is', en: 'She is studying for her final exams at the moment.', tr: 'Şu an final sınavları için çalışıyor.' },
+      { starter: 'You are', en: 'You are making great progress these days.', tr: 'Bu günlerde çok ilerliyorsunuz.' },
+      { starter: 'I can see', en: 'I can see it is raining outside right now.', tr: 'Dışarıda yağmur yağdığını görebiliyorum.' },
+      { starter: 'That is why', en: 'That is why she is smiling so much today.', tr: 'Bu yüzden bugün çok gülümsüyor.' },
+      { starter: 'I am trying', en: 'I am trying to learn a new language this year.', tr: 'Bu yıl yeni bir dil öğrenmeye çalışıyorum.' },
+      { starter: 'He is becoming', en: 'He is becoming more confident every day.', tr: 'Her geçen gün daha güvenli hale geliyor.' },
+      { starter: 'We are planning', en: 'We are planning a big surprise party tonight.', tr: 'Bu gece büyük bir sürpriz parti planlıyoruz.' },
+      { starter: 'I am feeling', en: 'I am feeling much better than yesterday.', tr: 'Dünden çok daha iyi hissediyorum.' },
+      { starter: 'They are building', en: 'They are building a new library in our town.', tr: 'İlçemizde yeni bir kütüphane inşa ediyorlar.' },
+      { starter: 'I am looking', en: 'I am looking for a better opportunity right now.', tr: 'Şu an daha iyi bir fırsat arıyorum.' },
+      { starter: 'She is wearing', en: 'She is wearing a beautiful blue dress today.', tr: 'Bugün güzel bir mavi elbise giyiyor.' },
+      { starter: 'I am wondering', en: 'I am wondering if you can help me.', tr: 'Bana yardım edip edemeyeceğini merak ediyorum.' },
+      { starter: 'He is talking', en: 'He is talking to the manager right now.', tr: 'Şu an müdürle konuşuyor.' },
+      { starter: 'I am thinking', en: 'I am thinking about changing my job.', tr: 'İş değiştirmeyi düşünüyorum.' },
+      { starter: 'That thing is', en: 'That thing is getting more complicated every day.', tr: 'O konu her gün daha da karmaşık hale geliyor.' },
+      { starter: 'We are having', en: 'We are having a really great time together.', tr: 'Birlikte gerçekten harika vakit geçiriyoruz.' },
+      { starter: 'I am waiting', en: 'I am waiting for an important phone call right now.', tr: 'Şu an önemli bir telefon aramasını bekliyorum.' },
+      { starter: 'She is not', en: 'She is not feeling well today unfortunately.', tr: 'Ne yazık ki bugün iyi hissetmiyor.' },
+      { starter: 'It is getting', en: 'It is getting dark outside very quickly.', tr: 'Dışarısı çok çabuk karardı.' }
+    ]
+  },
+  { // 2 - Simple Past
+    tips: "Geçmişteki tamamlanmış eylemler için düzenli fiillere -ed, düzensizlere 2. form ekle. 'yesterday', 'ago' sinyallerdir.",
+    patterns: [
+      { starter: 'I went', en: 'I went to the market yesterday morning.', tr: 'Dün sabah markete gittim.' },
+      { starter: 'She called', en: 'She called me right after the meeting ended.', tr: 'Toplantı biter bitmez beni aradı.' },
+      { starter: 'I could not', en: 'I could not find my keys anywhere last night.', tr: 'Dün gece anahtarlarımı hiçbir yerde bulamadım.' },
+      { starter: 'That was', en: 'That was the best decision I ever made.', tr: 'Bu benim şimdiye kadar aldığım en iyi karardı.' },
+      { starter: 'I liked', en: 'I liked that restaurant so much when I visited.', tr: 'O restoranı ziyaret ettiğimde çok beğendim.' },
+      { starter: 'He wanted', en: 'He wanted to become a pilot when he was young.', tr: 'Küçükken pilot olmak istiyordu.' },
+      { starter: 'We decided', en: 'We decided to move to a bigger city last year.', tr: 'Geçen yıl daha büyük bir şehre taşınmaya karar verdik.' },
+      { starter: 'I felt', en: 'I felt very proud when I graduated from university.', tr: 'Üniversiteden mezun olduğumda çok gurur duydum.' },
+      { starter: 'She told', en: 'She told me an amazing story last night.', tr: 'Dün gece bana inanılmaz bir hikaye anlattı.' },
+      { starter: 'I used to', en: 'I used to play football every day as a child.', tr: 'Çocukken her gün futbol oynardım.' },
+      { starter: 'They built', en: 'They built this bridge over one hundred years ago.', tr: 'Bu köprüyü yüz yıldan fazla önce inşa ettiler.' },
+      { starter: 'I needed', en: 'I needed more time to finish the project.', tr: 'Projeyi bitirmek için daha fazla zamana ihtiyacım vardı.' },
+      { starter: 'He knew', en: 'He knew exactly what to do in that situation.', tr: 'O durumda tam olarak ne yapacağını biliyordu.' },
+      { starter: 'I tried', en: 'I tried my best but it was not enough.', tr: 'Elimden gelenin en iyisini yaptım ama yeterli olmadı.' },
+      { starter: 'That happened', en: 'That happened so fast I could not believe it.', tr: 'Bu o kadar hızlı oldu ki inanamadım.' },
+      { starter: 'I saw', en: 'I saw an incredible sunset at the beach last week.', tr: 'Geçen hafta plajda inanılmaz bir gün batımı gördüm.' },
+      { starter: 'She found', en: 'She found the answer after hours of thinking.', tr: 'Saatler boyunca düşündükten sonra cevabı buldu.' },
+      { starter: 'We learned', en: 'We learned a very important lesson from that experience.', tr: 'O deneyimden çok önemli bir ders çıkardık.' },
+      { starter: 'I did not', en: 'I did not expect things to turn out this way.', tr: 'İşlerin bu şekilde sonuçlanmasını beklemiyordum.' },
+      { starter: 'He came', en: 'He came home very late last night.', tr: 'Dün gece eve çok geç geldi.' }
+    ]
+  },
+  { // 3 - Past Continuous
+    tips: "Geçmişte devam eden eylemler için 'was/were + V-ing'. Genellikle 'when' veya 'while' ile birlikte kullanılır.",
+    patterns: [
+      { starter: 'I was', en: 'I was cooking dinner when you called me.', tr: 'Sen beni aradığında akşam yemeği pişiriyordum.' },
+      { starter: 'She was trying', en: 'She was trying to solve the problem all day.', tr: 'Bütün gün problemi çözmeye çalışıyordu.' },
+      { starter: 'I could see', en: 'I could see he was lying the whole time.', tr: 'Her zaman yalan söylediğini görebiliyordum.' },
+      { starter: 'That was when', en: 'That was when I was living in another city.', tr: 'Başka bir şehirde yaşadığım zamandı.' },
+      { starter: 'I was feeling', en: 'I was feeling really nervous before the exam.', tr: 'Sınavdan önce gerçekten çok gerginidim.' },
+      { starter: 'He was working', en: 'He was working late while everyone else slept.', tr: 'Herkes uyurken o geç saate kadar çalışıyordu.' },
+      { starter: 'We were having', en: 'We were having a great time when it started to rain.', tr: 'Harika vakit geçirirken yağmur yağmaya başladı.' },
+      { starter: 'I was thinking', en: 'I was thinking about you when you messaged me.', tr: 'Sen mesaj attığında seni düşünüyordum.' },
+      { starter: 'She was not', en: 'She was not listening to what I was saying.', tr: 'Söylediklerimi dinlemiyordu.' },
+      { starter: 'They were', en: 'They were arguing when I walked into the room.', tr: 'Odaya girdiğimde tartışıyorlardı.' },
+      { starter: 'I was trying', en: 'I was trying to sleep but the noise was too loud.', tr: 'Uyumaya çalışıyordum ama gürültü çok fazlaydı.' },
+      { starter: 'He was still', en: 'He was still working at midnight last night.', tr: 'Dün gece gece yarısı hâlâ çalışıyordu.' },
+      { starter: 'I was wondering', en: 'I was wondering where you had gone.', tr: 'Nereye gittiğini merak ediyordum.' },
+      { starter: 'That thing was', en: 'That thing was getting worse every hour.', tr: 'O şey her saat daha da kötüleşiyordu.' },
+      { starter: 'We were planning', en: 'We were planning the trip when the news arrived.', tr: 'Haber geldiğinde seyahati planlıyorduk.' },
+      { starter: 'I was walking', en: 'I was walking home when I met an old friend.', tr: 'Eve yürürken eski bir arkadaşımla karşılaştım.' },
+      { starter: 'She was telling', en: 'She was telling a funny story when I arrived.', tr: 'Ben geldiğimde komik bir hikaye anlatıyordu.' },
+      { starter: 'It was getting', en: 'It was getting cold when we left the party.', tr: 'Partiden ayrıldığımızda hava soğuyordu.' },
+      { starter: 'I was not', en: 'I was not expecting such a warm welcome.', tr: 'Bu kadar sıcak bir karşılamayı beklemiyordum.' },
+      { starter: 'He was looking', en: 'He was looking for his lost keys all morning.', tr: 'Bütün sabah kayıp anahtarlarını arıyordu.' }
+    ]
+  },
+  { // 4 - Present Perfect
+    tips: "'Have/has + PP' yapısı geçmişi bugünle bağlar. 'just', 'already', 'yet', 'ever', 'never' temel sinyallerdir.",
+    patterns: [
+      { starter: 'I have just', en: 'I have just finished reading a great book.', tr: 'Az önce harika bir kitap okumayı bitirdim.' },
+      { starter: 'She has never', en: 'She has never traveled outside her country before.', tr: 'Daha önce hiç yurt dışına çıkmamış.' },
+      { starter: 'I can say', en: 'I can say I have worked really hard this year.', tr: 'Bu yıl gerçekten çok çalıştığımı söyleyebilirim.' },
+      { starter: 'That has been', en: 'That has been my dream since childhood.', tr: 'Bu çocukluğumdan beri hayalimdi.' },
+      { starter: 'I have always', en: 'I have always wanted to learn to play piano.', tr: 'Her zaman piyano çalmayı öğrenmek istedim.' },
+      { starter: 'He has worked', en: 'He has worked at this company for ten years.', tr: 'Bu şirkette on yıldır çalışıyor.' },
+      { starter: 'We have decided', en: 'We have decided to start a new business together.', tr: 'Birlikte yeni bir iş kurmaya karar verdik.' },
+      { starter: 'I have tried', en: 'I have tried many different approaches to this problem.', tr: 'Bu probleme birçok farklı yaklaşım denedim.' },
+      { starter: 'She has told', en: 'She has told me everything about the situation.', tr: 'Durum hakkında her şeyi bana anlattı.' },
+      { starter: 'I have learned', en: 'I have learned so much from my mistakes.', tr: 'Hatalarımdan çok şey öğrendim.' },
+      { starter: 'They have built', en: 'They have built something truly remarkable together.', tr: 'Birlikte gerçekten dikkat çekici bir şey inşa ettiler.' },
+      { starter: 'I have needed', en: 'I have needed help many times in my life.', tr: 'Hayatımda pek çok kez yardıma ihtiyaç duydum.' },
+      { starter: 'He has known', en: 'He has known her since they were children.', tr: 'Onu çocukluktan beri tanıyor.' },
+      { starter: 'I have seen', en: 'I have seen this movie three times already.', tr: 'Bu filmi zaten üç kez izledim.' },
+      { starter: 'That has changed', en: 'That has changed my perspective completely.', tr: 'Bu bakış açımı tamamen değiştirdi.' },
+      { starter: 'I have felt', en: 'I have felt much more confident recently.', tr: 'Son zamanlarda kendimi çok daha güvenli hissediyorum.' },
+      { starter: 'She has become', en: 'She has become an expert in her field.', tr: 'Alanında uzman olmuştur.' },
+      { starter: 'We have met', en: 'We have met so many interesting people on this trip.', tr: 'Bu yolculukta çok ilginç insanlarla tanıştık.' },
+      { starter: 'I have not', en: 'I have not heard from him in a long time.', tr: 'Uzun süredir ondan haber almıyorum.' },
+      { starter: 'It has been', en: 'It has been a truly unforgettable experience.', tr: 'Bu gerçekten unutulmaz bir deneyim oldu.' }
+    ]
+  },
+  { // 5 - Present Perfect Continuous
+    tips: "'Have/has + been + V-ing' ile devam eden süreci vurgula. 'for' + süre, 'since' + başlangıç noktası.",
+    patterns: [
+      { starter: 'I have been', en: 'I have been studying English for three years now.', tr: 'Üç yıldır İngilizce çalışıyorum.' },
+      { starter: 'She has been', en: 'She has been living in this city since 2018.', tr: '2018\'den beri bu şehirde yaşıyor.' },
+      { starter: 'I can tell', en: 'I can tell you have been working very hard lately.', tr: 'Son zamanlarda çok sıkı çalıştığını söyleyebilirim.' },
+      { starter: 'That is why I have been', en: 'That is why I have been feeling so tired lately.', tr: 'Bu yüzden son zamanlarda çok yorgun hissediyorum.' },
+      { starter: 'I have been trying', en: 'I have been trying to contact you since this morning.', tr: 'Bu sabahtan beri seninle iletişime geçmeye çalışıyorum.' },
+      { starter: 'He has been looking', en: 'He has been looking for a new job for months.', tr: 'Aylardır yeni iş arıyor.' },
+      { starter: 'We have been planning', en: 'We have been planning this trip for over a year.', tr: 'Bir yıldan fazla süredir bu seyahati planlıyoruz.' },
+      { starter: 'I have been waiting', en: 'I have been waiting for this moment for so long.', tr: 'Bu an için çok uzun süredir bekliyordum.' },
+      { starter: 'She has been going', en: 'She has been going to yoga classes since January.', tr: 'Ocak\'tan beri yoga derslerine gidiyor.' },
+      { starter: 'They have been building', en: 'They have been building that tower for two years.', tr: 'İki yıldır o kuleyi inşa ediyorlar.' },
+      { starter: 'I have been feeling', en: 'I have been feeling much better since I started exercising.', tr: 'Egzersiz yapmaya başladığımdan beri kendimi çok daha iyi hissediyorum.' },
+      { starter: 'He has been working', en: 'He has been working on this project since last week.', tr: 'Geçen haftadan beri bu proje üzerinde çalışıyor.' },
+      { starter: 'I have been learning', en: 'I have been learning new skills every single day.', tr: 'Her gün yeni beceriler öğreniyorum.' },
+      { starter: 'That has been happening', en: 'That has been happening a lot recently.', tr: 'Bu son zamanlarda çok sık yaşanıyor.' },
+      { starter: 'We have been talking', en: 'We have been talking about this for hours now.', tr: 'Saatlerdir bunun hakkında konuşuyoruz.' },
+      { starter: 'I have been thinking', en: 'I have been thinking about your suggestion carefully.', tr: 'Önerinizi dikkatlice düşünüyordum.' },
+      { starter: 'She has been taking', en: 'She has been taking piano lessons since she was six.', tr: 'Altı yaşından beri piyano dersi alıyor.' },
+      { starter: 'It has been raining', en: 'It has been raining non-stop since early morning.', tr: 'Sabahın erken saatlerinden beri aralıksız yağmur yağıyor.' },
+      { starter: 'I have not been', en: 'I have not been sleeping well for weeks.', tr: 'Haftalardır düzgün uyuyamıyorum.' },
+      { starter: 'He has been running', en: 'He has been running five kilometers every morning.', tr: 'Her sabah beş kilometre koşuyor.' }
+    ]
+  },
+  { // 6 - Simple Future
+    tips: "'Will + V' ile gelecekteki eylemler ve ani kararlar ifade edilir. 'tomorrow', 'next week', 'soon' sinyallerdir.",
+    patterns: [
+      { starter: 'I will', en: 'I will call you as soon as I arrive home.', tr: 'Eve varır varmaz seni arayacağım.' },
+      { starter: 'She will', en: 'She will become a great doctor one day.', tr: 'Bir gün harika bir doktor olacak.' },
+      { starter: 'I can promise', en: 'I can promise I will do my absolute best.', tr: 'Elimden gelenin en iyisini yapacağıma söz verebilirim.' },
+      { starter: 'That will be', en: 'That will be the highlight of our entire year.', tr: 'Bu yılımızın en önemli anı o olacak.' },
+      { starter: 'I will try', en: 'I will try to finish this by tomorrow morning.', tr: 'Bunu yarın sabaha kadar bitirmeye çalışacağım.' },
+      { starter: 'He will work', en: 'He will work harder than ever next semester.', tr: 'Gelecek sömestrde her zamankinden daha çok çalışacak.' },
+      { starter: 'We will travel', en: 'We will travel to Japan next summer together.', tr: 'Gelecek yaz birlikte Japonya\'ya gideceğiz.' },
+      { starter: 'I will need', en: 'I will need your support during this difficult time.', tr: 'Bu zor dönemde desteğine ihtiyacım olacak.' },
+      { starter: 'She will learn', en: 'She will learn from every challenge she faces.', tr: 'Karşılaştığı her zorluktan ders çıkaracak.' },
+      { starter: 'They will build', en: 'They will build a new stadium next year.', tr: 'Gelecek yıl yeni bir stadyum inşa edecekler.' },
+      { starter: 'I will feel', en: 'I will feel much better after a good night\'s sleep.', tr: 'İyi bir gece uykusunun ardından çok daha iyi hissedeceğim.' },
+      { starter: 'He will know', en: 'He will know exactly what to do.', tr: 'Tam olarak ne yapacağını bilecek.' },
+      { starter: 'I will see', en: 'I will see you at the conference next week.', tr: 'Seni gelecek hafta konferansta göreceğim.' },
+      { starter: 'That will change', en: 'That will change everything for the better.', tr: 'Bu her şeyi daha iyi yönde değiştirecek.' },
+      { starter: 'I will not', en: 'I will not let you down, I promise.', tr: 'Seni hayal kırıklığına uğratmayacağım, söz veriyorum.' },
+      { starter: 'It will take', en: 'It will take some time but we will succeed.', tr: 'Biraz zaman alacak ama başaracağız.' },
+      { starter: 'We will have', en: 'We will have a wonderful celebration this weekend.', tr: 'Bu hafta sonu harika bir kutlama yapacağız.' },
+      { starter: 'I will give', en: 'I will give you all the help you need.', tr: 'İhtiyacın olan tüm yardımı sağlayacağım.' },
+      { starter: 'She will tell', en: 'She will tell you the whole truth tomorrow.', tr: 'Yarın sana tüm gerçeği anlatacak.' },
+      { starter: 'I will make', en: 'I will make sure everything is ready on time.', tr: 'Her şeyin zamanında hazır olmasını sağlayacağım.' }
+    ]
+  },
+  { // 7 - Future Continuous
+    tips: "'Will + be + V-ing' gelecekte belirli bir anda devam eden eylemi ifade eder. 'at this time tomorrow' sinyaldir.",
+    patterns: [
+      { starter: 'I will be', en: 'I will be working from home this time tomorrow.', tr: 'Yarın bu saatte evden çalışıyor olacağım.' },
+      { starter: 'She will be', en: 'She will be giving a presentation all morning.', tr: 'Bütün sabah sunum yapıyor olacak.' },
+      { starter: 'I can imagine', en: 'I can imagine I will be smiling all day long.', tr: 'Bütün gün gülümseyeceğimi hayal edebiliyorum.' },
+      { starter: 'That will be happening', en: 'That will be happening while we are on holiday.', tr: 'Tatildeyken bu gerçekleşiyor olacak.' },
+      { starter: 'I will be trying', en: 'I will be trying my best throughout the whole exam.', tr: 'Sınav boyunca elimden gelenin en iyisini yapıyor olacağım.' },
+      { starter: 'He will be looking', en: 'He will be looking for a parking spot at that time.', tr: 'O saatte park yeri arıyor olacak.' },
+      { starter: 'We will be having', en: 'We will be having a team meeting at four o\'clock.', tr: 'Saat dörtte bir ekip toplantısı yapıyor olacağız.' },
+      { starter: 'I will be waiting', en: 'I will be waiting for you right outside the station.', tr: 'İstasyonun tam dışında seni bekliyor olacağım.' },
+      { starter: 'She will be studying', en: 'She will be studying hard this time next week.', tr: 'Gelecek hafta bu saatte yoğun çalışıyor olacak.' },
+      { starter: 'They will be traveling', en: 'They will be traveling through Europe all month.', tr: 'Bütün ay Avrupa\'yı gezerek seyahat ediyor olacaklar.' },
+      { starter: 'I will be feeling', en: 'I will be feeling much more relaxed by then.', tr: 'O zamana kadar çok daha rahatlamış olacağım.' },
+      { starter: 'He will be thinking', en: 'He will be thinking about the results all day.', tr: 'Bütün gün sonuçları düşünüyor olacak.' },
+      { starter: 'I will be learning', en: 'I will be learning new things every single day.', tr: 'Her gün yeni şeyler öğreniyor olacağım.' },
+      { starter: 'That will be changing', en: 'That will be changing the way we work forever.', tr: 'Bu çalışma şeklimizi sonsuza dek değiştiriyor olacak.' },
+      { starter: 'We will be enjoying', en: 'We will be enjoying the sunset from the rooftop.', tr: 'Çatıdan gün batımının tadını çıkarıyor olacağız.' },
+      { starter: 'I will be watching', en: 'I will be watching the match at eight tonight.', tr: 'Bu gece sekizde maçı izliyor olacağım.' },
+      { starter: 'She will be cooking', en: 'She will be cooking dinner when we arrive.', tr: 'Biz vardığımızda akşam yemeği pişiriyor olacak.' },
+      { starter: 'It will be raining', en: 'It will be raining again at this time tomorrow.', tr: 'Yarın bu saatte yine yağmur yağıyor olacak.' },
+      { starter: 'I will not be', en: 'I will not be using my phone during the conference.', tr: 'Konferans sırasında telefonumu kullanmıyor olacağım.' },
+      { starter: 'He will be running', en: 'He will be running in the marathon this Sunday.', tr: 'Bu Pazar maratonda koşuyor olacak.' }
+    ]
+  },
+  { // 8 - Past Perfect
+    tips: "'Had + PP' geçmişte iki olay olduğunda önce olanı belirtir. 'before', 'after', 'already', 'by the time' kullan.",
+    patterns: [
+      { starter: 'I had', en: 'I had already eaten before you arrived home.', tr: 'Sen eve gelmeden önce zaten yemiştim.' },
+      { starter: 'She had never', en: 'She had never seen such a beautiful place before.', tr: 'Daha önce hiç bu kadar güzel bir yer görmemişti.' },
+      { starter: 'I could tell', en: 'I could tell she had been crying earlier.', tr: 'Daha önce ağladığını anlayabiliyordum.' },
+      { starter: 'That had been', en: 'That had been his dream his entire life.', tr: 'Bu onun bütün hayatı boyunca hayaliydi.' },
+      { starter: 'I had tried', en: 'I had tried everything before asking for help.', tr: 'Yardım istemeden önce her şeyi denemiştim.' },
+      { starter: 'He had worked', en: 'He had worked very hard before he retired.', tr: 'Emekli olmadan önce çok sıkı çalışmıştı.' },
+      { starter: 'We had decided', en: 'We had decided to leave before the storm hit.', tr: 'Fırtına gelmeden önce ayrılmaya karar vermiştik.' },
+      { starter: 'I had felt', en: 'I had felt nervous before every single performance.', tr: 'Her performanstan önce gergin hissederdim.' },
+      { starter: 'She had told', en: 'She had told me the news before it was official.', tr: 'Resmi açıklanmadan önce haberi bana söylemişti.' },
+      { starter: 'I had learned', en: 'I had learned my lesson from the first mistake.', tr: 'İlk hatadan dersimi çıkarmıştım.' },
+      { starter: 'They had built', en: 'They had built the house before winter came.', tr: 'Kış gelmeden önce evi inşa etmişlerdi.' },
+      { starter: 'I had needed', en: 'I had needed more practice before the competition.', tr: 'Yarışmadan önce daha fazla pratiğe ihtiyacım vardı.' },
+      { starter: 'He had known', en: 'He had known about the problem for weeks.', tr: 'Haftalardır problem hakkında bilgi sahibiydi.' },
+      { starter: 'I had seen', en: 'I had seen that look on his face before.', tr: 'Yüzündeki o ifadeyi daha önce görmüştüm.' },
+      { starter: 'That had changed', en: 'That had changed everything before we realized it.', tr: 'Farkına varmadan önce her şey değişmişti.' },
+      { starter: 'By the time I', en: 'By the time I got there, they had already left.', tr: 'Oraya vardığımda zaten gitmişlerdi.' },
+      { starter: 'She had become', en: 'She had become a completely different person by then.', tr: 'O zamana kadar tamamen farklı bir insan olmuştu.' },
+      { starter: 'We had met', en: 'We had met several times before the formal introduction.', tr: 'Resmi tanışmadan önce birkaç kez karşılaşmıştık.' },
+      { starter: 'I had not', en: 'I had not expected this kind of outcome at all.', tr: 'Bu tür bir sonucu hiç beklememiştim.' },
+      { starter: 'He had come', en: 'He had come a long way before giving up.', tr: 'Pes etmeden önce uzun bir yol gelmişti.' }
+    ]
+  },
+  { // 9 - Past Perfect Continuous
+    tips: "'Had + been + V-ing' geçmişte belirli bir süre devam eden eylemi vurgular. 'for' ve 'since' ile güçlenir.",
+    patterns: [
+      { starter: 'I had been', en: 'I had been waiting for two hours before he arrived.', tr: 'O gelmeden önce iki saattir bekliyordum.' },
+      { starter: 'She had been', en: 'She had been studying all night before the exam.', tr: 'Sınavdan önce bütün gece çalışıyordu.' },
+      { starter: 'I could see', en: 'I could see he had been crying for a long time.', tr: 'Uzun süredir ağladığını görebiliyordum.' },
+      { starter: 'That had been going', en: 'That had been going on for years without anyone noticing.', tr: 'Bu yıllardır kimse fark etmeden devam ediyordu.' },
+      { starter: 'I had been trying', en: 'I had been trying to reach him for days.', tr: 'Günlerdir ona ulaşmaya çalışıyordum.' },
+      { starter: 'He had been looking', en: 'He had been looking for work for months before succeeding.', tr: 'Başarılı olmadan önce aylarca iş arıyordu.' },
+      { starter: 'We had been planning', en: 'We had been planning the event for over a year.', tr: 'Etkinliği bir yıldan fazla süredir planlıyorduk.' },
+      { starter: 'I had been feeling', en: 'I had been feeling unwell before visiting the doctor.', tr: 'Doktora gitmeden önce kendimi iyi hissetmiyordum.' },
+      { starter: 'She had been going', en: 'She had been going to therapy for six months.', tr: 'Altı aydır terapiye gidiyordu.' },
+      { starter: 'They had been living', en: 'They had been living abroad for five years before returning.', tr: 'Geri dönmeden önce beş yıl yurt dışında yaşıyorlardı.' },
+      { starter: 'I had been learning', en: 'I had been learning guitar for a year before my first concert.', tr: 'İlk konserimden bir yıl önce gitar öğreniyordum.' },
+      { starter: 'He had been working', en: 'He had been working overtime every night that week.', tr: 'O hafta her gece gece mesai yapıyordu.' },
+      { starter: 'I had been thinking', en: 'I had been thinking about this decision for a long time.', tr: 'Bu kararı uzun süredir düşünüyordum.' },
+      { starter: 'That had been growing', en: 'That had been growing into a serious issue for months.', tr: 'Bu aylardır ciddi bir soruna dönüşüyordu.' },
+      { starter: 'We had been saving', en: 'We had been saving money for years to buy a house.', tr: 'Ev almak için yıllarca para biriktiriyorduk.' },
+      { starter: 'I had been walking', en: 'I had been walking for hours when I finally found it.', tr: 'Sonunda bulduğumda saatlerdir yürüyordum.' },
+      { starter: 'She had been taking', en: 'She had been taking the same route every day for years.', tr: 'Yıllarca her gün aynı yolu kullanıyordu.' },
+      { starter: 'It had been raining', en: 'It had been raining for three days before it finally stopped.', tr: 'Durduğunda üç gündür yağmur yağıyordu.' },
+      { starter: 'I had not been', en: 'I had not been sleeping properly for weeks.', tr: 'Haftalardır düzgün uyuyamamıştım.' },
+      { starter: 'He had been running', en: 'He had been running the business for decades before retiring.', tr: 'Emekli olmadan önce on yıllarca işletmeyi yönetiyordu.' }
+    ]
+  },
+  { // 10 - Future Perfect
+    tips: "'Will + have + PP' ile gelecekte belirli bir zamana kadar tamamlanacak eylemler ifade edilir. 'by' ile birlikte kullanılır.",
+    patterns: [
+      { starter: 'I will have', en: 'I will have finished everything by this time tomorrow.', tr: 'Yarın bu saate kadar her şeyi bitirmiş olacağım.' },
+      { starter: 'She will have', en: 'She will have graduated from university by next June.', tr: 'Gelecek Haziran\'a kadar üniversiteden mezun olmuş olacak.' },
+      { starter: 'I can promise', en: 'I can promise I will have completed it by Friday.', tr: 'Cuma gününe kadar tamamlamış olacağıma söz verebilirim.' },
+      { starter: 'That will have changed', en: 'That will have changed our lives completely by then.', tr: 'O zamana kadar hayatımızı tamamen değiştirmiş olacak.' },
+      { starter: 'I will have tried', en: 'I will have tried every possible option by the deadline.', tr: 'Son tarihe kadar her olası seçeneği denemiş olacağım.' },
+      { starter: 'He will have worked', en: 'He will have worked here for twenty years by next month.', tr: 'Gelecek aya kadar burada yirmi yıldır çalışmış olacak.' },
+      { starter: 'We will have traveled', en: 'We will have traveled to thirty countries by next year.', tr: 'Gelecek yıla kadar otuz ülkeye gitmiş olacağız.' },
+      { starter: 'I will have saved', en: 'I will have saved enough money by the end of the year.', tr: 'Yıl sonuna kadar yeterince para biriktirmiş olacağım.' },
+      { starter: 'She will have learned', en: 'She will have learned three languages by the time she graduates.', tr: 'Mezun olduğunda üç dil öğrenmiş olacak.' },
+      { starter: 'They will have built', en: 'They will have built the new hospital by next spring.', tr: 'Gelecek bahara kadar yeni hastaneyi inşa etmiş olacaklar.' },
+      { starter: 'I will have felt', en: 'I will have felt much more confident by the time I present.', tr: 'Sunum yapana kadar kendimi çok daha güvenli hissedecek olacağım.' },
+      { starter: 'He will have known', en: 'He will have known the answer long before the meeting.', tr: 'Toplantıdan çok önce cevabı bilmiş olacak.' },
+      { starter: 'I will have seen', en: 'I will have seen all her films by the end of the month.', tr: 'Ay sonuna kadar tüm filmlerini izlemiş olacağım.' },
+      { starter: 'That will have happened', en: 'That will have happened before we even notice.', tr: 'Fark etmeden önce bu gerçekleşmiş olacak.' },
+      { starter: 'I will not have', en: 'I will not have finished the report by this afternoon.', tr: 'Bu öğleden sonraya kadar raporu bitirmemiş olacağım.' },
+      { starter: 'By the time I', en: 'By the time I retire, I will have achieved all my goals.', tr: 'Emekli olduğumda tüm hedeflerimi gerçekleştirmiş olacağım.' },
+      { starter: 'She will have become', en: 'She will have become one of the best in her field.', tr: 'Alanındaki en iyilerden biri olmuş olacak.' },
+      { starter: 'We will have met', en: 'We will have met our targets well before the deadline.', tr: 'Son tarihten çok önce hedeflerimize ulaşmış olacağız.' },
+      { starter: 'I will have given', en: 'I will have given a hundred presentations by then.', tr: 'O zamana kadar yüz sunum yapmış olacağım.' },
+      { starter: 'He will have come', en: 'He will have come a very long way by that point.', tr: 'O noktaya kadar çok uzun bir yol gelmiş olacak.' }
+    ]
+  },
+  { // 11 - Future Perfect Continuous
+    tips: "'Will + have + been + V-ing' gelecekte ne kadar süredir devam ettiğini belirtir. 'by ... for' yapısı kullanılır.",
+    patterns: [
+      { starter: 'I will have been', en: 'I will have been living here for ten years by next March.', tr: 'Gelecek Mart\'a kadar burada on yıldır yaşıyor olacağım.' },
+      { starter: 'She will have been', en: 'She will have been teaching for over twenty years by retirement.', tr: 'Emekliliğe kadar yirmi yılı aşkın süredir öğretmenlik yapıyor olacak.' },
+      { starter: 'I can say', en: 'I can say I will have been working on this for months.', tr: 'Aylardır bu üzerinde çalışıyor olacağımı söyleyebilirim.' },
+      { starter: 'That will have been going', en: 'That will have been going on for years by the time we notice.', tr: 'Fark ettiğimizde bu yıllardır devam ediyor olacak.' },
+      { starter: 'I will have been trying', en: 'I will have been trying to solve this for a very long time.', tr: 'Çok uzun süredir bunu çözmeye çalışıyor olacağım.' },
+      { starter: 'He will have been looking', en: 'He will have been looking for a new home for months.', tr: 'Aylardır yeni bir ev arıyor olacak.' },
+      { starter: 'We will have been planning', en: 'We will have been planning this for two full years.', tr: 'Tam iki yıldır bunu planlıyor olacağız.' },
+      { starter: 'I will have been waiting', en: 'I will have been waiting for this news for months.', tr: 'Aylardır bu haberi bekliyor olacağım.' },
+      { starter: 'She will have been studying', en: 'She will have been studying medicine for six years by graduation.', tr: 'Mezuniyete kadar altı yıldır tıp okuyor olacak.' },
+      { starter: 'They will have been building', en: 'They will have been building the new road for three years.', tr: 'Üç yıldır yeni yolu inşa ediyor olacaklar.' },
+      { starter: 'I will have been feeling', en: 'I will have been feeling much better by the time we meet.', tr: 'Buluştuğumuzda kendimi çok daha iyi hissediyor olacağım.' },
+      { starter: 'He will have been working', en: 'He will have been working at the firm for thirty years.', tr: 'Firmada otuz yıldır çalışıyor olacak.' },
+      { starter: 'I will have been learning', en: 'I will have been learning this skill for two years.', tr: 'İki yıldır bu beceriyi öğreniyor olacağım.' },
+      { starter: 'That will have been happening', en: 'That will have been happening for decades without a solution.', tr: 'Bu çözümsüz bir şekilde on yıllardır yaşanıyor olacak.' },
+      { starter: 'We will have been saving', en: 'We will have been saving for this dream for five years.', tr: 'Beş yıldır bu hayal için para biriktiriyor olacağız.' },
+      { starter: 'I will have been walking', en: 'I will have been walking every morning for a whole year.', tr: 'Bir yıl boyunca her sabah yürüyüş yapıyor olacağım.' },
+      { starter: 'She will have been taking', en: 'She will have been taking dance lessons for three years.', tr: 'Üç yıldır dans dersi alıyor olacak.' },
+      { starter: 'It will have been raining', en: 'It will have been raining for a full week by Sunday.', tr: 'Pazar\'a kadar tam bir haftadır yağmur yağıyor olacak.' },
+      { starter: 'I will not have been', en: 'I will not have been here long enough to know the city.', tr: 'Şehri tanımak için burada yeterince uzun olmayacağım.' },
+      { starter: 'He will have been running', en: 'He will have been running marathons for fifteen years.', tr: 'On beş yıldır maraton koşuyor olacak.' }
+    ]
+  }
+];
+
+// ===================== MULTIPLE CHOICE DATA (TR→EN & EN→TR) =====================
+// Her zaman için 20 soru, her iki dilde de kullanılabilir
+const MC_QUESTIONS = TENSES.map((t, ti) => {
+  // Pick 20 examples from this tense
+  const pool = t.examples.slice(0, 20);
+  return pool.map((ex, qi) => {
+    // Generate 3 wrong options from other tenses
+    const wrongExamples = [];
+    for (let i = 0; i < TENSES.length && wrongExamples.length < 3; i++) {
+      if (i !== ti) {
+        const wrongEx = TENSES[i].examples[qi % TENSES[i].examples.length];
+        wrongExamples.push(wrongEx);
+      }
+    }
+    return {
+      tenseId: ti,
+      tenseName: t.name,
+      en: ex.en,
+      tr: ex.tr,
+      wrongEn: wrongExamples.map(w => w.en),
+      wrongTr: wrongExamples.map(w => w.tr)
+    };
+  });
+});
+
 // ===================== TENSE DETECTOR =====================
 const TENSE_PATTERNS = [
-  {
-    id: 'future_perfect_continuous',
-    name: 'Future Perfect Continuous',
-    badge: 'future',
-    pattern: /\b(will\s+have\s+been\s+\w+ing)\b/gi,
-    explain: (m) => `"${m}" = will + have + been + V-ing → Gelecekte belirli bir süreye kadar devam etmiş olacak eylem`
-  },
-  {
-    id: 'future_perfect',
-    name: 'Future Perfect',
-    badge: 'future',
-    pattern: /\b(will\s+have\s+(?!been)\w+(?:ed|en|ne|wn|ght|unk|ung|ang|ung|oken|aken|iven|tten|aught|ought|iven|elt|ept|ent|ound|ound|een|ome|ose|ore|ome|ught|elt|eld|ept|ept|ept|ound))\b/gi,
-    explain: (m) => `"${m}" = will + have + PP → Gelecekte belirli bir zamana kadar tamamlanmış eylem`
-  },
-  {
-    id: 'future_continuous',
-    name: 'Future Continuous',
-    badge: 'future',
-    pattern: /\b(will\s+be\s+\w+ing)\b/gi,
-    explain: (m) => `"${m}" = will + be + V-ing → Gelecekte devam ediyor olacak eylem`
-  },
-  {
-    id: 'simple_future',
-    name: 'Simple Future',
-    badge: 'future',
-    pattern: /\b(will\s+(?!have|be)\w+)\b/gi,
-    explain: (m) => `"${m}" = will + V → Gelecekte gerçekleşecek eylem veya ani karar`
-  },
-  {
-    id: 'past_perfect_continuous',
-    name: 'Past Perfect Continuous',
-    badge: 'past',
-    pattern: /\b(had\s+been\s+\w+ing)\b/gi,
-    explain: (m) => `"${m}" = had + been + V-ing → Geçmişte belirli süre devam eden eylem`
-  },
-  {
-    id: 'past_perfect',
-    name: 'Past Perfect',
-    badge: 'past',
-    pattern: /\b(had\s+(?!been)\w+(?:ed|en|ne|wn|ght|unk|ung|ang|oken|aken|iven|tten|aught|ought|elt|ept|ent|ound|een|ome|ose|ore|ught|eld))\b/gi,
-    explain: (m) => `"${m}" = had + PP → Geçmişte daha önceki bir eylem (geçmişin geçmişi)`
-  },
-  {
-    id: 'present_perfect_continuous',
-    name: 'Present Perfect Continuous',
-    badge: 'present',
-    pattern: /\b((?:have|has)\s+been\s+\w+ing)\b/gi,
-    explain: (m) => `"${m}" = have/has + been + V-ing → Geçmişten beri devam eden eylem`
-  },
-  {
-    id: 'present_perfect',
-    name: 'Present Perfect',
-    badge: 'present',
-    pattern: /\b((?:have|has)\s+(?!been)\w+(?:ed|en|ne|wn|ght|unk|ung|ang|oken|aken|iven|tten|aught|ought|elt|ept|ent|ound|een|ome|ose|ore|ught|eld|elt|eld|ept))\b/gi,
-    explain: (m) => `"${m}" = have/has + PP → Geçmişten bugüne etkisi devam eden eylem`
-  },
-  {
-    id: 'past_continuous',
-    name: 'Past Continuous',
-    badge: 'past',
-    pattern: /\b((?:was|were)\s+\w+ing)\b/gi,
-    explain: (m) => `"${m}" = was/were + V-ing → Geçmişte devam eden eylem`
-  },
-  {
-    id: 'present_continuous',
-    name: 'Present Continuous',
-    badge: 'present',
-    pattern: /\b((?:am|is|are)\s+\w+ing)\b/gi,
-    explain: (m) => `"${m}" = am/is/are + V-ing → Şu an devam eden eylem`
-  },
-  {
-    id: 'simple_past',
-    name: 'Simple Past',
-    badge: 'past',
-    // common irregular verbs + regular -ed
-    pattern: /\b(went|came|saw|did|made|got|took|knew|thought|bought|brought|caught|taught|fought|felt|kept|slept|wept|left|met|sent|spent|lent|built|dealt|meant|read|led|fed|held|told|sold|said|paid|laid|sat|hit|cut|put|ran|won|flew|grew|drew|threw|knew|blew|chose|drove|wrote|spoke|broke|woke|rose|shone|wore|bore|tore|swore|swam|sang|rang|drank|sank|began|ran|gave|took|made|found|lost|left|led|let|set|shut|spread|hurt|cost|bet|bid|burst|cast|hit|quit|rid|split|spread|thrust|upset|wed|\w+ed)\b/gi,
-    explain: (m) => `"${m}" = V-ed / V2 (düzensiz) → Geçmişte tamamlanmış eylem (Simple Past)`
-  },
-  {
-    id: 'simple_present_3rd',
-    name: 'Simple Present (3rd person)',
-    badge: 'present',
-    pattern: /\b((?:he|she|it)\s+\w+s)\b/gi,
-    explain: (m) => `"${m}" → He/She/It + V+s yapısı — Simple Present (3. tekil şahıs)`
-  }
+  { id: 'future_perfect_continuous', name: 'Future Perfect Continuous', badge: 'future', pattern: /\b(will\s+have\s+been\s+\w+ing)\b/gi, explain: (m) => `"${m}" = will + have + been + V-ing → Gelecekte belirli bir süreye kadar devam etmiş olacak eylem` },
+  { id: 'future_perfect', name: 'Future Perfect', badge: 'future', pattern: /\b(will\s+have\s+(?!been)\w+(?:ed|en|ne|wn|ght|unk|ung|ang|oken|aken|iven|tten|aught|ought|elt|ept|ent|ound|een|ome|ose|ore|ught|eld))\b/gi, explain: (m) => `"${m}" = will + have + PP → Gelecekte belirli bir zamana kadar tamamlanmış eylem` },
+  { id: 'future_continuous', name: 'Future Continuous', badge: 'future', pattern: /\b(will\s+be\s+\w+ing)\b/gi, explain: (m) => `"${m}" = will + be + V-ing → Gelecekte devam ediyor olacak eylem` },
+  { id: 'simple_future', name: 'Simple Future', badge: 'future', pattern: /\b(will\s+(?!have|be)\w+)\b/gi, explain: (m) => `"${m}" = will + V → Gelecekte gerçekleşecek eylem veya ani karar` },
+  { id: 'past_perfect_continuous', name: 'Past Perfect Continuous', badge: 'past', pattern: /\b(had\s+been\s+\w+ing)\b/gi, explain: (m) => `"${m}" = had + been + V-ing → Geçmişte belirli süre devam eden eylem` },
+  { id: 'past_perfect', name: 'Past Perfect', badge: 'past', pattern: /\b(had\s+(?!been)\w+(?:ed|en|ne|wn|ght|unk|ung|ang|oken|aken|iven|tten|aught|ought|elt|ept|ent|ound|een|ome|ose|ore|ught|eld))\b/gi, explain: (m) => `"${m}" = had + PP → Geçmişte daha önceki bir eylem (geçmişin geçmişi)` },
+  { id: 'present_perfect_continuous', name: 'Present Perfect Continuous', badge: 'present', pattern: /\b((?:have|has)\s+been\s+\w+ing)\b/gi, explain: (m) => `"${m}" = have/has + been + V-ing → Geçmişten beri devam eden eylem` },
+  { id: 'present_perfect', name: 'Present Perfect', badge: 'present', pattern: /\b((?:have|has)\s+(?!been)\w+(?:ed|en|ne|wn|ght|unk|ung|ang|oken|aken|iven|tten|aught|ought|elt|ept|ent|ound|een|ome|ose|ore|ught|eld|eld|ept))\b/gi, explain: (m) => `"${m}" = have/has + PP → Geçmişten bugüne etkisi devam eden eylem` },
+  { id: 'past_continuous', name: 'Past Continuous', badge: 'past', pattern: /\b((?:was|were)\s+\w+ing)\b/gi, explain: (m) => `"${m}" = was/were + V-ing → Geçmişte devam eden eylem` },
+  { id: 'present_continuous', name: 'Present Continuous', badge: 'present', pattern: /\b((?:am|is|are)\s+\w+ing)\b/gi, explain: (m) => `"${m}" = am/is/are + V-ing → Şu an devam eden eylem` },
+  { id: 'simple_past', name: 'Simple Past', badge: 'past', pattern: /\b(went|came|saw|did|made|got|took|knew|thought|bought|brought|caught|taught|fought|felt|kept|slept|wept|left|met|sent|spent|lent|built|dealt|meant|read|led|fed|held|told|sold|said|paid|laid|sat|hit|cut|put|ran|won|flew|grew|drew|threw|blew|chose|drove|wrote|spoke|broke|woke|rose|wore|bore|tore|swore|swam|sang|rang|drank|sank|began|gave|found|lost|\w+ed)\b/gi, explain: (m) => `"${m}" = V-ed / V2 (düzensiz) → Geçmişte tamamlanmış eylem (Simple Past)` },
+  { id: 'simple_present_3rd', name: 'Simple Present (3rd person)', badge: 'present', pattern: /\b((?:he|she|it)\s+\w+s)\b/gi, explain: (m) => `"${m}" → He/She/It + V+s yapısı — Simple Present (3. tekil şahıs)` }
 ];
 
 function detectTenses(text) {
@@ -832,25 +1295,26 @@ function renderTenseAnalysis(text) {
     <div class="ta-item">
       <div class="ta-verb">${d.verb}</div>
       <div class="ta-info">
-        <div class="ta-tense-name">
-          <span class="ta-tense-badge badge-${d.badge}">${d.badge}</span>
-          ${d.tenseName}
-        </div>
+        <div class="ta-tense-name"><span class="ta-tense-badge badge-${d.badge}">${d.badge}</span>${d.tenseName}</div>
         <div class="ta-explanation">${d.explanation}</div>
       </div>
-    </div>
-  `).join('');
-  return `
-    <div class="tense-analysis-box">
-      <div class="ta-title">🔬 Zaman Tespiti — Kullanılan Fiil Zamanları</div>
-      ${items}
-    </div>
-  `;
+    </div>`).join('');
+  return `<div class="tense-analysis-box"><div class="ta-title">🔬 Zaman Tespiti — Kullanılan Fiil Zamanları</div>${items}</div>`;
 }
 
 // ===================== STATE =====================
 let currentTense = 0, currentTrSentence = null, currentTrIndex = -1, currentGapItem = null;
 let prog = { total: 0, errors: 0, streak: 0, checked: 0, clean: 0 };
+// Sentence Patterns state
+let spPage = 0; // 0 = show first 8, 1 = show 8-16, 2 = show 16-20
+const SP_PAGE_SIZE = 8;
+// MC state
+let mcLang = 'TR'; // 'TR' = TR→EN, 'EN' = EN→TR
+let mcTenseFilter = 'all';
+let mcPool = [];
+let mcIdx = 0;
+let mcScore = { correct: 0, wrong: 0, total: 0 };
+let mcAnswered = false;
 
 // ===================== INIT =====================
 function init() {
@@ -862,14 +1326,32 @@ function init() {
     div.onclick = () => selectTense(i, div);
     list.appendChild(div);
   });
-  renderDetail(0); loadTrSentence(0); loadGapSentence(0);
+
+  // Populate MC tense select
+  const sel = document.getElementById('mc-tense-select');
+  TENSES.forEach((t, i) => {
+    const opt = document.createElement('option');
+    opt.value = i; opt.textContent = t.name;
+    sel.appendChild(opt);
+  });
+
+  renderDetail(0);
+  renderSentencePatterns(0, 0);
+  loadTrSentence(0);
+  loadGapSentence(0);
+  buildMcPool();
+  renderMcQuestion();
 }
 
 function selectTense(i, el) {
   currentTense = i;
   document.querySelectorAll('.tense').forEach(d => d.classList.remove('active'));
   el.classList.add('active');
-  renderDetail(i); loadTrSentence(i); loadGapSentence(i);
+  renderDetail(i);
+  spPage = 0;
+  renderSentencePatterns(i, 0);
+  loadTrSentence(i);
+  loadGapSentence(i);
   document.getElementById('answer-reveal').classList.remove('show');
   document.getElementById('tr-answer').value = '';
   document.getElementById('gap-answer').value = '';
@@ -877,18 +1359,253 @@ function selectTense(i, el) {
   document.getElementById('gap-results').innerHTML = '';
 }
 
+// ===================== PYRAMID RENDER =====================
 function renderDetail(i) {
   const t = TENSES[i];
-  const fc = t.formula.map(f => `<div class="formula-card"><div class="fc-label">${f.l}</div><div class="fc-text">${f.t.replace(/\n/g, '<br>')}</div></div>`).join('');
+  const py = t.pyramid;
+
+  // Pyramid cards with Positive → Negative → Questions hierarchy
+  const pyramidHtml = `
+    <div style="margin-bottom:14px;">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text2);margin-bottom:10px;">📐 Piramit Yapısı</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="background:rgba(16,185,129,0.08);border:1.5px solid rgba(16,185,129,0.35);border-radius:10px;padding:10px 14px;display:flex;align-items:flex-start;gap:12px;">
+          <div style="min-width:28px;height:28px;background:var(--emerald);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:white;flex-shrink:0;">1</div>
+          <div style="flex:1;">
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--emerald);margin-bottom:3px;">👍 ${py.positive.label}</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text2);margin-bottom:4px;">${py.positive.formula}</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);">"${py.positive.example}"</div>
+          </div>
+        </div>
+        <div style="background:rgba(244,63,94,0.08);border:1.5px solid rgba(244,63,94,0.35);border-radius:10px;padding:10px 14px;display:flex;align-items:flex-start;gap:12px;">
+          <div style="min-width:28px;height:28px;background:var(--rose);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:white;flex-shrink:0;">2</div>
+          <div style="flex:1;">
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--rose);margin-bottom:3px;">👎 ${py.negative.label}</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text2);margin-bottom:4px;">${py.negative.formula}</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);">"${py.negative.example}"</div>
+          </div>
+        </div>
+        <div style="background:rgba(59,130,246,0.08);border:1.5px solid rgba(59,130,246,0.35);border-radius:10px;padding:10px 14px;display:flex;align-items:flex-start;gap:12px;">
+          <div style="min-width:28px;height:28px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:white;flex-shrink:0;">3</div>
+          <div style="flex:1;">
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--blue);margin-bottom:3px;">❓ ${py.question.label}</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text2);margin-bottom:4px;">${py.question.formula}</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);">"${py.question.example}"</div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
   const sigs = t.signals.map(s => `<span class="sig-tag">${s}</span>`).join('');
   const exs = t.examples.slice(0, 3).map(e => `<div class="ex-item"><div class="ex-en">"${e.en}"</div><div class="ex-tr">${e.tr}</div></div>`).join('');
+
   document.getElementById('tense-detail').innerHTML = `
     <div class="td-name">${t.name}</div>
     <div class="td-tr">${t.turkish}</div>
     <div class="rule-box">${t.rule}</div>
-    <div class="formula-grid">${fc}</div>
+    ${pyramidHtml}
     <div class="sig-lbl">Sinyal Kelimeleri</div>${sigs}
     <div class="ex-head">Örnek Cümleler</div>${exs}`;
+}
+
+// ===================== SENTENCE PATTERNS =====================
+function renderSentencePatterns(tenseIdx, page) {
+  const sp = SENTENCE_PATTERNS[tenseIdx];
+  const t = TENSES[tenseIdx];
+  document.getElementById('sp-tense-name').textContent = t.name;
+  document.getElementById('sp-tense-code').textContent = t.code;
+  document.getElementById('sp-tips').textContent = sp.tips;
+
+  const start = page * SP_PAGE_SIZE;
+  const end = Math.min(start + SP_PAGE_SIZE, sp.patterns.length);
+  const visible = sp.patterns.slice(start, end);
+
+  const grid = document.getElementById('sp-pattern-grid');
+  grid.innerHTML = visible.map(p => `
+    <div class="sp-pattern-card">
+      <div class="sp-pattern-starter">${p.starter}…</div>
+      <div class="sp-pattern-en">${p.en}</div>
+      <div class="sp-pattern-tr">${p.tr}</div>
+    </div>`).join('');
+
+  const totalPages = Math.ceil(sp.patterns.length / SP_PAGE_SIZE);
+  document.getElementById('sp-counter').textContent = `Kalıp ${start + 1}–${end} / ${sp.patterns.length}`;
+}
+
+function spNext() {
+  const sp = SENTENCE_PATTERNS[currentTense];
+  const totalPages = Math.ceil(sp.patterns.length / SP_PAGE_SIZE);
+  spPage = (spPage + 1) % totalPages;
+  renderSentencePatterns(currentTense, spPage);
+}
+
+function spPrev() {
+  const sp = SENTENCE_PATTERNS[currentTense];
+  const totalPages = Math.ceil(sp.patterns.length / SP_PAGE_SIZE);
+  spPage = (spPage - 1 + totalPages) % totalPages;
+  renderSentencePatterns(currentTense, spPage);
+}
+
+function spShuffle() {
+  const sp = SENTENCE_PATTERNS[currentTense];
+  // Shuffle patterns array (Fisher-Yates)
+  for (let i = sp.patterns.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [sp.patterns[i], sp.patterns[j]] = [sp.patterns[j], sp.patterns[i]];
+  }
+  spPage = 0;
+  renderSentencePatterns(currentTense, 0);
+}
+
+// ===================== MULTIPLE CHOICE =====================
+function setMcLang(lang) {
+  mcLang = lang;
+  document.getElementById('btn-tr').className = 'lang-btn' + (lang === 'TR' ? ' active-tr' : '');
+  document.getElementById('btn-en').className = 'lang-btn' + (lang === 'EN' ? ' active-en' : '');
+  buildMcPool();
+  mcIdx = 0;
+  renderMcQuestion();
+}
+
+function mcTenseChanged() {
+  mcTenseFilter = document.getElementById('mc-tense-select').value;
+  buildMcPool();
+  mcIdx = 0;
+  renderMcQuestion();
+}
+
+function buildMcPool() {
+  let pool = [];
+  if (mcTenseFilter === 'all') {
+    MC_QUESTIONS.forEach(tq => pool.push(...tq));
+  } else {
+    const ti = parseInt(mcTenseFilter);
+    pool = MC_QUESTIONS[ti] || [];
+  }
+  // Shuffle
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  mcPool = pool.slice(0, 20); // limit to 20 per session
+  mcScore = { correct: 0, wrong: 0, total: 0 };
+  updateMcScore();
+}
+
+function renderMcQuestion() {
+  if (mcPool.length === 0) return;
+  mcAnswered = false;
+  const q = mcPool[mcIdx % mcPool.length];
+
+  document.getElementById('mc-q-num').textContent = `${(mcIdx % mcPool.length) + 1}/${mcPool.length}`;
+  document.getElementById('mc-q-tense').textContent = q.tenseName;
+  document.getElementById('mc-prog-fill').style.width = `${((mcIdx % mcPool.length) / mcPool.length) * 100}%`;
+
+  const feedback = document.getElementById('mc-feedback');
+  feedback.className = 'mc-feedback';
+  document.getElementById('mc-next-btn').style.display = 'none';
+
+  if (mcLang === 'TR') {
+    // Show Turkish, pick English
+    document.getElementById('mc-question-text').textContent = q.tr;
+    document.getElementById('mc-question-sub').textContent = '⬆ Bu Türkçe cümlenin İngilizce karşılığını seç:';
+    const options = shuffle([q.en, ...q.wrongEn.slice(0, 3)]);
+    renderMcOptions(options, q.en);
+  } else {
+    // Show English, pick Turkish
+    document.getElementById('mc-question-text').textContent = q.en;
+    document.getElementById('mc-question-sub').textContent = '⬆ Bu İngilizce cümlenin Türkçe karşılığını seç:';
+    const options = shuffle([q.tr, ...q.wrongTr.slice(0, 3)]);
+    renderMcOptions(options, q.tr);
+  }
+}
+
+function renderMcOptions(options, correct) {
+  const letters = ['A', 'B', 'C', 'D'];
+  const container = document.getElementById('mc-options');
+  container.innerHTML = options.map((opt, i) => `
+    <div class="mc-option" onclick="mcSelect(this, '${escQ(opt)}', '${escQ(correct)}')">
+      <div class="mc-opt-letter">${letters[i]}</div>
+      <div class="mc-opt-text">${opt}</div>
+    </div>`).join('');
+}
+
+function escQ(s) { return s.replace(/'/g, "\\'").replace(/"/g, '&quot;'); }
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function mcSelect(el, chosen, correct) {
+  if (mcAnswered) return;
+  mcAnswered = true;
+
+  // Disable all options
+  document.querySelectorAll('.mc-option').forEach(opt => {
+    opt.classList.add('disabled');
+    const optText = opt.querySelector('.mc-opt-text').textContent;
+    if (optText === correct) opt.classList.add('correct');
+    else if (opt === el) opt.classList.add('wrong');
+  });
+
+  const isCorrect = chosen === correct;
+  if (isCorrect) {
+    mcScore.correct++;
+    prog.clean++; prog.streak++;
+  } else {
+    mcScore.wrong++;
+    prog.errors++; prog.streak = 0;
+  }
+  mcScore.total++;
+  prog.total++;
+  updateMcScore();
+  updateStats();
+
+  // Show feedback
+  const fb = document.getElementById('mc-feedback');
+  const q = mcPool[mcIdx % mcPool.length];
+  fb.className = 'mc-feedback show ' + (isCorrect ? 'fb-correct' : 'fb-wrong');
+  document.getElementById('mc-fb-title').textContent = isCorrect ? '✅ Doğru!' : '❌ Yanlış';
+  document.getElementById('mc-fb-text').textContent = isCorrect
+    ? `Harika! Bu cümle "${q.tenseName}" zamanına ait.`
+    : `Doğru cevap: "${correct}" — Bu cümle "${q.tenseName}" zamanına ait.`;
+
+  document.getElementById('mc-next-btn').style.display = 'block';
+}
+
+function mcNext() {
+  mcIdx++;
+  if (mcIdx >= mcPool.length) {
+    // End of pool — show summary
+    const fb = document.getElementById('mc-feedback');
+    fb.className = 'mc-feedback show fb-correct';
+    const acc = mcPool.length > 0 ? Math.round((mcScore.correct / mcPool.length) * 100) : 0;
+    document.getElementById('mc-fb-title').textContent = `🏆 Tur Tamamlandı!`;
+    document.getElementById('mc-fb-text').textContent = `${mcPool.length} sorudan ${mcScore.correct} doğru — Başarı: %${acc}. Yeniden başlamak için 🔄 butonuna bas.`;
+    document.getElementById('mc-options').innerHTML = '';
+    document.getElementById('mc-next-btn').style.display = 'none';
+    document.getElementById('mc-q-num').textContent = `${mcPool.length}/${mcPool.length}`;
+    document.getElementById('mc-prog-fill').style.width = '100%';
+    return;
+  }
+  renderMcQuestion();
+}
+
+function mcRestart() {
+  buildMcPool();
+  mcIdx = 0;
+  renderMcQuestion();
+}
+
+function updateMcScore() {
+  document.getElementById('mc-correct').textContent = mcScore.correct;
+  document.getElementById('mc-wrong-count').textContent = mcScore.wrong;
+  document.getElementById('mc-total-count').textContent = mcScore.total;
 }
 
 // ===================== LT API =====================
@@ -937,7 +1654,6 @@ async function checkGrammar() {
       prog.errors += ms.length; prog.streak = 0;
       html = `<div class="result-summary has-errors"><div class="rs-icon">⚠️</div><div><div class="rs-title">${ms.length} hata bulundu</div><div class="rs-sub">Aşağıdaki hataları incele ve düzelt.</div></div></div>${ms.map(m => renderErr(m, text, 'text-input')).join('')}`;
     }
-    // Add tense detection
     html += renderTenseAnalysis(text);
     set('results', html);
     updateStats();
@@ -969,23 +1685,16 @@ function revealAnswer() {
   document.getElementById('answer-reveal').classList.add('show');
 }
 
-// Semantic similarity check — keyword-based
 function semanticCheck(userAns, correctAns) {
   const normalize = s => s.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ').trim();
   const userN = normalize(userAns);
   const correctN = normalize(correctAns);
-
-  // Extract content words (length > 3, excluding common function words)
-  const stopwords = new Set(['will','have','been','does','did','was','were','are','the','and','but','for','not','with','that','this','they','them','their','there','then','when','from','into','also','just','more','very','your','our','its','can','had','has','him','her','his','she','you','his','who','how','all','any','one','out','get','use','some','such','each','than','then','only','same','other','what','which','would','could','should','being','having','might','must','shall']);
+  const stopwords = new Set(['will','have','been','does','did','was','were','are','the','and','but','for','not','with','that','this','they','them','their','there','then','when','from','into','also','just','more','very','your','our','its','can','had','has','him','her','his','she','you','who','how','all','any','one','out','get','use','some','such','each','than','then','only','same','other','what','which','would','could','should','being','having','might','must','shall']);
   const getKeywords = s => s.split(' ').filter(w => w.length > 2 && !stopwords.has(w));
-
   const correctWords = getKeywords(correctN);
   const userWords = getKeywords(userN);
-
-  // Check if key semantic words match
   const matchCount = correctWords.filter(w => userWords.some(uw => uw.includes(w) || w.includes(uw))).length;
   const matchRatio = correctWords.length > 0 ? matchCount / correctWords.length : 0;
-
   return { ratio: matchRatio, matchCount, total: correctWords.length };
 }
 
@@ -997,17 +1706,13 @@ async function checkTranslation() {
     const d = await callLT(ans);
     const ms = d.matches || [];
     prog.total++;
-
     const sem = semanticCheck(ans, currentTrSentence.en);
     let html = '';
-
-    // Semantic feedback
     if (sem.ratio >= 0.55) {
       html += `<div class="tr-semantic-ok"><div class="tr-label">✅ Anlam Doğru</div><div class="tr-text">Cümlenin anlamını doğru aktardın! (${Math.round(sem.ratio * 100)}% anahtar kelime eşleşmesi)</div></div>`;
     } else {
       html += `<div class="tr-semantic-warn"><div class="tr-label">⚠️ Anlam Farklı Görünüyor</div><div class="tr-text">Cümlenin anlamı tam olarak aktarılmamış olabilir. Doğru cevabı görmek için "Cevap" butonuna tıkla.</div></div>`;
     }
-
     if (ms.length === 0) {
       prog.clean++; prog.streak++;
       html += `<div class="result-summary clean"><div class="rs-icon">🎉</div><div><div class="rs-title">Gramer hatası yok!</div></div></div>`;
@@ -1027,7 +1732,7 @@ function loadGapSentence(idx) {
   const gaps = TENSES[idx].gaps;
   currentGapItem = gaps[Math.floor(Math.random() * gaps.length)];
   document.getElementById('gap-sentence').textContent = currentGapItem.sentence;
-  document.getElementById('gap-desc').innerHTML = `<strong>${TENSES[idx].name}</strong> kuralına göre ___ boşluğunu doğru fiil formuyla doldur.`;
+  document.getElementById('gap-desc').innerHTML = `<strong>${TENSES[idx].name}</strong> — <span style="color:var(--emerald)">1: Positive</span> · <span style="color:var(--rose)">2: Negative</span> · <span style="color:var(--blue)">3: Question</span> yapısına göre boşluğu doldur.`;
   clear('gap-results'); document.getElementById('gap-answer').value = '';
 }
 
@@ -1086,5 +1791,4 @@ function set(id, html) { const el = document.getElementById(id); if (el) el.inne
 
 init();
 </script>
-</body>
-</html>
+</body></html>
